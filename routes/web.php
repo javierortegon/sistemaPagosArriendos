@@ -27,6 +27,10 @@ Route::post('propiedad/create', [
     'uses' => 'PropiedadesController@postCreate'
 ]);
 
+Route::get('/asignarArrendatario', function(){
+    return view('propiedad.addArrendatario');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
