@@ -7,6 +7,16 @@
 				{{-- TODO: Abrir el formulario e indicar el método POST --}}
                     {{ csrf_field() }}
 					{{-- TODO: Protección contra CSRF --}}
+
+					<div class="form-group">
+    					<label for="title">Codigo</label>
+    					<input type="text" name="codigo" id="codigo" class="form-control">
+					</div>
+
+					<div class="form-group">
+    					<label for="title">Nombre</label>
+    					<input type="text" name="nombre" id="nombre" class="form-control">
+					</div>
     
     				<div class="form-group">
     					<label for="title">Direccion</label>
