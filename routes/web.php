@@ -15,26 +15,28 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// ruta de usuarios
 Route::get('/register', function () {
     return view('auth.register');
 });
 
+// ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', function(){
     return view('propiedad.add');
 });
 
+// ruta de recepcion del formulario, registro propiedad
 Route::post('propiedad/create', [
     'uses' => 'PropiedadesController@postCreate'
 ]);
 
-Route::get('/asignarArrendatario', function(){
-    return view('propiedad.addArrendatario');
-});
+//ruta para acceder al formulario propiedad arrendatario
+Route::get('/asignarArrendatario', 'PropiedadesController@addArrendatario');
 
-Route::get('/asignarArrendatario', [
-    'uses' => 'PropiedadesController@addArrendatario'
+// ruta de recepcion del formulario, registro propietario
+Route::post('propietario/create', [
+    'uses' => 'PropiedadesController@postAddArrendatario'
 ]);
-
 
 Auth::routes();
 
