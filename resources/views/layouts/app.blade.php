@@ -52,7 +52,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('registroPropiedad') }}">Registrar</a></li>
                                     <li><a href="">Modificar</a></li>
-                                    <li><a href="{{ url('asignarArrendatario') }}">Asignar Arrendatario</a></li>
+                                    <li><a href="{{ route('asignarArrendatario') }}">Asignar Arrendatario</a></li>
                                 </ul>
                             </li>
 
