@@ -20,24 +20,31 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-// ruta para acceder al formulario de registrar propiedad
-Route::get('/registroPropiedad', function(){
-    return view('propiedad.add');
-})->name('registroPropiedad');;
 
-Route::get('/asignarArrendatario', [
-    'uses' => 'PropiedadesController@addArrendatario'
-]); 
+// ruta para acceder al formulario de registrar propiedad
+Route::get('/registroPropiedad', [
+    'middleware' => 'auth',
+     function () {
+        return view('propiedad.add');
+}])->name('registroPropiedad');
+
 
 // ruta de recepcion del formulario, registro propiedad
 Route::post('propiedad/create', [
-    'uses' => 'PropiedadesController@postCreate'
+    'uses' => 'PropiedadesController@postCreate',
+    'middleware' => 'auth',
 ]);
 
+// ruta asiganar arrendatario
+Route::get('/asignarArrendatario', [
+    'uses' => 'PropiedadesController@addArrendatario',
+    'middleware' => 'auth'
+])->name('asignarArrendatario'); 
 
-// ruta de recepcion del formulario, registro propietario
-Route::post('propietario/create', [
-    'uses' => 'PropiedadesController@postAddArrendatario'
+// ruta de recepcion del formulario, registro arrendatario
+Route::post('arrendatario/create', [
+    'uses' => 'PropiedadesController@postAddArrendatario',
+    'middleware' => 'auth',
 ]);
 
 Auth::routes();

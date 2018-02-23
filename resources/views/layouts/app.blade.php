@@ -50,9 +50,21 @@
                                     Propiedad
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="">Registrar</a></li>
+                                    <li><a href="{{ route('registroPropiedad') }}">Registrar</a></li>
+                                    <li><a href="">Modificar</a></li>
+                                    <li><a href="{{ url('asignarArrendatario') }}">Asignar Arrendatario</a></li>
                                 </ul>
                             </li>
+
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                        Usuario
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ route('register') }}">Registrar</a></li>
+                                        <li><a href="">Modificar</a></li>
+                                    </ul>
+                                </li>
 
                             <li class="dropdown">
                                 
