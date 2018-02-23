@@ -25,13 +25,15 @@ Route::get('/registroPropiedad', function(){
     return view('propiedad.add');
 });
 
+Route::get('/asignarArrendatario', [
+    'uses' => 'PropiedadesController@addArrendatario'
+]); 
+
 // ruta de recepcion del formulario, registro propiedad
 Route::post('propiedad/create', [
     'uses' => 'PropiedadesController@postCreate'
 ]);
 
-//ruta para acceder al formulario propiedad arrendatario
-Route::get('/asignarArrendatario', 'PropiedadesController@addArrendatario');
 
 // ruta de recepcion del formulario, registro propietario
 Route::post('propietario/create', [

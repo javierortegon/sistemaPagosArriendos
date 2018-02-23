@@ -3,6 +3,7 @@
 @section('content')
 		<div class="col-md-2"></div>	
 		<div class="col-md-8">
+			<li><a href="{{ url('/asignarArrendatario') }}">Registro Usuarios</a></li>
             <form action="{{ url('propiedad/create') }}" method="POST">
 				{{-- TODO: Abrir el formulario e indicar el método POST --}}
                     {{ csrf_field() }}
