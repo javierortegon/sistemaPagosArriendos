@@ -23,7 +23,7 @@ Route::get('/register', function () {
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', function(){
     return view('propiedad.add');
-});
+})->name('registroPropiedad');;
 
 Route::get('/asignarArrendatario', [
     'uses' => 'PropiedadesController@addArrendatario'
