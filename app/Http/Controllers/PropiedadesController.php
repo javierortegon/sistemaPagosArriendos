@@ -40,4 +40,9 @@ class PropiedadesController extends Controller
         $notificacion::success('La propiedad se ha guardado correctamente');
         return redirect('/asignarArrendatario');
     }
+
+    public function getPropiedades(){
+        $propiedades = Propiedad::all();
+        return view ('propiedad.propiedades', ['propiedades' => $propiedades ]);
+    }
 }

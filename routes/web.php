@@ -47,6 +47,11 @@ Route::post('arrendatario/create', [
     'middleware' => 'auth',
 ]);
 
+Route::get('/verPropiedades', [
+    'uses' => 'PropiedadesController@getPropiedades',
+    'middleware' => 'auth'
+])->name('verPropiedades'); 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
