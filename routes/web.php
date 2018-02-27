@@ -47,10 +47,17 @@ Route::post('arrendatario/create', [
     'middleware' => 'auth',
 ]);
 
+//ruta para consultar las propiedades
 Route::get('/verPropiedades', [
     'uses' => 'PropiedadesController@getPropiedades',
     'middleware' => 'auth'
 ])->name('verPropiedades'); 
+
+//ruta para consultar los usuarios
+Route::get('/verUsuarios', [
+    'uses' => 'UsersController@getUsuarios',
+    'middleware' => 'auth'
+])->name('verUsuarios'); 
 
 Auth::routes();
 
