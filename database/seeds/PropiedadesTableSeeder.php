@@ -23,6 +23,7 @@ class PropiedadesTableSeeder extends Seeder
         $propiedad->descripcion = ('apartemento ');
         $propiedad->codigo = ('cc01');
         $propiedad->nombre = ('casa 123');
+        $propiedad->estado = (1);
 		$propiedad->save();
 	}
 }

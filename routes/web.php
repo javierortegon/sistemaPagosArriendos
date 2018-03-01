@@ -59,6 +59,17 @@ Route::get('/verUsuarios', [
     'middleware' => 'auth'
 ])->name('verUsuarios'); 
 
+//ruta para editar las propiedades
+Route::get('propiedad/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@getEdit'
+]);
+
+Route::put('propiedad/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@putEdit'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

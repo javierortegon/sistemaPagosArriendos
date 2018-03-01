@@ -45,4 +45,22 @@ class PropiedadesController extends Controller
         $propiedades = Propiedad::all();
         return view ('propiedad.propiedades', ['propiedades' => $propiedades ]);
     }
+
+    public function getEdit($id){
+        $propiedad = Propiedad::findOrFail($id);
+        return view ('propiedad.edit', ['propiedad' => $propiedad]);
+    }
+
+    public function putEdit($id, Request $request){
+        $propiedad = Propiedad::find($id);
+        $propiedad->direccion = $request->direccion;
+        $propiedad->descripcion = $request->descripcion;
+        $propiedad->codigo = $request->codigo;
+        $propiedad->nombre = $request->nombre;
+        $propiedad->estado = $request->estado;
+        $propiedad->save();
+        $notificacion = new Notification;
+        $notificacion::success('La propiedad se ha actualizo correctamente');
+        return redirect('verPropiedades');
+    }
 }

@@ -19,6 +19,7 @@ class CreatePropiedadesTable extends Migration
             $table->string('descripcion',140);
             $table->string('nombre',150);
             $table->string('codigo',20);
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

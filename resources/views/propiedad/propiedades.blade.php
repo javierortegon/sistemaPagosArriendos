@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+                {!!	Notification::showAll()	!!}
             <table class="table">
                 <thead>
                     <tr>
@@ -12,6 +13,7 @@
                         <th>Nombre</th>
                         <th>Direccion</th>
                         <th>Descripcion</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,7 +23,14 @@
                             <td>{{$propiedad->nombre}}</td>
                             <td>{{$propiedad->direccion}}</td>
                             <td>{{$propiedad->descripcion}}</td>
-                            <td><a href="">Editar</a></td>
+                            <td>
+                                @if ($propiedad->estado == 1)
+                                    Activo
+                                @else
+                                    Desactivo    
+                                @endif    
+                            </td>
+                            <td><a href="{{ url('propiedad/edit/'. $propiedad['id']) }}">Editar</a></td>
                         </tr>
                     @endforeach
                 </tbody>
