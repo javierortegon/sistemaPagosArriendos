@@ -65,9 +65,22 @@ Route::get('propiedad/edit/{id}', [
     'uses' => 'PropiedadesController@getEdit'
 ]);
 
+//ruta para recibir los datos de la propiedad editada
 Route::put('propiedad/edit/{id}', [
     'middleware' => 'auth',
     'uses' => 'PropiedadesController@putEdit'
+]);
+
+//ruta para editar los usuarios
+Route::get('usuario/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'UsersController@getEdit'
+]);
+
+//ruta para recibir los datos del usuario editado
+Route::put('usuario/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'UsersController@putEdit'
 ]);
 
 Auth::routes();
