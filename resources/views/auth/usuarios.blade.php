@@ -11,6 +11,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Mail</th>
+                        <th>Estado</th>
                         <th>Editar</th>
                         <th>Rol</th>
                     </tr>
@@ -20,6 +21,13 @@
                         <tr>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->email}}</td>
+                            <td>
+                                @if ($usuario->estado == 1)
+                                    Activo
+                                @else
+                                    Desactivo    
+                                @endif    
+                            </td>
                             <td><a href="{{ url('usuario/edit/'. $usuario['id']) }}">Editar</a></td>
                             <td><a href="">Modificar Roles</a></td>
                         </tr>
