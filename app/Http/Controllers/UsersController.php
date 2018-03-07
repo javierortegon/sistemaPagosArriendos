@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use App\Rol;
+use App\RolesUsuarios;
 
 use Illuminate\Http\Request;
 use Notification;
@@ -33,10 +34,34 @@ class UsersController extends Controller
     }
 
     public function getEditRol($id){
-        $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
+
+        //vericar si el usuario tiene roles
+        $count = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
         ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
-        ->get();
-        return view ('auth.editRol')->with('roles', $roles);
+        ->where('users.id', '=', $id)
+        ->count();
+
+        //si tiene algun rol se carga la edicion
+        if($count > 0){
+            $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
+            ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
+            ->where('users.id', '=', $id)
+            ->get();
+            return view('auth.editRol', ['roles' => $roles,'usuario' => $id]);
+        }else{
+        //si no tiene roles se crea un rol 3 al usuario y se carga la edicion    
+            $rolesUsuarios = new RolesUsuarios;
+            $rolesUsuarios->user_id = $id;
+            $rolesUsuarios->rol_id = 3;
+            $rolesUsuarios->save();
+
+            $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
+            ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
+            ->where('users.id', '=', $id)
+            ->get();
+            return view('auth.editRol', ['roles' => $roles,'usuario' => $id]);
+        }
+
     }
 
 }
