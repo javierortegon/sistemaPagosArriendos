@@ -89,6 +89,12 @@ Route::get('usuario/editRol/{id}', [
     'uses' => 'UsersController@getEditRol'
 ]);
 
+//ruta para recibir los datos de los roles editados
+Route::put('usuario/editRol/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'UsersController@putEditRol'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

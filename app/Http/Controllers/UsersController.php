@@ -34,6 +34,7 @@ class UsersController extends Controller
     }
 
     public function getEditRol($id){
+        $usuario = User::find($id);
 
         //vericar si el usuario tiene roles
         $count = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
@@ -43,11 +44,23 @@ class UsersController extends Controller
 
         //si tiene algun rol se carga la edicion
         if($count > 0){
-            $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
-            ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
-            ->where('users.id', '=', $id)
-            ->get();
-            return view('auth.editRol', ['roles' => $roles,'usuario' => $id]);
+
+            $rolesActivos = DB::table('rolesUsuarios')->where('user_id', '=', $id)->get();
+
+            $rol1 = 0;
+            $rol2 = 0;
+            $rol3 = 0;
+            
+            foreach ($rolesActivos as $rolactivo) {
+                if( $rolactivo->rol_id == 1){
+                    $rol1 = 1;
+                }else if($rolactivo->rol_id == 2){
+                    $rol2 = 1;
+                }else if($rolactivo->rol_id == 3){
+                    $rol3 = 1;
+                }
+            }
+            return view('auth.editRol', ['rol1' => $rol1, 'rol2' => $rol2, 'rol3' => $rol3, 'usuario' => $usuario]);
         }else{
         //si no tiene roles se crea un rol 3 al usuario y se carga la edicion    
             $rolesUsuarios = new RolesUsuarios;
@@ -55,13 +68,52 @@ class UsersController extends Controller
             $rolesUsuarios->rol_id = 3;
             $rolesUsuarios->save();
 
-            $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
-            ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
-            ->where('users.id', '=', $id)
-            ->get();
-            return view('auth.editRol', ['roles' => $roles,'usuario' => $id]);
+            $rolesActivos = DB::table('rolesUsuarios')->where('user_id', '=', $id)->get();
+
+            $rol1 = 0;
+            $rol2 = 0;
+            $rol3 = 0;
+            
+            foreach ($rolesActivos as $rolactivo) {
+                if( $rolactivo->rol_id == 1){
+                    $rol1 = 1;
+                }else if($rolactivo->rol_id == 2){
+                    $rol2 = 1;
+                } else if($rolactivo->rol_id == 3){
+                    $rol2 = 3;
+                }
+            }
+            return view('auth.editRol', ['rol1' => $rol1, 'rol2' => $rol2, 'rol3' => $rol3, 'usuario' => $usuario]);
         }
 
+    }
+
+    public function putEditRol($id, Request $request){
+        DB::table('rolesUsuarios')->where('user_id', '=', $id)->delete();
+        //echo $request->estadoRol1 , $request->estadoRol2, $request->estadoRol3;
+        //die();
+
+        if($request->estadoRol1==1){
+            $rolesUsuarios = new RolesUsuarios;
+            $rolesUsuarios->user_id = $id;
+            $rolesUsuarios->rol_id = 1;
+            $rolesUsuarios->save();
+        }
+        if ($request->estadoRol2 == 1){
+            $rolesUsuarios = new RolesUsuarios;
+            $rolesUsuarios->user_id = $id;
+            $rolesUsuarios->rol_id = 2;
+            $rolesUsuarios->save();
+        }
+        if($request->estadoRol3 == 1){
+            $rolesUsuarios = new RolesUsuarios;
+            $rolesUsuarios->user_id = $id;
+            $rolesUsuarios->rol_id = 3;
+            $rolesUsuarios->save();
+        }
+        $notificacion = new Notification;
+        $notificacion::success('El usuario se ha actualizo correctamente');
+        return redirect('verUsuarios');          
     }
 
 }
