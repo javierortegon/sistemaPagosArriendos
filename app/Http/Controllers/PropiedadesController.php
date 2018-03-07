@@ -26,7 +26,7 @@ class PropiedadesController extends Controller
     }
 
     public function addArrendatario(){
-        $propiedades = Propiedad::all();
+        $propiedades = Propiedad::all()->where('estado', '=', 1);
         $usuarios = User::all();
         return view ('propiedad.addArrendatario', ['propiedades' => $propiedades, 'users' => $usuarios]);
     }
