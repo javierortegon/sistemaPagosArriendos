@@ -27,15 +27,17 @@
     					<textarea type="textarea" name="descripcion" id="descripcion" class="form-control">{{ $propiedad['descripcion'] }}</textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="title">Estado</label>
-                        <select name="estado" id="estado">
-                            <option value="1">Activo</option>
-                            <option value="0">Desactivo</option>
-                        </select>
+					<div class="form-group">
+                        <label for="title">Estado</label><br>
+						@if ( $propiedad['estado'] == 1)
+							Activo <input type="radio" name="estado" value="1" checked="true"><br>
+							Inactivo <input type="radio" value="0" name="estado"><br>  
+						@else
+							Activo <input type="radio" value="1" name="estado"><br>
+							Inactivo <input type="radio" name="estado" value="0" checked="true"><br> 
+						@endif 
                     </div>
 
-					
 
 					<div class="form-group text-center">
 						<button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">

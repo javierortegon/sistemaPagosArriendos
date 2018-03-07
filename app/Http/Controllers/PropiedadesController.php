@@ -18,6 +18,7 @@ class PropiedadesController extends Controller
         $propiedad->descripcion = $request->descripcion;
         $propiedad->codigo = $request->codigo;
         $propiedad->nombre = $request->nombre;
+        $propiedad->estado = 1;
         $propiedad->save();
         $notificacion = new Notification;
         $notificacion::success('La propiedad se ha guardado correctamente');
