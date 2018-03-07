@@ -29,7 +29,7 @@
                                 @endif    
                             </td>
                             <td><a href="{{ url('usuario/edit/'. $usuario['id']) }}">Editar</a></td>
-                            <td><a href="">Modificar Roles</a></td>
+                            <td><a href="{{ url('usuario/editRol/'. $usuario['id']) }}">Modificar Roles</a></td>
                         </tr>
                     @endforeach
                 </tbody>

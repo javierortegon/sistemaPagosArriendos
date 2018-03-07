@@ -83,6 +83,12 @@ Route::put('usuario/edit/{id}', [
     'uses' => 'UsersController@putEdit'
 ]);
 
+//ruta para editar los roles de los usuarios
+Route::get('usuario/editRol/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'UsersController@getEditRol'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

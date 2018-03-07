@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\User;
+use App\Rol;
 
 use Illuminate\Http\Request;
 use Notification;
@@ -29,6 +30,13 @@ class UsersController extends Controller
         $notificacion = new Notification;
         $notificacion::success('El usuario se ha actualizo correctamente');
         return redirect('verUsuarios');
+    }
+
+    public function getEditRol($id){
+        $roles = User::select('users.id as id_user','rolesUsuarios.rol_id as rol')
+        ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
+        ->get();
+        return view ('auth.editRol')->with('roles', $roles);
     }
 
 }
