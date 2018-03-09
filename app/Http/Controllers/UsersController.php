@@ -80,7 +80,7 @@ class UsersController extends Controller
                 }else if($rolactivo->rol_id == 2){
                     $rol2 = 1;
                 } else if($rolactivo->rol_id == 3){
-                    $rol2 = 3;
+                    $rol3 = 1;
                 }
             }
             return view('auth.editRol', ['rol1' => $rol1, 'rol2' => $rol2, 'rol3' => $rol3, 'usuario' => $usuario]);
