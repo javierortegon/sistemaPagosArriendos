@@ -1,41 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="col-md-2"></div>	
-		<div class="col-md-8">
-            <form action="{{ url('propietario/create') }}" method="POST">
-				{{-- TODO: Abrir el formulario e indicar el método POST --}}
-                    {{ csrf_field() }}
-					{{-- TODO: Protección contra CSRF --}}
+		
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Registro</div>
 
-					<div class="col-md-6">
-                        <select name="propiedad" id="propiedad" class="form-control">
-                            @foreach( $propiedades as $propiedad )
-                                <option value="{{$propiedad['id']}}">{{$propiedad['nombre']}}</option>
-                            @endforeach
-                        </select>
+                    <div class="panel-body">
+                            <h4>Nombre Propiedad: {{ $propiedad['nombre'] }}</h3>
+                            <h4>Direccion: {{ $propiedad['direccion'] }}</h3>
+                            <h4>Descripcion: {{ $propiedad['descripcion'] }}</h3>
+                            <h4>
+                                @if (count($arrendatario) == 0)
+                                  Estado: Casa sin arrendatario
+                                @else
+                                    SI tiene
+                                @endif
+                            </h4>
+                        <form  method="POST" action="{{  url('propiedad/edit')  }}">
+                            
+                            <input type="hidden" name="_method" value="PUT">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <select name="arrendatario" id="arrendatario" class="form-control">
+                                        @foreach( $usuarios as $usuario )
+                                            <option value="{{$usuario['id']}}">{{$usuario['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Registrar
+                                    </button>
+                                </div>
+                            </div>
+        
+                            {!!	Notification::showAll()	!!} 
+                        </form>
                     </div>
-
-
-                    <div class="col-md-6">
-                        <select name="propietario" id="propietario" class="form-control">
-                            @foreach( $users as $user )
-                                <option value="{{$user['id']}}">{{$user['name']}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <input type="hidden" name="estado" value="0">
-					
-
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-							Añadir arrendatario
-						</button>
-					</div>
-
-					{!!	Notification::showAll()	!!}
-            </form>
-		<div>
-		<div class="col-md-2"></div>	
+                </div>
+            </div>
+        </div>
+    </div>    
 @endsection

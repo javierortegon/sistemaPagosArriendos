@@ -52,7 +52,6 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('registroPropiedad') }}">Registrar</a></li>
                                     <li><a href="{{ route('verPropiedades') }}">Consultar</a></li>
-                                    <li><a href="{{ route('asignarArrendatario') }}">Asignar Arrendatario</a></li>
                                 </ul>
                             </li>
 
