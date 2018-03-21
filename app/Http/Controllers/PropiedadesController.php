@@ -83,4 +83,16 @@ class PropiedadesController extends Controller
         return view ('propiedad.addArrendatario', 
         ['propiedad' => $propiedad, 'usuarios' => $usuarios, 'arrendatario' => $arrendatario]);
     }
+
+    public function putAddArrendatario($id, Request $request){
+        Arrendatario::where('propiedad_id', $id)
+          ->update(['estado' => 0]);
+        $arrendatario = new Arrendatario;
+        $arrendatario->arrendatario_id_usuario = $request->arrendatario;
+        $arrendatario->propiedad_id = $id;
+        $arrendatario->save();
+        $notificacion = new Notification;
+        $notificacion::success('Arrendatario asigando correctamente');
+        return redirect('verPropiedades');          
+    }
 }

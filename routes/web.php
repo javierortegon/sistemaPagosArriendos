@@ -101,6 +101,13 @@ Route::get('propiedad/addArrendatario/{id}', [
     'uses' => 'PropiedadesController@getAddArrendatario'
 ]);
 
+
+//ruta para guardar arrendatario a la propiedad
+Route::put('propiedad/addArrendatario/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@putAddArrendatario'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -19,8 +19,8 @@
                                     SI tiene
                                 @endif
                             </h4>
-                        <form  method="POST" action="{{  url('propiedad/edit')  }}">
-                            
+                        <form  method="POST" action="{{  url('propiedad/addArrendatario').'/'.$propiedad['id']  }}">
+                            <h3>Elegir Arrendatario</h3>
                             <input type="hidden" name="_method" value="PUT">
                             {{ csrf_field() }}
 
@@ -36,7 +36,7 @@
         
         
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
+                                <div class="col-md-6">
                                     <button type="submit" class="btn btn-primary">
                                         Registrar
                                     </button>

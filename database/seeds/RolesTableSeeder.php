@@ -12,12 +12,13 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-         // Borramos los datos de la tabla
-         DB::table('roles')->delete();
+        self::seedRoles();
+		$this->command->info('Tabla roles inicializada con datos!');
+    }
 
-         // Añadimos una entrada a esta tabla
-         Rol::create(array('nombre' => 'administrador'));
-         Rol::create(array('nombre' => 'arrendatario'));
-         Rol::create(array('nombre' => 'propietario'));
+    private function seedRoles(){
+        Rol::create(array('nombre' => 'administrador'));
+        Rol::create(array('nombre' => 'arrendatario'));
+        Rol::create(array('nombre' => 'propietario'));
     }
 }
