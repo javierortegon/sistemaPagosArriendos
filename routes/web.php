@@ -98,3 +98,11 @@ Route::put('usuario/editRol/{id}', [
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//rutaS para importar csv
+Route::post('importCsvUsers', 'ImportCsvController@importCsv');
+
+Route::get('importUsers',	function()
+{
+				return view('importCsv.importUsersCsv');
+});
