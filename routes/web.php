@@ -95,6 +95,19 @@ Route::put('usuario/editRol/{id}', [
     'uses' => 'UsersController@putEditRol'
 ]);
 
+//ruta para añadir arrendatario a la propiedad
+Route::get('propiedad/addArrendatario/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@getAddArrendatario'
+]);
+
+
+//ruta para guardar arrendatario a la propiedad
+Route::put('propiedad/addArrendatario/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@putAddArrendatario'
+]);
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -9,8 +9,6 @@
         <h4>Usuario - {{ $usuario->name }}</h4>
         <h4>Email - {{ $usuario->email }}</h4>
 
-        {{ $rol1, $rol2, $rol3 }}
-
         <form  method="POST" action="{{  url('usuario/editRol').'/'.$usuario->id  }}">
             <input type="hidden" name="_method" value="PUT">
             {{ csrf_field() }}

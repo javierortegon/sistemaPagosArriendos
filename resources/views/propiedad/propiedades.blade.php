@@ -31,6 +31,7 @@
                                 @endif    
                             </td>
                             <td><a href="{{ url('propiedad/edit/'. $propiedad['id']) }}">Editar</a></td>
+                            <td><a href="{{ url('propiedad/addArrendatario/'. $propiedad['id']) }}">Asiganar Arrendatario</a></td>
                         </tr>
                     @endforeach
                 </tbody>
