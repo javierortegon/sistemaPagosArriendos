@@ -69,11 +69,11 @@ class PropiedadesController extends Controller
     public function getAddArrendatario($id){
         $propiedad = Propiedad::findOrFail($id);
 
-        $arrendatario = Arrendatario::select('users.name as name','users.id as id')
+        $arrendatario = Arrendatario::select('users.name as name','users.id as id', 'fecha_factura', 'valor_arriendo')
         ->join('users', 'arrendatarios.arrendatario_id_usuario', '=', 'users.id')
         ->where('arrendatarios.propiedad_id', '=', $id)
         ->where('arrendatarios.estado', '=', 1)
-        ->get();;
+        ->get();
 
         $usuarios = User::select('users.name as name','users.id as id')
         ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
@@ -90,6 +90,7 @@ class PropiedadesController extends Controller
         $arrendatario = new Arrendatario;
         $arrendatario->arrendatario_id_usuario = $request->arrendatario;
         $arrendatario->propiedad_id = $id;
+        $arrendatario->estado = 1;
         $arrendatario->save();
         $notificacion = new Notification;
         $notificacion::success('Arrendatario asigando correctamente');

@@ -62,6 +62,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('register') }}">Registrar</a></li>
                                         <li><a href="{{ route('verUsuarios') }}">Consultar</a></li>
+                                        <li><a href="{{ route('importUsers') }}">Carga CSV</a></li>
                                     </ul>
                                 </li>
 

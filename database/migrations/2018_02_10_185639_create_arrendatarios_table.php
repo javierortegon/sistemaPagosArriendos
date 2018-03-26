@@ -19,8 +19,9 @@ class CreateArrendatariosTable extends Migration
             $table->foreign('arrendatario_id_usuario')->references('id')->on('users');
             $table->integer('propiedad_id')->unsigned();
             $table->foreign('propiedad_id')->references('id')->on('propiedades');
-            $table->date('fecha_factura')->nullable();;
-            $table->boolean('estado')->nullable();;
+            $table->date('fecha_factura')->nullable();
+            $table->decimal('valor_arriendo', 8, 2)->nullable();
+            $table->boolean('estado')->nullable();
             $table->timestamps();
         });
     }

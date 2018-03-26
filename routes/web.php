@@ -108,14 +108,15 @@ Route::put('propiedad/addArrendatario/{id}', [
     'uses' => 'PropiedadesController@putAddArrendatario'
 ]);
 
+//rutas para importar csv
+Route::post('importCsvUsers', 'ImportCsvController@importCsv');
+
+Route::get('importUsers',function(){
+	return view('importCsv.importUsersCsv');
+})->name('importUsers');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-//rutaS para importar csv
-Route::post('importCsvUsers', 'ImportCsvController@importCsv');
-
-Route::get('importUsers',	function()
-{
-				return view('importCsv.importUsersCsv');
-});
