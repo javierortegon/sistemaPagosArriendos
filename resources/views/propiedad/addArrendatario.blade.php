@@ -47,6 +47,12 @@
                                 <h4>Nombre Arrendatario: {{ $arrendata['name'] }}</h4>
                                 <h4>Fecha Factura: {{ $arrendata['fecha_factura'] }}</h4>
                                 <h4>Valor Arriendo: {{ $arrendata['valor_arriendo'] }}</h4>
+                                <form action="{{ action('ArrendatariosController@getEdit', $propiedad['id']) }}" method="GET" style="display:inline">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger" style="display:inline">
+                                        Editar Arrendatario
+                                    </button>
+                                </form>
                             @endforeach
                         @endif
                     </div>

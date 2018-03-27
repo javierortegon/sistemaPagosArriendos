@@ -66,34 +66,4 @@ class PropiedadesController extends Controller
         return redirect('verPropiedades');
     }
 
-    public function getAddArrendatario($id){
-        $propiedad = Propiedad::findOrFail($id);
-
-        $arrendatario = Arrendatario::select('users.name as name','users.id as id', 'fecha_factura', 'valor_arriendo')
-        ->join('users', 'arrendatarios.arrendatario_id_usuario', '=', 'users.id')
-        ->where('arrendatarios.propiedad_id', '=', $id)
-        ->where('arrendatarios.estado', '=', 1)
-        ->get();
-
-        $usuarios = User::select('users.name as name','users.id as id')
-        ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
-        ->where('rolesUsuarios.rol_id', '=', 2)
-        ->get();
-
-        return view ('propiedad.addArrendatario', 
-        ['propiedad' => $propiedad, 'usuarios' => $usuarios, 'arrendatario' => $arrendatario]);
-    }
-
-    public function putAddArrendatario($id, Request $request){
-        Arrendatario::where('propiedad_id', $id)
-          ->update(['estado' => 0]);
-        $arrendatario = new Arrendatario;
-        $arrendatario->arrendatario_id_usuario = $request->arrendatario;
-        $arrendatario->propiedad_id = $id;
-        $arrendatario->estado = 1;
-        $arrendatario->save();
-        $notificacion = new Notification;
-        $notificacion::success('Arrendatario asigando correctamente');
-        return redirect('verPropiedades');          
-    }
 }

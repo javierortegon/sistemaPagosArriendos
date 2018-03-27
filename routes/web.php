@@ -98,14 +98,14 @@ Route::put('usuario/editRol/{id}', [
 //ruta para añadir arrendatario a la propiedad
 Route::get('propiedad/addArrendatario/{id}', [
     'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getAddArrendatario'
+    'uses' => 'ArrendatariosController@getAddArrendatario'
 ]);
 
 
 //ruta para guardar arrendatario a la propiedad
 Route::put('propiedad/addArrendatario/{id}', [
     'middleware' => 'auth',
-    'uses' => 'PropiedadesController@putAddArrendatario'
+    'uses' => 'ArrendatariosController@putAddArrendatario'
 ]);
 
 //rutas para importar csv
@@ -115,6 +115,17 @@ Route::get('importUsers',function(){
 	return view('importCsv.importUsersCsv');
 })->name('importUsers');
 
+//ruta para editar los datos del arrendatario
+Route::get('propiedad/editArrendatario/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ArrendatariosController@getEdit'
+]);
+
+//ruta para guarda los datos editados del arrendatario
+Route::put('propiedad/editArrendatario/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ArrendatariosController@putEdit'
+]);
 
 
 Auth::routes();
