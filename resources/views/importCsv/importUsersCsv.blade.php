@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" method="POST" action="{{ URL::to('importCsvUsers') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ URL::to('chooseColumnsCsv') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <input type="file" name="import_file" />
