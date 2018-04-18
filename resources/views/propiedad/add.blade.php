@@ -4,6 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
+				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
 					<div class="panel-heading">Registro Propiedad</div>
 
