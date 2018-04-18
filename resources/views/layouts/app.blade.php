@@ -30,8 +30,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Sistema de Arriendos
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        Habitus Constructora
                     </a>
                 </div>
 
