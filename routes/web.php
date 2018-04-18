@@ -27,9 +27,6 @@ Route::get('/registroPropiedad', [
     'uses' => 'PropiedadesController@getRegister',
 ])->name('registroPropiedad');
 
-
-
-
 // ruta de recepcion del formulario, registro propiedad
 Route::post('propiedad/create', [
     'uses' => 'PropiedadesController@postCreate',
