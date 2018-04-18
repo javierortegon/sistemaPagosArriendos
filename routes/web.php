@@ -24,9 +24,10 @@ Route::get('/register', function () {
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
     'middleware' => 'auth',
-     function () {
-        return view('propiedad.add');
-}])->name('registroPropiedad');
+    'uses' => 'PropiedadesController@getRegister',
+])->name('registroPropiedad');
+
+
 
 
 // ruta de recepcion del formulario, registro propiedad

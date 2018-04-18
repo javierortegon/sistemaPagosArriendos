@@ -6,6 +6,7 @@ use App\Propiedad;
 use DB;
 use App\User;
 use App\Propietario;
+use App\Proyecto;
 use App\Arrendatario;
 use Notification;
 
@@ -13,6 +14,12 @@ use Illuminate\Http\Request;
 
 class PropiedadesController extends Controller
 {
+
+    public function getRegister(){
+        $proyectos = Proyecto::all();
+        return view ('propiedad.add', ['proyectos' => $proyectos]);
+    }
+
     public function postCreate(Request $request){
         $propiedad = new Propiedad;
         $propiedad->direccion = $request->direccion;

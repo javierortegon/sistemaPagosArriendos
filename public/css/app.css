@@ -5688,12 +5688,12 @@ tbody.collapse.in {
 }
 
 .navbar-default {
-  background-color: #fff;
+  background-color: #DD9D00;
   border-color: #747278;
 }
 
 .navbar-default .navbar-brand {
-  color: #777;
+  color: #FFF;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -5707,7 +5707,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #FFF;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -5720,7 +5720,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555;
-  background-color: #eeeeee;
+  background-color: #bc8500;
 }
 
 .navbar-default .navbar-nav > .disabled > a,
@@ -5751,7 +5751,7 @@ tbody.collapse.in {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #eeeeee;
+  background-color: #bc8500;
   color: #555;
 }
 
@@ -5770,7 +5770,7 @@ tbody.collapse.in {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #eeeeee;
+    background-color: #bc8500;
   }
 
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -7116,8 +7116,8 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-heading {
-  color: #333333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #DD9D00;
   border-color: #747278;
 }
 
