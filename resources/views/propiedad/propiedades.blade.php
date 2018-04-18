@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
+			<div class="col-md-12">
 				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
 					<div class="panel-heading">Lista de Propiedades</div>
@@ -33,6 +33,7 @@
                                             @endif    
                                         </td>
                                         <td><a href="{{ url('propiedad/edit/'. $propiedad['id']) }}">Editar</a></td>
+                                        <td><a href="{{ url('propiedad/vender/'. $propiedad['id']) }}">Vender</a></td>
                                         <td><a href="{{ url('propiedad/addArrendatario/'. $propiedad['id']) }}">Asiganar Arrendatario</a></td>
                                     </tr>
                                 @endforeach
