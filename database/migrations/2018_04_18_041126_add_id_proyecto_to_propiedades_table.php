@@ -29,6 +29,9 @@ class AddIdProyectoToPropiedadesTable extends Migration
     {
         Schema::table('propiedades', function (Blueprint $table) {
             //
+            $table->dropForeign('propiedades_id_proyecto_foreign');
+            $table->dropColumn('id_proyecto');
         });
     }
 }
+
