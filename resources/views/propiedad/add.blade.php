@@ -25,21 +25,21 @@
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label for="nombre" class="col-md-4 control-label">Nombre</label>
 									<div class="col-md-6">
-										<input type="text" name="nombre" id="nombre" class="form-control">
+										<input type="text" name="nombre" id="nombre" class="form-control" required>
 									</div>
 								</div>
 
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label for="direccion" class="col-md-4 control-label">Direccion</label>
 									<div class="col-md-6">
-										<input type="text" name="direccion" id="direccion" class="form-control">
+										<input type="text" name="direccion" id="direccion" class="form-control" required>
 									</div>
 								</div>
 
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label for="descripcion" class="col-md-4 control-label">Descripcion</label>
 									<div class="col-md-6">
-										<textarea type="textarea" name="descripcion" id="descripcion" class="form-control"></textarea>
+										<textarea type="textarea" name="descripcion" id="descripcion" class="form-control" required></textarea>
 									</div>
 								</div>
 
@@ -57,7 +57,7 @@
 								<div class="form-group">
 									<div class="col-md-6 col-md-offset-4">
 										<button type="submit" class="btn btn-primary">
-											Añadir propiedad
+											Guardar Cambios
 										</button>
 									</div>
 								</div>

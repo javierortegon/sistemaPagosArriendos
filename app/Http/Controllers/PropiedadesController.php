@@ -60,8 +60,9 @@ class PropiedadesController extends Controller
     }
 
     public function getEdit($id){
+        $proyectos = Proyecto::all();
         $propiedad = Propiedad::findOrFail($id);
-        return view ('propiedad.edit', ['propiedad' => $propiedad]);
+        return view ('propiedad.edit', ['propiedad' => $propiedad, 'proyectos' => $proyectos]);
     }
 
     public function putEdit($id, Request $request){

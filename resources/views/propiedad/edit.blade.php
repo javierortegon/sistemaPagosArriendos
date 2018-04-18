@@ -1,54 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="col-md-2"></div>	
-		<div class="col-md-8">
-            <form  method="POST" action="{{  url('propiedad/edit').'/'.$propiedad['id']  }}">
-                    <input type="hidden" name="_method" value="PUT">
-                    {{ csrf_field() }}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				{!!	Notification::showAll()	!!}
+				<div class="panel panel-default">
+					<div class="panel-heading">Editar Propiedad</div>
+					<div class="panel-body">
+						<form class="form-horizontal"  method="POST" action="{{  url('propiedad/edit').'/'.$propiedad['id']  }}">
+							
+							<input type="hidden" name="_method" value="PUT">
+							{{ csrf_field() }}
 
-					<div class="form-group">
-    					<label for="title">Codigo</label>
-    					<input type="text" name="codigo" id="codigo" class="form-control" value="{{ $propiedad['codigo'] }}">
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="codigo" class="col-md-4 control-label">Codigo</label>
+								<div class="col-md-6">
+									<input type="text" name="codigo" id="codigo" class="form-control" value="{{ $propiedad['codigo'] }}" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="nombre" class="col-md-4 control-label">Nombre</label>
+								<div class="col-md-6">
+									<input type="text" name="nombre" id="nombre" value="{{ $propiedad['nombre'] }}" class="form-control" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="direccion" class="col-md-4 control-label">Direccion</label>
+								<div class="col-md-6">
+									<input type="text" name="direccion" id="direccion" class="form-control" value="{{ $propiedad['direccion'] }}" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="descripcion" class="col-md-4 control-label">Descripcion</label>
+								<div class="col-md-6">
+									<textarea type="textarea" name="descripcion" id="descripcion" class="form-control" required>{{ $propiedad['descripcion'] }}</textarea>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="proyecto" class="col-md-4 control-label">Proyecto</label>
+								<div class="col-md-6">
+									<select name="proyecto" id="proyecto" class="form-control">
+									@foreach( $proyectos as $proyecto )
+										<option value="{{ $proyecto['id'] }}">{{ $proyecto['nombre'] }}</option>
+									@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary">
+										Añadir propiedad
+									</button>
+								</div>
+							</div>
+
+						</form>	
 					</div>
-
-					<div class="form-group">
-    					<label for="title">Nombre</label>
-    					<input type="text" name="nombre" id="nombre" class="form-control" value="{{ $propiedad['nombre'] }}">
-					</div>
-    
-    				<div class="form-group">
-    					<label for="title">Direccion</label>
-    					<input type="text" name="direccion" id="direccion" class="form-control" value="{{ $propiedad['direccion'] }}">
-					</div>
-
-                    <div class="form-group">
-    					<label for="title">Descripcion</label>
-    					<textarea type="textarea" name="descripcion" id="descripcion" class="form-control">{{ $propiedad['descripcion'] }}</textarea>
-                    </div>
-                    
-					<div class="form-group">
-                        <label for="title">Estado</label><br>
-						@if ( $propiedad['estado'] == 1)
-							Activo <input type="radio" name="estado" value="1" checked="true"><br>
-							Inactivo <input type="radio" value="0" name="estado"><br>  
-						@else
-							Activo <input type="radio" value="1" name="estado"><br>
-							Inactivo <input type="radio" name="estado" value="0" checked="true"><br> 
-						@endif 
-                    </div>
-
-
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-							Guardar Cambios
-						</button>
-					</div>
-
-                    {!!	Notification::showAll()	!!}
-                     
-            </form>
-
-		<div>
-		<div class="col-md-2"></div>	
-@endsection
+				</div>
+			</div>
+		</div>
+	</div>
+@endsection	
