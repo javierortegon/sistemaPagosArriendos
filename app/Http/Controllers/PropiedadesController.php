@@ -72,6 +72,7 @@ class PropiedadesController extends Controller
         $propiedad->codigo = $request->codigo;
         $propiedad->nombre = $request->nombre;
         $propiedad->estado = $request->estado;
+        $propiedad->id_proyecto = $request->proyecto;
         $propiedad->save();
         $notificacion = new Notification;
         $notificacion::success('La propiedad se ha actualizo correctamente');

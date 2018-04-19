@@ -52,10 +52,23 @@
 								</div>
 							</div>
 
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="proyecto" class="col-md-4 control-label">Estado</label>
+								<div class="col-md-6">
+									@if ( $propiedad['estado'] == 1)
+										Activo <input type="radio" name="estado" value="1" checked="true"><br>
+										Inactivo <input type="radio" value="0" name="estado"><br>  
+									@else
+										Activo <input type="radio" value="1" name="estado"><br>
+										Inactivo <input type="radio" name="estado" value="0" checked="true"><br> 
+									@endif 
+								</div>
+							</div>
+
 							<div class="form-group">
 								<div class="col-md-6 col-md-offset-4">
 									<button type="submit" class="btn btn-primary">
-										Añadir propiedad
+										Guardar Cambios
 									</button>
 								</div>
 							</div>
