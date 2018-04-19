@@ -88,6 +88,24 @@
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-4 control-label">Detalles Compra</label>
                                     </div>
+
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="valor" class="col-md-4 control-label">Valor Total</label>
+                                        <div class="col-md-6">
+                                            <input id="valor" type="number" class="form-control" name="valor" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <label for="metodoPago" class="col-md-4 control-label">Metodo Pago</label>
+                                        <div class="col-md-6">
+                                            <select id="metodoPago" name="metodoPago" class="form-control">
+                                                <option value="efectivo">Efectivo</option>
+                                                <option value="credito">Credito</option>
+                                                <option value="otro">Otro</option>
+                                            </select>
+                                        </div>
+                                    </div>
                 
 
                                 </form>
