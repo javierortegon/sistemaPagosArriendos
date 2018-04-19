@@ -8,6 +8,7 @@ use App\User;
 use App\Propietario;
 use App\Proyecto;
 use App\Arrendatario;
+use App\Venta;
 use Notification;
 
 use Illuminate\Http\Request;
@@ -80,11 +81,31 @@ class PropiedadesController extends Controller
     }
 
     public function getVender($id){
-        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.estado as estado', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
+        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
         ->where('propiedades.id', '=', $id)
         ->get();
         return view ('propiedad.venta', ['propiedad' => $propiedad]);
+    }
+
+    public function postVender($id, Request $request){
+        $comprador = new User;
+        $comprador->name = $request->name;
+        $comprador->email = $request->email;
+        $comprador->password = bcrypt($request->documento);
+        $comprador->estado = 1;
+        $comprador->save();
+
+        $idComprador = $comprador->id;
+
+        $venta = new Venta;
+        $venta->fecha = date('Y-m-d');
+        $venta->valor = $request->valor;
+        $venta->metodo_pago = $request->metodoPago;
+        $venta->estado = 1;
+        $venta->propiedad = $id;
+        $venta->comprador = $idComprador;
+        $venta->save();    
     }
 
 }

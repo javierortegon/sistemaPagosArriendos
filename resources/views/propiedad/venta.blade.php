@@ -6,7 +6,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
-					<div class="panel-heading">Venta Propiedad</div>
+					<div class="panel-heading">Registro Venta</div>
 					<div class="panel-body">
                         @foreach( $propiedad as $propieda )
                             @if ($propieda['estado'] == 0)
@@ -18,7 +18,7 @@
                                 </div>
 
                             @else
-                                <form class="form-horizontal"  method="POST" action="{{  url('propiedad/edit') }}">
+                                <form class="form-horizontal"  method="POST" action="{{  url('propiedad/vender').'/'.$propieda['id'] }}">
                                     {{ csrf_field() }}
 
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -85,6 +85,14 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                            <label for="documento" class="col-md-4 control-label">Documento</label>
+                
+                                            <div class="col-md-6">
+                                                <input id="documento" type="number" class="form-control" name="documento" required>
+                                            </div>
+                                        </div>
+
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                         <label class="col-md-4 control-label">Detalles Compra</label>
                                     </div>
@@ -104,6 +112,15 @@
                                                 <option value="credito">Credito</option>
                                                 <option value="otro">Otro</option>
                                             </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <div class="col-md-6 col-md-offset-4">
+                                            <button type="submit" class="btn btn-primary">
+                                                Guardar Venta
+                                            </button>
                                         </div>
                                     </div>
                 

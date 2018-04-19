@@ -75,6 +75,12 @@ Route::get('propiedad/vender/{id}', [
     'uses' => 'PropiedadesController@getVender'
 ]);
 
+//ruta para añadir arrendatario a la propiedad
+Route::post('propiedad/vender/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@postVender'
+]);
+
 //ruta para editar los usuarios
 Route::get('usuario/edit/{id}', [
     'middleware' => 'auth',
