@@ -79,4 +79,12 @@ class PropiedadesController extends Controller
         return redirect('verPropiedades');
     }
 
+    public function getVender($id){
+        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.estado as estado', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->where('propiedades.id', '=', $id)
+        ->get();
+        return view ('propiedad.venta', ['propiedad' => $propiedad]);
+    }
+
 }

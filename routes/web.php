@@ -69,6 +69,12 @@ Route::put('propiedad/edit/{id}', [
     'uses' => 'PropiedadesController@putEdit'
 ]);
 
+//ruta para añadir arrendatario a la propiedad
+Route::get('propiedad/vender/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@getVender'
+]);
+
 //ruta para editar los usuarios
 Route::get('usuario/edit/{id}', [
     'middleware' => 'auth',
@@ -105,11 +111,6 @@ Route::put('propiedad/addArrendatario/{id}', [
     'uses' => 'ArrendatariosController@putAddArrendatario'
 ]);
 
-//ruta para añadir arrendatario a la propiedad
-Route::get('propiedad/vender/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ArrendatariosController@getAddArrendatario'
-]);
 
 
 //rutas para importar csv
