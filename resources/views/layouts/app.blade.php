@@ -49,6 +49,16 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Proyecto
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('registroProyecto') }}">Registrar</a></li>
+                                    <li><a href="{{ route('proyectos') }}">Consultar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Propiedad
                                 </a>
                                 <ul class="dropdown-menu">
@@ -58,15 +68,15 @@
                             </li>
 
                             <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                        Usuario
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ route('register') }}">Registrar</a></li>
-                                        <li><a href="{{ route('verUsuarios') }}">Consultar</a></li>
-                                        <li><a href="{{ route('importUsers') }}">Carga CSV</a></li>
-                                    </ul>
-                                </li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Usuario
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('register') }}">Registrar</a></li>
+                                    <li><a href="{{ route('verUsuarios') }}">Consultar</a></li>
+                                    <li><a href="{{ route('importUsers') }}">Carga CSV</a></li>
+                                </ul>
+                            </li>
 
                             <li class="dropdown">
                                 

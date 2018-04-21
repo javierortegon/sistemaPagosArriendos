@@ -20,6 +20,21 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
+// ruta para acceder al formulario de registrar Proyecto
+Route::get('/registroProyecto', function () {
+    return view('proyecto.add');
+})->name('registroProyecto')->middleware('auth');;
+
+// ruta para registrar propiedad
+Route::post('/registroProyecto', [
+    'middleware' => 'auth',
+    'uses' => 'ProyectosController@postCrearProyecto',
+])->name('registroProyecto');
+
+Route::get('/proyectos', [
+    'middleware' => 'auth',
+    'uses' => 'ProyectosController@getProyectos',
+])->name('proyectos');
 
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
@@ -116,8 +131,6 @@ Route::put('propiedad/addArrendatario/{id}', [
     'middleware' => 'auth',
     'uses' => 'ArrendatariosController@putAddArrendatario'
 ]);
-
-
 
 //rutas para importar csv
 Route::get('importUsers',function(){
