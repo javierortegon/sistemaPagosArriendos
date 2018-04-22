@@ -25,4 +25,9 @@ class ProyectosController extends Controller
         $proyectos = Proyecto::all();
         return view ('proyecto.proyectos', ['proyectos' => $proyectos]);
     }
+
+    public function getEditProyecto($id){
+        $proyecto = Proyecto::findOrFail($id);
+        return view ('proyecto.edit', ['Proyecto' => $proyecto]);
+    }
 }

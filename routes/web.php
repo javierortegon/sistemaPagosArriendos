@@ -23,13 +23,21 @@ Route::get('/register', function () {
 // ruta para acceder al formulario de registrar Proyecto
 Route::get('/registroProyecto', function () {
     return view('proyecto.add');
-})->name('registroProyecto')->middleware('auth');;
+})->name('registroProyecto')->middleware('auth');
 
-// ruta para registrar propiedad
+// ruta para registrar proyecto
 Route::post('/registroProyecto', [
     'middleware' => 'auth',
     'uses' => 'ProyectosController@postCrearProyecto',
 ])->name('registroProyecto');
+
+// ruta para editar un proyecto
+Route::get('proyecto/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ProyectosController@getEditProyecto',
+]); 
+
+
 
 Route::get('/proyectos', [
     'middleware' => 'auth',

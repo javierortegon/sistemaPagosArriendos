@@ -13,8 +13,6 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Direccion</th>
-                                    <th>Numero de Pisos</th>
-                                    <th>Numero de Apartementos</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -22,9 +20,7 @@
                                     <tr>
                                         <td>{{$proyecto->nombre}}</td>
                                         <td>{{$proyecto->direccion}}</td>
-                                        <td>{{$proyecto->numero_de_pisos}}</td>
-                                        <td>{{$proyecto->numero_de_apartamentos}}</td>
-                                
+                                        <td><a href="{{ url('proyecto/edit/'. $proyecto['id']) }}">Editar</a></td>
                                       </tr>
                                 @endforeach
                             </tbody>
