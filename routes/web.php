@@ -43,10 +43,17 @@ Route::put('proyecto/edit/{id}', [
     'uses' => 'ProyectosController@putEditProyecto',
 ]);
 
+// ruta para consultar los proyectos
 Route::get('/proyectos', [
     'middleware' => 'auth',
     'uses' => 'ProyectosController@getProyectos',
 ])->name('proyectos');
+
+// ruta para listar los tipos de propiedad de un proyecto
+Route::get('tiposPropiedad/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@tiposPropiedad',
+]); 
 
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
