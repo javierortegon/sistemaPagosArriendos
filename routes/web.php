@@ -31,13 +31,17 @@ Route::post('/registroProyecto', [
     'uses' => 'ProyectosController@postCrearProyecto',
 ])->name('registroProyecto');
 
-// ruta para editar un proyecto
+// ruta para abrir formulario editar un proyecto
 Route::get('proyecto/edit/{id}', [
     'middleware' => 'auth',
     'uses' => 'ProyectosController@getEditProyecto',
 ]); 
 
-
+// ruta para editar un proyecto
+Route::put('proyecto/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ProyectosController@putEditProyecto',
+]);
 
 Route::get('/proyectos', [
     'middleware' => 'auth',
