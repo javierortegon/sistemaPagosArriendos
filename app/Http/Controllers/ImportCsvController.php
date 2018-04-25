@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Propiedad;
 
 class ImportCsvController extends BaseController
 {
@@ -25,8 +26,9 @@ class ImportCsvController extends BaseController
                 while ( ($data = fgetcsv ( $handle, 1000, ',' )) !== FALSE ) {
                     array_push($file, $data);
                 }
-                $columns = $file[0];
+                $columnsCsv = $file[0];
 
+                
                 $fileString = "";
                 foreach ($file as $row){
                     $fileString = $fileString.$row[0];
@@ -38,7 +40,26 @@ class ImportCsvController extends BaseController
                 
                 fclose ( $handle );
 
-                return view('importCsv.chooseColumnsCsv')->with('columns', $columns)->with('file', $fileString);
+                $origen = $request->input('origen');
+                if($origen=="users"){
+                    $table = 'users';
+                    $columnasTablaQ = \DB::select("SHOW COLUMNS FROM ". $table);
+                    $columnasTabla = array();
+                    for($i = 1; $i <count($columnasTablaQ)-3;$i++){
+                        $columnasTabla[$i-1] = $columnasTablaQ[$i]->Field;
+                    }
+                    echo $origen;
+                }
+                else if ($origen == "propiedades"){
+                    $table = 'propiedades';
+                    $columnasTablaQ = \DB::select("SHOW COLUMNS FROM ". $table);
+                    $columnasTabla = array();
+                    for($i = 1; $i <count($columnasTablaQ)-2;$i++){
+                        $columnasTabla[$i-1] = $columnasTablaQ[$i]->Field;
+                    }
+                    echo $origen;
+                }
+                return view('importCsv.chooseColumnsCsv')->with('columns', $columnsCsv)->with('file', $fileString)->with('origen', $origen)->with('columnsTable', $columnasTabla);
             }
         }
         catch (Exception $e) {
@@ -47,24 +68,40 @@ class ImportCsvController extends BaseController
     }
     
     // Método que recibe los indices de columna correspondiente a cada campo de la tabla de base de datos y realiza el insert en la base de datos.
-    public function importCsv(Request $request){
+    public function importUsers(Request $request){
         try {
             $file = $request->input('file');
             $rows = explode(";", $file);
+            $origen = $request->input('origen');
             
             for($i = 0;$i < count($rows);$i++){
                 $rows[$i] = explode(",", $rows[$i]);
             }
-            
-            for ($i = 0; $i < count($rows)-1; $i++) {
-                $user = new User ();
-                $user->name = $rows [$i][$request->input('name')];
-                $user->email = $rows [$i][$request->input('email')];
-                $user->password = $rows [$i][$request->input('password')];
-                $user->estado = $rows [$i][$request->input('state')];
-                $user->save ();
+            if($origen == 'users'){
+                for ($i = 1; $i < count($rows)-1; $i++) {
+                    $user = new User ();
+                    $user->name = $rows [$i][$request->input('name')];
+                    $user->email = $rows [$i][$request->input('email')];
+                    $user->password = $rows [$i][$request->input('password')];
+                    $user->estado = $rows [$i][$request->input('estado')];
+                    $user->save ();
+                }
+                return redirect('/verUsuarios');
             }
-            return redirect('/verUsuarios');
+            else if($origen == 'propiedades'){
+                for ($i = 1; $i < count($rows)-1; $i++) {
+                    $propiedad = new Propiedad ();
+                    $propiedad->direccion = $rows [$i][$request->input('direccion')];
+                    $propiedad->descripcion = $rows [$i][$request->input('descripcion')];
+                    $propiedad->nombre = $rows [$i][$request->input('nombre')];
+                    $propiedad->codigo = $rows [$i][$request->input('codigo')];
+                    $propiedad->estado = $rows [$i][$request->input('estado')];
+                    $propiedad->id_proyecto = $rows [$i][$request->input('id_proyecto')];
+                    $propiedad->save ();
+                }
+                return redirect('/verPropiedades');
+            }
+            
         }
         catch (Exception $e) {
             echo 'Ocurrió un error al importar: ',  $e->getMessage(), "\n";
