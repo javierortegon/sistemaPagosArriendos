@@ -153,7 +153,7 @@ Route::put('propiedad/addArrendatario/{id}', [
 
 //rutas para importar csv
 Route::get('importUsers',function(){
-	return view('importCsv.chargeCsv', array('origen' => 'user'));
+	return view('importCsv.chargeCsv', array('origen' => 'usuarios'));
 })->name('importUsers')->middleware('auth');
 
 Route::get('importPropiedades',function(){

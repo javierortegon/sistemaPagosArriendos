@@ -39,9 +39,11 @@ class ImportCsvController extends BaseController
                 }
                 
                 fclose ( $handle );
+                
+                //consultando que columnas tiene la tabla y pasandoselas a la vistaS
 
                 $origen = $request->input('origen');
-                if($origen=="users"){
+                if($origen=="usuarios"){
                     $table = 'users';
                     $columnasTablaQ = \DB::select("SHOW COLUMNS FROM ". $table);
                     $columnasTabla = array();
@@ -77,7 +79,7 @@ class ImportCsvController extends BaseController
             for($i = 0;$i < count($rows);$i++){
                 $rows[$i] = explode(",", $rows[$i]);
             }
-            if($origen == 'users'){
+            if($origen == 'usuarios'){
                 for ($i = 1; $i < count($rows)-1; $i++) {
                     $user = new User ();
                     $user->name = $rows [$i][$request->input('name')];
