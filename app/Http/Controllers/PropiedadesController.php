@@ -56,7 +56,7 @@ class PropiedadesController extends Controller
         //$estadoArriendo = DB::table('users')->count();
         $propiedades = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
-        ->get();
+        ->paginate(10);
         return view ('propiedad.propiedades', ['propiedades' => $propiedades ]);
     }
 

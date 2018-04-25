@@ -13,8 +13,8 @@ use Notification;
 class UsersController extends Controller
 {
     public function getUsuarios(){
-        $usuarios = User::all();
-        return view ('auth.usuarios', ['usuarios' => $usuarios ]);
+        $usuariosPaginados = User::paginate(10);
+        return view ('auth.usuarios', ['usuarios' => $usuariosPaginados ]);
     }
 
     public function getEdit($id){
