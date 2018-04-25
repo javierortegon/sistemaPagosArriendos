@@ -53,7 +53,13 @@ Route::get('/proyectos', [
 Route::get('tiposPropiedad/{id}', [
     'middleware' => 'auth',
     'uses' => 'TiposPropiedadController@tiposPropiedad',
-]); 
+]);
+
+// ruta para listar los tipos de propiedad de un proyecto
+Route::post('registroTipoPropiedad/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@postCreate',
+]);
 
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
