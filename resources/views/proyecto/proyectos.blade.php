@@ -20,6 +20,7 @@
                                     <tr>
                                         <td>{{$proyecto->nombre}}</td>
                                         <td>{{$proyecto->direccion}}</td>
+                                        <td><a href="{{ url('tiposPropiedad/'. $proyecto['id']) }}">Tipos de Inmuebles</a></td>
                                         <td><a href="{{ url('proyecto/edit/'. $proyecto['id']) }}">Editar</a></td>
                                       </tr>
                                 @endforeach

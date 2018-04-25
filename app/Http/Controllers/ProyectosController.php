@@ -30,4 +30,16 @@ class ProyectosController extends Controller
         $proyecto = Proyecto::findOrFail($id);
         return view ('proyecto.edit', ['Proyecto' => $proyecto]);
     }
+
+    public function putEditProyecto($id, Request $request){
+        $proyecto = Proyecto::find($id);
+        $proyecto->nombre = $request->nombre;
+        $proyecto->direccion = $request->direccion;
+        $proyecto->numero_de_pisos = $request->numeroPisos;
+        $proyecto->numero_de_apartamentos = $request->numeroApartamentos;
+        $proyecto->save();
+        $notification = new Notification;
+        $notification::success('Proyecto editado exitosamente');
+        return redirect('proyectos');
+    }
 }

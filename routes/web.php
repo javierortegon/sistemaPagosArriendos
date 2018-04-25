@@ -31,18 +31,29 @@ Route::post('/registroProyecto', [
     'uses' => 'ProyectosController@postCrearProyecto',
 ])->name('registroProyecto');
 
-// ruta para editar un proyecto
+// ruta para abrir formulario editar un proyecto
 Route::get('proyecto/edit/{id}', [
     'middleware' => 'auth',
     'uses' => 'ProyectosController@getEditProyecto',
 ]); 
 
+// ruta para editar un proyecto
+Route::put('proyecto/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'ProyectosController@putEditProyecto',
+]);
 
-
+// ruta para consultar los proyectos
 Route::get('/proyectos', [
     'middleware' => 'auth',
     'uses' => 'ProyectosController@getProyectos',
 ])->name('proyectos');
+
+// ruta para listar los tipos de propiedad de un proyecto
+Route::get('tiposPropiedad/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@tiposPropiedad',
+]); 
 
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
