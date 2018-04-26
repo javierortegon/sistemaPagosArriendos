@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TiposPropiedad;
 use App\Proyecto;
+use DB;
 use Notification;
 
 use Illuminate\Http\Request;
@@ -32,6 +33,24 @@ class TiposPropiedadController extends Controller
     public function getEditTipoPropiedad($id){
         $tipoPropiedad = TiposPropiedad::findOrFail($id);
         return view ('tiposPropiedad.edit', [ 'tipoPropiedad' => $tipoPropiedad ]);
+    }
+
+    public function putEditTipoPropiedad($id, Request $request){
+        $tipoPropiedad = TiposPropiedad::findOrFail($id);
+        $tipoPropiedad->nombre = $request->nombre;
+        $tipoPropiedad->descripcion = $request->descripcion;
+        $tipoPropiedad->save();
+        $notification = new Notification;
+        $notification::success('Tipo de propiedad actualizada exitosamente');
+        return redirect('/proyectos');
+    }
+    
+    public function deleteTipo($id, Request $request){
+        $tipoPropiedad = TiposPropiedad::find($id);
+        $tipoPropiedad->delete();
+        $notification = new Notification;
+        $notification::success('Tipo de propiedad eliminada con exito');
+        return redirect('/proyectos');
     }
     
 }

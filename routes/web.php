@@ -55,7 +55,7 @@ Route::get('tiposPropiedad/{id}', [
     'uses' => 'TiposPropiedadController@tiposPropiedad',
 ]);
 
-// ruta para listar los tipos de propiedad de un proyecto
+// ruta para registrar los tipos de propiedad de un proyecto
 Route::post('registroTipoPropiedad/{id}', [
     'middleware' => 'auth',
     'uses' => 'TiposPropiedadController@postCreate',
@@ -65,6 +65,18 @@ Route::post('registroTipoPropiedad/{id}', [
 Route::get('tipoPropiedad/edit/{id}', [
     'middleware' => 'auth',
     'uses' => 'TiposPropiedadController@getEditTipoPropiedad',
+]);
+
+//ruta para editar un tipo de propiedad
+Route::put('tipoPropiedad/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@putEditTipoPropiedad',
+]);
+
+//ruta para eliminar un tipo de propiedad
+Route::delete('tipoPropiedad/delete/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@deleteTipo'
 ]);
 
 // ruta para acceder al formulario de registrar propiedad

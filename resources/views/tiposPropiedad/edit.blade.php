@@ -9,7 +9,7 @@
 					<div class="panel-heading">Modificar Tipo de Propiedad</div>
 
 					<div class="panel-body">
-							<form class="form-horizontal" action="{{ url('proyecto/edit')}}" method="POST">
+							<form class="form-horizontal" action="{{ url('tipoPropiedad/edit/'. $tipoPropiedad['id']) }}" method="POST">
 
 								<input type="hidden" name="_method" value="PUT">
                                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
@@ -24,9 +24,9 @@
 								</div>
 
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-									<label for="direccion" class="col-md-4 control-label">Descripcion</label>
+									<label for="descripcion" class="col-md-4 control-label">Descripcion</label>
 									<div class="col-md-6">
-										<input type="text" name="direccion" id="direccion" class="form-control" value="{{ $tipoPropiedad['descripcion'] }}" required>
+										<input type="text" name="descripcion" id="descripcion" class="form-control" value="{{ $tipoPropiedad['descripcion'] }}" required>
 									</div>
 								</div>
 
@@ -35,14 +35,22 @@
 										<button type="submit" class="btn btn-primary">
 											Guardar Cambios
 										</button>
-
-                                        <button type="submit" class="btn btn-primary">
-											Eliminar
-										</button>
 									</div>
 								</div>
 
-							</form>				
+							</form>
+							
+							<form action="{{ action('TiposPropiedadController@deleteTipo', $tipoPropiedad->id) }}" method="POST"  class="form-horizontal">
+								{{ method_field('delete') }}
+								{{ csrf_field() }}
+								<div class="form-group">
+									<div class="col-md-6 col-md-offset-4">
+										<button class='btn btn-danger'>
+											Eliminar Tipo de Propiedad
+										</button>
+									</div>
+								</div>
+							</form>
 					</div>
 				</div>
 			</div>
