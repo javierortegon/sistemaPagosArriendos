@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-1">
 				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
 					<div class="panel-heading">Proyecto</div>
@@ -11,7 +11,71 @@
 					<div class="panel-body">
                         <div class="col-md-4">Nombre:</div>
                         <div class="col-md-6">{{ $proyecto['nombre'] }}</div>
-					</div>
+                        <div class="col-md-4">Direccion:</div>
+                        <div class="col-md-6">{{ $proyecto['direccion'] }}</div>
+                        <div class="col-md-4">Numero Pisos:</div>
+                        <div class="col-md-6">{{ $proyecto['numero_de_pisos'] }}</div>
+                        <div class="col-md-4">Numero Apartementos:</div>
+                        <div class="col-md-6">{{ $proyecto['numero_de_apartementos'] }}</div>
+                    </div>
+                    
+                    <div class="panel-heading">Tipos de propiedad</div>
+
+                    @if (count($tiposPropiedad) == 0)
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="" class="col-md-4 control-label"></label>
+                            <div class="col-md-6">
+                            <h5>No tiene tipos de Propiedades Registradas en el Proyecto: <b>{{ $proyecto['nombre'] }}</b></h5>
+                            </div>
+                        </div>
+                    @else
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach( $tiposPropiedad as $tipoPropiedad )
+                            <tr>
+                                <td>{{ $tipoPropiedad['nombre'] }}</td>
+                                <td>{{ $tipoPropiedad['descripcion'] }}</td>
+                            </tr>                                        
+                            @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+
+                    <div class="panel-heading">Propiedades</div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Direccion</th>
+                                <th>Proyecto</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach( $propiedades as $propiedad )
+                                <tr>
+                                    <td>{{$propiedad->codigo}}</td>
+                                    <td>{{$propiedad->nombre}}</td>
+                                    <td>{{$propiedad->direccion}}</td>
+                                    <td>{{$proyecto->nombre}}</td>
+                                    <td>
+                                        @if ($propiedad->estado == 1)
+                                            Activo
+                                        @else
+                                            Desactivo    
+                                        @endif    
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 				</div>
 			</div>
 		</div>			
