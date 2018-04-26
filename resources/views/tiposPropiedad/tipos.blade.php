@@ -32,7 +32,7 @@
                                     <tr>
                                         <td>{{ $tipoPropiedad['nombre'] }}</td>
                                         <td>{{ $tipoPropiedad['descripcion'] }}</td>
-                                        <td><a href="">Editar</a></td>
+                                        <td><a href="{{ url('tipoPropiedad/edit/'. $tipoPropiedad['id']) }}">Editar</a></td>
                                     </tr>                                        
                                     @endforeach
                                     </tbody>

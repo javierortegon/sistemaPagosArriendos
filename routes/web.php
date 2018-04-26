@@ -61,6 +61,12 @@ Route::post('registroTipoPropiedad/{id}', [
     'uses' => 'TiposPropiedadController@postCreate',
 ]);
 
+//ruta para editar un tipo de propiedad
+Route::get('tipoPropiedad/edit/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'TiposPropiedadController@getEditTipoPropiedad',
+]);
+
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
     'middleware' => 'auth',

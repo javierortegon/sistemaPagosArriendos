@@ -28,5 +28,10 @@ class TiposPropiedadController extends Controller
         $notification::success('El tipo de inmueble fue regisrado con exito');
         return redirect('/proyectos');
     }
+
+    public function getEditTipoPropiedad($id){
+        $tipoPropiedad = TiposPropiedad::findOrFail($id);
+        return view ('tiposPropiedad.edit', [ 'tipoPropiedad' => $tipoPropiedad ]);
+    }
     
 }
