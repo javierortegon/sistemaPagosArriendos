@@ -20,81 +20,146 @@
                             @else
                                 <form class="form-horizontal"  method="POST" action="{{  url('propiedad/vender').'/'.$propieda['id'] }}">
                                     {{ csrf_field() }}
-
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Datos de la Propiedad</label>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Codigo</label>
-                                        <div class="col-md-6">
-                                            <label>{{ $propieda['codigo'] }}</label>
+                                    <div id="datosPropiedad">
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">DATOS DE LA PROPIEDAD</label>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Nombre</label>
-                                        <div class="col-md-6">
-                                            <label>{{ $propieda['nombre'] }}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Direccion</label>
-                                        <div class="col-md-6">
-                                            <label>{{ $propieda['direccion'] }}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Proyecto</label>
-                                        <div class="col-md-6">
-                                            <label>{{ $propieda['nombreProyec'] }}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Datos del Comprador</label>
-                                    </div>
-							
-                                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label for="name" class="col-md-4 control-label">Nombre</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-            
-                                            @if ($errors->has('name'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                        <label for="email" class="col-md-4 control-label">E-Mail</label>
-            
-                                        <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-            
-                                            @if ($errors->has('email'))
-                                                <span class="help-block">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                            <label for="documento" class="col-md-4 control-label">Documento</label>
-                
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">Codigo</label>
                                             <div class="col-md-6">
-                                                <input id="documento" type="number" class="form-control" name="documento" required>
+                                                <label>{{ $propieda['codigo'] }}</label>
                                             </div>
                                         </div>
 
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">Nombre</label>
+                                            <div class="col-md-6">
+                                                <label>{{ $propieda['nombre'] }}</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">Direccion</label>
+                                            <div class="col-md-6">
+                                                <label>{{ $propieda['direccion'] }}</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">Proyecto</label>
+                                            <div class="col-md-6">
+                                                <label>{{ $propieda['nombreProyec'] }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <br />
+
+                                    <div id="datosUsuario">
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label">DATOS DEL COMPRADOR</label>
+                                        </div>
+
+                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" checked>
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
+                                                    Usuario nuevo
+                                                </label>
+                                                <br />
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente">
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
+                                                    Usuario existente
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+                                        <div id = "divRegistroUsuarioNuevo">
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <label class="col-md-5 control-label">Registro de Usuario Nuevo:</label>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <label for="name" class="col-md-4 control-label">Nombre</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                                    @if ($errors->has('name'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('name') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+
+                                                    @if ($errors->has('email'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                    <label for="documento" class="col-md-4 control-label">Documento</label>
+
+                                                    <div class="col-md-6">
+                                                        <input id="documento" type="number" class="form-control" name="documento" required>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div id = "divBusquedaUsuarioExistente" hidden>
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <label class="col-md-4 control-label">Buscar usuario:</label>
+                                                <div class="col-md-6">
+                                                    <input type = "search" name="busqueda" id="busqueda">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <label for="name" class="col-md-4 control-label">Nombre</label>
+
+                                                <div class="col-md-6">
+                                                    <label id = "clienteExistenteNombre"></label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+                                                <div class="col-md-6">
+                                                    <label id = "clienteExistenteEmail"></label>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                                    <label for="documento" class="col-md-4 control-label">Documento</label>
+
+                                                    <div class="col-md-6">
+                                                        <label id = "nombreClienteExistente"></label>                                                    
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <br />
+                                    <br />
                                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                        <label class="col-md-4 control-label">Detalles Compra</label>
+                                        <label class="col-md-4 control-label">DETALLES COMPRA</label>
                                     </div>
 
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -104,6 +169,7 @@
                                         </div>
                                     </div>
 
+                   
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label for="metodoPago" class="col-md-4 control-label">Metodo Pago</label>
                                         <div class="col-md-6">
@@ -136,4 +202,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/scriptsPersonalizados/ventas.js')}}"></script>
 @endsection
