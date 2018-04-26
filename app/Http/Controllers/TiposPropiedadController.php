@@ -24,7 +24,7 @@ class TiposPropiedadController extends Controller
         $tipoProyecto->descripcion = $request->descripcion;
         $tipoProyecto->proyecto = $id;
         $tipoProyecto->save();
-        $notification = new Notificacion;
+        $notification = new Notification;
         $notification::success('El tipo de inmueble fue regisrado con exito');
         return redirect('/proyectos');
     }
