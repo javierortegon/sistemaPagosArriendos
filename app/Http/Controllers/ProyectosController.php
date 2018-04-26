@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Proyecto;
+use App\TiposPropiedad;
+use App\Propiedad;
+
 use Notification;
 
 use Illuminate\Http\Request;
@@ -41,5 +44,16 @@ class ProyectosController extends Controller
         $notification = new Notification;
         $notification::success('Proyecto editado exitosamente');
         return redirect('proyectos');
+    }
+
+    public function detalleProyecto($id){
+        $proyecto = Proyecto::find($id);
+        $tiposPropiedad = TiposPropiedad::where([
+            ['proyecto', '=', $id]
+        ])->get();
+        $propiedades = Propiedad::where([
+            ['id_proyecto', '=', $id]
+        ])->get();
+        return view ('proyecto.detalle', ['proyecto' => $proyecto, 'propiedades' => $propiedades, 'tiposPropiedad' => $tiposPropiedad]);
     }
 }
