@@ -87,14 +87,21 @@ class PropiedadesController extends Controller
     }
 
     public function postVender($id, Request $request){
-        $comprador = new User;
-        $comprador->name = $request->name;
-        $comprador->email = $request->email;
-        $comprador->password = bcrypt($request->documento);
-        $comprador->estado = 1;
-        $comprador->save();
-
-        $idComprador = $comprador->id;
+        $origenUsuario = $request->input('usuarioNoE');
+        if($origenUsuario == "nuevo"){
+            $comprador = new User;
+            $comprador->name = $request->name;
+            $comprador->email = $request->email;
+            $comprador->password = bcrypt($request->documento);
+            $comprador->estado = 1;
+            $comprador->save();
+    
+            $idComprador = $comprador->id;
+        }
+        else{
+            $idComprador = $request->input('inputUserId');
+        }
+        
 
         $venta = new Venta;
         $venta->fecha = date('Y-m-d');

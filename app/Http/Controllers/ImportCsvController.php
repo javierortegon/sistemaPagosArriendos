@@ -50,7 +50,6 @@ class ImportCsvController extends BaseController
                     for($i = 1; $i <count($columnasTablaQ)-3;$i++){
                         $columnasTabla[$i-1] = $columnasTablaQ[$i]->Field;
                     }
-                    echo $origen;
                 }
                 else if ($origen == "propiedades"){
                     $table = 'propiedades';
@@ -59,7 +58,6 @@ class ImportCsvController extends BaseController
                     for($i = 1; $i <count($columnasTablaQ)-2;$i++){
                         $columnasTabla[$i-1] = $columnasTablaQ[$i]->Field;
                     }
-                    echo $origen;
                 }
                 return view('importCsv.chooseColumnsCsv')->with('columns', $columnsCsv)->with('file', $fileString)->with('origen', $origen)->with('columnsTable', $columnasTabla);
             }

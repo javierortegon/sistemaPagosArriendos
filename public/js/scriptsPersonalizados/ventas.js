@@ -1,5 +1,4 @@
-var usuarioSeleccionado = "";
-var usuarioSeleccionadoId = "";
+var jsonUsuarios;
 
 $(document).ready(function(){
     
@@ -28,7 +27,7 @@ $(document).ready(function(){
 
         $.post(url, data, function(result){
             var options = '';
-            usuarioSeleccionado = result;
+            jsonUsuarios = result;
             if(campo == 'name'){
                 for(var i = 0; i < result.length; i++)
                     options += '<option value="'+result[i].name+'" id="id'+ result[i].id +'" />';
@@ -44,8 +43,35 @@ $(document).ready(function(){
     });
     
     $('#btnSeleccionUsuario').click(function(){
-        //document.getElementById('clienteExistenteNombre').innerHTML = usuarioSeleccionado[0].name;
-        //document.getElementById('clienteExistenteEmail').innerHTML = usuarioSeleccionado[0].email;
+        idUsuario = "NA";
+
+        campo = document.getElementById('campoParaBuscar').value;
+        busqueda = document.getElementById('busqueda').value;
+        
+        if(campo == 'name'){
+            for(var i = 0; i < jsonUsuarios.length; i++)
+                if(busqueda == jsonUsuarios[i].name){
+                    idUsuario = i;
+                }
+        }
+        else if(campo == 'email'){
+            for(var i = 0; i < jsonUsuarios.length; i++)
+                if(busqueda == jsonUsuarios[i].email){
+                    idUsuario = i;
+                }
+        }
+        if(idUsuario != "NA"){
+            document.getElementById('clienteExistenteNombre').innerHTML = jsonUsuarios[idUsuario].name;
+            document.getElementById('clienteExistenteEmail').innerHTML = jsonUsuarios[idUsuario].email;
+            document.getElementById('inputUserId').value = jsonUsuarios[idUsuario].id;
+        
+        }
+        else{
+            document.getElementById('clienteExistenteNombre').innerHTML = "";
+            document.getElementById('clienteExistenteEmail').innerHTML = "";
+            document.getElementById('inputUserId').value = jsonUsuarios[idUsuario].id;         
+        }
+        
     });
     
 });

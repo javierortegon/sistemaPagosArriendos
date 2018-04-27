@@ -88,7 +88,7 @@
                                                 <label for="name" class="col-md-4 control-label">Nombre</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
 
                                                     @if ($errors->has('name'))
                                                         <span class="help-block">
@@ -102,7 +102,7 @@
                                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
@@ -116,12 +116,13 @@
                                                     <label for="documento" class="col-md-4 control-label">Documento</label>
 
                                                     <div class="col-md-6">
-                                                        <input id="documento" type="number" class="form-control" name="documento" required>
+                                                        <input id="documento" type="number" class="form-control" name="documento">
                                                     </div>
                                             </div>
                                         </div>
 
                                         <div id = "divBusquedaUsuarioExistente" hidden>
+                                            <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label class="col-md-4 control-label">Buscar usuario:</label>
                                                 <div class="col-md-6">
@@ -129,7 +130,7 @@
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>
                                                     </select> 
-                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda">                                           
+                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autofocus>                                           
                                                     <datalist id="usuariosDataList">
                                                     </datalist>
                                                     <br />
