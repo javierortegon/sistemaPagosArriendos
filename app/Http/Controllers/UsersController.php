@@ -116,4 +116,15 @@ class UsersController extends Controller
         return redirect('verUsuarios');          
     }
 
+    //Datos para AJAX
+
+    public function selectAjax($campo, $caracteres){
+        //$caracteres = $request->input('busqueda');
+        //$campo = $request->input('campo');
+
+        $usuarios = User::select('users.id as id', 'users.name', 'users.email')
+        ->where($campo, 'LIKE', $caracteres.'%')
+        ->get();
+        return response()->json($usuarios);
+    }
 }

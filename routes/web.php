@@ -240,3 +240,7 @@ Route::post('chooseColumnsCsv', 'ImportCsvController@chooseColumns')->middleware
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Para AJAX
+
+Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAjax')->middleware('auth');;

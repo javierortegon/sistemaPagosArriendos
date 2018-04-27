@@ -125,7 +125,16 @@
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label class="col-md-4 control-label">Buscar usuario:</label>
                                                 <div class="col-md-6">
-                                                    <input type = "search" name="busqueda" id="busqueda">
+                                                    <select name="campo" id="campoParaBuscar">
+                                                        <option value="name">name</option>
+                                                        <option value="email">email</option>
+                                                    </select> 
+                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda">                                           
+                                                    <datalist id="usuariosDataList">
+                                                    </datalist>
+                                                    <br />
+                                                    <br />
+                                                    <button type="button" class="btn btn-warning" id="btnSeleccionUsuario">Seleccionar Usuario</button>  
                                                 </div>
                                             </div>
 
@@ -202,6 +211,12 @@
             </div>
         </div>
     </div>
+
+
+    <form class="form-horizontal" action="{{ url('usuarios/selectAjax/FIELD/CHARACTERS') }}" method="GET" id ="formDatosAjax">
+        {{ csrf_field() }}
+        {{ method_field('GET') }}
+    </form>
 @endsection
 
 @section('scripts')
