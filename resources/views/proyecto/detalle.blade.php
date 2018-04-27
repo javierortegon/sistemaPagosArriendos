@@ -9,14 +9,14 @@
 					<div class="panel-heading">Proyecto</div>
 
 					<div class="panel-body">
-                        <div class="col-md-4">Nombre:</div>
+                        <div class="col-md-4"><b>Nombre:</b></div>
                         <div class="col-md-6">{{ $proyecto['nombre'] }}</div>
-                        <div class="col-md-4">Direccion:</div>
+                        <div class="col-md-4"><b>Direccion:</b></div>
                         <div class="col-md-6">{{ $proyecto['direccion'] }}</div>
-                        <div class="col-md-4">Numero Pisos:</div>
+                        <div class="col-md-4"><b>Numero Pisos:</b></div>
                         <div class="col-md-6">{{ $proyecto['numero_de_pisos'] }}</div>
-                        <div class="col-md-4">Numero Apartementos:</div>
-                        <div class="col-md-6">{{ $proyecto['numero_de_apartementos'] }}</div>
+                        <div class="col-md-4"><b>Numero Apartementos:</b></div>
+                        <div class="col-md-6">{{ $proyecto['numero_de_apartamentos'] }}</div>
                     </div>
                     
                     <div class="panel-heading">Tipos de propiedad</div>
