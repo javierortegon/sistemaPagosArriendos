@@ -31,7 +31,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand col-md-3 col-xs-4" href="{{ url('/home') }}">
-                        <img style="" class="img-responsive" src="img/logo.png" alt="logo">
+                        <img style="" class="img-responsive" src="{{{ asset('img/logo.png') }}}" alt="logo">
                     </a>
                 </div>
 
