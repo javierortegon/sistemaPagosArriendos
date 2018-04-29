@@ -21,7 +21,9 @@ class CreatePropiedadesTable extends Migration
             $table->string('codigo',20);
             $table->boolean('estado');
             $table->integer('id_proyecto')->unsigned();
-            $table->foreign('id_proyecto')->references('id')->on('propiedades');
+            $table->foreign('id_proyecto')->references('id')->on('proyectos');
+            $table->integer('id_tipoPropiedad')->unsigned();
+            $table->foreign('id_tipoPropiedad')->references('id')->on('tipos_propiedad');
             $table->timestamps();
         });
     }
