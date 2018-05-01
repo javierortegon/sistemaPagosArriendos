@@ -243,4 +243,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Para AJAX
 
-Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAjax')->middleware('auth');;
+Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAjax')->middleware('auth');
+
+
+// Get Data
+Route::get('propiedades/getdatatable', 'PropiedadesController@getDataTablePropiedades')->name('propiedades/getdatatable');

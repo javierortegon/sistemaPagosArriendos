@@ -12,8 +12,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 
     <link rel="shortcut icon" href="{{{ asset('img/favicon.ico') }}}">
+
+    @yield('styles')
+
 </head>
 <body>
     <div id="app">
@@ -111,6 +115,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
     @yield('scripts')
 </body>
 </html>

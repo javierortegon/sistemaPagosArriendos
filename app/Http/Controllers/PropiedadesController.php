@@ -10,6 +10,7 @@ use App\Proyecto;
 use App\Arrendatario;
 use App\Venta;
 use Notification;
+use DataTables;
 
 use Illuminate\Http\Request;
 
@@ -54,7 +55,7 @@ class PropiedadesController extends Controller
     public function getPropiedades(){
         $propiedades = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
-        ->paginate(10);
+        ->get();
         return view ('propiedad.propiedades', ['propiedades' => $propiedades ]);
     }
 
@@ -112,5 +113,29 @@ class PropiedadesController extends Controller
         $venta->comprador = $idComprador;
         $venta->save();    
     }
+
+    public function getDataTablePropiedades(){
+        
+        $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->get();
+        return \DataTables::of($queryConsulta)->addColumn('estadoString', function ($propiedad) {
+            $estado = "";
+            if($propiedad->estado == 1){
+                $estado = 'Activo';
+            } else{
+                $estado = 'Inactivo';
+            }
+            return $estado;
+            
+        })->addColumn('editar', function ($propiedad) {
+            return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                    '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+        })->addColumn('vender', function ($propiedad) {
+            return '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+        })->rawColumns(['editar', 'action'])->make(true);
+
+    }
+
 
 }
