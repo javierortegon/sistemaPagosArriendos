@@ -5693,7 +5693,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-brand {
-  color: #FFF;
+  color: #777;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -7126,7 +7126,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-heading .badge {
-  color: #fff;
+  color: #DD9D00;
   background-color: #333333;
 }
 

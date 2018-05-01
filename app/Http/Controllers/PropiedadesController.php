@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Propiedad;
 use DB;
+
+use App\Propiedad;
 use App\User;
 use App\Propietario;
 use App\Proyecto;
 use App\Arrendatario;
 use App\Venta;
+use App\TiposPropiedad;
+
 use Notification;
 use DataTables;
 
@@ -30,6 +33,7 @@ class PropiedadesController extends Controller
         $propiedad->nombre = $request->nombre;
         $propiedad->estado = 1;
         $propiedad->id_proyecto = $request->proyecto;
+        $propiedad->id_tipoPropiedad = $request->tipoPropiedad;
         $propiedad->save();
         $notificacion = new Notification;
         $notificacion::success('La propiedad se ha guardado correctamente');
@@ -114,6 +118,18 @@ class PropiedadesController extends Controller
         $venta->save();    
     }
 
+
+    public function getProyectoTipos(Request $request, $id){
+        if($request->ajax()){
+            $tiposPropiedad = TiposPropiedad::where([
+                ['proyecto', '=', $id]
+            ])->get();
+            return response()->json($tiposPropiedad);
+        }
+    }
+
+    // Para datatable
+
     public function getDataTablePropiedades(){
         
         $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
@@ -136,6 +152,4 @@ class PropiedadesController extends Controller
         })->rawColumns(['editar', 'action'])->make(true);
 
     }
-
-
 }

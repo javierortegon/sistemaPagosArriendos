@@ -138,6 +138,12 @@ Route::delete('tipoPropiedad/delete/{id}', [
 |
 */
 
+//ruta para obtener los tipos del proyecto
+Route::get('proyectoTipos/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@getProyectoTipos',
+]);
+
 // ruta para acceder al formulario de registrar propiedad
 Route::get('/registroPropiedad', [
     'middleware' => 'auth',
