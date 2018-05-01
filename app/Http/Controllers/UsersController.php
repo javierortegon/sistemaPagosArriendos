@@ -127,4 +127,23 @@ class UsersController extends Controller
         ->get();
         return response()->json($usuarios);
     }
+
+    public function getDataTableUsuarios(){
+        
+        $queryConsulta = User::all();
+        return \DataTables::of($queryConsulta)->addColumn('estadoString', function ($user) {
+            $estado = "";
+            if($user->estado == 1){
+                $estado = 'Activo';
+            } else{
+                $estado = 'Inactivo';
+            }
+            return $estado;
+            
+        })->addColumn('editar', function ($user) {
+            return  '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                    '<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+        })->rawColumns(['editar', 'action'])->make(true);
+
+    }
 }

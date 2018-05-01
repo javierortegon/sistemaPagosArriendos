@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+    <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+@endsection
+
 @section('content')
 	<div class="container">
 		<div class="row">
@@ -8,27 +12,37 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Lista de Proyectos</div>
 					<div class="panel-body">
-                        <table class="table">
+                        <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Direccion</th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach( $proyectos as $proyecto )
-                                    <tr>
-                                        <td><a href="{{ url('proyecto/detalle/'. $proyecto['id']) }}">{{ $proyecto->nombre }}</a></td>
-                                        <td>{{$proyecto->direccion}}</td>
-                                        <td><a href="{{ url('tiposPropiedad/'. $proyecto['id']) }}">Tipos de Inmuebles</a></td>
-                                        <td><a href="{{ url('proyecto/edit/'. $proyecto['id']) }}">Editar</a></td>
-                                      </tr>
-                                @endforeach
-                            </tbody>
+                            
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection                        
+@endsection
+
+@section('scripts')
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ route('proyectos/getdatatable') }}',
+        columns: [
+            {data: 'nombre', name: 'nombre'},
+            {data: 'direccion', name: 'direccion'},
+            {data: 'editar', name: 'editar', orderable: false, searchable: false},
+        ]
+    });
+});
+</script>
+@endsection

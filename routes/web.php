@@ -246,5 +246,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAjax')->middleware('auth');
 
 
-// Get Data
+// Get Data para datatable tanto users como propiedades
+Route::get('usuarios/getdatatable', 'UsersController@getDataTableUsuarios')->name('usuarios/getdatatable');
 Route::get('propiedades/getdatatable', 'PropiedadesController@getDataTablePropiedades')->name('propiedades/getdatatable');
+Route::get('proyectos/getdatatable', 'ProyectosController@getDataTableProyectos')->name('proyectos/getdatatable');

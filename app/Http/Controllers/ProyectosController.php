@@ -56,4 +56,17 @@ class ProyectosController extends Controller
         ])->get();
         return view ('proyecto.detalle', ['proyecto' => $proyecto, 'propiedades' => $propiedades, 'tiposPropiedad' => $tiposPropiedad]);
     }
+
+    //Para dataTable
+
+    public function getDataTableProyectos(){
+        
+        $queryConsulta = Proyecto::all();
+        return \DataTables::of($queryConsulta)->addColumn('editar', function ($proyecto) {
+            return  '<a href="'.url('proyecto/detalle/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver propiedades</a>'." ".
+                    '<a href="'.url('tiposPropiedad/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver tipos de inmueble</a>'." ".
+                    '<a href="'.url('proyecto/edit/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
+        })->rawColumns(['editar', 'action'])->make(true);
+
+    }
 }
