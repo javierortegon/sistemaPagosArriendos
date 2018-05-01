@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\TiposPropiedad;
 use App\Proyecto;
+use App\Propiedad;
+
 use DB;
 use Notification;
 
@@ -47,11 +49,21 @@ class TiposPropiedadController extends Controller
     }
     
     public function deleteTipo($id, Request $request){
-        $tipoPropiedad = TiposPropiedad::find($id);
-        $tipoPropiedad->delete();
-        $notification = new Notification;
-        $notification::success('Tipo de propiedad eliminada con exito');
-        return redirect('/proyectos');
+        $propiedadTipo = Propiedad::where([
+            ['id_tipoPropiedad', '=', $id]
+        ])->count();
+        
+        if($propiedadTipo > 0){
+            $notification = new Notification;
+            $notification::warning('No se puede eliminar este tipo ya que cuenta con propiedades asociadas');
+            return redirect('/proyectos');
+        }else{
+            $tipoPropiedad = TiposPropiedad::find($id);
+            $tipoPropiedad->delete();
+            $notification = new Notification;
+            $notification::success('Tipo de propiedad eliminada con exito');
+            return redirect('/proyectos');
+        }
     }
     
 }
