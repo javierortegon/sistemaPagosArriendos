@@ -5707,7 +5707,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #FFF;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -7116,8 +7116,8 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-heading {
-  color: #333333;
-  background-color: #fff;
+  color: #fff;
+  background-color: #DD9D00;
   border-color: #747278;
 }
 
@@ -7126,7 +7126,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-heading .badge {
-  color: #fff;
+  color: #DD9D00;
   background-color: #333333;
 }
 
