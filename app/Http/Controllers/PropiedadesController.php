@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Propiedad;
 use DB;
+
+use App\Propiedad;
 use App\User;
 use App\Propietario;
 use App\Proyecto;
 use App\Arrendatario;
 use App\Venta;
+use App\TiposPropiedad;
+
 use Notification;
 
 use Illuminate\Http\Request;
@@ -111,6 +114,15 @@ class PropiedadesController extends Controller
         $venta->propiedad = $id;
         $venta->comprador = $idComprador;
         $venta->save();    
+    }
+
+    public function getProyectoTipos(Request $request, $id){
+        if($request->ajax()){
+            $tiposPropiedad = TiposPropiedad::where([
+                ['proyecto', '=', $id]
+            ])->get();
+            return response()->json($tiposPropiedad);
+        }
     }
 
 }

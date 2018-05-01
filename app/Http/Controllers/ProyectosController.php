@@ -56,4 +56,5 @@ class ProyectosController extends Controller
         ])->get();
         return view ('proyecto.detalle', ['proyecto' => $proyecto, 'propiedades' => $propiedades, 'tiposPropiedad' => $tiposPropiedad]);
     }
+
 }

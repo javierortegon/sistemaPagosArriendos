@@ -30,6 +30,7 @@ class TiposPropiedadController extends Controller
         return redirect('/proyectos');
     }
 
+
     public function getEditTipoPropiedad($id){
         $tipoPropiedad = TiposPropiedad::findOrFail($id);
         return view ('tiposPropiedad.edit', [ 'tipoPropiedad' => $tipoPropiedad ]);

@@ -47,9 +47,19 @@
 									<label for="proyecto" class="col-md-4 control-label">Proyecto</label>
 									<div class="col-md-6">
 										<select name="proyecto" id="proyecto" class="form-control">
+											<option value="" disabled selected>Seleccione Proyecto</option>	
 										@foreach( $proyectos as $proyecto )
 											<option value="{{ $proyecto['id'] }}">{{ $proyecto['nombre'] }}</option>
 										@endforeach
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+									<label for="tipoPropiedad" class="col-md-4 control-label">Tipo Propiedad</label>
+									<div class="col-md-6">
+										<select name="tipoPropiedad" id="tipoPropiedad" class="form-control">
+											<option value="" disabled selected>Seleccione Proyecto</option>	
 										</select>
 									</div>
 								</div>
@@ -68,4 +78,8 @@
 			</div>
 		</div>			
 	</div>	
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/scriptsPersonalizados/main.js')}}"></script>
 @endsection
