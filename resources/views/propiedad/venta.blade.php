@@ -130,7 +130,7 @@
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>
                                                     </select> 
-                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autofocus>                                           
+                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autocomplete="off" autofocus>                                           
                                                     <datalist id="usuariosDataList">
                                                     </datalist>
                                                     <br />

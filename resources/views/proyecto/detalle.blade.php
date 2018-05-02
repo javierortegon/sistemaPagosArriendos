@@ -76,6 +76,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {!! $propiedades->render() !!}
 				</div>
 			</div>
 		</div>			

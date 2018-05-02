@@ -97,6 +97,7 @@ class ImportCsvController extends BaseController
                     $propiedad->codigo = $rows [$i][$request->input('codigo')];
                     $propiedad->estado = $rows [$i][$request->input('estado')];
                     $propiedad->id_proyecto = $rows [$i][$request->input('id_proyecto')];
+                    $propiedad->id_tipoPropiedad = $rows [$i][$request->input('id_tipoPropiedad')];
                     $propiedad->save ();
                 }
                 return redirect('/verPropiedades');

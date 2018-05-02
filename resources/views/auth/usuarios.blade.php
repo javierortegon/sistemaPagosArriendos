@@ -25,7 +25,6 @@
                             </thead>
                             
                         </table>
-                        {!! $usuarios->render() !!}
                     </div>
                 </div>
         </div>

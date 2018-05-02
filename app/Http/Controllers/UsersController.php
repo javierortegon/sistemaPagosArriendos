@@ -122,8 +122,13 @@ class UsersController extends Controller
         //$caracteres = $request->input('busqueda');
         //$campo = $request->input('campo');
 
-        $usuarios = User::select('users.id as id', 'users.name', 'users.email')
-        ->where($campo, 'LIKE', $caracteres.'%')
+        $usuarios = DB::table('users')
+        ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
+        ->select('users.id as id', 'users.name', 'users.email')
+        ->where([
+            [$campo, 'LIKE', $caracteres.'%'],
+            ['rolesUsuarios.rol_id', '=', '3']
+        ])
         ->get();
         return response()->json($usuarios);
     }
