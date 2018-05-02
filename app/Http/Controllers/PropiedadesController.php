@@ -133,6 +133,7 @@ class PropiedadesController extends Controller
     public function getDataTablePropiedades(){
         
         $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 'proyectos.nombre as nombreProyec')
+        ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')        
         ->get();

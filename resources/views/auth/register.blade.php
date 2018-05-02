@@ -39,6 +39,30 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="documento" class="col-md-4 control-label">Documento</label>
+
+                            <div class="col-md-6">
+                                <input id="documento" type="text" class="form-control" name="documento" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono" class="col-md-4 control-label">Telefono</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="number" class="form-control" name="telefono" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccion" class="col-md-4 control-label">Direccion</label>
+
+                            <div class="col-md-6">
+                                <input id="direccion" type="text" class="form-control" name="direccion" required>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
 
