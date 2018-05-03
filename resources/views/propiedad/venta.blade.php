@@ -88,7 +88,7 @@
                                                 <label for="name" class="col-md-4 control-label">Nombre</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                                     @if ($errors->has('name'))
                                                         <span class="help-block">
@@ -102,7 +102,7 @@
                                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                                     @if ($errors->has('email'))
                                                         <span class="help-block">
@@ -116,7 +116,7 @@
                                                     <label for="documento" class="col-md-4 control-label">Documento</label>
 
                                                     <div class="col-md-6">
-                                                        <input id="documento" type="number" class="form-control" name="documento">
+                                                        <input id="documento" type="number" class="form-control" name="documento" required>
                                                     </div>
                                             </div>
                                         </div>
@@ -141,9 +141,9 @@
 
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label for="name" class="col-md-4 control-label">Nombre</label>
-
                                                 <div class="col-md-6">
-                                                    <label id = "clienteExistenteNombre"></label>
+                                                    <input id="clienteExistenteNombre" type="text" class="form-control" style="border:none" name="nombreExistente" value="{{ old('nombreExistente') }}" required>
+                                                
                                                 </div>
                                             </div>
 
@@ -151,16 +151,17 @@
                                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                                                 <div class="col-md-6">
-                                                    <label id = "clienteExistenteEmail"></label>
-
+                                                    <input id="clienteExistenteEmail" type="text" class="form-control" style="border:none" name="emailExistente" value="{{ old('emailExistente') }}">
+                                                    
                                                 </div>
                                             </div>
 
                                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                                     <label for="documento" class="col-md-4 control-label">Documento</label>
 
-                                                    <div class="col-md-6">
-                                                        <label id = "nombreClienteExistente"></label>                                                    
+                                                    <div class="col-md-6">                                                  
+                                                        <input id="clienteExistenteDocumento" type="text" class="form-control" style="border:none" name="documentoExistente" value="{{ old('documentoExistente') }}">
+                                                    
                                                     </div>
                                             </div>
                                         </div>

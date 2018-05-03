@@ -124,7 +124,7 @@ class UsersController extends Controller
 
         $usuarios = DB::table('users')
         ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
-        ->select('users.id as id', 'users.name', 'users.email')
+        ->select('users.id as id', 'users.name', 'users.email', 'users.documento')
         ->where([
             [$campo, 'LIKE', $caracteres.'%'],
             ['rolesUsuarios.rol_id', '=', '3']

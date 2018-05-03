@@ -1,16 +1,46 @@
 var jsonUsuarios;
+var usuarioSeleccionado;
 
 $(document).ready(function(){
     
+    $('#clienteExistenteNombre').get(0).oninvalid = function(e) {
+        if (!e.target.validity.valid) {
+            e.target.setCustomValidity('Por favor busque y seleccione un usuario existente');
+        }
+    };
+
+/*
+    $("#clienteExistenteNombre").on("invalid", function(event) {
+        $('#clienteExistenteNombre').get(0).setCustomValidity('');
+    });
+*/
+    $('#clienteExistenteNombre').keydown(function(event){
+        event.preventDefault();
+    });
+
     $(".selectUsuarioNoE").click(function(){
         
+
         if(document.getElementById("rbUsuarioExistente").checked){
             $("#divRegistroUsuarioNuevo").hide(400);
             $("#divBusquedaUsuarioExistente").show(400);
+            
+            $("#name").removeAttr('required');
+            $("#email").removeAttr('required');
+            $("#documento").removeAttr('required');
         }
         else{
             $("#divBusquedaUsuarioExistente").hide(400);
             $("#divRegistroUsuarioNuevo").show(400);
+            
+            $("#name").attr('required', 'required');
+            $("#email").attr('required', 'required');
+            $("#documento").attr('required', 'required');
+
+            $('#clienteExistenteNombre').val("");
+            $('#clienteExistenteEmail').val("");
+            $('#clienteExistenteDocumento').val("");
+            $('#inputUserId').val("");  
         }
         
     });
@@ -38,15 +68,16 @@ $(document).ready(function(){
             }
             
 
-            document.getElementById('usuariosDataList').innerHTML = options;
+            $('#usuariosDataList').html(options);
         });
     });
     
     $('#btnSeleccionUsuario').click(function(){
         idUsuario = "NA";
+        $('#clienteExistenteNombre').get(0).setCustomValidity('');
 
-        campo = document.getElementById('campoParaBuscar').value;
-        busqueda = document.getElementById('busqueda').value;
+        campo = $('#campoParaBuscar').val();
+        busqueda = $('#busqueda').val();
         
         if(campo == 'name'){
             for(var i = 0; i < jsonUsuarios.length; i++)
@@ -61,15 +92,17 @@ $(document).ready(function(){
                 }
         }
         if(idUsuario != "NA"){
-            document.getElementById('clienteExistenteNombre').innerHTML = jsonUsuarios[idUsuario].name;
-            document.getElementById('clienteExistenteEmail').innerHTML = jsonUsuarios[idUsuario].email;
-            document.getElementById('inputUserId').value = jsonUsuarios[idUsuario].id;
+            $('#clienteExistenteNombre').val(jsonUsuarios[idUsuario].name);
+            $('#clienteExistenteEmail').val(jsonUsuarios[idUsuario].email);
+            $('#clienteExistenteDocumento').val(jsonUsuarios[idUsuario].documento);
+            $('#inputUserId').val(jsonUsuarios[idUsuario].id);
         
         }
         else{
-            document.getElementById('clienteExistenteNombre').innerHTML = "";
-            document.getElementById('clienteExistenteEmail').innerHTML = "";
-            document.getElementById('inputUserId').value = jsonUsuarios[idUsuario].id;         
+            $('#clienteExistenteNombre').val("");
+            $('#clienteExistenteEmail').val("");
+            $('#clienteExistenteDocumento').val("");
+            $('#inputUserId').val("");   
         }
         
     });
