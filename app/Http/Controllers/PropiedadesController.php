@@ -132,7 +132,9 @@ class PropiedadesController extends Controller
 
     public function getDataTablePropiedades(){
         
-        $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 'proyectos.nombre as nombreProyec')
+        $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
+         'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
+         'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado')
         ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')        
@@ -145,6 +147,16 @@ class PropiedadesController extends Controller
                 $estado = 'Inactivo';
             }
             return $estado;
+            
+        })->addColumn('estadoVenta', function ($propiedad) {
+            $estadoVenta = "";
+            if($propiedad->ventaEstado != 1){
+                $estadoVenta = "Disponible";
+            }else{
+                $estadoVenta = "Vendida";
+            }
+          
+            return $estadoVenta;
             
         })->addColumn('editar', function ($propiedad) {
             return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".

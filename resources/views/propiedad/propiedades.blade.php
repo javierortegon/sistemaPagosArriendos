@@ -23,6 +23,7 @@
                                     <th>Direccion</th>
                                     <th>Proyecto</th>
                                     <th>Tipo de propiedad</th>
+                                    <th>Estado Venta</th>
                                     <th>Estado</th>
                                     <th></th>
                                 </tr>
@@ -55,6 +56,7 @@ $(document).ready(function() {
             {data: 'direccion', name: 'direccion'},
             {data: 'nombreProyec', name: 'nombreProyec'},
             {data: 'tipoPropiedad', name: 'tipoPropiedad'},
+            {data: 'estadoVenta', name: 'estadoVenta'},
             {data: 'estadoString', name: 'estadoString'},
             {data: 'editar', name: 'editar', orderable: false, searchable: false},
         ]
