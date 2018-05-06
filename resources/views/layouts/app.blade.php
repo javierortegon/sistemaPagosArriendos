@@ -16,14 +16,26 @@
 
     <link rel="shortcut icon" href="{{{ asset('img/favicon.ico') }}}">
 
+    <style type="text/css">
+        body {
+            padding-top:110px;
+        }
+        #logo{
+            height: 70px;
+        }
+        #menu{
+            height: 90px;
+        }
+    </style>
+
     @yield('styles')
 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-                <div class="navbar-header">
+                <div id = "menu" class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
@@ -35,7 +47,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand col-md-3 col-xs-4" href="{{ url('/home') }}">
-                        <img style="" class="img-responsive" src="{{{ asset('img/logo.png') }}}" alt="logo">
+                        <img id = "logo" style="" class="" src="{{{ asset('img/logo.png') }}}" alt="logo">
                     </a>
                 </div>
 
@@ -115,6 +127,33 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        var restaMax = 40;
+        var origHeight = 90;
+        $(window).scroll(function() {
+            posicionScroll = $(window).scrollTop();
+            if (posicionScroll <= restaMax){
+                $('#logo').css('height',origHeight -20 - posicionScroll);
+                $('#menu').css('height',origHeight - posicionScroll);
+            }
+            if (posicionScroll > restaMax){
+                $('#logo').css('height',origHeight -20 - restaMax);
+                $('#menu').css('height',origHeight - restaMax);
+            }
+        });
+        $(document).ready(function(){
+            posicionScroll = $(window).scrollTop();
+            if (posicionScroll <= restaMax){
+                $('#logo').css('height',origHeight -20 - posicionScroll);
+                $('#menu').css('height',origHeight - posicionScroll);
+            }
+            if (posicionScroll > restaMax){
+                $('#logo').css('height',origHeight -20 - restaMax);
+                $('#menu').css('height',origHeight - restaMax);
+            }
+        });
+    </script>
     
     @yield('scripts')
 </body>
