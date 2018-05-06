@@ -14,6 +14,8 @@ use App\Rol;
 use App\Propiedad;
 use App\RolesUsuarios;
 
+use Notification;
+
 class ImportCsvController extends BaseController
 {
     // Método que lee el csv y pasa las columnas a la vista de elegir columna
@@ -96,6 +98,8 @@ class ImportCsvController extends BaseController
                     $rolesUsuarios->rol_id = 3;
                     $rolesUsuarios->save();
                 }
+                $notificacion = new Notification;
+                $notificacion::success('Usuarios cargados correctamente');
                 return redirect('/verUsuarios');
             }
             else if($origen == 'propiedades'){
@@ -110,11 +114,15 @@ class ImportCsvController extends BaseController
                     $propiedad->id_tipoPropiedad = $rows [$i][$request->input('id_tipoPropiedad')];
                     $propiedad->save ();
                 }
+                $notificacion = new Notification;
+                $notificacion::success('Propiedades cargadas correctamente');
                 return redirect('/verPropiedades');
             }
             
         }
         catch (Exception $e) {
+            $notificacion = new Notification;
+            $notificacion::error('Ocurrió un error al cargar los usuarios');
             echo 'Ocurrió un error al importar: ',  $e->getMessage(), "\n";
         }
     }

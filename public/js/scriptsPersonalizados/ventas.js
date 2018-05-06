@@ -9,12 +9,14 @@ $(document).ready(function(){
         }
     };
 
-/*
-    $("#clienteExistenteNombre").on("invalid", function(event) {
-        $('#clienteExistenteNombre').get(0).setCustomValidity('');
-    });
-*/
+
     $('#clienteExistenteNombre').keydown(function(event){
+        event.preventDefault();
+    });
+    $('#clienteExistenteEmail').keydown(function(event){
+        event.preventDefault();
+    });
+    $('#clienteExistenteDocumento').keydown(function(event){
         event.preventDefault();
     });
 

@@ -159,10 +159,14 @@ class PropiedadesController extends Controller
             return $estadoVenta;
             
         })->addColumn('editar', function ($propiedad) {
-            return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
-                    '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
-        })->addColumn('vender', function ($propiedad) {
-            return '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+            if($propiedad->ventaEstado != 1){
+                return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                        '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+            } else {
+                return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                        '<a class="btn btn-xs btn-warning" disabled><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+            }
+            
         })->rawColumns(['editar', 'action'])->make(true);
 
     }
