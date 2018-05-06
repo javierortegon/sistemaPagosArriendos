@@ -2,11 +2,23 @@ var jsonUsuarios;
 var usuarioSeleccionado;
 
 $(document).ready(function(){
+
+    $('#valor').keydown(function(event){
+        if ('0123456789.'.indexOf(event.key) == -1 && event.key != "Backspace" && event.key != "Delete" && event.key != "ArrowLeft" && event.key != "ArrowRight"){
+            event.preventDefault();            
+        }
+        if (event.key == "." && $('#valor').val().indexOf('.') != -1){
+            event.preventDefault();            
+        }
+    });
+
     //Inicializar campos requeridos
 
     $("#name").attr('required', 'required');
     $("#email").attr('required', 'required');
     $("#documento").attr('required', 'required');
+    $("#telefono").attr('required', 'required');
+    $("#direccion").attr('required', 'required');
     $('#clienteExistenteNombre').removeAttr('required');
 
     //Definiendo la alerta para pedir busqueda de usuario
@@ -26,6 +38,12 @@ $(document).ready(function(){
     $('#clienteExistenteDocumento').keydown(function(event){
         event.preventDefault();
     });
+    $('#clienteExistenteTelefono').keydown(function(event){
+        event.preventDefault();
+    });
+    $('#clienteExistenteDireccion').keydown(function(event){
+        event.preventDefault();
+    });
 
     //Definiendo campos requeridos dependiendo de si se seleccionó usuario nuevo o existente
     $(".selectUsuarioNoE").click(function(){
@@ -36,6 +54,8 @@ $(document).ready(function(){
             $("#name").removeAttr('required');
             $("#email").removeAttr('required');
             $("#documento").removeAttr('required');
+            $("#telefono").removeAttr('required');
+            $("#direccion").removeAttr('required');
 
             $('#clienteExistenteNombre').attr('required', 'required');
         }
@@ -46,6 +66,8 @@ $(document).ready(function(){
             $("#name").attr('required', 'required');
             $("#email").attr('required', 'required');
             $("#documento").attr('required', 'required');
+            $("#telefono").attr('required', 'required');
+            $("#direccion").attr('required', 'required');
 
             $('#clienteExistenteNombre').removeAttr('required');
 
@@ -105,6 +127,8 @@ $(document).ready(function(){
             $('#clienteExistenteNombre').val(jsonUsuarios[idUsuario].name);
             $('#clienteExistenteEmail').val(jsonUsuarios[idUsuario].email);
             $('#clienteExistenteDocumento').val(jsonUsuarios[idUsuario].documento);
+            $('#clienteExistenteTelefono').val(jsonUsuarios[idUsuario].telefono);
+            $('#clienteExistenteDireccion').val(jsonUsuarios[idUsuario].direccion);
             $('#inputUserId').val(jsonUsuarios[idUsuario].id);
         
         }
@@ -112,6 +136,8 @@ $(document).ready(function(){
             $('#clienteExistenteNombre').val("");
             $('#clienteExistenteEmail').val("");
             $('#clienteExistenteDocumento').val("");
+            $('#clienteExistenteTelefono').val("");
+            $('#clienteExistenteDireccion').val("");
             $('#inputUserId').val("");   
         }
         

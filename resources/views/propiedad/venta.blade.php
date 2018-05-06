@@ -116,10 +116,38 @@
                                                     <label for="documento" class="col-md-4 control-label">Documento</label>
 
                                                     <div class="col-md-6">
-                                                        <input id="documento" type="number" class="form-control" name="documento" required>
+                                                        <input id="documento" type="text" class="form-control" name="documento" required>
                                                     </div>
                                             </div>
+
+                                            <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
+                                                <label for="telefono" class="col-md-4 control-label">Teléfono</label>
+                                                <div class="col-md-6">
+                                                    <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" required>
+                                                    @if ($errors->has('telefono'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('telefono') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
+                                                <label for="direccion" class="col-md-4 control-label">Dirección</label>
+                                                <div class="col-md-6">
+                                                    <input id="direccion" type="text" class="form-control" name="direccion" value="{{ old('direccion') }}" required>
+                                                    @if ($errors->has('direccion'))
+                                                        <span class="help-block">
+                                                            <strong>{{ $errors->first('direccion') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                         </div>
+
+
+
 
                                         <div id = "divBusquedaUsuarioExistente" hidden>
                                             <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
@@ -140,27 +168,45 @@
                                             </div>
 
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                                <label for="name" class="col-md-4 control-label">Nombre</label>
+                                                <label for="clienteExistenteNombre" class="col-md-4 control-label">Nombre</label>
                                                 <div class="col-md-6">
-                                                    <input id="clienteExistenteNombre" type="text" class="form-control" style="border:none" name="nombreExistente" value="{{ old('nombreExistente') }}">
+                                                    <input id="clienteExistenteNombre" type="text" class="form-control" style="border:none" name="nombreExistente" value="">
                                                 
                                                 </div>
                                             </div>
 
                                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                <label for="email" class="col-md-4 control-label">E-Mail</label>
+                                                <label for="clienteExistenteEmail" class="col-md-4 control-label">E-Mail</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="clienteExistenteEmail" type="text" class="form-control" style="border:none" name="emailExistente" value="{{ old('emailExistente') }}">
+                                                    <input id="clienteExistenteEmail" type="text" class="form-control" style="border:none" name="emailExistente" value="">
                                                     
                                                 </div>
                                             </div>
 
-                                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label for="documento" class="col-md-4 control-label">Documento</label>
+                                            <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
+                                                    <label for="clienteExistenteDocumento" class="col-md-4 control-label">Documento</label>
 
                                                     <div class="col-md-6">                                                  
-                                                        <input id="clienteExistenteDocumento" type="text" class="form-control" style="border:none" name="documentoExistente" value="{{ old('documentoExistente') }}">
+                                                        <input id="clienteExistenteDocumento" type="text" class="form-control" style="border:none" name="documentoExistente" value="">
+                                                    
+                                                    </div>
+                                            </div>
+                                            
+                                            <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
+                                                    <label for="clienteExistenteTelefono" class="col-md-4 control-label">Teléfono</label>
+
+                                                    <div class="col-md-6">                                                  
+                                                        <input id="clienteExistenteTelefono" type="text" class="form-control" style="border:none" name="telefonoExistente" value="">
+                                                    
+                                                    </div>
+                                            </div>
+                                            
+                                            <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
+                                                    <label for="documento" class="col-md-4 control-label">Dirección</label>
+
+                                                    <div class="col-md-6">                                                  
+                                                        <input id="clienteExistenteDireccion" type="text" class="form-control" style="border:none" name="direccionExistente" value="">
                                                     
                                                     </div>
                                             </div>
@@ -176,7 +222,7 @@
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label for="valor" class="col-md-4 control-label">Valor Total</label>
                                         <div class="col-md-6">
-                                            <input id="valor" type="number" class="form-control" name="valor" required>
+                                            <input id="valor" type="text" class="form-control" name="valor" required>
                                         </div>
                                     </div>
 

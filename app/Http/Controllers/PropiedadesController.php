@@ -108,6 +108,9 @@ class PropiedadesController extends Controller
             $comprador->name = $request->name;
             $comprador->email = $request->email;
             $comprador->password = bcrypt($request->documento);
+            $comprador->documento = $request->documento;
+            $comprador->telefono = $request->telefono;
+            $comprador->direccion = $request->direccion;
             $comprador->estado = 1;
             $comprador->save();
     
