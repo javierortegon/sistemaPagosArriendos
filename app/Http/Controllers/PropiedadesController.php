@@ -88,7 +88,17 @@ class PropiedadesController extends Controller
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
         ->where('propiedades.id', '=', $id)
         ->get();
-        return view ('propiedad.venta', ['propiedad' => $propiedad]);
+
+        $consultaVenta = $users = DB::table('ventas')
+                        ->where('propiedad', "=", $id)
+                        ->count();
+        if($consultaVenta != 0){
+            Notification::error('La propiedad que seleccionó ya fue vendida');
+            return redirect('/verPropiedades');
+        } else {
+            return view ('propiedad.venta', ['propiedad' => $propiedad]);
+        }
+
     }
 
     public function postVender($id, Request $request){
@@ -102,20 +112,34 @@ class PropiedadesController extends Controller
             $comprador->save();
     
             $idComprador = $comprador->id;
+            Notification::success('Usuario creado correctamente');
+            
         }
         else{
             $idComprador = $request->input('inputUserId');
         }
         
+        $consultaVenta = $users = DB::table('ventas')
+                        ->where('propiedad', "=", $id)
+                        ->count();
 
-        $venta = new Venta;
-        $venta->fecha = date('Y-m-d');
-        $venta->valor = $request->valor;
-        $venta->metodo_pago = $request->metodoPago;
-        $venta->estado = 1;
-        $venta->propiedad = $id;
-        $venta->comprador = $idComprador;
-        $venta->save();    
+        if($consultaVenta == 0){
+            $venta = new Venta;
+            $venta->fecha = date('Y-m-d');
+            $venta->valor = $request->valor;
+            $venta->metodo_pago = $request->metodoPago;
+            $venta->estado = 1;
+            $venta->propiedad = $id;
+            $venta->comprador = $idComprador;
+            $venta->save(); 
+            Notification::success('Venta registrada con exito');
+            return redirect('/verPropiedades');
+        } else { 
+            Notification::error('La propiedad que seleccionó ya fue vendida');
+            return redirect('/verPropiedades');
+        }
+
+           
     }
 
 

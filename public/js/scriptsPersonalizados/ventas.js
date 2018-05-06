@@ -2,14 +2,21 @@ var jsonUsuarios;
 var usuarioSeleccionado;
 
 $(document).ready(function(){
-    
+    //Inicializar campos requeridos
+
+    $("#name").attr('required', 'required');
+    $("#email").attr('required', 'required');
+    $("#documento").attr('required', 'required');
+    $('#clienteExistenteNombre').removeAttr('required');
+
+    //Definiendo la alerta para pedir busqueda de usuario
     $('#clienteExistenteNombre').get(0).oninvalid = function(e) {
         if (!e.target.validity.valid) {
             e.target.setCustomValidity('Por favor busque y seleccione un usuario existente');
         }
     };
 
-
+    //Evitar que se pueda escribir en los detalles de cliente existente
     $('#clienteExistenteNombre').keydown(function(event){
         event.preventDefault();
     });
@@ -20,9 +27,8 @@ $(document).ready(function(){
         event.preventDefault();
     });
 
+    //Definiendo campos requeridos dependiendo de si se seleccionó usuario nuevo o existente
     $(".selectUsuarioNoE").click(function(){
-        
-
         if(document.getElementById("rbUsuarioExistente").checked){
             $("#divRegistroUsuarioNuevo").hide(400);
             $("#divBusquedaUsuarioExistente").show(400);
@@ -30,6 +36,8 @@ $(document).ready(function(){
             $("#name").removeAttr('required');
             $("#email").removeAttr('required');
             $("#documento").removeAttr('required');
+
+            $('#clienteExistenteNombre').attr('required', 'required');
         }
         else{
             $("#divBusquedaUsuarioExistente").hide(400);
@@ -39,6 +47,8 @@ $(document).ready(function(){
             $("#email").attr('required', 'required');
             $("#documento").attr('required', 'required');
 
+            $('#clienteExistenteNombre').removeAttr('required');
+
             $('#clienteExistenteNombre').val("");
             $('#clienteExistenteEmail').val("");
             $('#clienteExistenteDocumento').val("");
@@ -47,10 +57,9 @@ $(document).ready(function(){
         
     });
     
+    //Ajax para busqueda de usuarios existentes
     $('#busqueda').keyup(function(e){
-
         e.preventDefault();
-
         campo = document.getElementById('campoParaBuscar').value;
         busqueda = document.getElementById('busqueda').value;
 
@@ -68,12 +77,11 @@ $(document).ready(function(){
                 for(var i = 0; i < result.length; i++)
                     options += '<option value="'+result[i].email+'" id="id'+ result[i].id +'" />';
             }
-            
-
             $('#usuariosDataList').html(options);
         });
     });
     
+    //Seleccionando usuario existente
     $('#btnSeleccionUsuario').click(function(){
         idUsuario = "NA";
         $('#clienteExistenteNombre').get(0).setCustomValidity('');

@@ -142,7 +142,7 @@
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label for="name" class="col-md-4 control-label">Nombre</label>
                                                 <div class="col-md-6">
-                                                    <input id="clienteExistenteNombre" type="text" class="form-control" style="border:none" name="nombreExistente" value="{{ old('nombreExistente') }}" required>
+                                                    <input id="clienteExistenteNombre" type="text" class="form-control" style="border:none" name="nombreExistente" value="{{ old('nombreExistente') }}">
                                                 
                                                 </div>
                                             </div>
