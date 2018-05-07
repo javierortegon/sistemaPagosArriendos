@@ -11,6 +11,7 @@ use App\Proyecto;
 use App\Arrendatario;
 use App\Venta;
 use App\TiposPropiedad;
+use App\RolesUsuarios;
 
 use Notification;
 use DataTables;
@@ -90,7 +91,10 @@ class PropiedadesController extends Controller
         ->get();
 
         $consultaVenta = $users = DB::table('ventas')
-                        ->where('propiedad', "=", $id)
+                        ->where([
+                            ['propiedad', "=", $id],
+                            ['estado', '=', '1']
+                        ])
                         ->count();
         if($consultaVenta != 0){
             Notification::error('La propiedad que seleccionó ya fue vendida');
@@ -113,8 +117,13 @@ class PropiedadesController extends Controller
             $comprador->direccion = $request->direccion;
             $comprador->estado = 1;
             $comprador->save();
-    
             $idComprador = $comprador->id;
+
+            $rolesUsuarios = new RolesUsuarios;
+            $rolesUsuarios->user_id = $idComprador;
+            $rolesUsuarios->rol_id = 3;
+            $rolesUsuarios->save();
+            
             Notification::success('Usuario creado correctamente');
             
         }
@@ -122,8 +131,11 @@ class PropiedadesController extends Controller
             $idComprador = $request->input('inputUserId');
         }
         
-        $consultaVenta = $users = DB::table('ventas')
-                        ->where('propiedad', "=", $id)
+        $consultaVenta = DB::table('ventas')
+                        ->where([
+                            ['propiedad', "=", $id],
+                            ['estado', '=', '1']
+                        ])
                         ->count();
 
         if($consultaVenta == 0){
@@ -134,15 +146,29 @@ class PropiedadesController extends Controller
             $venta->estado = 1;
             $venta->propiedad = $id;
             $venta->comprador = $idComprador;
-            $venta->save(); 
-            Notification::success('Venta registrada con exito');
-            return redirect('/verPropiedades');
+            $venta->save();
+    
+            //Segundo nivel de verificación (para garantizar que no se crucen ventas).
+
+            $consulta2Venta = DB::table('ventas')
+            ->where([
+                ['propiedad', "=", $id],
+                ['estado', '=', '1']
+            ])
+            ->get();
+
+            if($consulta2Venta[0]->id != $venta->id){
+                $venta->estado = 0;
+                $venta->save();                
+                Notification::error('La propiedad que seleccionó ya fue vendida');   
+            } else {
+                Notification::success('Venta registrada con exito');
+            }
+
         } else { 
             Notification::error('La propiedad que seleccionó ya fue vendida');
-            return redirect('/verPropiedades');
         }
-
-           
+        return redirect('/verPropiedades');
     }
 
 

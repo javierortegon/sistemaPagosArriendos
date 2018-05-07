@@ -14,7 +14,7 @@
                         Lista de Propiedades
                         
                     </div>
-					<div class="panel-body">
+					<div class="panel-body table-responsive">
                         <table class="table datatable" id="tablaPropiedades">
                             <thead>
                                 <tr>
@@ -44,8 +44,10 @@
 
 @section('scripts')
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
+    
     $('.datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -59,8 +61,11 @@ $(document).ready(function() {
             {data: 'estadoVenta', name: 'estadoVenta'},
             {data: 'estadoString', name: 'estadoString'},
             {data: 'editar', name: 'editar', orderable: false, searchable: false},
-        ]
+        ],
+        pageLenght: 5,
     });
+    
+    
 });
 </script>
 @endsection
