@@ -17,6 +17,7 @@ use Notification;
 use DataTables;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropiedadesController extends Controller
 {
@@ -146,6 +147,7 @@ class PropiedadesController extends Controller
             $venta->estado = 1;
             $venta->propiedad = $id;
             $venta->comprador = $idComprador;
+            $venta->vendedor = Auth::id();
             $venta->save();
     
             //Segundo nivel de verificación (para garantizar que no se crucen ventas).

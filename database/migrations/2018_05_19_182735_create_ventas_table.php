@@ -23,6 +23,8 @@ class CreateVentasTable extends Migration
             $table->foreign('propiedad')->references('id')->on('propiedades');
             $table->integer('comprador')->unsigned();
             $table->foreign('comprador')->references('id')->on('users');
+            $table->integer('vendedor')->unsigned();
+            $table->foreign('vendedor')->references('id')->on('users');
             $table->timestamps();
         });
     }
