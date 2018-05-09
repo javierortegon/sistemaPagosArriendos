@@ -26,5 +26,7 @@ class RolesUsersTableSeeder extends Seeder
             'role_id' => '3',
             'user_id' => '3'
         ]);
+
+        $this->command->info('Tabla de roles-usuarios inicializada');
     }
 }

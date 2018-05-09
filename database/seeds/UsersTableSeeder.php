@@ -46,5 +46,6 @@ class UsersTableSeeder extends Seeder
             'direccion' => 'carrera 24 # 4',
             'estado' => 1
         ]);
+
 	}
 }

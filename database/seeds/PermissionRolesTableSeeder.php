@@ -28,13 +28,15 @@ class PermissionRolesTableSeeder extends Seeder
         ]);
 
         PermissionsRoles::create([
-            'permission_id' => 7,
+            'permission_id' => 8,
             'role_id' => 2
         ]);
 
         PermissionsRoles::create([
-            'permission_id' => 8,
+            'permission_id' => 9,
             'role_id' => 2
         ]);
+
+        $this->command->info('Tabla de permisos-roles inicializada');
     }
 }

@@ -12,7 +12,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //Permisos para proyectos
+        //Permisos para proyectos 1,4
 
         Permission::create([
             'name' => 'Registrar Proyectos',
@@ -38,7 +38,7 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para ver los detalles del proyectos.'
         ]);
 
-        //Permisos para tipos de propiedad
+        //Permisos para tipos de propiedad 5,7
         Permission::create([
             'name' => 'Consultar Tipos Propiedad',
             'slug' => 'tiposPropiedad.consultar',
@@ -51,7 +51,13 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para editar los tipos de propiedad del proyectos.'
         ]);
 
-        //permisos para las propiedades
+        Permission::create([
+            'name' => 'Registrar Tipos Propiedad',
+            'slug' => 'tiposPropiedad.registro',
+            'description' => 'Permiso para registrar los tipos de propiedad del proyectos.'
+        ]);
+
+        //permisos para las propiedades 8,9
         Permission::create([
             'name' => 'Registrar Propiedad',
             'slug' => 'registroPropiedad',
@@ -64,6 +70,6 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para consultar propiedades.'
         ]);
 
-        
+        $this->command->info('Tabla de permisos inicializada');
     }
 }
