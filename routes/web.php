@@ -11,6 +11,111 @@
 |
 */
 
+Route::middleware(['auth'])->group(function() {
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA LOS PROYECTOS
+    |
+    */
+
+    // ruta para acceder al formulario de registrar Proyecto
+    Route::get('/registroProyecto', function () {
+        return view('proyecto.add');
+    })->name('proyecto.registro')->middleware('permission:proyecto.registro');
+
+    // ruta para recibir los datos de registrar proyecto
+    Route::post('/registroProyecto', [
+        'uses' => 'ProyectosController@postCrearProyecto',
+    ])->name('registroProyecto');    
+
+    // ruta para consultar los proyectos
+    Route::get('/proyectos', [
+        'middleware' => 'permission:proyectos.consultar',
+        'uses' => 'ProyectosController@getProyectos',
+    ])->name('proyectos.consultar');
+    
+    // ruta para abrir formulario editar un proyecto
+    Route::get('proyecto/edit/{id}', [
+        'middleware' => 'permission:proyectos.edit',
+        'uses' => 'ProyectosController@getEditProyecto',
+    ])->name('proyectos.edit'); 
+
+    // ruta para recibir los datos de editar un proyecto
+    Route::put('proyecto/edit/{id}', [
+        'uses' => 'ProyectosController@putEditProyecto',
+    ]);
+
+    // ruta para ver los detalles del proyecto
+    Route::get('proyecto/detalle/{id}', [
+        'middleware' => 'permission:proyectos.detalle',
+        'uses' => 'ProyectosController@detalleProyecto'
+    ])->name('proyectos.detalle');
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA LOS TIPOS DE PROPIEDADES
+    |
+    */
+
+    // ruta para listar los tipos de propiedad de un proyecto
+    Route::get('tiposPropiedad/{id}', [
+        'middleware' => 'permission:tiposPropiedad.consultar',
+        'uses' => 'TiposPropiedadController@tiposPropiedad',
+    ])->name('tiposPropiedad.consultar');
+
+    // ruta para registrar los tipos de propiedad de un proyecto
+    Route::post('registroTipoPropiedad/{id}', [
+        'uses' => 'TiposPropiedadController@postCreate',
+    ]);
+
+    //ruta para editar un tipo de propiedad
+    Route::get('tipoPropiedad/edit/{id}', [
+        'middleware' => 'permission:tiposPropiedad.edit',
+        'uses' => 'TiposPropiedadController@getEditTipoPropiedad',
+    ])->name('tiposPropiedad.edit');
+
+    //ruta para editar un tipo de propiedad
+    Route::put('tipoPropiedad/edit/{id}', [
+        'uses' => 'TiposPropiedadController@putEditTipoPropiedad',
+    ]);
+
+    //ruta para eliminar un tipo de propiedad
+    Route::delete('tipoPropiedad/delete/{id}', [
+        'uses' => 'TiposPropiedadController@deleteTipo'
+    ]);
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA LAS PROPIEDADES
+    |
+    */
+
+    //ruta para obtener los tipos del proyecto
+    Route::get('proyectoTipos/{id}', [
+        'uses' => 'PropiedadesController@getProyectoTipos',
+    ]);
+
+    // ruta para acceder al formulario de registrar propiedad
+    Route::get('/registroPropiedad', [
+        'middleware' => 'permission:registroPropiedad',
+        'uses' => 'PropiedadesController@getRegister',
+    ])->name('registroPropiedad');
+
+    // ruta de recepcion del formulario, registro propiedad
+    Route::post('propiedad/create', [
+        'uses' => 'PropiedadesController@postCreate',
+    ]);
+
+    //ruta para consultar las propiedades
+    Route::get('/verPropiedades', [
+        'uses' => 'PropiedadesController@getPropiedades',
+        'middleware' => 'permission:verPropiedades'
+    ])->name('verPropiedades'); 
+
+});
+
+
 /*
 |
 |RUTAS PERSONALIZADAS PARA LOS USUARIOS
@@ -27,10 +132,11 @@ Route::get('/register', function () {
 });
 
 //ruta para consultar los usuarios
+
 Route::get('/verUsuarios', [
     'uses' => 'UsersController@getUsuarios',
     'middleware' => 'auth'
-])->name('verUsuarios'); 
+ ])->name('verUsuarios'); 
 
 //ruta para editar los usuarios
 Route::get('usuario/edit/{id}', [
@@ -56,81 +162,9 @@ Route::put('usuario/editRol/{id}', [
     'uses' => 'UsersController@putEditRol'
 ]);
 
-/*
-|
-|RUTAS PERSONALIZADAS PARA LOS PROYECTOS
-|
-*/
 
-// ruta para acceder al formulario de registrar Proyecto
-Route::get('/registroProyecto', function () {
-    return view('proyecto.add');
-})->name('registroProyecto')->middleware('auth');
 
-// ruta para registrar proyecto
-Route::post('/registroProyecto', [
-    'middleware' => 'auth',
-    'uses' => 'ProyectosController@postCrearProyecto',
-])->name('registroProyecto');
 
-// ruta para abrir formulario editar un proyecto
-Route::get('proyecto/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ProyectosController@getEditProyecto',
-]); 
-
-// ruta para editar un proyecto
-Route::put('proyecto/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ProyectosController@putEditProyecto',
-]);
-
-// ruta para consultar los proyectos
-Route::get('/proyectos', [
-    'middleware' => 'auth',
-    'uses' => 'ProyectosController@getProyectos',
-])->name('proyectos');
-
-Route::get('proyecto/detalle/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ProyectosController@detalleProyecto'
-]);
-
-/*
-|
-|RUTAS PERSONALIZADAS PARA LOS TIPOS DE PROPIEDADES
-|
-*/
-
-// ruta para listar los tipos de propiedad de un proyecto
-Route::get('tiposPropiedad/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'TiposPropiedadController@tiposPropiedad',
-]);
-
-// ruta para registrar los tipos de propiedad de un proyecto
-Route::post('registroTipoPropiedad/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'TiposPropiedadController@postCreate',
-]);
-
-//ruta para editar un tipo de propiedad
-Route::get('tipoPropiedad/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'TiposPropiedadController@getEditTipoPropiedad',
-]);
-
-//ruta para editar un tipo de propiedad
-Route::put('tipoPropiedad/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'TiposPropiedadController@putEditTipoPropiedad',
-]);
-
-//ruta para eliminar un tipo de propiedad
-Route::delete('tipoPropiedad/delete/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'TiposPropiedadController@deleteTipo'
-]);
 
 /*
 |
@@ -138,23 +172,6 @@ Route::delete('tipoPropiedad/delete/{id}', [
 |
 */
 
-//ruta para obtener los tipos del proyecto
-Route::get('proyectoTipos/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getProyectoTipos',
-]);
-
-// ruta para acceder al formulario de registrar propiedad
-Route::get('/registroPropiedad', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getRegister',
-])->name('registroPropiedad');
-
-// ruta de recepcion del formulario, registro propiedad
-Route::post('propiedad/create', [
-    'uses' => 'PropiedadesController@postCreate',
-    'middleware' => 'auth',
-]);
 
 // ruta asiganar arrendatario
 Route::get('/asignarArrendatario', [
@@ -168,11 +185,6 @@ Route::post('arrendatario/create', [
     'middleware' => 'auth',
 ]);
 
-//ruta para consultar las propiedades
-Route::get('/verPropiedades', [
-    'uses' => 'PropiedadesController@getPropiedades',
-    'middleware' => 'auth'
-])->name('verPropiedades'); 
 
 //ruta para editar las propiedades
 Route::get('propiedad/edit/{id}', [

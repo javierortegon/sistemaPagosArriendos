@@ -17,14 +17,34 @@ class UsersTableSeeder extends Seeder
     }
 
     private function seedUsers(){
-		$user = new User;
-		$user->name = ('javier ortegon');
-		$user->email = ('javierortegon@ggg.com');
-        $user->password = bcrypt('password');
-        $user->documento = ('888654');
-        $user->telefono = ('432423432');
-        $user->direccion = ('carrera 24 # 4');
-        $user->estado = 1;
-		$user->save();
+		User::create([
+		    'name' => 'admin',
+		    'email' => 'admin@admin.com',
+            'password' => bcrypt('admin123'),
+            'documento' => '888654',
+            'telefono' => '432423432',
+            'direccion' => 'carrera 24 # 4',
+            'estado' => 1
+        ]);
+
+        User::create([
+		    'name' => 'vendedor',
+		    'email' => 'vendedor@vendedor.com',
+            'password' => bcrypt('vendedor123'),
+            'documento' => '888654',
+            'telefono' => '432423432',
+            'direccion' => 'carrera 24 # 4',
+            'estado' => 1
+        ]);
+
+        User::create([
+		    'name' => 'cliente',
+		    'email' => 'cliente@cliente.com',
+            'password' => bcrypt('cliente123'),
+            'documento' => '888654',
+            'telefono' => '432423432',
+            'direccion' => 'carrera 24 # 4',
+            'estado' => 1
+        ]);
 	}
 }

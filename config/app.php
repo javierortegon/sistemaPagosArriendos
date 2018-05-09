@@ -166,6 +166,7 @@ return [
         Krucas\Notification\NotificationServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
         /*
          * Package Service Providers...
