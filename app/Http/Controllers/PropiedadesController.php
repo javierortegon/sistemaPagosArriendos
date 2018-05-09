@@ -215,14 +215,30 @@ class PropiedadesController extends Controller
             
         })->addColumn('editar', function ($propiedad) {
             if($propiedad->ventaEstado != 1){
-                return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
+                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
                         '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
             } else {
-                return  '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
+                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
                         '<a class="btn btn-xs btn-warning" disabled><i class="glyphicon glyphicon-edit"></i> Vender</a>';
             }
             
         })->rawColumns(['editar', 'action'])->make(true);
 
+    }
+
+    public function getDetallesPropiedad($id){
+        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
+         'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
+         'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado', 'users.name as nombreComprador', 'users.email as correoComprador')
+        ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->leftJoin('users', 'ventas.comprador', '=', 'users.id')
+        ->where('propiedades.id', '=', $id)
+        ->get();
+        
+        return view ('propiedad.detallesPropiedad', ['propiedad' => $propiedad[0] ]);
     }
 }
