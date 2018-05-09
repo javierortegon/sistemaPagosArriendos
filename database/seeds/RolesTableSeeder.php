@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Rol;
+use Caffeinated\Shinobi\Models\Role;
 
 class RolesTableSeeder extends Seeder
 {
@@ -17,8 +17,20 @@ class RolesTableSeeder extends Seeder
     }
 
     private function seedRoles(){
-        Rol::create(array('nombre' => 'administrador'));
-        Rol::create(array('nombre' => 'arrendatario'));
-        Rol::create(array('nombre' => 'propietario'));
+        Role::create([
+            'name' => 'admin',
+            'slug' => 'admin',
+            'special' => 'all-access',
+        ]);
+
+        Role::create([
+            'name' => 'vendedor',
+            'slug' => 'vendedor',
+        ]);
+
+        Role::create([
+            'name' => 'cliente',
+            'slug' => 'cliente',
+        ]);
     }
 }

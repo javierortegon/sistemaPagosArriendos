@@ -68,8 +68,13 @@
                                     Proyecto
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('registroProyecto') }}">Registrar</a></li>
-                                    <li><a href="{{ route('proyectos') }}">Consultar</a></li>
+                                    @can('proyecto.registro')
+                                    <li><a href="{{ route('proyecto.registro') }}">Registrar</a></li>
+                                    @endcan
+
+                                    @can('proyectos.consultar')
+                                    <li><a href="{{ route('proyectos.consultar') }}">Consultar</a></li>
+                                    @endcan
                                 </ul>
                             </li>
 
