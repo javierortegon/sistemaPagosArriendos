@@ -113,6 +113,72 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'permission:verPropiedades'
     ])->name('verPropiedades'); 
 
+    // ruta para cargar el csv de propiedades
+    Route::get('importPropiedades',function(){
+        return view('importCsv.chargeCsv', array('origen' => 'propiedades'));
+    })->name('propiedades.cargar')->middleware('permission:propiedades.cargar');
+
+    Route::post('importCsvUsers', 
+    'ImportCsvController@importUsers');
+
+    Route::post('chooseColumnsCsv', 
+    'ImportCsvController@chooseColumns');
+
+    //ruta para editar las propiedades
+    Route::get('propiedad/edit/{id}', [
+        'middleware' => 'permission:propiedades.editar',
+        'uses' => 'PropiedadesController@getEdit'
+    ])->name('propiedades.editar');
+
+    //ruta para recibir los datos de la propiedad editada
+    Route::put('propiedad/edit/{id}', [
+        'uses' => 'PropiedadesController@putEdit'
+    ]);
+
+    //ruta para añadir arrendatario a la propiedad
+    Route::get('propiedad/vender/{id}', [
+        'middleware' => 'permission:propiedades.vender',
+        'uses' => 'PropiedadesController@getVender'
+    ])->name('propiedades.vender');
+
+    //ruta para añadir arrendatario a la propiedad
+    Route::post('propiedad/vender/{id}', [
+        'uses' => 'PropiedadesController@postVender'
+    ]);
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA LOS USUARIOS
+    |
+    */ 
+
+    // ruta de usuarios
+    Route::get('/register', function () {
+        return view('auth.register');
+    })->name('usuarios.register')->middleware('permission:usuarios.register');
+
+    //ruta para consultar los usuarios
+    Route::get('/verUsuarios', [
+        'uses' => 'UsersController@getUsuarios',
+        'middleware' => 'permission:verUsuarios'
+    ])->name('verUsuarios'); 
+
+    //ruta para editar los usuarios
+    Route::get('usuario/edit/{id}', [
+        'middleware' => 'permission:usuarios.edit',
+        'uses' => 'UsersController@getEdit'
+    ])->name('usuarios.edit');
+
+    //ruta para recibir los datos del usuario editado
+    Route::put('usuario/edit/{id}', [
+        'uses' => 'UsersController@putEdit'
+    ]);
+    
+    //rutas para importar csv de usuarios
+    Route::get('importUsers',function(){
+    	return view('importCsv.chargeCsv', array('origen' => 'usuarios'));
+    })->name('importUsers')->middleware('permission:usuarios.cargar');
+
 });
 
 
@@ -125,30 +191,6 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/', function () {
     return view('auth.login');
 });
-
-// ruta de usuarios
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-//ruta para consultar los usuarios
-
-Route::get('/verUsuarios', [
-    'uses' => 'UsersController@getUsuarios',
-    'middleware' => 'auth'
- ])->name('verUsuarios'); 
-
-//ruta para editar los usuarios
-Route::get('usuario/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'UsersController@getEdit'
-]);
-
-//ruta para recibir los datos del usuario editado
-Route::put('usuario/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'UsersController@putEdit'
-]);
 
 //ruta para editar los roles de los usuarios
 Route::get('usuario/editRol/{id}', [
@@ -163,15 +205,11 @@ Route::put('usuario/editRol/{id}', [
 ]);
 
 
-
-
-
 /*
 |
 |RUTAS PERSONALIZADAS PARA LAS PROPIEDADES
 |
 */
-
 
 // ruta asiganar arrendatario
 Route::get('/asignarArrendatario', [
@@ -185,30 +223,6 @@ Route::post('arrendatario/create', [
     'middleware' => 'auth',
 ]);
 
-
-//ruta para editar las propiedades
-Route::get('propiedad/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getEdit'
-]);
-
-//ruta para recibir los datos de la propiedad editada
-Route::put('propiedad/edit/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@putEdit'
-]);
-
-//ruta para añadir arrendatario a la propiedad
-Route::get('propiedad/vender/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getVender'
-]);
-
-//ruta para añadir arrendatario a la propiedad
-Route::post('propiedad/vender/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@postVender'
-]);
 
 /*
 |
@@ -239,20 +253,6 @@ Route::put('propiedad/editArrendatario/{id}', [
     'middleware' => 'auth',
     'uses' => 'ArrendatariosController@putEdit'
 ]);
-
-//rutas para importar csv
-Route::get('importUsers',function(){
-	return view('importCsv.chargeCsv', array('origen' => 'usuarios'));
-})->name('importUsers')->middleware('auth');
-
-Route::get('importPropiedades',function(){
-	return view('importCsv.chargeCsv', array('origen' => 'propiedades'));
-})->name('importPropiedades')->middleware('auth');
-
-Route::post('importCsvUsers', 'ImportCsvController@importUsers')->middleware('auth');
-
-Route::post('chooseColumnsCsv', 'ImportCsvController@chooseColumns')->middleware('auth');
-
 
 
 Auth::routes();

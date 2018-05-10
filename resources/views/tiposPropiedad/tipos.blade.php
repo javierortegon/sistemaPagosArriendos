@@ -38,6 +38,7 @@
                                     </tbody>
                                 </table>
                             @endif
+                            @can('tiposPropiedad.registro')
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="nombre" class="col-md-4 control-label">Nombre</label>
                                 <div class="col-md-6">
@@ -58,6 +59,7 @@
                                     </button>
                                 </div>
                             </div>
+                            @endcan
                         </form>		
                     </div>
                 </div>
