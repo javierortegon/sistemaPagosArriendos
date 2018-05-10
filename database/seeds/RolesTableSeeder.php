@@ -32,5 +32,6 @@ class RolesTableSeeder extends Seeder
             'name' => 'cliente',
             'slug' => 'cliente',
         ]);
+
     }
 }

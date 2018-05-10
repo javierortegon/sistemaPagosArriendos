@@ -12,7 +12,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        //Permisos para proyectos
+        //Permisos para proyectos 1,4
 
         Permission::create([
             'name' => 'Registrar Proyectos',
@@ -38,7 +38,7 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para ver los detalles del proyectos.'
         ]);
 
-        //Permisos para tipos de propiedad
+        //Permisos para tipos de propiedad 5,7
         Permission::create([
             'name' => 'Consultar Tipos Propiedad',
             'slug' => 'tiposPropiedad.consultar',
@@ -51,7 +51,13 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para editar los tipos de propiedad del proyectos.'
         ]);
 
-        //permisos para las propiedades
+        Permission::create([
+            'name' => 'Registrar Tipos Propiedad',
+            'slug' => 'tiposPropiedad.registro',
+            'description' => 'Permiso para registrar los tipos de propiedad del proyectos.'
+        ]);
+
+        //permisos para las propiedades 8,12
         Permission::create([
             'name' => 'Registrar Propiedad',
             'slug' => 'registroPropiedad',
@@ -64,6 +70,49 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para consultar propiedades.'
         ]);
 
-        
+        Permission::create([
+            'name' => 'Cargar Propiedades',
+            'slug' => 'propiedades.cargar',
+            'description' => 'Permiso para cargar csv de propiedades.'
+        ]);
+
+        Permission::create([
+            'name' => 'Editar Propiedades',
+            'slug' => 'propiedades.editar',
+            'description' => 'Permiso para editar propiedades.'
+        ]);
+
+        Permission::create([
+            'name' => 'Vender Propiedades',
+            'slug' => 'propiedades.vender',
+            'description' => 'Permiso para vender propiedades.'
+        ]);
+
+        //permisos para los usuarios 13,16
+        Permission::create([
+            'name' => 'Registrar usuario',
+            'slug' => 'usuarios.register',
+            'description' => 'Permiso para registrar usuarios.'
+        ]);
+
+        Permission::create([
+            'name' => 'Consultar usuarios',
+            'slug' => 'verUsuarios',
+            'description' => 'Permiso para consultar usuarios.'
+        ]);
+
+        Permission::create([
+            'name' => 'Editar usuarios',
+            'slug' => 'usuarios.edit',
+            'description' => 'Permiso para editar usuarios.'
+        ]);
+
+        Permission::create([
+            'name' => 'Cargar usuarios',
+            'slug' => 'usuarios.cargar',
+            'description' => 'Permiso para editar cargar csv usuarios.'
+        ]);
+
+        $this->command->info('Tabla de permisos inicializada');
     }
 }

@@ -83,9 +83,19 @@
                                     Propiedad
                                 </a>
                                 <ul class="dropdown-menu">
+
+                                    @can('registroPropiedad')
                                     <li><a href="{{ route('registroPropiedad') }}">Registrar</a></li>
+                                    @endcan
+
+                                    @can('verPropiedades')
                                     <li><a href="{{ route('verPropiedades') }}">Consultar</a></li>
-                                    <li><a href="{{ route('importPropiedades') }}">Carga CSV</a></li>
+                                    @endcan
+
+                                    @can('propiedades.cargar')
+                                    <li><a href="{{ route('propiedades.cargar') }}">Carga CSV</a></li>
+                                    @endcan
+
                                 </ul>
                             </li>
 
@@ -94,9 +104,19 @@
                                     Usuario
                                 </a>
                                 <ul class="dropdown-menu">
+                                    
+                                    @can('usuarios.register')
                                     <li><a href="{{ route('register') }}">Registrar</a></li>
+                                    @endcan
+
+                                    @can('verUsuarios')
                                     <li><a href="{{ route('verUsuarios') }}">Consultar</a></li>
+                                    @endcan
+
+                                    @can('usuarios.cargar')
                                     <li><a href="{{ route('importUsers') }}">Carga CSV</a></li>
+                                    @endcan
+
                                 </ul>
                             </li>
 
