@@ -155,7 +155,7 @@ Route::middleware(['auth'])->group(function() {
     // ruta de usuarios
     Route::get('/register', function () {
         return view('auth.register');
-    })->name('usuarios.register')->middleware('permission:usuarios.register');
+    })->name('usuarios.register');
 
     //ruta para consultar los usuarios
     Route::get('/verUsuarios', [

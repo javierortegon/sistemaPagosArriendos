@@ -11,7 +11,7 @@ use App\Proyecto;
 use App\Arrendatario;
 use App\Venta;
 use App\TiposPropiedad;
-use App\RolesUsuarios;
+use App\RolesUsers;
 
 use Notification;
 use DataTables;
@@ -120,10 +120,10 @@ class PropiedadesController extends Controller
             $comprador->save();
             $idComprador = $comprador->id;
 
-            $rolesUsuarios = new RolesUsuarios;
-            $rolesUsuarios->user_id = $idComprador;
-            $rolesUsuarios->rol_id = 3;
-            $rolesUsuarios->save();
+            $rolesUsers = new RolesUsers;
+            $rolesUsers->user_id = $idComprador;
+            $rolesUsers->role_id = 3;
+            $rolesUsers->save();
             
             Notification::success('Usuario creado correctamente');
             

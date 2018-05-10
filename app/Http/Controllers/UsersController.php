@@ -123,11 +123,11 @@ class UsersController extends Controller
         //$campo = $request->input('campo');
 
         $usuarios = DB::table('users')
-        ->join('rolesUsuarios', 'users.id', '=', 'rolesUsuarios.user_id')
+        ->join('role_user', 'users.id', '=', 'role_user.user_id')
         ->select('users.id as id', 'users.name', 'users.email', 'users.documento', 'users.telefono','users.direccion')
         ->where([
             [$campo, 'LIKE', $caracteres.'%'],
-            ['rolesUsuarios.rol_id', '=', '3']
+            ['role_user.role_id', '=', '3']
         ])
         ->get();
         return response()->json($usuarios);
