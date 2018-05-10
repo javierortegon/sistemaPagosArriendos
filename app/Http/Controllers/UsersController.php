@@ -146,9 +146,28 @@ class UsersController extends Controller
             return $estado;
             
         })->addColumn('editar', function ($user) {
-            return  '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+            return  '<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
+                    '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
                     '<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
         })->rawColumns(['editar', 'action'])->make(true);
 
+    }
+
+    public function getDetallesUsuario($id){
+        $usuario =  User::select('id','name','email','documento','telefono','direccion','estado')
+                    ->where('users.id', '=', $id)
+                    ->get();
+        $propiedades =  DB::table('ventas')->select('propiedades.codigo as codigo','proyectos.nombre as proyecto','proyectos.direccion as direccion','tipos_propiedad.nombre as tipo')
+                        ->join('propiedades','ventas.propiedad','=','propiedades.id')
+                        ->join('proyectos', 'propiedades.id_proyecto','=','proyectos.id')
+                        ->join('tipos_propiedad','propiedades.id_tipoPropiedad','=','tipos_propiedad.id')
+                        ->where('ventas.comprador','=',$id)
+                        ->paginate(10);
+        $roles =    DB::table('rolesUsuarios')->select('roles.name as rol')
+                    ->join('roles','rolesUsuarios.rol_id','=','roles.id')
+                    ->where('rolesUsuarios.user_id','=',$id)
+                    ->get();
+
+        return view ('auth.detallesUsuario', ['usuario' => $usuario[0], 'roles' => $roles, 'propiedades' => $propiedades]);
     }
 }

@@ -268,3 +268,15 @@ Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAj
 Route::get('usuarios/getdatatable', 'UsersController@getDataTableUsuarios')->name('usuarios/getdatatable');
 Route::get('propiedades/getdatatable', 'PropiedadesController@getDataTablePropiedades')->name('propiedades/getdatatable');
 Route::get('proyectos/getdatatable', 'ProyectosController@getDataTableProyectos')->name('proyectos/getdatatable');
+
+// Get detalles propiedad
+Route::get('propiedad/detalles/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'PropiedadesController@getDetallesPropiedad'
+]);
+
+// Get detalles usuarios
+Route::get('usuario/detalles/{id}', [
+    'middleware' => 'auth',
+    'uses' => 'UsersController@getDetallesUsuario'
+]);
