@@ -20,6 +20,7 @@
                                     <th>Nombre</th>
                                     <th>Mail</th>
                                     <th>Estado</th>
+                                    <th>Roles</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@ $(document).ready(function() {
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
             {data: 'estadoString', name: 'estadoString'},
+            {data: 'roles', name: 'roles'},
             {data: 'editar', name: 'editar', orderable: false, searchable: false},
         ]
     });

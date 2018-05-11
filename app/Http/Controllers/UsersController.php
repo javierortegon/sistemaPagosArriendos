@@ -6,6 +6,8 @@ use DB;
 use App\User;
 use App\Rol;
 use App\RolesUsuarios;
+use App\RolesUsers;
+use App\Venta;
 
 use Illuminate\Http\Request;
 use Notification;
@@ -145,6 +147,22 @@ class UsersController extends Controller
             }
             return $estado;
             
+        })->addColumn('roles', function ($user) {
+            $roles =    RolesUsers::select('roles.name')
+                        ->join('roles','role_user.role_id','=','roles.id')
+                        ->where('role_user.user_id','=',$user->id)
+                        ->get();
+
+            $rolesString = "- ";
+            if(count($roles) != 0){
+                foreach($roles as $rol){
+                    $rolesString = $rolesString.$rol->name." - ";
+                }
+            } else{
+                $rolesString = "Sin rol asignado";
+            }
+            return $rolesString;
+            
         })->addColumn('editar', function ($user) {
             return  '<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
                     '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
@@ -157,15 +175,15 @@ class UsersController extends Controller
         $usuario =  User::select('id','name','email','documento','telefono','direccion','estado')
                     ->where('users.id', '=', $id)
                     ->get();
-        $propiedades =  DB::table('ventas')->select('propiedades.codigo as codigo','proyectos.nombre as proyecto','proyectos.direccion as direccion','tipos_propiedad.nombre as tipo')
+        $propiedades =  Venta::select('propiedades.codigo as codigo','proyectos.nombre as proyecto','proyectos.direccion as direccion','tipos_propiedad.nombre as tipo')
                         ->join('propiedades','ventas.propiedad','=','propiedades.id')
                         ->join('proyectos', 'propiedades.id_proyecto','=','proyectos.id')
                         ->join('tipos_propiedad','propiedades.id_tipoPropiedad','=','tipos_propiedad.id')
                         ->where('ventas.comprador','=',$id)
                         ->paginate(10);
-        $roles =    DB::table('rolesUsuarios')->select('roles.name as rol')
-                    ->join('roles','rolesUsuarios.rol_id','=','roles.id')
-                    ->where('rolesUsuarios.user_id','=',$id)
+        $roles =    RolesUsers::select('roles.name as rol')
+                    ->join('roles','role_user.role_id','=','roles.id')
+                    ->where('role_user.user_id','=',$id)
                     ->get();
 
         return view ('auth.detallesUsuario', ['usuario' => $usuario[0], 'roles' => $roles, 'propiedades' => $propiedades]);

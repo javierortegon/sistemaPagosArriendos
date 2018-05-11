@@ -138,12 +138,12 @@ Route::middleware(['auth'])->group(function() {
     //ruta para añadir arrendatario a la propiedad
     Route::get('propiedad/vender/{id}', [
         'middleware' => 'permission:propiedades.vender',
-        'uses' => 'PropiedadesController@getVender'
+        'uses' => 'VentasController@getVender'
     ])->name('propiedades.vender');
 
     //ruta para añadir arrendatario a la propiedad
     Route::post('propiedad/vender/{id}', [
-        'uses' => 'PropiedadesController@postVender'
+        'uses' => 'VentasController@postVender'
     ]);
 
     /*
@@ -267,7 +267,8 @@ Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAj
 // Get Data para datatable tanto users como propiedades
 Route::get('usuarios/getdatatable', 'UsersController@getDataTableUsuarios')->name('usuarios/getdatatable');
 Route::get('propiedades/getdatatable', 'PropiedadesController@getDataTablePropiedades')->name('propiedades/getdatatable');
-Route::get('proyectos/getdatatable', 'ProyectosController@getDataTableProyectos')->name('proyectos/getdatatable');
+Route::get('proyectos/getdatatable', 'ProyectosController@getDataTableVentas')->name('proyectos/getdatatable');
+Route::get('ventas/getdatatable', 'VentasController@getDataTableVentas')->name('ventas/getdatatable');
 
 // Get detalles propiedad
 Route::get('propiedad/detalles/{id}', [
@@ -280,3 +281,9 @@ Route::get('usuario/detalles/{id}', [
     'middleware' => 'auth',
     'uses' => 'UsersController@getDetallesUsuario'
 ]);
+
+ //ruta para ver las ventas
+    Route::get('/verVentas', [
+        'middleware' => 'permission:propiedades.editar',
+        'uses' => 'VentasController@getVentas'
+    ])->name('venta.ventas');
