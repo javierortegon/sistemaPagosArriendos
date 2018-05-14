@@ -24,8 +24,16 @@ use Illuminate\Support\Facades\Auth;
 class VentasController extends Controller
 {
     public function getVender($id){
-        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.direccion', 'propiedades.estado', 'proyectos.nombre as nombreProyec')
+        $propiedad = Propiedad::select( 'propiedades.id as id', 
+                                        'propiedades.codigo', 
+                                        'propiedades.nombre', 
+                                        'propiedades.direccion', 
+                                        'propiedades.estado', 
+                                        'proyectos.nombre as nombreProyec',
+                                        'tipos_propiedad.nombre as tipo',
+                                        'tipos_propiedad.valor as valor')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->where('propiedades.id', '=', $id)
         ->get();
 

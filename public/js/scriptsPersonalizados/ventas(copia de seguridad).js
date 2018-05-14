@@ -15,7 +15,11 @@ $(document).ready(function(){
     //Inicializar campos requeridos
 
     $("#name").attr('required', 'required');
+    $("#email").attr('required', 'required');
+    $("#documento").attr('required', 'required');
     $("#telefono").attr('required', 'required');
+    $("#direccion").attr('required', 'required');
+    $('#clienteExistenteNombre').removeAttr('required');
 
     //Definiendo la alerta para pedir busqueda de usuario
     $('#clienteExistenteNombre').get(0).oninvalid = function(e) {
@@ -48,7 +52,10 @@ $(document).ready(function(){
             $("#divBusquedaUsuarioExistente").show(400);
             
             $("#name").removeAttr('required');
+            $("#email").removeAttr('required');
+            $("#documento").removeAttr('required');
             $("#telefono").removeAttr('required');
+            $("#direccion").removeAttr('required');
 
             $('#clienteExistenteNombre').attr('required', 'required');
         }
@@ -57,14 +64,16 @@ $(document).ready(function(){
             $("#divRegistroUsuarioNuevo").show(400);
             
             $("#name").attr('required', 'required');
+            $("#email").attr('required', 'required');
+            $("#documento").attr('required', 'required');
             $("#telefono").attr('required', 'required');
+            $("#direccion").attr('required', 'required');
 
             $('#clienteExistenteNombre').removeAttr('required');
 
             $('#clienteExistenteNombre').val("");
             $('#clienteExistenteEmail').val("");
             $('#clienteExistenteDocumento').val("");
-            $('#clienteExistenteTelefono').val("");
             $('#inputUserId').val("");  
         }
         

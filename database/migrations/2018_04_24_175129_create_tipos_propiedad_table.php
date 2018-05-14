@@ -16,6 +16,7 @@ class CreateTiposPropiedadTable extends Migration
         Schema::create('tipos_propiedad', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 20);
+            $table->decimal('valor', 14, 2);
             $table->text('descripcion');
             $table->integer('proyecto')->unsigned();
             $table->foreign('proyecto')->references('id')->on('proyectos');

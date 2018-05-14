@@ -19,6 +19,7 @@ class TiposPropiedadTableSeeder extends Seeder
         $tipoPropiedad = new TiposPropiedad;
         $tipoPropiedad->nombre = "Tipo 1";
         $tipoPropiedad->descripcion = "30 metros cuadrados";
+        $tipoPropiedad->valor = 150000000;
         $tipoPropiedad->proyecto = 1;
         $tipoPropiedad->save();
     }
