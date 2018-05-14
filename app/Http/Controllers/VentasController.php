@@ -111,7 +111,8 @@ class VentasController extends Controller
 
     public function getDataTableVentas(){
         
-        $queryConsulta = Venta::select( 'propiedades.codigo', 
+        $queryConsulta = Venta::select( 'ventas.id',
+                                        'propiedades.codigo', 
                                         'users.name as comprador',
                                         'propiedades.direccion',
                                         'tipos_propiedad.nombre as tipoPropiedad', 
@@ -123,13 +124,31 @@ class VentasController extends Controller
         ->where('ventas.estado','=',1)
         ->get();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($venta) {
-            return  '<a href="'.url('ventas/anular/'. $venta['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Anular venta</a>';
+            return  '<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Anular venta</a>';
         })->rawColumns(['editar', 'action'])->make(true);
     }
 
     public function getVentas(){
         return view('venta.ventas');
     }
-    public function anularVenta(){
+    public function getAnularVenta($id){
+        $venta = Venta::select(         'ventas.id',
+                                        'propiedades.codigo', 
+                                        'users.name as comprador',
+                                        'propiedades.direccion',
+                                        'tipos_propiedad.nombre as tipoPropiedad', 
+                                        'proyectos.nombre as nombreProyec')
+        ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('users', 'ventas.comprador', '=', 'users.id')
+        ->where('ventas.id','=',$id)
+        ->get();
+        return view('venta.anularVenta',['venta' => $venta[0]]);
+    }
+    public function postAnularVenta($id){
+        $venta = Venta::find($id);
+        $venta->estado = 0;
+        $venta->save();
     }
 }
