@@ -286,10 +286,14 @@ Route::get('usuario/detalles/{id}', [
 Route::get('/verVentas', [
     'middleware' => 'permission:propiedades.editar',
     'uses' => 'VentasController@getVentas'
-])->name('venta.ventas');
+])->name('verVentas');
 
  //ruta para anular las ventas
- Route::get('ventas/anular/{id}', [
+Route::get('ventas/anular/{id}', [
     'middleware' => 'permission:propiedades.editar',     
     'uses' => 'VentasController@getAnularVenta'
+]);
+Route::put('ventas/anular/{id}', [
+    'middleware' => 'permission:propiedades.editar',     
+    'uses' => 'VentasController@postAnularVenta'
 ]);

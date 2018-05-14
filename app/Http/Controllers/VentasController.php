@@ -12,6 +12,8 @@ use App\Arrendatario;
 use App\Venta;
 use App\TiposPropiedad;
 use App\RolesUsers;
+use App\NovedadVenta;
+
 
 use Notification;
 use DataTables;
@@ -146,9 +148,15 @@ class VentasController extends Controller
         ->get();
         return view('venta.anularVenta',['venta' => $venta[0]]);
     }
-    public function postAnularVenta($id){
+    public function postAnularVenta($id, Request $request){
+        $novedad = new NovedadVenta;
+        $novedad->venta_id = $id;
+        $novedad->novedad = $request->input('novedades');
+        $novedad->quien_registra_id = Auth::id();
+        $novedad->save();
         $venta = Venta::find($id);
         $venta->estado = 0;
         $venta->save();
+        return redirect('/verVentas');
     }
 }

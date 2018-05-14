@@ -89,13 +89,16 @@
                                     @endcan
 
                                     @can('verPropiedades')
-                                    <li><a href="{{ route('verPropiedades') }}">Consultar</a></li>
+                                    <li><a href="{{ route('verPropiedades') }}">Consultar propiedades</a></li>
                                     @endcan
 
                                     @can('propiedades.cargar')
                                     <li><a href="{{ route('propiedades.cargar') }}">Carga CSV</a></li>
                                     @endcan
 
+                                    @can('verPropiedades')
+                                    <li><a href="{{ route('verVentas') }}">Consultar ventas</a></li>
+                                    @endcan
                                 </ul>
                             </li>
 
