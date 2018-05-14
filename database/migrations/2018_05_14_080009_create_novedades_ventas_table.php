@@ -15,6 +15,9 @@ class CreateNovedadesVentasTable extends Migration
     {
         Schema::create('novedadesVentas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('venta_id');
+            $table->foreign('venta_id')->references('id')->on('ventas');
+            $table->string('novedad');
             $table->timestamps();
         });
     }
