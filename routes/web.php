@@ -299,7 +299,11 @@ Route::put('ventas/anular/{id}', [
 ]);
 
  //ruta para editar las ventas
- Route::get('ventas/editar/{id}', [
+Route::get('ventas/editar/{id}', [
     'middleware' => 'permission:propiedades.editar',     
     'uses' => 'VentasController@getEditarVenta'
+]);
+Route::put('ventas/editar/{id}', [
+    'middleware' => 'permission:propiedades.editar',     
+    'uses' => 'VentasController@postEditarVenta'
 ]);
