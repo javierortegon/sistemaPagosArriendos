@@ -24,6 +24,9 @@ class PropiedadesTableSeeder extends Seeder
         $propiedad->codigo = ('cc01');
         $propiedad->nombre = ('casa 123');
         $propiedad->estado = (1);
+        $propiedad->numero_piso = ('3');
+        $propiedad->area_aproximada = ('100');
+        $propiedad->area__privada_aprox = ('100');
         $propiedad->id_proyecto = 1;
         $propiedad->id_tipoPropiedad = 1;
 		$propiedad->save();

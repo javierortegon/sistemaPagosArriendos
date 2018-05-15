@@ -20,6 +20,9 @@ class CreatePropiedadesTable extends Migration
             $table->string('nombre',150);
             $table->string('codigo',20);
             $table->boolean('estado');
+            $table->string('numero_piso',3);
+            $table->string('area_aproximada');
+            $table->string('area__privada_aprox');
             $table->integer('id_proyecto')->unsigned();
             $table->foreign('id_proyecto')->references('id')->on('proyectos');
             $table->integer('id_tipoPropiedad')->unsigned();
