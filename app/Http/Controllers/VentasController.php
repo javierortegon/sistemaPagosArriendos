@@ -175,7 +175,7 @@ class VentasController extends Controller
         'propiedades.numero_piso','propiedades.codigo as codigoApto', 
         'tipos_propiedad.nombre as tipoPropiNombre',
         'propiedades.area_aproximada','propiedades.area_privada_aprox',
-        '')
+        'users.name')
         ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
