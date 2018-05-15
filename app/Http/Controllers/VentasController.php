@@ -14,6 +14,7 @@ use App\TiposPropiedad;
 use App\RolesUsers;
 use App\NovedadVenta;
 
+use Barryvdh\DomPDF\Facade as PDF;
 
 use Notification;
 use DataTables;
@@ -120,7 +121,6 @@ class VentasController extends Controller
     // Para datatable
 
     public function getDataTableVentas(){
-        
         $queryConsulta = Venta::select( 'ventas.id',
                                         'propiedades.codigo', 
                                         'users.name as comprador',
@@ -141,6 +141,7 @@ class VentasController extends Controller
     public function getVentas(){
         return view('venta.ventas');
     }
+
     public function getAnularVenta($id){
         $venta = Venta::select(         'ventas.id',
                                         'propiedades.codigo', 
@@ -156,6 +157,7 @@ class VentasController extends Controller
         ->get();
         return view('venta.anularVenta',['venta' => $venta[0]]);
     }
+
     public function postAnularVenta($id, Request $request){
         $novedad = new NovedadVenta;
         $novedad->venta_id = $id;
@@ -166,5 +168,13 @@ class VentasController extends Controller
         $venta->estado = 0;
         $venta->save();
         return redirect('/verVentas');
+    }
+
+    public function pdf(){
+        $propiedades = Propiedad::all(); 
+
+        $pdf = PDF::loadView('venta.pdf', compact('propiedades'));
+
+        return $pdf->download('listado.pdf');
     }
 }

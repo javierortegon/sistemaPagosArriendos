@@ -179,6 +179,15 @@ Route::middleware(['auth'])->group(function() {
     	return view('importCsv.chargeCsv', array('origen' => 'usuarios'));
     })->name('importUsers')->middleware('permission:usuarios.cargar');
 
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA LAS VENTAS
+    |
+    */ 
+
+    Route::get('descargar-pdf', 
+        'VentasController@pdf')->name('products.pdf');
+
 });
 
 
