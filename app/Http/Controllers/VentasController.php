@@ -13,6 +13,7 @@ use App\Venta;
 use App\TiposPropiedad;
 use App\RolesUsers;
 use App\NovedadVenta;
+use App\DatosComprador;
 
 
 use Notification;
@@ -134,7 +135,8 @@ class VentasController extends Controller
         ->where('ventas.estado','=',1)
         ->get();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($venta) {
-            return  '<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Anular venta</a>';
+            return  '<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Anular venta</a>'.' '.
+                    '<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar venta</a>';
         })->rawColumns(['editar', 'action'])->make(true);
     }
 
@@ -168,23 +170,65 @@ class VentasController extends Controller
         return redirect('/verVentas');
     }
     public function getEditarVenta($id){
-        $venta = Venta::select( 'propiedades.id as id', 
+        $venta = Venta::select( 'ventas.id as id as id',
+                                'propiedades.id as idPropiedad', 
                                 'propiedades.codigo', 
                                 'propiedades.nombre', 
                                 'propiedades.direccion', 
                                 'propiedades.estado', 
                                 'proyectos.nombre as nombreProyec',
                                 'tipos_propiedad.nombre as tipo',
-                                'tipos_propiedad.valor as valor')
+                                'tipos_propiedad.valor as valor',
+                                'users.name as nombreComprador1',
+                                'users.telefono as telefonoComprador1')
         ->join('propiedades','ventas.propiedad','=','propiedades.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('users', 'ventas.comprador', '=', 'users.id')
         ->where([   ['ventas.id', '=', $id],
                     ['ventas.estado', '=', '1']
                     ])
         ->get();
         return view('propiedad.completarVenta', ['propiedad' => $venta]);    
     }
-    public function postEditarVenta($id){
+    public function postEditarVenta($id, Request $request){
+
+        $idComprador = Venta::find($id);
+
+        $comprador = User::find($idComprador->comprador);
+        $comprador->name = $request->name;
+        $comprador->email = $request->email;
+        $comprador->password = bcrypt($request->documento);
+        $comprador->documento = $request->documento;
+        $comprador->telefono = $request->telefono;
+        $comprador->direccion = $request->direccion;
+        $comprador->estado = 1;
+        $comprador->save();
+        
+        $detallesAll = DatosComprador::where('id_usuario','=',$idComprador->comprador)->get();
+
+
+        if(count($detallesAll) == 0){
+            $detalles = new DatosComprador;
+        } else{
+            $detalles = $detallesAll[0];
+        }
+        
+        $detalles->direccion_correspondencia = $request->direccion;
+        $detalles->barrio = $request->barrio;
+        $detalles->ciudad = $request->ciudad;
+        $detalles->estado_civil = $request->estado_civil;
+        $detalles->tipo_representacion = $request->tipo_representacion;
+        $detalles->ocupacion = $request->ocupacion;
+        $detalles->cargo = $request->cargo;
+        $detalles->empresa = $request->empresa;
+        $detalles->telefono = $request->telefono;
+        $detalles->tipo_vinculacion = $request->tipo_vinculacion;
+        $detalles->tipo_contrato = $request->tipo_contrato;
+        $detalles->encuesta = $request->encuesta;
+        $detalles->id_usuario = $idComprador->comprador;
+
+        $detalles->save();
+        
     }
 }

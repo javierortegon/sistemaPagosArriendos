@@ -19,6 +19,7 @@
 
                             @else
                                 <form class="form-horizontal"  method="POST" action="{{  url('ventas/editar').'/'.$propieda['id'] }}">
+                                    <input type="hidden" name="_method" value="PUT">
                                     {{ csrf_field() }}
                                     <div id="datosPropiedad">
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -71,7 +72,7 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
-                                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                                <input id="name" type="text" class="form-control" name="name" value="{{ $propieda['nombreComprador1'] }}" required autofocus>
                                                 @if ($errors->has('name'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('name') }}</strong>
@@ -99,7 +100,7 @@
                                         <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                                             <label for="telefono" class="col-md-4 control-label">Teléfono</label>
                                             <div class="col-md-6">
-                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ old('telefono') }}" required>
+                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ $propieda['telefonoComprador1'] }}" required>
                                                 @if ($errors->has('telefono'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('telefono') }}</strong>
