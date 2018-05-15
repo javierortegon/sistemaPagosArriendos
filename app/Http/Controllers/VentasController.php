@@ -15,6 +15,7 @@ use App\RolesUsers;
 use App\NovedadVenta;
 use App\DatosComprador;
 
+use Barryvdh\DomPDF\Facade as PDF;
 
 use Notification;
 use DataTables;
@@ -121,7 +122,6 @@ class VentasController extends Controller
     // Para datatable
 
     public function getDataTableVentas(){
-        
         $queryConsulta = Venta::select( 'ventas.id',
                                         'propiedades.codigo', 
                                         'users.name as comprador',
@@ -143,6 +143,7 @@ class VentasController extends Controller
     public function getVentas(){
         return view('venta.ventas');
     }
+
     public function getAnularVenta($id){
         $venta = Venta::select(         'ventas.id',
                                         'propiedades.codigo', 
@@ -158,6 +159,7 @@ class VentasController extends Controller
         ->get();
         return view('venta.anularVenta',['venta' => $venta[0]]);
     }
+
     public function postAnularVenta($id, Request $request){
         $novedad = new NovedadVenta;
         $novedad->venta_id = $id;
@@ -169,6 +171,26 @@ class VentasController extends Controller
         $venta->save();
         return redirect('/verVentas');
     }
+
+    public function pdf(){
+        $venta = Venta::select('proyectos.nombre as proyectoNombre',
+        'propiedades.numero_piso','propiedades.codigo as codigoApto', 
+        'tipos_propiedad.nombre as tipoPropiNombre',
+        'propiedades.area_aproximada','propiedades.area_privada_aprox',
+        'users.name')
+        ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('users', 'ventas.comprador', '=', 'users.id')
+        ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
+        //->where('ventas.id','=',$id)
+        ->get(); 
+
+        $pdf = PDF::loadView('venta.pdf', compact('venta'));
+
+        return $pdf->download('listado.pdf');
+    }
+
     public function getEditarVenta($id){
         $venta = Venta::select( 'ventas.id as id as id',
                                 'propiedades.id as idPropiedad', 
@@ -191,6 +213,7 @@ class VentasController extends Controller
         ->get();
         return view('propiedad.completarVenta', ['propiedad' => $venta]);    
     }
+
     public function postEditarVenta($id, Request $request){
 
         $idComprador = Venta::find($id);
