@@ -21,8 +21,8 @@
                                 <form class="form-horizontal"  method="POST" action="{{  url('propiedad/vender').'/'.$propieda['id'] }}">
                                     {{ csrf_field() }}
                                     <div id="datosPropiedad">
-                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                            <label class="col-md-4 control-label">DATOS DE LA PROPIEDAD</label>
+                                        <div class="panel-heading form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                            <label class="col-md-4 control-label panel">DATOS DE LA PROPIEDAD</label>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

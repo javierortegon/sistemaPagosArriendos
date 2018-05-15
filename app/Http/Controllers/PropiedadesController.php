@@ -100,10 +100,9 @@ class PropiedadesController extends Controller
         
         $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
          'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
-         'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado')
-        ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
+         'proyectos.nombre as nombreProyec')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
-        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')        
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id') 
         ->get();
         return \DataTables::of($queryConsulta)->addColumn('estadoString', function ($propiedad) {
             $estado = "";
@@ -115,17 +114,25 @@ class PropiedadesController extends Controller
             return $estado;
             
         })->addColumn('estadoVenta', function ($propiedad) {
-            $estadoVenta = "";
-            if($propiedad->ventaEstado != 1){
-                $estadoVenta = "Disponible";
-            }else{
-                $estadoVenta = "Vendida";
+            $ventas = Venta::where('ventas.propiedad', '=', $propiedad->id)->get();
+            $estadoVenta = "Disponible";
+            
+            foreach($ventas as $venta){
+                if($venta->estado == 1){
+                    $estadoVenta = "Vendida";
+                }
             }
-          
             return $estadoVenta;
             
         })->addColumn('editar', function ($propiedad) {
-            if($propiedad->ventaEstado != 1){
+            $ventas = Venta::select('ventas.estado')->where('ventas.propiedad', '=', $propiedad->id)->get();
+            $ventaEstado = 0;
+            foreach($ventas as $venta){
+                if($venta->estado == 1){
+                    $ventaEstado = 1;
+                }
+            }
+            if($ventaEstado != 1){
                 return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
                         '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
                         '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
@@ -140,7 +147,7 @@ class PropiedadesController extends Controller
     }
 
     public function getDetallesPropiedad($id){
-        $propiedad = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
+        $propiedades = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
          'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
          'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado', 'users.name as nombreComprador', 'users.email as correoComprador')
         ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
@@ -149,7 +156,9 @@ class PropiedadesController extends Controller
         ->leftJoin('users', 'ventas.comprador', '=', 'users.id')
         ->where('propiedades.id', '=', $id)
         ->get();
+
+        $propiedad = $propiedades[count($propiedades)-1];
         
-        return view ('propiedad.detallesPropiedad', ['propiedad' => $propiedad[0] ]);
+        return view ('propiedad.detallesPropiedad', ['propiedad' => $propiedad ]);
     }
 }
