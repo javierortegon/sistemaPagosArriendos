@@ -188,4 +188,26 @@ class VentasController extends Controller
 
         return $pdf->download('listado.pdf');
     }
+
+    public function getEditarVenta($id){
+        $venta = Venta::select( 'propiedades.id as id', 
+                                'propiedades.codigo', 
+                                'propiedades.nombre', 
+                                'propiedades.direccion', 
+                                'propiedades.estado', 
+                                'proyectos.nombre as nombreProyec',
+                                'tipos_propiedad.nombre as tipo',
+                                'tipos_propiedad.valor as valor')
+        ->join('propiedades','ventas.propiedad','=','propiedades.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->where([   ['ventas.id', '=', $id],
+                    ['ventas.estado', '=', '1']
+                    ])
+        ->get();
+        return view('propiedad.completarVenta', ['propiedad' => $venta]);    
+    }
+
+    public function postEditarVenta($id){
+    }
 }
