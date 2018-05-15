@@ -171,9 +171,20 @@ class VentasController extends Controller
     }
 
     public function pdf(){
-        $propiedades = Propiedad::all(); 
+        $venta = Venta::select('proyectos.nombre as proyectoNombre',
+        'propiedades.numero_piso','propiedades.codigo as codigoApto', 
+        'tipos_propiedad.nombre as tipoPropiNombre',
+        'propiedades.area_aproximada','propiedades.area_privada_aprox',
+        '')
+        ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('users', 'ventas.comprador', '=', 'users.id')
+        ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
+        //->where('ventas.id','=',$id)
+        ->get(); 
 
-        $pdf = PDF::loadView('venta.pdf', compact('propiedades'));
+        $pdf = PDF::loadView('venta.pdf', compact('venta'));
 
         return $pdf->download('listado.pdf');
     }
