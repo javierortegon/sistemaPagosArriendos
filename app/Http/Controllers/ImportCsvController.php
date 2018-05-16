@@ -112,7 +112,7 @@ class ImportCsvController extends BaseController
                     $propiedad->estado = $rows [$i][$request->input('estado')];
                     $propiedad->numero_piso = $rows [$i][$request->input('numero_piso')];
                     $propiedad->area_aproximada = $rows [$i][$request->input('area_aproximada')];
-                    $propiedad->area__privada_aprox = $rows [$i][$request->input('area__privada_aprox')];
+                    $propiedad->area_privada_aprox = $rows [$i][$request->input('area_privada_aprox')];
                     $propiedad->id_proyecto = $rows [$i][$request->input('id_proyecto')];
                     $propiedad->id_tipoPropiedad = $rows [$i][$request->input('id_tipoPropiedad')];
                     $propiedad->save ();
