@@ -29,6 +29,9 @@ class UsersController extends Controller
         $usuario->name = $request->nombre;
         $usuario->email = $request->email;
         $usuario->estado = $request->estado;
+        $usuario->documento = $request->documento;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
         $usuario->save();
         $notificacion = new Notification;
         $notificacion::success('El usuario se ha actualizo correctamente');
