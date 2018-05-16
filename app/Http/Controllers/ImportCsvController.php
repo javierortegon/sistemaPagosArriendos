@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Rol;
 use App\Propiedad;
-use App\RolesUsuarios;
+use App\RolesUsers;
 
 use Notification;
 
@@ -88,15 +88,16 @@ class ImportCsvController extends BaseController
                     $user->email = $rows [$i][$request->input('email')];
                     $user->password = $rows [$i][$request->input('password')];
                     $user->documento = $rows [$i][$request->input('documento')];
+                    $user->tipo_documento = $rows [$i][$request->input('tipo_documento')];
                     $user->telefono = $rows [$i][$request->input('telefono')];
                     $user->direccion = $rows [$i][$request->input('direccion')];
                     $user->estado = $rows [$i][$request->input('estado')];
                     $user->save ();
 
-                    $rolesUsuarios = new RolesUsuarios;
-                    $rolesUsuarios->user_id = $user->id;
-                    $rolesUsuarios->rol_id = 3;
-                    $rolesUsuarios->save();
+                    $RolesUsers = new RolesUsers;
+                    $RolesUsers->user_id = $user->id;
+                    $RolesUsers->role_id = 3;
+                    $RolesUsers->save();
                 }
                 $notificacion = new Notification;
                 $notificacion::success('Usuarios cargados correctamente');
