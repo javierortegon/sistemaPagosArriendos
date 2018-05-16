@@ -25,7 +25,7 @@ class DatosCompradorTableSeeder extends Seeder
             'tipo_vinculacion' => 'fijo',
             'tipo_contrato' => 'fijo',
             'encuesta' => 'tv',
-            'id_usuario' => 1
+            'id_usuario' => 3
         ]);
 
         $this->command->info('Tabla de datos comprador inicializada');

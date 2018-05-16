@@ -185,7 +185,7 @@ Route::middleware(['auth'])->group(function() {
     |
     */ 
 
-    Route::get('descargar-pdf', 
+    Route::get('ventas/pdf/{id}', 
         'VentasController@pdf')->name('products.pdf');
 
 });
