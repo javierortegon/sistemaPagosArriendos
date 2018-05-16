@@ -284,7 +284,8 @@ class VentasController extends Controller
         $comprador = User::find($venta->comprador);
         $comprador->name = $request->name;
         $comprador->email = $request->email;
-        $comprador->password = bcrypt($request->documento);
+        //$comprador->password = bcrypt($request->documento);
+        $comprador->tipo_documento = $request->tipo_documento;
         $comprador->documento = $request->documento;
         $comprador->telefono = $request->telefono;
         $comprador->direccion = $request->direccion;
@@ -319,7 +320,8 @@ class VentasController extends Controller
                 $comprador2 = new User;
                 $comprador2->name = $request->name2;
                 $comprador2->email = $request->email2;
-                $comprador2->password = bcrypt($request->documento2);
+                //$comprador2->password = bcrypt($request->documento2);
+                $comprador2->tipo_documento = $request->tipo_documento2;
                 $comprador2->documento = $request->documento2;
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;

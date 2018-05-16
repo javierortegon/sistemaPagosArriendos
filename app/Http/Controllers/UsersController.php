@@ -149,7 +149,7 @@ class UsersController extends Controller
                     )
         ->leftJoin('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')        
         ->where([
-            [$campo, 'LIKE', $caracteres.'%'],
+            ['users.'.$campo, 'LIKE', $caracteres.'%'],
             ['role_user.role_id', '=', '3']
         ])
         ->get();

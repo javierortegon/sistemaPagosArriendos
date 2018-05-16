@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('tipo_documento') ? ' has-error' : '' }}">
-                                            <label for="tipo_documento" class="col-md-4 control-label">Documento</label>
+                                            <label for="tipo_documento" class="col-md-4 control-label">Tipo de Documento</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento" name="tipo_documento" class="form-control" value="Pasaporte">
                                                     <option value="Cédula de ciudadania">Cédula de ciudadania</option>
@@ -306,6 +306,8 @@
                                                     <select name="campo" id="campoParaBuscar">
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>
+                                                        <option value="documento">documento</option>
+                                                        <option value="telefono">telefono</option>
                                                     </select> 
                                                     <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autocomplete="off" autofocus>                                           
                                                     <datalist id="usuariosDataList">
@@ -346,7 +348,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('tipo_documento2') ? ' has-error' : '' }}">
-                                            <label for="tipo_documento2" class="col-md-4 control-label">Documento</label>
+                                            <label for="tipo_documento2" class="col-md-4 control-label">Tipo de Documento</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento2" name="tipo_documento2" class="form-control">
                                                     <option value="Cédula de ciudadania">Cédula de ciudadania</option>

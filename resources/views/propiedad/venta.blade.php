@@ -124,6 +124,8 @@
                                                     <select name="campo" id="campoParaBuscar">
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>
+                                                        <option value="documento">documento</option>
+                                                        <option value="telefono">telefono</option>
                                                     </select> 
                                                     <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autocomplete="off" autofocus>                                           
                                                     <datalist id="usuariosDataList">

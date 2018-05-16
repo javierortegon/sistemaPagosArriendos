@@ -125,6 +125,14 @@ $(document).ready(function(){
                 for(var i = 0; i < result.length; i++)
                     options += '<option value="'+result[i].email+'" id="id'+ result[i].id +'" />';
             }
+            else if(campo == 'telefono'){
+                for(var i = 0; i < result.length; i++)
+                    options += '<option value="'+result[i].telefono+'" id="id'+ result[i].id +'" />';
+            }
+            else if(campo == 'documento'){
+                for(var i = 0; i < result.length; i++)
+                    options += '<option value="'+result[i].documento+'" id="id'+ result[i].id +'" />';
+            }
             $('#usuariosDataList').html(options);
         });
     });
@@ -146,6 +154,18 @@ $(document).ready(function(){
         else if(campo == 'email'){
             for(var i = 0; i < jsonUsuarios.length; i++)
                 if(busqueda == jsonUsuarios[i].email){
+                    idUsuario = i;
+                }
+        }
+        else if(campo == 'telefono'){
+            for(var i = 0; i < jsonUsuarios.length; i++)
+                if(busqueda == jsonUsuarios[i].telefono){
+                    idUsuario = i;
+                }
+        }
+        else if(campo == 'documento'){
+            for(var i = 0; i < jsonUsuarios.length; i++)
+                if(busqueda == jsonUsuarios[i].documento){
                     idUsuario = i;
                 }
         }
