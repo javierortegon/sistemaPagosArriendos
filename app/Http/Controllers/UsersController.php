@@ -129,7 +129,25 @@ class UsersController extends Controller
 
         $usuarios = DB::table('users')
         ->join('role_user', 'users.id', '=', 'role_user.user_id')
-        ->select('users.id as id', 'users.name', 'users.email', 'users.documento', 'users.telefono','users.direccion')
+        ->select(   'users.id as id', 
+                    'users.name', 
+                    'users.email', 
+                    'users.documento', 
+                    'users.telefono',
+                    'users.direccion',
+                    'datos_comprador.barrio as barrio',
+                    'datos_comprador.ciudad as ciudad',
+                    'datos_comprador.estado_civil as estado_civil',
+                    'datos_comprador.tipo_representacion as tipo_representacion',
+                    'datos_comprador.ocupacion as ocupacion',
+                    'datos_comprador.cargo as cargo',
+                    'datos_comprador.empresa as empresa',
+                    'datos_comprador.tipo_vinculacion as tipo_vinculacion',
+                    'datos_comprador.tipo_contrato as tipo_contrato',
+                    'datos_comprador.encuesta as encuesta',
+                    'datos_comprador.id_usuario as id_usuario'
+                    )
+        ->leftJoin('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')        
         ->where([
             [$campo, 'LIKE', $caracteres.'%'],
             ['role_user.role_id', '=', '3']

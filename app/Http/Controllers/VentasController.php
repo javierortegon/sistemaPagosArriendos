@@ -227,7 +227,34 @@ class VentasController extends Controller
                     ['ventas.estado', '=', '1']
                     ])
         ->get();
-        return view('propiedad.completarVenta', ['propiedad' => $venta]);    
+        $comprador2 = User::select( 'users.name as name',
+                                    'users.email as email',
+                                    'users.telefono as telefono',
+                                    'users.documento as documento',
+                                    'users.direccion as direccion',
+                                    'datos_comprador.barrio as barrio',
+                                    'datos_comprador.ciudad as ciudad',
+                                    'datos_comprador.estado_civil as estado_civil',
+                                    'datos_comprador.tipo_representacion as tipo_representacion',
+                                    'datos_comprador.ocupacion as ocupacion',
+                                    'datos_comprador.cargo as cargo',
+                                    'datos_comprador.empresa as empresa',
+                                    'datos_comprador.tipo_vinculacion as tipo_vinculacion',
+                                    'datos_comprador.tipo_contrato as tipo_contrato',
+                                    'datos_comprador.encuesta as encuesta',
+                                    'datos_comprador.id_usuario as id_usuario'
+                                    )
+        ->leftJoin('datos_comprador', 'users.id','=','datos_comprador.id_usuario')
+        ->where('users.id','=',$venta[0]->comprador2)
+        ->first();
+
+        $clienteExistenteRegistrado = 0;
+
+        if(count($comprador2) != 0){
+            $clienteExistenteRegistrado = 1;
+        }
+        
+        return view('propiedad.completarVenta', ['propiedad' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado]);    
     }
 
     public function postEditarVenta($id, Request $request){
@@ -265,17 +292,44 @@ class VentasController extends Controller
         
 
         if($request->segundoComprador != ""){
-            $comprador2 = new User;
-            $comprador2->name = $request->name2;
-            $comprador2->email = $request->email2;
-            $comprador2->password = bcrypt($request->documento2);
-            $comprador2->documento = $request->documento2;
-            $comprador2->telefono = $request->telefono2;
-            $comprador2->direccion = $request->direccion2;
-            $comprador2->estado = 1;
-            $comprador2->save();
-
-            $detalles2 = new DatosComprador;
+            $origenUsuario = $request->input('usuarioNoE');
+            if($origenUsuario == "nuevo"){
+                $comprador2 = new User;
+                $comprador2->name = $request->name2;
+                $comprador2->email = $request->email2;
+                $comprador2->password = bcrypt($request->documento2);
+                $comprador2->documento = $request->documento2;
+                $comprador2->telefono = $request->telefono2;
+                $comprador2->direccion = $request->direccion2;
+                $comprador2->estado = 1;
+                $comprador2->save();
+                $idComprador2 = $comprador->id;
+            
+                $rolesUsers = new RolesUsers;
+                $rolesUsers->user_id = $idComprador;
+                $rolesUsers->role_id = 3;
+                $rolesUsers->save();
+                
+                Notification::success('Usuario creado correctamente');
+            } else {
+                $idComprador2 = $request->input('id_usuario2');
+                $comprador2 = User::find($idComprador2);
+                $comprador2->name = $request->name2;
+                $comprador2->email = $request->email2;
+                $comprador2->password = bcrypt($request->documento2);
+                $comprador2->documento = $request->documento2;
+                $comprador2->telefono = $request->telefono2;
+                $comprador2->direccion = $request->direccion2;
+                $comprador2->estado = 1;
+                $comprador2->save();
+            }
+            
+            $detallesAll2 = DatosComprador::where('id_usuario','=',$idComprador2)->get();
+            if(count($detallesAll2) == 0){
+                $detalles2 = new DatosComprador;
+            } else{
+                $detalles2 = $detallesAll2[0];
+            }
             $detalles2->direccion_correspondencia = $request->direccion2;
             $detalles2->barrio = $request->barrio2;
             $detalles2->ciudad = $request->ciudad2;
@@ -288,7 +342,7 @@ class VentasController extends Controller
             $detalles2->tipo_vinculacion = $request->tipo_vinculacion2;
             $detalles2->tipo_contrato = $request->tipo_contrato2;
             $detalles2->encuesta = $request->encuesta2;
-            $detalles2->id_usuario = $idComprador->comprador2;
+            $detalles2->id_usuario = $idComprador2;
 
             $detalles2->save();
         }

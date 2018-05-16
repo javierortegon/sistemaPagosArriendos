@@ -251,21 +251,64 @@
                                     <div id="datosUsuario2" hidden>
                                         <div class="col-md-4">
                                         </div>
-                                        <div class="col-md-6">
-                                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" checked>
-                                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
-                                                Usuario nuevo
-                                            </label>
-                                            <br />
-                                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente">
-                                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
-                                                Usuario existente
-                                            </label>
+                                        @if($clienteExistenteRegistrado==0)
+                                            <div class="col-md-6">
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" checked>
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
+                                                    Usuario nuevo
+                                                </label>
+                                                <br />
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente">
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
+                                                    Usuario existente
+                                                </label>
+                                            </div>
+                                        @else
+                                            <div class="col-md-6">
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" >
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
+                                                    Usuario nuevo
+                                                </label>
+                                                <br />
+                                                <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente" checked>
+                                                <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
+                                                    Usuario existente
+                                                </label>
+                                            </div>
+                                        @endif
+
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <div id = "divBusquedaUsuarioExistente" hidden>
+                                            <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                                <label class="col-md-4 control-label">Buscar usuario:</label>
+                                                <div class="col-md-6">
+                                                    <select name="campo" id="campoParaBuscar">
+                                                        <option value="name">name</option>
+                                                        <option value="email">email</option>
+                                                    </select> 
+                                                    <input list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autocomplete="off" autofocus>                                           
+                                                    <datalist id="usuariosDataList">
+                                                    </datalist>
+                                                    <br />
+                                                    <br />
+                                                    <button type="button" class="btn btn-warning" id="btnSeleccionUsuario">Seleccionar Usuario</button>  
+                                                </div>
+                                            </div>
+                                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">                                            
+                                                <label class="col-md-4 control-label">Id usuario seleccionado:</label>
+                                                <div class="col-md-6">
+                                                    <input id="id_usuario2" type="text" style="border:none" class="form-control" name="id_usuario2" value="{{ $comprador2['id_usuario'] }}">
+                                                </div>
+                                            </div>
                                         </div>
+
                                         <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">
                                             <label for="name2" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
-                                                <input id="name2" type="text" class="form-control" name="name2" value="{{ old('name2') }}"  autofocus>
+                                                <input id="name2" type="text" class="form-control" name="name2" value="{{ $comprador2['name'] }}"  autofocus>
                                                 @if ($errors->has('name2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('name2') }}</strong>
@@ -276,7 +319,7 @@
                                         <div class="form-group{{ $errors->has('email2') ? ' has-error' : '' }}">
                                             <label for="email2" class="col-md-4 control-label">E-Mail</label>
                                             <div class="col-md-6">
-                                                <input id="email2" type="email2" class="form-control" name="email2" value="{{ old('email2') }}" >
+                                                <input id="email2" type="email2" class="form-control" name="email2" value="{{ $comprador2['email'] }}" >
                                                 @if ($errors->has('email2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('email2') }}</strong>
@@ -287,13 +330,13 @@
                                         <div class="form-group{{ $errors->has('documento2') ? ' has-error' : '' }}">
                                                 <label for="documento2" class="col-md-4 control-label">Documento</label>
                                                 <div class="col-md-6">
-                                                    <input id="documento2" type="text" class="form-control" name="documento2" >
+                                                    <input id="documento2" type="text" class="form-control" name="documento2" value="{{ $comprador2['documento'] }}">
                                                 </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('telefono2') ? ' has-error' : '' }}">
                                             <label for="telefono2" class="col-md-4 control-label">Teléfono</label>
                                             <div class="col-md-6">
-                                                <input id="telefono2" type="text" class="form-control" name="telefono2" value="{{ old('telefono2') }}" >
+                                                <input id="telefono2" type="text" class="form-control" name="telefono2" value="{{$comprador2['telefono'] }}" >
                                                 @if ($errors->has('telefono2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('telefono2') }}</strong>
@@ -304,10 +347,10 @@
                                         <div class="form-group{{ $errors->has('direccion2') ? ' has-error' : '' }}">
                                             <label for="direccion2" class="col-md-4 control-label">Dirección</label>
                                             <div class="col-md-6">
-                                                <input id="telefono2" type="text" class="form-control" name="telefono2" value="{{ old('telefono2') }}" >
-                                                @if ($errors->has('telefono2'))
+                                                <input id="direccion2" type="text" class="form-control" name="direccion2" value="{{ $comprador2['direccion'] }}" >
+                                                @if ($errors->has('direccion2'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('telefono2') }}</strong>
+                                                        <strong>{{ $errors->first('direccion2') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -316,7 +359,7 @@
                                         <div class="form-group{{ $errors->has('barrio2') ? ' has-error' : '' }}">
                                             <label for="barrio2" class="col-md-4 control-label">Barrio</label>
                                             <div class="col-md-6">
-                                                <input id="barrio2" type="text" class="form-control" name="barrio2" value="{{ old('barrio2') }}" >
+                                                <input id="barrio2" type="text" class="form-control" name="barrio2" value="{{ $comprador2['barrio'] }}" >
                                                 @if ($errors->has('barrio2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('barrio2') }}</strong>
@@ -328,7 +371,7 @@
                                         <div class="form-group{{ $errors->has('ciudad2') ? ' has-error' : '' }}">
                                             <label for="ciudad2" class="col-md-4 control-label">Ciudad</label>
                                             <div class="col-md-6">
-                                                <input id="ciudad2" type="text" class="form-control" name="ciudad2" value="{{ old('ciudad2') }}" >
+                                                <input id="ciudad2" type="text" class="form-control" name="ciudad2" value="{{ $comprador2['ciudad'] }}" >
                                                 @if ($errors->has('ciudad2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ciudad2') }}</strong>
@@ -340,7 +383,7 @@
                                         <div class="form-group{{ $errors->has('estado_civil2') ? ' has-error' : '' }}">
                                             <label for="estado_civil2" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
-                                                <input id="estado_civil2" type="text" class="form-control" name="estado_civil2" value="{{ old('estado_civil2') }}" >
+                                                <input id="estado_civil2" type="text" class="form-control" name="estado_civil2" value="{{ $comprador2['estado_civil'] }}" >
                                                 @if ($errors->has('estado_civil2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('estado_civil2') }}</strong>
@@ -352,7 +395,7 @@
                                         <div class="form-group{{ $errors->has('tipo_representacion2') ? ' has-error' : '' }}">
                                             <label for="tipo_representacion2" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_representacion2" type="text" class="form-control" name="tipo_representacion2" value="{{ old('tipo_representacion2') }}" >
+                                                <input id="tipo_representacion2" type="text" class="form-control" name="tipo_representacion2" value="{{ $comprador2['tipo_representacion'] }}" >
                                                 @if ($errors->has('tipo_representacion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_representacion2') }}</strong>
@@ -364,7 +407,7 @@
                                         <div class="form-group{{ $errors->has('ocupacion2') ? ' has-error' : '' }}">
                                             <label for="ocupacion2" class="col-md-4 control-label">Ocupación</label>
                                             <div class="col-md-6">
-                                                <input id="ocupacion2" type="text" class="form-control" name="ocupacion2" value="{{ old('ocupacion2') }}" >
+                                                <input id="ocupacion2" type="text" class="form-control" name="ocupacion2" value="{{ $comprador2['ocupacion'] }}" >
                                                 @if ($errors->has('ocupacion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ocupacion2') }}</strong>
@@ -376,7 +419,7 @@
                                         <div class="form-group{{ $errors->has('cargo2') ? ' has-error' : '' }}">
                                             <label for="cargo2" class="col-md-4 control-label">Cargo</label>
                                             <div class="col-md-6">
-                                                <input id="cargo2" type="text" class="form-control" name="cargo2" value="{{ old('cargo2') }}" >
+                                                <input id="cargo2" type="text" class="form-control" name="cargo2" value="{{ $comprador2['cargo'] }}" >
                                                 @if ($errors->has('cargo2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('cargo2') }}</strong>
@@ -388,7 +431,7 @@
                                         <div class="form-group{{ $errors->has('empresa2') ? ' has-error' : '' }}">
                                             <label for="empresa2" class="col-md-4 control-label">Empresa</label>
                                             <div class="col-md-6">
-                                                <input id="empresa2" type="text" class="form-control" name="empresa2" value="{{ old('empresa2') }}" >
+                                                <input id="empresa2" type="text" class="form-control" name="empresa2" value="{{ $comprador2['empresa'] }}" >
                                                 @if ($errors->has('empresa2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('empresa2') }}</strong>
@@ -400,7 +443,7 @@
                                         <div class="form-group{{ $errors->has('tipo_vinculacion2') ? ' has-error' : '' }}">
                                             <label for="tipo_vinculacion2" class="col-md-4 control-label">Tipo de Vinculacion</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_vinculacion2" type="text" class="form-control" name="tipo_vinculacion2" value="{{ old('tipo_vinculacion2') }}" >
+                                                <input id="tipo_vinculacion2" type="text" class="form-control" name="tipo_vinculacion2" value="{{ $comprador2['tipo_vinculacion'] }}" >
                                                 @if ($errors->has('tipo_vinculacion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_vinculacion2') }}</strong>
@@ -412,7 +455,7 @@
                                         <div class="form-group{{ $errors->has('tipo_contrato2') ? ' has-error' : '' }}">
                                             <label for="tipo_contrato2" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_contrato2" type="text" class="form-control" name="tipo_contrato2" value="{{ old('tipo_contrato2') }}" >
+                                                <input id="tipo_contrato2" type="text" class="form-control" name="tipo_contrato2" value="{{ $comprador2['tipo_contrato'] }}" >
                                                 @if ($errors->has('tipo_contrato2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_contrato2') }}</strong>
@@ -424,7 +467,7 @@
                                         <div class="form-group{{ $errors->has('encuesta2') ? ' has-error' : '' }}">
                                             <label for="encuesta2" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
-                                                <input id="encuesta2" type="text" class="form-control" name="encuesta2" value="{{ old('encuesta2') }}" >
+                                                <input id="encuesta2" type="text" class="form-control" name="encuesta2" value="{{ $comprador2['encuesta'] }}" >
                                                 @if ($errors->has('encuesta2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('encuesta2') }}</strong>
@@ -510,4 +553,5 @@
             });
         });
     </script>
+    <script src="{{asset('js/scriptsPersonalizados/completarVenta.js')}}"></script>    
 @endsection
