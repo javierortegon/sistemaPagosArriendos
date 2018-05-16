@@ -15,7 +15,40 @@ $(document).ready(function(){
         event.preventDefault();        
     });
 
+    if(document.getElementById("rbUsuarioExistente").checked){
+        $("#divBusquedaUsuarioExistente").show(400);
+        $("#id_usuario2").attr('required', 'required');
+    }
+    else{
+        $("#divBusquedaUsuarioExistente").hide(400);
+        $('#id_usuario2').removeAttr('required');            
+    }
+    
     //Inicializar campos requeridos
+    if(document.getElementById("segundoComprador").checked){
+        $("#name2").attr('required', 'required');
+        $("#email2").attr('required', 'required');
+        $("#documento2").attr('required', 'required');
+        $("#telefono2").attr('required', 'required');
+        $("#direccion2").attr('required', 'required');
+        $("#datosUsuario2").show(400);
+    } else {
+        $('#id_usuario2').removeAttr('required');                        
+        $('#name2').removeAttr('required'); 
+        $("#email2").removeAttr('required');
+        $("#documento2").removeAttr('required');
+        $("#telefono2").removeAttr('required');
+        $("#direccion2").removeAttr('required');
+        $("#datosUsuario2").hide(400);
+    }
+    if(document.getElementById("rbUsuarioExistente").checked){
+        $("#divBusquedaUsuarioExistente").show(400);
+        $("#id_usuario2").attr('required', 'required');
+    }
+    else{
+        $("#divBusquedaUsuarioExistente").hide(400);
+        $('#id_usuario2').removeAttr('required');            
+    }
     $('.segundoComprador').click(function(){
         if(document.getElementById("segundoComprador").checked){
             $("#name2").attr('required', 'required');
@@ -23,6 +56,15 @@ $(document).ready(function(){
             $("#documento2").attr('required', 'required');
             $("#telefono2").attr('required', 'required');
             $("#direccion2").attr('required', 'required');
+            $("#datosUsuario2").show(400);
+        } else {
+            $('#id_usuario2').removeAttr('required');                        
+            $('#name2').removeAttr('required'); 
+            $("#email2").removeAttr('required');
+            $("#documento2").removeAttr('required');
+            $("#telefono2").removeAttr('required');
+            $("#direccion2").removeAttr('required');
+            $("#datosUsuario2").hide(400);
         }
         if(document.getElementById("rbUsuarioExistente").checked){
             $("#divBusquedaUsuarioExistente").show(400);

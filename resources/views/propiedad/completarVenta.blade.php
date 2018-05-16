@@ -8,8 +8,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Registro Venta</div>
 					<div class="panel-body">
-                        @foreach( $propiedad as $propieda )
-                            @if ($propieda['estado'] == 0)
+                            @if ($venta['estado'] == 0)
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <label class="col-md-4 control-label">
@@ -18,7 +17,7 @@
                                 </div>
 
                             @else
-                                <form class="form-horizontal"  method="POST" action="{{  url('ventas/editar').'/'.$propieda['id'] }}">
+                                <form class="form-horizontal"  method="POST" action="{{  url('ventas/editar').'/'.$venta['id'] }}">
                                     <input type="hidden" name="_method" value="PUT">
                                     {{ csrf_field() }}
                                     <div id="datosPropiedad">
@@ -29,35 +28,35 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Codigo</label>
                                             <div class="col-md-6">
-                                                <label>{{ $propieda['codigo'] }}</label>
+                                                <label>{{ $venta['codigo'] }}</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Nombre:</label>
                                             <div class="col-md-6">
-                                                <label>{{ $propieda['nombre'] }}</label>
+                                                <label>{{ $venta['nombre'] }}</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Dirección:</label>
                                             <div class="col-md-6">
-                                                <label>{{ $propieda['direccion'] }}</label>
+                                                <label>{{ $venta['direccion'] }}</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Proyecto:</label>
                                             <div class="col-md-6">
-                                                <label>{{ $propieda['nombreProyec'] }}</label>
+                                                <label>{{ $venta['nombreProyec'] }}</label>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Tipo:</label>
                                             <div class="col-md-6">
-                                                <label>{{ $propieda['tipo'] }}</label>
+                                                <label>{{ $venta['tipo'] }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +71,7 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
-                                                <input id="name" type="text" class="form-control" name="name" value="{{ $propieda['name'] }}" required autofocus>
+                                                <input id="name" type="text" class="form-control" name="name" value="{{ $venta['name'] }}" required autofocus>
                                                 @if ($errors->has('name'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('name') }}</strong>
@@ -83,7 +82,7 @@
                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                             <label for="email" class="col-md-4 control-label">E-Mail</label>
                                             <div class="col-md-6">
-                                                <input id="email" type="email" class="form-control" name="email" value="{{ $propieda['email'] }}" required>
+                                                <input id="email" type="email" class="form-control" name="email" value="{{ $venta['email'] }}" required>
                                                 @if ($errors->has('email'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -94,13 +93,13 @@
                                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                                                 <label for="documento" class="col-md-4 control-label">Documento</label>
                                                 <div class="col-md-6">
-                                                    <input id="documento" type="text" class="form-control" name="documento" value = "{{$propieda['documento']}}" required>
+                                                    <input id="documento" type="text" class="form-control" name="documento" value = "{{$venta['documento']}}" required>
                                                 </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                                             <label for="telefono" class="col-md-4 control-label">Teléfono</label>
                                             <div class="col-md-6">
-                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ $propieda['telefono'] }}" required>
+                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ $venta['telefono'] }}" required>
                                                 @if ($errors->has('telefono'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('telefono') }}</strong>
@@ -111,7 +110,7 @@
                                         <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
                                             <label for="direccion" class="col-md-4 control-label">Dirección</label>
                                             <div class="col-md-6">
-                                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $propieda['direccion']  }}" required>
+                                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $venta['direccion']  }}" required>
                                                 @if ($errors->has('direccion'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('direccion') }}</strong>
@@ -123,7 +122,7 @@
                                         <div class="form-group{{ $errors->has('barrio') ? ' has-error' : '' }}">
                                             <label for="barrio" class="col-md-4 control-label">Barrio</label>
                                             <div class="col-md-6">
-                                                <input id="barrio" type="text" class="form-control" name="barrio" value="{{ $propieda['barrio']  }}" required>
+                                                <input id="barrio" type="text" class="form-control" name="barrio" value="{{ $venta['barrio']  }}" required>
                                                 @if ($errors->has('barrio'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('barrio') }}</strong>
@@ -135,7 +134,7 @@
                                         <div class="form-group{{ $errors->has('ciudad') ? ' has-error' : '' }}">
                                             <label for="ciudad" class="col-md-4 control-label">Ciudad</label>
                                             <div class="col-md-6">
-                                                <input id="ciudad" type="text" class="form-control" name="ciudad" value="{{ $propieda['ciudad'] }}" required>
+                                                <input id="ciudad" type="text" class="form-control" name="ciudad" value="{{ $venta['ciudad'] }}" required>
                                                 @if ($errors->has('ciudad'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ciudad') }}</strong>
@@ -147,7 +146,7 @@
                                         <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
                                             <label for="estado_civil" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
-                                                <input id="estado_civil" type="text" class="form-control" name="estado_civil" value="{{ $propieda['estado_civil'] }}" required>
+                                                <input id="estado_civil" type="text" class="form-control" name="estado_civil" value="{{ $venta['estado_civil'] }}" required>
                                                 @if ($errors->has('estado_civil'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('estado_civil') }}</strong>
@@ -159,7 +158,7 @@
                                         <div class="form-group{{ $errors->has('tipo_representacion') ? ' has-error' : '' }}">
                                             <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_representacion" type="text" class="form-control" name="tipo_representacion" value="{{ $propieda['tipo_representacion'] }}" required>
+                                                <input id="tipo_representacion" type="text" class="form-control" name="tipo_representacion" value="{{ $venta['tipo_representacion'] }}" required>
                                                 @if ($errors->has('tipo_representacion'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_representacion') }}</strong>
@@ -171,7 +170,7 @@
                                         <div class="form-group{{ $errors->has('ocupacion') ? ' has-error' : '' }}">
                                             <label for="ocupacion" class="col-md-4 control-label">Ocupación</label>
                                             <div class="col-md-6">
-                                                <input id="ocupacion" type="text" class="form-control" name="ocupacion" value="{{ $propieda['ocupacion'] }}" required>
+                                                <input id="ocupacion" type="text" class="form-control" name="ocupacion" value="{{ $venta['ocupacion'] }}" required>
                                                 @if ($errors->has('ocupacion'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ocupacion') }}</strong>
@@ -183,7 +182,7 @@
                                         <div class="form-group{{ $errors->has('cargo') ? ' has-error' : '' }}">
                                             <label for="cargo" class="col-md-4 control-label">Cargo</label>
                                             <div class="col-md-6">
-                                                <input id="cargo" type="text" class="form-control" name="cargo" value="{{ $propieda['cargo'] }}" required>
+                                                <input id="cargo" type="text" class="form-control" name="cargo" value="{{ $venta['cargo'] }}" required>
                                                 @if ($errors->has('cargo'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('cargo') }}</strong>
@@ -195,7 +194,7 @@
                                         <div class="form-group{{ $errors->has('empresa') ? ' has-error' : '' }}">
                                             <label for="empresa" class="col-md-4 control-label">Empresa</label>
                                             <div class="col-md-6">
-                                                <input id="empresa" type="text" class="form-control" name="empresa" value="{{ $propieda['empresa'] }}" required>
+                                                <input id="empresa" type="text" class="form-control" name="empresa" value="{{ $venta['empresa'] }}" required>
                                                 @if ($errors->has('empresa'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('empresa') }}</strong>
@@ -207,7 +206,7 @@
                                         <div class="form-group{{ $errors->has('tipo_vinculacion') ? ' has-error' : '' }}">
                                             <label for="tipo_vinculacion" class="col-md-4 control-label">Tipo de Vinculacion</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_vinculacion" type="text" class="form-control" name="tipo_vinculacion" value="{{ $propieda['tipo_vinculacion'] }}" required>
+                                                <input id="tipo_vinculacion" type="text" class="form-control" name="tipo_vinculacion" value="{{ $venta['tipo_vinculacion'] }}" required>
                                                 @if ($errors->has('tipo_vinculacion'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_vinculacion') }}</strong>
@@ -219,7 +218,7 @@
                                         <div class="form-group{{ $errors->has('tipo_contrato') ? ' has-error' : '' }}">
                                             <label for="tipo_contrato" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_contrato" type="text" class="form-control" name="tipo_contrato" value="{{ $propieda['tipo_contrato'] }}" required>
+                                                <input id="tipo_contrato" type="text" class="form-control" name="tipo_contrato" value="{{ $venta['tipo_contrato'] }}" required>
                                                 @if ($errors->has('tipo_contrato'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_contrato') }}</strong>
@@ -231,7 +230,7 @@
                                         <div class="form-group{{ $errors->has('encuesta') ? ' has-error' : '' }}">
                                             <label for="encuesta" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
-                                                <input id="encuesta" type="text" class="form-control" name="encuesta" value="{{ $propieda['encuesta'] }}" required>
+                                                <input id="encuesta" type="text" class="form-control" name="encuesta" value="{{ $venta['encuesta'] }}" required>
                                                 @if ($errors->has('encuesta'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('encuesta') }}</strong>
@@ -245,9 +244,13 @@
 
                                     <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">
                                         <label class="col-md-4 control-label">DATOS DEL COMPRADOR 2:</label>
-                                        <label class="col-md-6 segundoComprador"><input type="checkbox" class = "segundoComprador" id="segundoComprador" name="segundoComprador" value="segundoComprador"> Ingresar segundo comprador</label>
+                                        @if($clienteExistenteRegistrado==0)                                        
+                                            <label class="col-md-6 segundoComprador"><input type="checkbox" class = "segundoComprador" id="segundoComprador" name="segundoComprador" value="segundoComprador"> Ingresar segundo comprador</label>
+                                        @else
+                                            <label class="col-md-6 segundoComprador"><input type="checkbox" class = "segundoComprador" id="segundoComprador" name="segundoComprador" value="segundoComprador" checked> Ingresar segundo comprador</label>
+                                        @endif
                                     </div>
-
+                                    
                                     <div id="datosUsuario2" hidden>
                                         <div class="col-md-4">
                                         </div>
@@ -496,7 +499,7 @@
                                         <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
                                             <label for="valor" class="col-md-4 control-label">Valor</label>
                                             <div class="col-md-6">
-                                                <input id="valor" type="text" class="form-control" name="valor" value = "{{$propieda['valor']}}" required>
+                                                <input id="valor" type="text" class="form-control" name="valor" value = "{{$venta['valor']}}" required>
                                             </div>
                                         </div>
 
@@ -525,9 +528,7 @@
                                 </form>
 
 
-                            @endif
-
-                        @endforeach        
+                            @endif      
                     </div>
                 </div>
             </div>
@@ -542,16 +543,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
-            $(".segundoComprador").click(function(){
-                if(document.getElementById("segundoComprador").checked){
-                    $("#datosUsuario2").show(400);
-                } else {
-                    $("#datosUsuario2").hide(400);            
-                }
-            });
-        });
-    </script>
     <script src="{{asset('js/scriptsPersonalizados/completarVenta.js')}}"></script>    
 @endsection

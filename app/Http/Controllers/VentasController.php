@@ -211,7 +211,9 @@ class VentasController extends Controller
     }
 
     public function getEditarVenta($id){
-        $venta = Venta::select( 'ventas.id as id as id',
+        $venta = Venta::select( 'ventas.id as id',
+                                'ventas.comprador as comprador',
+                                'ventas.comprador2 as comprador2',
                                 'propiedades.id as idPropiedad', 
                                 'propiedades.codigo', 
                                 'propiedades.nombre', 
@@ -244,7 +246,7 @@ class VentasController extends Controller
         ->where([   ['ventas.id', '=', $id],
                     ['ventas.estado', '=', '1']
                     ])
-        ->get();
+        ->first();
         $comprador2 = User::select( 'users.name as name',
                                     'users.email as email',
                                     'users.telefono as telefono',
@@ -263,7 +265,7 @@ class VentasController extends Controller
                                     'datos_comprador.id_usuario as id_usuario'
                                     )
         ->leftJoin('datos_comprador', 'users.id','=','datos_comprador.id_usuario')
-        ->where('users.id','=',$venta[0]->comprador2)
+        ->where('users.id','=',$venta->comprador2)
         ->first();
 
         $clienteExistenteRegistrado = 0;
@@ -272,12 +274,13 @@ class VentasController extends Controller
             $clienteExistenteRegistrado = 1;
         }
         
-        return view('propiedad.completarVenta', ['propiedad' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado]);    
+
+        return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado]);    
     }
 
     public function postEditarVenta($id, Request $request){
-        $idComprador = Venta::find($id);
-        $comprador = User::find($idComprador->comprador);
+        $venta = Venta::find($id);
+        $comprador = User::find($venta->comprador);
         $comprador->name = $request->name;
         $comprador->email = $request->email;
         $comprador->password = bcrypt($request->documento);
@@ -287,7 +290,7 @@ class VentasController extends Controller
         $comprador->estado = 1;
         $comprador->save();
 
-        $detallesAll = DatosComprador::where('id_usuario','=',$idComprador->comprador)->get();
+        $detallesAll = DatosComprador::where('id_usuario','=',$venta->comprador)->get();
         if(count($detallesAll) == 0){
             $detalles = new DatosComprador;
         } else{
@@ -305,7 +308,7 @@ class VentasController extends Controller
         $detalles->tipo_vinculacion = $request->tipo_vinculacion;
         $detalles->tipo_contrato = $request->tipo_contrato;
         $detalles->encuesta = $request->encuesta;
-        $detalles->id_usuario = $idComprador->comprador;
+        $detalles->id_usuario = $venta->comprador;
         $detalles->save();
         
 
@@ -363,7 +366,12 @@ class VentasController extends Controller
             $detalles2->id_usuario = $idComprador2;
 
             $detalles2->save();
+
+            $venta->comprador2 = $idComprador2;
+            $venta->save();
         }
+
+        return redirect('/verVentas');
         
     }
 }
