@@ -90,6 +90,17 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        <div class="form-group{{ $errors->has('tipo_documento') ? ' has-error' : '' }}">
+                                            <label for="tipo_documento" class="col-md-4 control-label">Documento</label>
+                                            <div class="col-md-6">
+                                                <select id="tipo_documento" name="tipo_documento" class="form-control" value="Pasaporte">
+                                                    <option value="Cédula de ciudadania">Cédula de ciudadania</option>
+                                                    <option value="Cédula de extrangería">Cédula de extrangería</option>
+                                                    <option value="Pasaporte">Pasaporte</option>
+                                                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                                                 <label for="documento" class="col-md-4 control-label">Documento</label>
                                                 <div class="col-md-6">
@@ -146,24 +157,23 @@
                                         <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
                                             <label for="estado_civil" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
-                                                <input id="estado_civil" type="text" class="form-control" name="estado_civil" value="{{ $venta['estado_civil'] }}" required>
-                                                @if ($errors->has('estado_civil'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('estado_civil') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="estado_civil" name="estado_civil" class="form-control">
+                                                    <option value="Casado con sociedad conyugal vigente">Casado con sociedad conyugal vigente</option>
+                                                    <option value="Casado con sociedad conyugal disuelta y liquidada">Casado con sociedad conyugal disuelta y liquidada</option>
+                                                    <option value="Soltero con unión marital de hecho por mas de dos años">Soltero con unión marital de hecho por mas de dos años</option>
+                                                    <option value="Soltero sin unión marital de hecho">Soltero sin unión marital de hecho</option>
+                                                    <option value="Soltero con unión marital de hecho por menos de dos años">Soltero con unión marital de hecho por menos de dos años</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_representacion') ? ' has-error' : '' }}">
                                             <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_representacion" type="text" class="form-control" name="tipo_representacion" value="{{ $venta['tipo_representacion'] }}" required>
-                                                @if ($errors->has('tipo_representacion'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('tipo_representacion') }}</strong>
-                                                    </span>
-                                                @endif
+                                            <select id="tipo_representacion" name="tipo_representacion" class="form-control">
+                                                    <option value="Propia">Propia</option>
+                                                    <option value="Apoderado">Apoderado</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -218,24 +228,29 @@
                                         <div class="form-group{{ $errors->has('tipo_contrato') ? ' has-error' : '' }}">
                                             <label for="tipo_contrato" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_contrato" type="text" class="form-control" name="tipo_contrato" value="{{ $venta['tipo_contrato'] }}" required>
-                                                @if ($errors->has('tipo_contrato'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('tipo_contrato') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="tipo_contrato" name="tipo_contrato" class="form-control">
+                                                    <option value="Indefinido">Indefinido</option>
+                                                    <option value="Término fijo">Término fijo</option>
+                                                    <option value="Prestación de servicios">Prestación de servicios electrónico</option>
+                                                    <option value="Obra labor">Obra labor</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('encuesta') ? ' has-error' : '' }}">
                                             <label for="encuesta" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
-                                                <input id="encuesta" type="text" class="form-control" name="encuesta" value="{{ $venta['encuesta'] }}" required>
-                                                @if ($errors->has('encuesta'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('encuesta') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="encuesta" name="encuesta" class="form-control">
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Whatsapp">Whatsapp</option>
+                                                    <option value="Correo electrónico">Correo electrónico</option>
+                                                    <option value="Referido">Referido</option>
+                                                    <option value="Zona">Zona</option>
+                                                    <option value="Volante">Volante</option>
+                                                    <option value="Metro cuadrado">Metro cuadrado</option>
+                                                    <option value="OLX">OLX</option>
+                                                    <option value="Instagram">Instagram</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -330,6 +345,17 @@
                                                 @endif
                                             </div>
                                         </div>
+                                        <div class="form-group{{ $errors->has('tipo_documento2') ? ' has-error' : '' }}">
+                                            <label for="tipo_documento2" class="col-md-4 control-label">Documento</label>
+                                            <div class="col-md-6">
+                                                <select id="tipo_documento2" name="tipo_documento2" class="form-control">
+                                                    <option value="Cédula de ciudadania">Cédula de ciudadania</option>
+                                                    <option value="Cédula de extrangería">Cédula de extrangería</option>
+                                                    <option value="Pasaporte">Pasaporte</option>
+                                                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group{{ $errors->has('documento2') ? ' has-error' : '' }}">
                                                 <label for="documento2" class="col-md-4 control-label">Documento</label>
                                                 <div class="col-md-6">
@@ -386,24 +412,23 @@
                                         <div class="form-group{{ $errors->has('estado_civil2') ? ' has-error' : '' }}">
                                             <label for="estado_civil2" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
-                                                <input id="estado_civil2" type="text" class="form-control" name="estado_civil2" value="{{ $comprador2['estado_civil'] }}" >
-                                                @if ($errors->has('estado_civil2'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('estado_civil2') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="estado_civil2" name="estado_civil2" class="form-control">
+                                                    <option value="Casado con sociedad conyugal vigente">Casado con sociedad conyugal vigente</option>
+                                                    <option value="Casado con sociedad conyugal disuelta y liquidada">Casado con sociedad conyugal disuelta y liquidada</option>
+                                                    <option value="Soltero con unión marital de hecho por mas de dos años">Soltero con unión marital de hecho por mas de dos años</option>
+                                                    <option value="Soltero sin unión marital de hecho">Soltero sin unión marital de hecho</option>
+                                                    <option value="Soltero con unión marital de hecho por menos de dos años">Soltero con unión marital de hecho por menos de dos años</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_representacion2') ? ' has-error' : '' }}">
                                             <label for="tipo_representacion2" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_representacion2" type="text" class="form-control" name="tipo_representacion2" value="{{ $comprador2['tipo_representacion'] }}" >
-                                                @if ($errors->has('tipo_representacion2'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('tipo_representacion2') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="tipo_representacion2" name="tipo_representacion2" class="form-control">
+                                                    <option value="Propia">Propia</option>
+                                                    <option value="Apoderado">Apoderado</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -458,24 +483,29 @@
                                         <div class="form-group{{ $errors->has('tipo_contrato2') ? ' has-error' : '' }}">
                                             <label for="tipo_contrato2" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_contrato2" type="text" class="form-control" name="tipo_contrato2" value="{{ $comprador2['tipo_contrato'] }}" >
-                                                @if ($errors->has('tipo_contrato2'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('tipo_contrato2') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="tipo_contrato2" name="tipo_contrato2" class="form-control">
+                                                    <option value="Indefinido">Indefinido</option>
+                                                    <option value="Término fijo">Término fijo</option>
+                                                    <option value="Prestación de servicios">Prestación de servicios electrónico</option>
+                                                    <option value="Obra labor">Obra labor</option>
+                                                </select>
                                             </div>
                                         </div>
 
                                         <div class="form-group{{ $errors->has('encuesta2') ? ' has-error' : '' }}">
                                             <label for="encuesta2" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
-                                                <input id="encuesta2" type="text" class="form-control" name="encuesta2" value="{{ $comprador2['encuesta'] }}" >
-                                                @if ($errors->has('encuesta2'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('encuesta2') }}</strong>
-                                                    </span>
-                                                @endif
+                                                <select id="encuesta2" name="encuesta2" class="form-control">
+                                                    <option value="Facebook">Facebook</option>
+                                                    <option value="Whatsapp">Whatsapp</option>
+                                                    <option value="Correo electrónico">Correo electrónico</option>
+                                                    <option value="Referido">Referido</option>
+                                                    <option value="Zona">Zona</option>
+                                                    <option value="Volante">Volante</option>
+                                                    <option value="Metro cuadrado">Metro cuadrado</option>
+                                                    <option value="OLX">OLX</option>
+                                                    <option value="Instagram">Instagram</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -508,8 +538,8 @@
                                             <label for="metodoPago" class="col-md-4 control-label">Metodo Pago</label>
                                             <div class="col-md-6">
                                                 <select id="metodoPago" name="metodoPago" class="form-control">
-                                                    <option value="efectivo">Efectivo</option>
-                                                    <option value="credito">Credito</option>
+                                                    <option value="efectivo">Crédito</option>
+                                                    <option value="credito">Contado</option>
                                                     <option value="otro">Otro</option>
                                                 </select>
                                             </div>

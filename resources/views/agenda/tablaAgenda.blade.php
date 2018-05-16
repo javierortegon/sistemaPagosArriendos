@@ -15,16 +15,13 @@
                         
                     </div>
 					<div class="panel-body table-responsive">
-                        <table class="table datatable" id="tablaPropiedades">
+                        <table class="table datatable" id="tablaAgenda">
                             <thead>
                                 <tr>
-                                    <th>Usuario comprador</th>
-                                    <th>Teléfono comprador</th>
-                                    <th>Codigo</th>
-                                    <th>Direccion</th>
-                                    <th>Tipo de propiedad</th>
-                                    <th>Proyecto</th>
-                                    <th></th>
+                                    <th>Cita</th>
+                                    <th>Fecha</th>
+                                    <th>Venta</th>
+                                    <th>Usuario</th>
                                 </tr>
                             </thead>
                             
@@ -50,15 +47,12 @@ $(document).ready(function() {
     $('.datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{ route('ventas/getdatatable') }}',
+        ajax: '{{ route('agenda/getdatatable') }}',
         columns: [
-            {data: 'comprador', name: 'comprador'},
-            {data: 'telefono', name: 'telefono'},
-            {data: 'codigo', name: 'codigo'},
-            {data: 'direccion', name: 'direccion'},
-            {data: 'nombreProyec', name: 'nombreProyec'},
-            {data: 'tipoPropiedad', name: 'tipoPropiedad'},
-            {data: 'editar', name: 'editar', orderable: false, searchable: false},
+            {data: 'event_name', name: 'event_name'},
+            {data: 'start_date', name: 'start_date'},
+            {data: 'venta', name: 'venta'},
+            {data: 'cliente', name: 'cliente'},
         ],
         pageLenght: 5,
     });

@@ -316,3 +316,14 @@ Route::put('ventas/editar/{id}', [
     'middleware' => 'permission:propiedades.editar',     
     'uses' => 'VentasController@postEditarVenta'
 ]);
+
+//calendario
+
+
+Route::get('agenda', 'AgendaController@index')->name('agenda.index');
+Route::post('agenda', 'AgendaController@addEvent')->name('agenda.add');
+
+Route::get('agenda/getdatatable', 'AgendaController@getDataTableAgenda')->name('agenda/getdatatable');
+Route::get('/verAgenda', [
+    'uses' => 'AgendaController@getAgenda'
+])->name('verAgenda');

@@ -14,6 +14,7 @@ use App\TiposPropiedad;
 use App\RolesUsers;
 use App\NovedadVenta;
 use App\DatosComprador;
+use App\Agenda;
 
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -324,7 +325,7 @@ class VentasController extends Controller
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
                 $comprador2->save();
-                $idComprador2 = $comprador->id;
+                $idComprador2 = $comprador2->id;
             
                 $rolesUsers = new RolesUsers;
                 $rolesUsers->user_id = $idComprador;
@@ -369,6 +370,14 @@ class VentasController extends Controller
 
             $venta->comprador2 = $idComprador2;
             $venta->save();
+
+            $cita = new Agenda;
+            $cita->cliente = $comprador->id;
+            $cita->venta = $id;
+            $cita->event_name = 'Cita con '.$comprador->name.' ('.$comprador->telefono.')';
+            $cita->start_date = $request->cita;
+            $cita->end_date = $request->cita;
+            $cita->save();
         }
 
         return redirect('/verVentas');

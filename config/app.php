@@ -168,6 +168,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -235,6 +236,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
     ],
 
 ];

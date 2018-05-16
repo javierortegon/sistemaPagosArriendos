@@ -99,6 +99,10 @@
                                     @can('verPropiedades')
                                     <li><a href="{{ route('verVentas') }}">Consultar ventas</a></li>
                                     @endcan
+
+                                    @can('verPropiedades')
+                                    <li><a href="{{ route('verAgenda') }}">Ver agenda</a></li>
+                                    @endcan
                                 </ul>
                             </li>
 
