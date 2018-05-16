@@ -136,6 +136,7 @@ class VentasController extends Controller
         ->get();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($venta) {
             return  '<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Anular venta</a>'.' '.
+                    '<a href="'.url('ventas/pdf/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Imprimir pdf</a>'.' '.
                     '<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar venta</a>';
         })->rawColumns(['editar', 'action'])->make(true);
     }
@@ -172,21 +173,38 @@ class VentasController extends Controller
         return redirect('/verVentas');
     }
 
-    public function pdf(){
+    public function pdf($id){
         $venta = Venta::select('proyectos.nombre as proyectoNombre',
         'propiedades.numero_piso','propiedades.codigo as codigoApto', 
         'tipos_propiedad.nombre as tipoPropiNombre',
         'propiedades.area_aproximada','propiedades.area_privada_aprox',
-        'users.name')
+        'users.name','users.documento','datos_comprador.barrio',
+        'datos_comprador.ciudad', 'users.telefono', 'users.email', 
+        'datos_comprador.estado_civil', 'datos_comprador.tipo_representacion',
+        'datos_comprador.ocupacion', 'datos_comprador.cargo', 'datos_comprador.empresa',
+        'datos_comprador.telefono as telefonoEmpresa', 'datos_comprador.tipo_vinculacion',
+        'datos_comprador.tipo_contrato', 'datos_comprador.encuesta')
         ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
         ->join('users', 'ventas.comprador', '=', 'users.id')
         ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
-        //->where('ventas.id','=',$id)
-        ->get(); 
+        ->where('ventas.id','=',$id)
+        ->get();
+        
+        $datosSegunCompra = Venta::select(
+        'users.name','users.documento','datos_comprador.barrio',
+        'datos_comprador.ciudad', 'users.telefono', 'users.email', 
+        'datos_comprador.estado_civil', 'datos_comprador.tipo_representacion',
+        'datos_comprador.ocupacion', 'datos_comprador.cargo', 'datos_comprador.empresa',
+        'datos_comprador.telefono as telefonoEmpresa', 'datos_comprador.tipo_vinculacion',
+        'datos_comprador.tipo_contrato', 'datos_comprador.encuesta')
+        ->join('users', 'ventas.comprador2', '=', 'users.id')
+        ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
+        ->where('ventas.id','=',$id)
+        ->get();
 
-        $pdf = PDF::loadView('venta.pdf', compact('venta'));
+        $pdf = PDF::loadView('venta.pdf', compact('venta','datosSegunCompra'));
 
         return $pdf->download('listado.pdf');
     }
