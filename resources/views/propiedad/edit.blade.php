@@ -35,6 +35,27 @@
 							</div>
 
 							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="numeroPiso" class="col-md-4 control-label">Numero de Piso</label>
+								<div class="col-md-6">
+									<input type="number" name="numeroPiso" id="numeroPiso" class="form-control" value="{{ $propiedad['numero_piso'] }}" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="areaArquitec" class="col-md-4 control-label">Área Arquitectónica Aprox (M2)</label>
+								<div class="col-md-6">
+									<input type="number" name="areaArquitec" id="areaArquitec" class="form-control" value="{{ $propiedad['area_aproximada'] }}" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+								<label for="AreaPrivaApro" class="col-md-4 control-label">Área Privada Aprox (M2)</label>
+								<div class="col-md-6">
+									<input type="number" name="AreaPrivaApro" id="AreaPrivaApro" class="form-control" value="{{ $propiedad['area_privada_aprox'] }}" required>
+								</div>
+							</div>
+
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 								<label for="descripcion" class="col-md-4 control-label">Descripcion</label>
 								<div class="col-md-6">
 									<textarea type="textarea" name="descripcion" id="descripcion" class="form-control" required>{{ $propiedad['descripcion'] }}</textarea>

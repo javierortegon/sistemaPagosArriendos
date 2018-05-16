@@ -17,6 +17,14 @@
                         <div class="col-md-6">{{ $propiedad['nombre'] }}</div>
                         <div class="col-md-4"><b>Direccion:</b></div>
                         <div class="col-md-6">{{ $propiedad['direccion'] }}</div>
+
+                        <div class="col-md-4"><b>Numero de Piso:</b></div>
+                        <div class="col-md-6">{{ $propiedad['numero_piso'] }}</div>
+                        <div class="col-md-4"><b>Área Arquitectónica Aprox (M2):</b></div>
+                        <div class="col-md-6">{{ $propiedad['area_aproximada'] }}</div>
+                        <div class="col-md-4"><b>Área Privada Aprox (M2):</b></div>
+                        <div class="col-md-6">{{ $propiedad['area_privada_aprox'] }}</div>
+
                         <div class="col-md-4"><b>Proyecto:</b></div>
                         <div class="col-md-6">{{ $propiedad['nombreProyec'] }}</div>
                     </div>

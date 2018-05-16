@@ -33,6 +33,9 @@ class PropiedadesController extends Controller
         $propiedad->descripcion = $request->descripcion;
         $propiedad->codigo = $request->codigo;
         $propiedad->nombre = $request->nombre;
+        $propiedad->numero_piso = $request->numeroPiso;
+        $propiedad->area_aproximada = $request->areaArquitec;
+        $propiedad->area_privada_aprox = $request->AreaPrivaApro;
         $propiedad->estado = 1;
         $propiedad->id_proyecto = $request->proyecto;
         $propiedad->id_tipoPropiedad = $request->tipoPropiedad;
@@ -77,6 +80,9 @@ class PropiedadesController extends Controller
         $propiedad->descripcion = $request->descripcion;
         $propiedad->codigo = $request->codigo;
         $propiedad->nombre = $request->nombre;
+        $propiedad->numero_piso = $request->numeroPiso;
+        $propiedad->area_aproximada = $request->areaArquitec;
+        $propiedad->area_privada_aprox = $request->AreaPrivaApro;
         $propiedad->estado = $request->estado;
         $propiedad->id_proyecto = $request->proyecto;
         $propiedad->save();
@@ -149,7 +155,8 @@ class PropiedadesController extends Controller
     public function getDetallesPropiedad($id){
         $propiedades = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
          'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
-         'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado', 'users.name as nombreComprador', 'users.email as correoComprador')
+         'proyectos.nombre as nombreProyec', 'ventas.estado as ventaEstado', 'users.name as nombreComprador', 
+         'users.email as correoComprador', 'propiedades.numero_piso', 'propiedades.area_aproximada', 'propiedades.area_privada_aprox')
         ->leftJoin('ventas', 'propiedades.id', '=', 'ventas.propiedad')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
         ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
