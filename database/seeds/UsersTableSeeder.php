@@ -21,8 +21,8 @@ class UsersTableSeeder extends Seeder
 		    'name' => 'admin',
 		    'email' => 'admin@admin.com',
             'password' => bcrypt('admin123'),
-            'documento' => '888654',
-            'telefono' => '432423432',
+            'documento' => '8886541',
+            'telefono' => '43242343',
             'direccion' => 'carrera 24 # 4',
             'estado' => 1
         ]);
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
 		    'name' => 'vendedor',
 		    'email' => 'vendedor@vendedor.com',
             'password' => bcrypt('vendedor123'),
-            'documento' => '888654',
+            'documento' => '8886542',
             'telefono' => '432423432',
             'direccion' => 'carrera 24 # 4',
             'estado' => 1
@@ -41,8 +41,8 @@ class UsersTableSeeder extends Seeder
 		    'name' => 'cliente',
 		    'email' => 'cliente@cliente.com',
             'password' => bcrypt('cliente123'),
-            'documento' => '888654',
-            'telefono' => '432423432',
+            'documento' => '8886543',
+            'telefono' => '432423433',
             'direccion' => 'carrera 24 # 4',
             'estado' => 1
         ]);

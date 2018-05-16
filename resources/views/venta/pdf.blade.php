@@ -1,4 +1,4 @@
-<img style="width: 100%;margin-top:-60px;" src="{{{ asset('img/head_pdf.png') }}}">
+<img style="width: 100%;margin-top:-48px;" src="{{{ asset('img/head_pdf.png') }}}">
 @foreach($venta as $ventaData)
     <div style="text-align: center">
         <p>
