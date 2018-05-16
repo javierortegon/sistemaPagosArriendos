@@ -15,9 +15,9 @@ class CreatePropiedadesTable extends Migration
     {
         Schema::create('propiedades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('direccion',50);
-            $table->string('descripcion',140);
-            $table->string('nombre',150);
+            $table->string('direccion',50)->nullable();
+            $table->string('descripcion',140)->nullable();
+            $table->string('nombre',150)->nullable();
             $table->string('codigo',20);
             $table->boolean('estado');
             $table->string('numero_piso',3);

@@ -17,7 +17,7 @@ class CreateProyectosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('direccion');
-            $table->integer('numero_de_pisos');
+            $table->integer('numero_de_pisos')->nullable();
             $table->integer('numero_de_apartamentos');
             $table->timestamps();
         });

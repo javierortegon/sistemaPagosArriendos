@@ -19,6 +19,8 @@
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Mail</th>
+                                    <th>Telefono</th>
+                                    <th>Documento</th>
                                     <th>Estado</th>
                                     <th>Roles</th>
                                     <th></th>
@@ -45,6 +47,8 @@ $(document).ready(function() {
         columns: [
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'telefono', name: 'telefono'},
+            {data: 'documento', name: 'documento'},
             {data: 'estadoString', name: 'estadoString'},
             {data: 'roles', name: 'roles'},
             {data: 'editar', name: 'editar', orderable: false, searchable: false},

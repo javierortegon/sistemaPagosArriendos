@@ -18,13 +18,14 @@
                         <table class="table datatable" id="tablaPropiedades">
                             <thead>
                                 <tr>
-                                    <th>Codigo</th>
-                                    <th>Nombre</th>
+                                    <th>Código</th>
+                                    <th>Nombre (Subtipo)</th>
                                     <th>Direccion</th>
                                     <th>Proyecto</th>
-                                    <th>Tipo de propiedad</th>
+                                    <th>Tipo (Torre)</th>
                                     <th>Estado Venta</th>
                                     <th>Estado</th>
+                                    <th>Código</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -60,6 +61,7 @@ $(document).ready(function() {
             {data: 'tipoPropiedad', name: 'tipoPropiedad'},
             {data: 'estadoVenta', name: 'estadoVenta'},
             {data: 'estadoString', name: 'estadoString'},
+            {data: 'codigo', name: 'codigo'},            
             {data: 'editar', name: 'editar', orderable: false, searchable: false},
         ],
         pageLenght: 5,

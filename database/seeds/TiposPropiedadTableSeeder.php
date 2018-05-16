@@ -17,10 +17,17 @@ class TiposPropiedadTableSeeder extends Seeder
 
     public function seedTiposPropiedad(){
         $tipoPropiedad = new TiposPropiedad;
-        $tipoPropiedad->nombre = "Tipo 1";
-        $tipoPropiedad->descripcion = "30 metros cuadrados";
-        $tipoPropiedad->valor = 150000000;
+        $tipoPropiedad->nombre = "Torre 1";
+        $tipoPropiedad->descripcion = "16 Pisos";
+        $tipoPropiedad->valor = 149950000;
         $tipoPropiedad->proyecto = 1;
         $tipoPropiedad->save();
+
+        $tipoPropiedad2 = new TiposPropiedad;
+        $tipoPropiedad2->nombre = "Torre 2";
+        $tipoPropiedad2->descripcion = "32 Pisos";
+        $tipoPropiedad2->valor = 166150000;
+        $tipoPropiedad2->proyecto = 1;
+        $tipoPropiedad2->save();
     }
 }
