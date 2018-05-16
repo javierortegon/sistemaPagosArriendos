@@ -113,6 +113,21 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Permiso para editar cargar csv usuarios.'
         ]);
 
+         //permisos para las ventas 17, 18
+        Permission::create([
+            'name' => 'Generar pdf',
+            'slug' => 'venta.pdf',
+            'description' => 'Permiso para generar pdf venta.'
+        ]);
+
+        Permission::create([
+            'name' => 'Ver Ventas',
+            'slug' => 'verVentas',
+            'description' => 'Permiso para consultar las ventas.'
+        ]);
+
+        
+
         $this->command->info('Tabla de permisos inicializada');
     }
 }

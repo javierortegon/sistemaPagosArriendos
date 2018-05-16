@@ -146,6 +146,12 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'VentasController@postVender'
     ]);
 
+    // Get detalles propiedad
+    Route::get('propiedad/detalles/{id}', [
+        'middleware' => 'permission:propiedades.vender',
+        'uses' => 'PropiedadesController@getDetallesPropiedad'
+    ]);
+
     /*
     |
     |RUTAS PERSONALIZADAS PARA LOS USUARIOS
@@ -179,27 +185,95 @@ Route::middleware(['auth'])->group(function() {
     	return view('importCsv.chargeCsv', array('origen' => 'usuarios'));
     })->name('importUsers')->middleware('permission:usuarios.cargar');
 
+    // Get detalles usuarios
+    Route::get('usuario/detalles/{id}', [
+        'uses' => 'UsersController@getDetallesUsuario'
+    ]);
+
+
     /*
     |
     |RUTAS PERSONALIZADAS PARA LAS VENTAS
     |
     */ 
 
-    Route::get('ventas/pdf/{id}', 
-        'VentasController@pdf')->name('products.pdf');
+    //ruta para generar pdf
+    Route::get('ventas/pdf/{id}', [
+        'uses' => 'VentasController@pdf',
+        'middleware' => 'permission:venta.pdf'
+    ])->name('products.pdf'); 
+
+     //ruta para ver las ventas
+    Route::get('/verVentas', [
+        'middleware' => 'permission:verVentas',
+        'uses' => 'VentasController@getVentas'
+    ])->name('verVentas');
+
+     //ruta para anular las ventas
+    Route::get('ventas/anular/{id}', [
+        'middleware' => 'permission:propiedades.editar',     
+        'uses' => 'VentasController@getAnularVenta'
+    ]);
+
+    Route::put('ventas/anular/{id}', [
+        'middleware' => 'permission:propiedades.editar',     
+        'uses' => 'VentasController@postAnularVenta'
+    ]);
+
+     //ruta para editar las ventas
+    Route::get('ventas/editar/{id}', [
+        'middleware' => 'permission:propiedades.editar',     
+        'uses' => 'VentasController@getEditarVenta'
+    ]);
+
+    Route::put('ventas/editar/{id}', [
+        'middleware' => 'permission:propiedades.editar',     
+        'uses' => 'VentasController@postEditarVenta'
+    ]);
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA CALENDARIO
+    |
+    */ 
+
+    Route::get('agenda', 
+    'AgendaController@index'
+    )->name('agenda.index')->middleware('permission:verVentas');
+
+    Route::post('agenda', 
+    'AgendaController@addEvent'
+    )->name('agenda.add')->middleware('permission:verVentas');
+
+    Route::get('agenda/getdatatable', 
+    'AgendaController@getDataTableAgenda'
+    )->name('agenda/getdatatable')->middleware('permission:verVentas');
+
+    Route::get('/verAgenda', [
+        'uses' => 'AgendaController@getAgenda'
+    ])->name('verAgenda')->middleware('permission:verVentas');
 
 });
 
 
 /*
 |
-|RUTAS PERSONALIZADAS PARA LOS USUARIOS
+|RUTAS GENERADAS POR AUTH USUARIOS
 |
 */
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('auth.login');
 });
+
+/*
+|
+|RUTAS GENERADAS PARA EDITAR ROLES DE USUARIOS USUARIOS
+|
+*/
 
 //ruta para editar los roles de los usuarios
 Route::get('usuario/editRol/{id}', [
@@ -213,117 +287,25 @@ Route::put('usuario/editRol/{id}', [
     'uses' => 'UsersController@putEditRol'
 ]);
 
-
-/*
-|
-|RUTAS PERSONALIZADAS PARA LAS PROPIEDADES
-|
-*/
-
-// ruta asiganar arrendatario
-Route::get('/asignarArrendatario', [
-    'uses' => 'PropiedadesController@addArrendatario',
-    'middleware' => 'auth'
-])->name('asignarArrendatario'); 
-
-// ruta de recepcion del formulario, registro arrendatario
-Route::post('arrendatario/create', [
-    'uses' => 'PropiedadesController@postAddArrendatario',
-    'middleware' => 'auth',
-]);
-
-
-/*
-|
-|RUTAS PERSONALIZADAS PARA LOS ARRENDATARIOS
-|
-*/
-
-//ruta para añadir arrendatario a la propiedad
-Route::get('propiedad/addArrendatario/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ArrendatariosController@getAddArrendatario'
-]);
-
-//ruta para guardar arrendatario a la propiedad
-Route::put('propiedad/addArrendatario/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ArrendatariosController@putAddArrendatario'
-]);
-
-//ruta para editar los datos del arrendatario
-Route::get('propiedad/editArrendatario/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ArrendatariosController@getEdit'
-]);
-
-//ruta para guarda los datos editados del arrendatario
-Route::put('propiedad/editArrendatario/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'ArrendatariosController@putEdit'
-]);
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 //Para AJAX
 
-Route::get('usuarios/selectAjax/{campo}/{caracteres}', 'UsersController@selectAjax')->middleware('auth');
+Route::get('usuarios/selectAjax/{campo}/{caracteres}', 
+'UsersController@selectAjax')->middleware('auth');
 
 
 // Get Data para datatable tanto users como propiedades
-Route::get('usuarios/getdatatable', 'UsersController@getDataTableUsuarios')->name('usuarios/getdatatable');
-Route::get('propiedades/getdatatable', 'PropiedadesController@getDataTablePropiedades')->name('propiedades/getdatatable');
-Route::get('proyectos/getdatatable', 'ProyectosController@getDataTableProyectos')->name('proyectos/getdatatable');
-Route::get('ventas/getdatatable', 'VentasController@getDataTableVentas')->name('ventas/getdatatable');
+Route::get('usuarios/getdatatable', 
+'UsersController@getDataTableUsuarios'
+)->name('usuarios/getdatatable')->middleware('auth');
 
-// Get detalles propiedad
-Route::get('propiedad/detalles/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'PropiedadesController@getDetallesPropiedad'
-]);
+Route::get('propiedades/getdatatable', 
+'PropiedadesController@getDataTablePropiedades'
+)->name('propiedades/getdatatable')->middleware('auth');
 
-// Get detalles usuarios
-Route::get('usuario/detalles/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'UsersController@getDetallesUsuario'
-]);
+Route::get('proyectos/getdatatable', 
+'ProyectosController@getDataTableProyectos'
+)->name('proyectos/getdatatable')->middleware('auth');
 
- //ruta para ver las ventas
-Route::get('/verVentas', [
-    'middleware' => 'permission:propiedades.editar',
-    'uses' => 'VentasController@getVentas'
-])->name('verVentas');
-
- //ruta para anular las ventas
-Route::get('ventas/anular/{id}', [
-    'middleware' => 'permission:propiedades.editar',     
-    'uses' => 'VentasController@getAnularVenta'
-]);
-Route::put('ventas/anular/{id}', [
-    'middleware' => 'permission:propiedades.editar',     
-    'uses' => 'VentasController@postAnularVenta'
-]);
-
- //ruta para editar las ventas
-Route::get('ventas/editar/{id}', [
-    'middleware' => 'permission:propiedades.editar',     
-    'uses' => 'VentasController@getEditarVenta'
-]);
-Route::put('ventas/editar/{id}', [
-    'middleware' => 'permission:propiedades.editar',     
-    'uses' => 'VentasController@postEditarVenta'
-]);
-
-//calendario
-
-
-Route::get('agenda', 'AgendaController@index')->name('agenda.index');
-Route::post('agenda', 'AgendaController@addEvent')->name('agenda.add');
-
-Route::get('agenda/getdatatable', 'AgendaController@getDataTableAgenda')->name('agenda/getdatatable');
-Route::get('/verAgenda', [
-    'uses' => 'AgendaController@getAgenda'
-])->name('verAgenda');
+Route::get('ventas/getdatatable', 
+'VentasController@getDataTableVentas'
+)->name('ventas/getdatatable')->middleware('auth');
