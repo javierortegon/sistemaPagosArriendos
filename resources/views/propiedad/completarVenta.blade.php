@@ -249,6 +249,19 @@
                                     </div>
 
                                     <div id="datosUsuario2" hidden>
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" checked>
+                                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
+                                                Usuario nuevo
+                                            </label>
+                                            <br />
+                                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente">
+                                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
+                                                Usuario existente
+                                            </label>
+                                        </div>
                                         <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">
                                             <label for="name2" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
@@ -438,9 +451,9 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
-                                            <label for="valor" class="col-md-4 control-label">Valor Total</label>
+                                            <label for="valor" class="col-md-4 control-label">Valor</label>
                                             <div class="col-md-6">
-                                                <input id="valor" type="text" class="form-control" name="valor" required>
+                                                <input id="valor" type="text" class="form-control" name="valor" value = "{{$propieda['valor']}}" required>
                                             </div>
                                         </div>
 

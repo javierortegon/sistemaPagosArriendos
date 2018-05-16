@@ -125,6 +125,7 @@ class VentasController extends Controller
         $queryConsulta = Venta::select( 'ventas.id',
                                         'propiedades.codigo', 
                                         'users.name as comprador',
+                                        'users.telefono as telefono',
                                         'propiedades.direccion',
                                         'tipos_propiedad.nombre as tipoPropiedad', 
                                         'proyectos.nombre as nombreProyec')
