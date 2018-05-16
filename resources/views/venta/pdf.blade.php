@@ -211,7 +211,7 @@
                 <td style="width: 50%">
                     Precio de Venta: 
                     <span style="text-decoration: underline;"> 
-                        @if ($ventaData->tipoPropiNombre == "Tipo 1")
+                        @if ($ventaData->tipoPropiNombre == "Torre 1")
                             $149´950.000   
                         @else
                             $166´150.000   
@@ -221,7 +221,7 @@
                 <td style="width: 50%">
                     Separación:
                     <span style="text-decoration: underline;">
-                        @if ($ventaData->tipoPropiNombre == "Tipo 1")
+                        @if ($ventaData->tipoPropiNombre == "Torre 1")
                             $6.000.000 
                         @else
                             $8.000.000    
@@ -233,7 +233,7 @@
                 <td style="width: 50%">
                     Cuota Inicial: 
                     <span style="text-decoration: underline;">
-                        @if ($ventaData->tipoPropiNombre == "Tipo 1")
+                        @if ($ventaData->tipoPropiNombre == "Torre 1")
                             $74´975.000
                         @else
                             $83´075.000     
@@ -243,7 +243,7 @@
                 <td style="width: 50%">
                     Saldo o Valor del Crédito (50%):
                     <span style="text-decoration: underline;">
-                        @if ($ventaData->tipoPropiNombre == "Tipo 1")
+                        @if ($ventaData->tipoPropiNombre == "Torre 1")
                             $74´975.000   
                         @else
                             $83´075.000  

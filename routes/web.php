@@ -241,7 +241,7 @@ Route::middleware(['auth'])->group(function() {
     'AgendaController@index'
     )->name('agenda.index')->middleware('permission:verVentas');
 
-    Route::post('agenda', 
+    Route::post('agenda',   
     'AgendaController@addEvent'
     )->name('agenda.add')->middleware('permission:verVentas');
 
