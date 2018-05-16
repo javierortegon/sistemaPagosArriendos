@@ -1,43 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="col-md-2"></div>	
-		<div class="col-md-8">
-            <form  method="POST" action="{{  url('usuario/edit').'/'.$usuario['id']  }}">
-                    <input type="hidden" name="_method" value="PUT">
-                    {{ csrf_field() }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registro</div>
 
-					<div class="form-group">
-    					<label for="title">Nombre</label>
-    					<input type="text" name="nombre" id="nombre" class="form-control" value="{{ $usuario['name'] }}">
-					</div>
+                <div class="panel-body">
+					<form class="form-horizontal" method="POST" action="{{  url('usuario/edit').'/'.$usuario['id']  }}">
+                        {{ csrf_field() }}
 
-					<div class="form-group">
-    					<label for="title">Email</label>
-    					<input type="text" name="email" id="email" class="form-control" value="{{ $usuario['email'] }}">
-					</div>
-                    
-					<div class="form-group">
-                        <label for="title">Estado</label><br>
-						@if ( $usuario['estado'] == 1)
-							Activo <input type="radio" name="estado" value="1" checked="true"><br>
-							Inactivo <input type="radio" value="0" name="estado"><br>  
-						@else
-							Activo <input type="radio" value="1" name="estado"><br>
-							Inactivo <input type="radio" name="estado" value="0" checked="true"><br> 
-						@endif 
-                    </div>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
-					<div class="form-group text-center">
-						<button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-							Guardar Cambios
-						</button>
-					</div>
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ $usuario['name'] }}" required autofocus>
 
-                    {!!	Notification::showAll()	!!}
-                     
-            </form>
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-		<div>
-		<div class="col-md-2"></div>	
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $usuario['email'] }}" required>
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="documento" class="col-md-4 control-label">Documento</label>
+
+                            <div class="col-md-6">
+                                <input id="documento" type="text" class="form-control" name="documento" value="{{ $usuario['documento'] }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono" class="col-md-4 control-label">Telefono</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="number" class="form-control" name="telefono" value="{{ $usuario['telefono'] }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccion" class="col-md-4 control-label">Direccion</label>
+
+                            <div class="col-md-6">
+                                <input id="direccion" type="text" class="form-control" name="direccion" value="{{ $usuario['direccion'] }}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Contraseña</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password"  required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Registrar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

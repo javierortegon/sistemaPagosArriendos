@@ -19,6 +19,7 @@
                             <thead>
                                 <tr>
                                     <th>Usuario comprador</th>
+                                    <th>Teléfono comprador</th>
                                     <th>Codigo</th>
                                     <th>Direccion</th>
                                     <th>Tipo de propiedad</th>
@@ -52,6 +53,7 @@ $(document).ready(function() {
         ajax: '{{ route('ventas/getdatatable') }}',
         columns: [
             {data: 'comprador', name: 'comprador'},
+            {data: 'telefono', name: 'telefono'},
             {data: 'codigo', name: 'codigo'},
             {data: 'direccion', name: 'direccion'},
             {data: 'nombreProyec', name: 'nombreProyec'},
