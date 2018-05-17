@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Rol;
+use App\RolesUsers;
+
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -56,6 +59,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
+        
     }
 
     /**
@@ -66,7 +70,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $usuario = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'documento' => $data['documento'],
@@ -75,6 +80,13 @@ class RegisterController extends Controller
             'estado' => '0',
             'password' => bcrypt($data['password']),
         ]);
+
+        DB::table('role_user')->insert(
+            ['role_id' => '3', 'user_id' => $usuario->id]
+        );
+
+        return $usuario;
+
     }
 
 
@@ -91,6 +103,7 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
 
         // $this->guard()->login($user);
+
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
