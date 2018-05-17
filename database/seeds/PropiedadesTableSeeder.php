@@ -12,12 +12,11 @@ class PropiedadesTableSeeder extends Seeder
      */
     public function run()
     {
-        //self::seedPropiedades();
+        self::seedPropiedades();
 		$this->command->info('Tabla propiedades inicializada con datos!');
     }
 
     private function seedPropiedades(){
-		$propiedad = new Propiedad;
 		$propiedad = new Propiedad;
         $propiedad->direccion = ('Calle 123');
         $propiedad->descripcion = ('apartemento ');

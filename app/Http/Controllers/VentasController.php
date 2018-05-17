@@ -180,7 +180,7 @@ class VentasController extends Controller
         'propiedades.numero_piso','propiedades.codigo as codigoApto', 
         'tipos_propiedad.nombre as tipoPropiNombre',
         'propiedades.area_aproximada','propiedades.area_privada_aprox',
-        'users.name','users.documento','datos_comprador.barrio',
+        'users.name','users.documento','datos_comprador.barrio', 'datos_comprador.direccion_correspondencia',
         'datos_comprador.ciudad', 'users.telefono', 'users.email', 
         'datos_comprador.estado_civil', 'datos_comprador.tipo_representacion',
         'datos_comprador.ocupacion', 'datos_comprador.cargo', 'datos_comprador.empresa',
@@ -197,7 +197,7 @@ class VentasController extends Controller
         $datosSegunCompra = Venta::select(
         'users.name','users.documento','datos_comprador.barrio',
         'datos_comprador.ciudad', 'users.telefono', 'users.email', 
-        'datos_comprador.estado_civil', 'datos_comprador.tipo_representacion',
+        'datos_comprador.estado_civil', 'datos_comprador.tipo_representacion', 'datos_comprador.direccion_correspondencia',
         'datos_comprador.ocupacion', 'datos_comprador.cargo', 'datos_comprador.empresa',
         'datos_comprador.telefono as telefonoEmpresa', 'datos_comprador.tipo_vinculacion',
         'datos_comprador.tipo_contrato', 'datos_comprador.encuesta')
