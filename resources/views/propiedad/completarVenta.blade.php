@@ -42,7 +42,7 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Dirección:</label>
                                             <div class="col-md-6">
-                                                <label>{{ $venta['direccion'] }}</label>
+                                                <label>{{ $venta['direccionPropiedad'] }}</label>
                                             </div>
                                         </div>
 
@@ -145,7 +145,7 @@
                                         <div class="form-group{{ $errors->has('ciudad') ? ' has-error' : '' }}">
                                             <label for="ciudad" class="col-md-4 control-label">Ciudad</label>
                                             <div class="col-md-6">
-                                                <input id="ciudad" type="text" class="form-control" name="ciudad" value="{{ $venta['ciudad'] }}" required>
+                                                <input id="ciudad" type="text" class="form-control" name="ciudad" value="Bogotá" required>
                                                 @if ($errors->has('ciudad'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ciudad') }}</strong>
@@ -214,7 +214,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_vinculacion') ? ' has-error' : '' }}">
-                                            <label for="tipo_vinculacion" class="col-md-4 control-label">Tipo de Vinculacion</label>
+                                            <label for="tipo_vinculacion" class="col-md-4 control-label">Tiempo de Vinculación</label>
                                             <div class="col-md-6">
                                                 <input id="tipo_vinculacion" type="text" class="form-control" name="tipo_vinculacion" value="{{ $venta['tipo_vinculacion'] }}" required>
                                                 @if ($errors->has('tipo_vinculacion'))
@@ -402,7 +402,7 @@
                                         <div class="form-group{{ $errors->has('ciudad2') ? ' has-error' : '' }}">
                                             <label for="ciudad2" class="col-md-4 control-label">Ciudad</label>
                                             <div class="col-md-6">
-                                                <input id="ciudad2" type="text" class="form-control" name="ciudad2" value="{{ $comprador2['ciudad'] }}" >
+                                                <input id="ciudad2" type="text" class="form-control" name="ciudad2" value="Bogotá" >
                                                 @if ($errors->has('ciudad2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ciudad2') }}</strong>
@@ -471,7 +471,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_vinculacion2') ? ' has-error' : '' }}">
-                                            <label for="tipo_vinculacion2" class="col-md-4 control-label">Tipo de Vinculacion</label>
+                                            <label for="tipo_vinculacion2" class="col-md-4 control-label">Tiempo de Vinculación</label>
                                             <div class="col-md-6">
                                                 <input id="tipo_vinculacion2" type="text" class="form-control" name="tipo_vinculacion2" value="{{ $comprador2['tipo_vinculacion'] }}" >
                                                 @if ($errors->has('tipo_vinculacion2'))

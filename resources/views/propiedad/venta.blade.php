@@ -200,8 +200,8 @@
                                         <label for="metodoPago" class="col-md-4 control-label">Metodo Pago</label>
                                         <div class="col-md-6">
                                             <select id="metodoPago" name="metodoPago" class="form-control">
-                                                <option value="efectivo">Efectivo</option>
                                                 <option value="credito">Credito</option>
+                                                <option value="contado">Contado</option>
                                                 <option value="otro">Otro</option>
                                             </select>
                                         </div>

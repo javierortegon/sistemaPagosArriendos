@@ -80,20 +80,20 @@
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    Propiedad
+                                    Ventas e Inmuebles
                                 </a>
                                 <ul class="dropdown-menu">
 
                                     @can('registroPropiedad')
-                                    <li><a href="{{ route('registroPropiedad') }}">Registrar</a></li>
+                                    <li><a href="{{ route('registroPropiedad') }}">Registrar Inmueble</a></li>
                                     @endcan
 
                                     @can('verPropiedades')
-                                    <li><a href="{{ route('verPropiedades') }}">Consultar propiedades</a></li>
+                                    <li><a href="{{ route('verPropiedades') }}">Consultar y Asignar</a></li>
                                     @endcan
 
                                     @can('propiedades.cargar')
-                                    <li><a href="{{ route('propiedades.cargar') }}">Carga CSV</a></li>
+                                    <li><a href="{{ route('propiedades.cargar') }}">Carga CSV de Inmuebles</a></li>
                                     @endcan
 
                                     @can('verPropiedades')
@@ -113,15 +113,15 @@
                                 <ul class="dropdown-menu">
                                     
                                     @can('usuarios.register')
-                                    <li><a href="{{ route('register') }}">Registrar</a></li>
+                                    <li><a href="{{ route('register') }}">Registrar Usuario</a></li>
                                     @endcan
 
                                     @can('verUsuarios')
-                                    <li><a href="{{ route('verUsuarios') }}">Consultar</a></li>
+                                    <li><a href="{{ route('verUsuarios') }}">Consultar Usuarios</a></li>
                                     @endcan
 
                                     @can('usuarios.cargar')
-                                    <li><a href="{{ route('importUsers') }}">Carga CSV</a></li>
+                                    <li><a href="{{ route('importUsers') }}">Carga CSV de Usuarios</a></li>
                                     @endcan
 
                                 </ul>

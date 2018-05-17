@@ -35,7 +35,7 @@
                                 @endif  
                             </tr>
                             <tr>
-                                <td>Arrendatario</td>
+                                <td>Vendedor</td>
                                 @if ($rol2 == 1)
                                 <td><input type="radio" value="1" name="estadoRol2" checked="true"></td>
                                 <td><input type="radio" name="estadoRol2" value="0"></td>

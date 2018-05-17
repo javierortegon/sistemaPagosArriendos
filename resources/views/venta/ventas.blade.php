@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>Usuario comprador</th>
                                     <th>Teléfono comprador</th>
-                                    <th>Codigo</th>
+                                    <th>Inmueble</th>
                                     <th>Direccion</th>
                                     <th>Tipo de propiedad</th>
                                     <th>Proyecto</th>

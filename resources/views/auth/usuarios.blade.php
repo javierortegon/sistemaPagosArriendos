@@ -5,15 +5,15 @@
 @endsection
 
 @section('content')
-
+<div class = "container">
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             {!!	Notification::showAll()	!!}
 
             <div class="panel panel-default">
 					<div class="panel-heading">Lista de Usuarios</div>
-					<div class="panel-body">
+					<div class="panel-body table-responsive">
                         <table class="table datatable">
                             <thead>
                                 <tr>
@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-2"></div>
     </div>
-    
+</div>
 @stop
 
 @section('scripts')

@@ -18,14 +18,14 @@
                         <table class="table datatable" id="tablaPropiedades">
                             <thead>
                                 <tr>
-                                    <th>Código</th>
+                                    <th>Inmueble</th>
                                     <th>Nombre (Subtipo)</th>
                                     <th>Direccion</th>
                                     <th>Proyecto</th>
                                     <th>Tipo (Torre)</th>
                                     <th>Estado Venta</th>
                                     <th>Estado</th>
-                                    <th>Código</th>
+                                    <th>Inmueble</th>
                                     <th></th>
                                 </tr>
                             </thead>
