@@ -75,7 +75,7 @@ $(document).ready(function(){
         e.preventDefault();
         campo = document.getElementById('campoParaBuscar').value;
         busqueda = document.getElementById('busqueda').value;
-
+        
         url = $('#formDatosAjax').attr("action").replace('FIELD', campo).replace('CHARACTERS', busqueda);
         data = $('#formDatosAjax').serialize();
 

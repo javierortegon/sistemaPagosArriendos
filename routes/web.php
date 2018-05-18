@@ -137,11 +137,14 @@ Route::middleware(['auth'])->group(function() {
 
     //ruta para añadir arrendatario a la propiedad
     Route::get('propiedad/vender/{id}', [
-
         //'middleware' => 'permission:propiedades.vender',
         'middleware' => 'permission:propiedades.editar',
         'uses' => 'VentasController@getVender'
     ])->name('propiedades.vender');
+
+    Route::get('/ventaMultiple', function(){
+    	return view('venta.ventaMultiple');
+    })->name('venta.ventaMultiple')->middleware('permission:propiedades.editar');
 
     //ruta para añadir arrendatario a la propiedad
     Route::post('propiedad/vender/{id}', [
@@ -255,9 +258,7 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'AgendaController@getAgenda'
     ])->name('verAgenda')->middleware('permission:verVentas');
 
-    Route::get('/ventaMultiple', function(){
-    	return view('venta.ventaMultiple');
-    })->name('ventaMultiple')->middleware('permission:verVentas');
+    
 
 });
 

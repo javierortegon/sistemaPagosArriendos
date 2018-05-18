@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('tipo_documento') ? ' has-error' : '' }}">
-                                            <label for="tipo_documento" class="col-md-4 control-label">Tipo de Documento</label>
+                                            <label for="tipo_documento" class="col-md-4 control-label">Tipo de Documento <br />(actual: {{$venta['tipo_documento']}})</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento" name="tipo_documento" class="form-control" value="Pasaporte">
                                                     <option value="">Seleccionar</option>
@@ -156,7 +156,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
-                                            <label for="estado_civil" class="col-md-4 control-label">Estado Civil</label>
+                                            <label for="estado_civil" class="col-md-4 control-label">Estado Civil <br />(actual: {{$venta['estado_civil']}})</label>
                                             <div class="col-md-6">
                                                 <select id="estado_civil" name="estado_civil" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -170,7 +170,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_representacion') ? ' has-error' : '' }}">
-                                            <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación</label>
+                                            <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación <br />(actual: {{$venta['tipo_representacion']}})</label>
                                             <div class="col-md-6">
                                             <select id="tipo_representacion" name="tipo_representacion" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -229,7 +229,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_contrato') ? ' has-error' : '' }}">
-                                            <label for="tipo_contrato" class="col-md-4 control-label">Tipo de Contrato</label>
+                                            <label for="tipo_contrato" class="col-md-4 control-label">Tipo de Contrato <br />(actual: {{$venta['tipo_contrato']}})</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_contrato" name="tipo_contrato" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -242,7 +242,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('encuesta') ? ' has-error' : '' }}">
-                                            <label for="encuesta" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
+                                            <label for="encuesta" class="col-md-4 control-label">¿Cómo se enteró del Proyecto? <br />(actual: {{$venta['encuesta']}})</label>
                                             <div class="col-md-6">
                                                 <select id="encuesta" name="encuesta" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -354,7 +354,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('tipo_documento2') ? ' has-error' : '' }}">
-                                            <label for="tipo_documento2" class="col-md-4 control-label">Tipo de Documento</label>
+                                            <label for="tipo_documento2" class="col-md-4 control-label">Tipo de Documento <br />(actual: {{$comprador2['tipo_documento']}})</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento2" name="tipo_documento2" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -419,7 +419,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('estado_civil2') ? ' has-error' : '' }}">
-                                            <label for="estado_civil2" class="col-md-4 control-label">Estado Civil</label>
+                                            <label for="estado_civil2" class="col-md-4 control-label">Estado Civil <br />(actual: {{$comprador2['estado_civil']}})</label>
                                             <div class="col-md-6">
                                                 <select id="estado_civil2" name="estado_civil2" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -433,7 +433,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_representacion2') ? ' has-error' : '' }}">
-                                            <label for="tipo_representacion2" class="col-md-4 control-label">Tipo de Representación</label>
+                                            <label for="tipo_representacion2" class="col-md-4 control-label">Tipo de Representación <br />(actual: {{$comprador2['tipo_representacion']}})</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_representacion2" name="tipo_representacion2" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -492,7 +492,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('tipo_contrato2') ? ' has-error' : '' }}">
-                                            <label for="tipo_contrato2" class="col-md-4 control-label">Tipo de Contrato</label>
+                                            <label for="tipo_contrato2" class="col-md-4 control-label">Tipo de Contrato <br />(actual: {{$comprador2['tipo_contrato']}})</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_contrato2" name="tipo_contrato2" class="form-control">
                                                     <option value="">Seleccionar</option>
@@ -505,7 +505,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('encuesta2') ? ' has-error' : '' }}">
-                                            <label for="encuesta2" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
+                                            <label for="encuesta2" class="col-md-4 control-label">¿Cómo se enteró del Proyecto? <br />(actual: {{$comprador2['encuesta']}})</label>
                                             <div class="col-md-6">
                                                 <select id="encuesta2" name="encuesta2" class="form-control">
                                                     <option value="">Seleccionar</option>

@@ -64,13 +64,16 @@ $(document).ready(function(){
         }
         
     });
+
+    
+    
     
     //Ajax para busqueda de usuarios existentes
     $('#busqueda').keyup(function(e){
-        e.preventDefault();        
+        e.preventDefault();
+        
         campo = document.getElementById('campoParaBuscar').value;
         busqueda = document.getElementById('busqueda').value;
-
         url = $('#formDatosAjax').attr("action").replace('FIELD', campo).replace('CHARACTERS', busqueda);
         data = $('#formDatosAjax').serialize();
 
@@ -147,6 +150,31 @@ $(document).ready(function(){
             $('#inputUserId').val("");   
         }
         
+    });
+
+    var propActual = 0;
+    $('#btnAddPropiedad').click(function(){
+
+        propActual = propActual +1;
+        propiedades =  $("#propiedades").html();
+        propiedades += '<tr id = "row'+propActual+'">';
+        propiedades += '<td>';
+        propiedades += '<input type="text">';
+        propiedades += '</td>';
+
+        propiedades += '<td>';
+        propiedades += '<button type="button" class = "btn btn-warning">Seleccionar</button>';
+        propiedades += '</td>';
+
+        propiedades += '<td>';
+        propiedades += '<input type="text">';
+        propiedades += '</td>';
+
+        propiedades += '<td>';
+        propiedades += '<button type="button" class = "btn btn-warning">Eliminar</button>';
+        propiedades += '</td>';
+        propiedades += '</tr>';
+        $("#propiedades").html(propiedades);
     });
     
 });
