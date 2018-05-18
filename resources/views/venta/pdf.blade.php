@@ -112,7 +112,7 @@
 @if (count($datosSegunCompra) > 0)
     @foreach($datosSegunCompra as $ventaData)
         <h3 style="text-align: center">Datos del Reservante (2):</h3>
-        <div style="border: solid 1px; width: 100%;">
+        <div style="border: solid 1px; width: 100%; margin-bottom: 100px; vertical-align: top;">
             <table  style="width: 100%">
                 <tr style="width: 100%;">
                     <td style="width: 50%;" colspan="2">
@@ -188,7 +188,7 @@
     @endforeach
 @else
     <h3 style="text-align: center">Datos del Reservante (2):</h3>
-    <div style="border: solid 1px; width: 100%;">
+    <div style="border: solid 1px; width: 100%; margin-bottom: 150px;">
         <table  style="width: 100%">
             <tr style="width: 100%;">
                 <td style="width: 50%;" colspan="2">
@@ -263,37 +263,9 @@
     </div>    
 @endif    
 
-<p>
-    En constancia de aceptación se firma en Bogotá D.C., el día 
-    <span style="text-decoration: underline;">( {{ date('d') }} )</span> 
-    de <span style="text-decoration: underline;"> {{ date('m') }} </span> de dos mil dieciocho (2018).
-</p>
-<h4>El(los) reservante(s), </h4>
 
 @foreach($venta as $ventaData)
-
-    <table style="width: 100%; margin-top: -10px;">
-        <tr>
-            <td style="width: 50%;">
-                <br>
-        
-                ----------------------------------------------<br>
-                Nombre: {{ $ventaData->name }}<br>
-                C.C. {{ $ventaData->documento }} 
-            </td>
-            <td style="width: 50%;">
-                <br>
-        
-                ----------------------------------------------<br>
-                Nombre: {{ $ventaData->name }}<br>
-                C.C. {{ $ventaData->documento }} 
-            </td>
-        </tr>
-    </table>
-@endforeach
-
-@foreach($venta as $ventaData)
-    <h3 style="text-align: center">Forma de Pago: </h3>
+    <h3 style="text-align: center; ">Forma de Pago: </h3>
     <div style="border: solid 1px; width: 100%;">
         <table style="width: 100%;">
             <tr>
