@@ -94,6 +94,7 @@
                                             <label for="tipo_documento" class="col-md-4 control-label">Tipo de Documento</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento" name="tipo_documento" class="form-control" value="Pasaporte">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Cédula de ciudadania">Cédula de ciudadania</option>
                                                     <option value="Cédula de extrangería">Cédula de extrangería</option>
                                                     <option value="Pasaporte">Pasaporte</option>
@@ -158,6 +159,7 @@
                                             <label for="estado_civil" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
                                                 <select id="estado_civil" name="estado_civil" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Casado con sociedad conyugal vigente">Casado con sociedad conyugal vigente</option>
                                                     <option value="Casado con sociedad conyugal disuelta y liquidada">Casado con sociedad conyugal disuelta y liquidada</option>
                                                     <option value="Soltero con unión marital de hecho por mas de dos años">Soltero con unión marital de hecho por mas de dos años</option>
@@ -171,6 +173,7 @@
                                             <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
                                             <select id="tipo_representacion" name="tipo_representacion" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Propia">Propia</option>
                                                     <option value="Apoderado">Apoderado</option>
                                                 </select>
@@ -229,6 +232,7 @@
                                             <label for="tipo_contrato" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_contrato" name="tipo_contrato" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Indefinido">Indefinido</option>
                                                     <option value="Término fijo">Término fijo</option>
                                                     <option value="Prestación de servicios">Prestación de servicios electrónico</option>
@@ -241,6 +245,7 @@
                                             <label for="encuesta" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
                                                 <select id="encuesta" name="encuesta" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Facebook">Facebook</option>
                                                     <option value="Whatsapp">Whatsapp</option>
                                                     <option value="Correo electrónico">Correo electrónico</option>
@@ -304,6 +309,7 @@
                                                 <label class="col-md-4 control-label">Buscar usuario:</label>
                                                 <div class="col-md-6">
                                                     <select name="campo" id="campoParaBuscar">
+                                                        <option value="">Seleccionar</option>
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>
                                                         <option value="documento">documento</option>
@@ -351,6 +357,7 @@
                                             <label for="tipo_documento2" class="col-md-4 control-label">Tipo de Documento</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_documento2" name="tipo_documento2" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Cédula de ciudadania">Cédula de ciudadania</option>
                                                     <option value="Cédula de extrangería">Cédula de extrangería</option>
                                                     <option value="Pasaporte">Pasaporte</option>
@@ -415,6 +422,7 @@
                                             <label for="estado_civil2" class="col-md-4 control-label">Estado Civil</label>
                                             <div class="col-md-6">
                                                 <select id="estado_civil2" name="estado_civil2" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Casado con sociedad conyugal vigente">Casado con sociedad conyugal vigente</option>
                                                     <option value="Casado con sociedad conyugal disuelta y liquidada">Casado con sociedad conyugal disuelta y liquidada</option>
                                                     <option value="Soltero con unión marital de hecho por mas de dos años">Soltero con unión marital de hecho por mas de dos años</option>
@@ -428,6 +436,7 @@
                                             <label for="tipo_representacion2" class="col-md-4 control-label">Tipo de Representación</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_representacion2" name="tipo_representacion2" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Propia">Propia</option>
                                                     <option value="Apoderado">Apoderado</option>
                                                 </select>
@@ -486,6 +495,7 @@
                                             <label for="tipo_contrato2" class="col-md-4 control-label">Tipo de Contrato</label>
                                             <div class="col-md-6">
                                                 <select id="tipo_contrato2" name="tipo_contrato2" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Indefinido">Indefinido</option>
                                                     <option value="Término fijo">Término fijo</option>
                                                     <option value="Prestación de servicios">Prestación de servicios electrónico</option>
@@ -498,6 +508,7 @@
                                             <label for="encuesta2" class="col-md-4 control-label">¿Cómo se enteró del Proyecto?</label>
                                             <div class="col-md-6">
                                                 <select id="encuesta2" name="encuesta2" class="form-control">
+                                                    <option value="">Seleccionar</option>
                                                     <option value="Facebook">Facebook</option>
                                                     <option value="Whatsapp">Whatsapp</option>
                                                     <option value="Correo electrónico">Correo electrónico</option>
@@ -531,7 +542,7 @@
                                         <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
                                             <label for="valor" class="col-md-4 control-label">Valor</label>
                                             <div class="col-md-6">
-                                                <input id="valor" type="text" class="form-control" name="valor" value = "{{$venta['valor']}}" required>
+                                                <input id="valor" type="text" class="form-control" name="valor" value = "{{$valor}}" required>
                                             </div>
                                         </div>
 

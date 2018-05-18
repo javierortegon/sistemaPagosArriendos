@@ -23,6 +23,7 @@ use DataTables;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class VentasController extends Controller
 {
@@ -40,6 +41,12 @@ class VentasController extends Controller
         ->where('propiedades.id', '=', $id)
         ->get();
 
+        $valor = (string) $propiedad[0]->valor;
+        $pos = strpos($valor, '.') - 3;
+        $valor = substr_replace($valor, ',', $pos, 0);
+        $valor = substr_replace($valor, '`', $pos-3, 0);
+        $valor = substr_replace($valor, '$ ', 0, 0);
+
         $consultaVenta = $users = DB::table('ventas')
                         ->where([
                             ['propiedad', "=", $id],
@@ -50,14 +57,21 @@ class VentasController extends Controller
             Notification::error('La propiedad que seleccionó ya fue vendida');
             return redirect('/verPropiedades');
         } else {
-            return view ('propiedad.venta', ['propiedad' => $propiedad]);
+            return view ('propiedad.venta', ['propiedad' => $propiedad, 'valor' => $valor]);
         }
 
     }
-
+    
+    protected function validator1(array $data)
+    {
+        return Validator::make($data, [
+            'telefono' => 'required|unique:users|max:255',
+        ]);
+    }
     public function postVender($id, Request $request){
         $origenUsuario = $request->input('usuarioNoE');
         if($origenUsuario == "nuevo"){
+            $this->validator1($request->all())->validate();
             $comprador = new User;
             $comprador->name = $request->name;
             $comprador->email = $request->email;
@@ -275,14 +289,30 @@ class VentasController extends Controller
         if(count($comprador2) != 0){
             $clienteExistenteRegistrado = 1;
         }
-        
 
-        return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado]);    
+        $valor = (string) $venta->valor;
+        $pos = strpos($valor, '.') - 3;
+        $valor = substr_replace($valor, ',', $pos, 0);
+        $valor = substr_replace($valor, '`', $pos-3, 0);
+        $valor = substr_replace($valor, '$ ', 0, 0);
+        
+        return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado, 'valor' => $valor]);    
+    }
+
+
+    protected function validator2(array $data, $id_user)
+    {
+        return Validator::make($data, [
+            'users.documento' => 'required|unique:users,documento'.$id_user,
+            'users.telefono' => 'required|unique:users,telefono,'.$id_user,
+            'users.email' => 'required|unique:users,email'.$id_user,
+        ]);
     }
 
     public function postEditarVenta($id, Request $request){
         $venta = Venta::find($id);
         $comprador = User::find($venta->comprador);
+        //$this->validator2($request->all(),$comprador->id)->validate();        
         $comprador->name = $request->name;
         $comprador->email = $request->email;
         //$comprador->password = bcrypt($request->documento);
@@ -291,7 +321,14 @@ class VentasController extends Controller
         $comprador->telefono = $request->telefono;
         $comprador->direccion = $request->direccion;
         $comprador->estado = 1;
-        $comprador->save();
+        try{
+            $comprador->save();
+            Notification::success('Comprador 1 actualizado con exito');            
+        } catch(\Illuminate\Database\QueryException $ex) {
+            Notification::error('Error en comprador1: '.$ex->getMessage());
+            return redirect ('ventas/editar/'.$id);
+        }
+        
 
         $detallesAll = DatosComprador::where('id_usuario','=',$venta->comprador)->get();
         if(count($detallesAll) == 0){
@@ -312,9 +349,14 @@ class VentasController extends Controller
         $detalles->tipo_contrato = $request->tipo_contrato;
         $detalles->encuesta = $request->encuesta;
         $detalles->id_usuario = $venta->comprador;
-        $detalles->save();
+        try{
+            $detalles->save();
+            Notification::success('Detalles del Comprador 1 actualizados con exito');                        
+        } catch(\Illuminate\Database\QueryException $ex) {
+            Notification::error('Error en detalles del comprador1: '.$ex->getMessage());
+            return redirect ('ventas/editar/'.$id);
+        }
         
-
         if($request->segundoComprador != ""){
             $origenUsuario = $request->input('usuarioNoE');
             if($origenUsuario == "nuevo"){
@@ -327,7 +369,14 @@ class VentasController extends Controller
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
-                $comprador2->save();
+                try{
+                    $comprador2->save();
+                    Notification::success('Comprador 2 actualizado con exito');                                
+                } catch(\Illuminate\Database\QueryException $ex) {
+                    Notification::error('Error en comprador2: '.$ex->getMessage());
+                    return redirect ('ventas/editar/'.$id);
+                }
+
                 $idComprador2 = $comprador2->id;
             
                 $rolesUsers = new RolesUsers;
@@ -346,7 +395,14 @@ class VentasController extends Controller
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
-                $comprador2->save();
+                try{
+                    $comprador2->save();
+                    Notification::success('Comprador 2 actualizado con exito');            
+                    
+                } catch(\Illuminate\Database\QueryException $ex) {
+                    Notification::error('Error en comprador2: '.$ex->getMessage());
+                    return redirect ('ventas/editar/'.$id);
+                }
             }
             
             $detallesAll2 = DatosComprador::where('id_usuario','=',$idComprador2)->get();
@@ -368,21 +424,35 @@ class VentasController extends Controller
             $detalles2->tipo_contrato = $request->tipo_contrato2;
             $detalles2->encuesta = $request->encuesta2;
             $detalles2->id_usuario = $idComprador2;
-
-            $detalles2->save();
-
+            try{
+                $detalles2->save();
+                Notification::success('Detalles del Comprador 2 actualizados con exito');                        
+            } catch(\Illuminate\Database\QueryException $ex) {
+                Notification::error('Error en detalles del comprador2: '.$ex->getMessage());
+                return redirect ('ventas/editar/'.$id);
+            }
+            
             $venta->comprador2 = $idComprador2;
             $venta->save();
-
-            $cita = new Agenda;
-            $cita->cliente = $comprador->id;
-            $cita->venta = $id;
-            $cita->event_name = 'Cita con '.$comprador->name.' ('.$comprador->telefono.')';
-            $cita->start_date = $request->cita;
-            $cita->end_date = $request->cita;
-            $cita->save();
         }
-
+        $cita = Agenda::where('venta','=',$id)->first();
+        if(count($cita) == 0){
+            $cita = new Agenda;
+            
+        }
+        
+        $cita->cliente = $comprador->id;
+        $cita->venta = $id;
+        $cita->event_name = 'Cita con '.$comprador->name.' ('.$comprador->telefono.')';
+        $cita->start_date = $request->cita;
+        $cita->end_date = $request->cita;
+        try{
+            $cita->save();
+            Notification::success('Cita registrada con exito');                                    
+        } catch(\Illuminate\Database\QueryException $ex) {
+            Notification::error('Error al registrar la cita: recuerda que el formato es aaaa/mm/dd hh:mm:ss');
+            return redirect ('ventas/editar/'.$id);
+        }
         return redirect('/verVentas');
         
     }

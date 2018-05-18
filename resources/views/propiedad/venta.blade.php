@@ -191,7 +191,7 @@
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                         <label for="valor" class="col-md-4 control-label">Valor</label>
                                         <div class="col-md-6">
-                                            <input id="valor" type="text" class="form-control" name="valor" value="{{ $propieda['valor'] }}" required>
+                                            <input id="valor" type="text" class="form-control" name="valor" value="{{ $valor }}" required>
                                         </div>
                                     </div>
 

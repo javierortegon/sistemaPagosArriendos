@@ -255,6 +255,10 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'AgendaController@getAgenda'
     ])->name('verAgenda')->middleware('permission:verVentas');
 
+    Route::get('/ventaMultiple', function(){
+    	return view('venta.ventaMultiple');
+    })->name('ventaMultiple')->middleware('permission:verVentas');
+
 });
 
 
