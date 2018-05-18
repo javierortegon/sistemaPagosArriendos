@@ -104,7 +104,7 @@ class PropiedadesController extends Controller
 
     public function getDataTablePropiedades(){
         
-        $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre',
+        $queryConsulta = Propiedad::select('propiedades.id as id', 'propiedades.codigo', 'propiedades.nombre', 'propiedades.numero_piso',
          'propiedades.direccion', 'propiedades.estado', 'tipos_propiedad.nombre as tipoPropiedad', 
          'proyectos.nombre as nombreProyec')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
@@ -130,6 +130,8 @@ class PropiedadesController extends Controller
             }
             return $estadoVenta;
             
+        })->addColumn('numeroPiso', function ($propiedad){
+            return "Piso_".$propiedad->numero_piso;
         })->addColumn('editar', function ($propiedad) {
             $ventas = Venta::select('ventas.estado')->where('ventas.propiedad', '=', $propiedad->id)->get();
             $ventaEstado = 0;

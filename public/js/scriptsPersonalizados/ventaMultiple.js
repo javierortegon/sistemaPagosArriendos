@@ -163,18 +163,26 @@ $(document).ready(function(){
         propiedades += '</td>';
 
         propiedades += '<td>';
-        propiedades += '<button type="button" class = "btn btn-warning">Seleccionar</button>';
+        propiedades += '<button id = "select'+propActual+'" type="button" class = "btn btn-warning selectPropiedad" name="'+propActual+'">Seleccionar</button>';
         propiedades += '</td>';
+
+
 
         propiedades += '<td>';
         propiedades += '<input type="text">';
         propiedades += '</td>';
 
         propiedades += '<td>';
-        propiedades += '<button type="button" class = "btn btn-warning">Eliminar</button>';
+        propiedades += '<button id = "delete'+propActual+'" type="button" class = " deletePropiedad btn btn-danger" name="'+propActual+'">Eliminar</button>';
         propiedades += '</td>';
         propiedades += '</tr>';
         $("#propiedades").html(propiedades);
+    });
+
+    $('.deletePropiedad').click(function(){
+        alert('sad');
+        //idABorrar = "#row"+$( this ).name();
+        //$(idABorrar).remove();
     });
     
 });
