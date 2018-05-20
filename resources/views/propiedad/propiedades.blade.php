@@ -20,9 +20,9 @@
                                 <tr>
                                     <th>Inmueble</th>
                                     <th>Nombre (Subtipo)</th>
-                                    <th>Direccion</th>
                                     <th>Proyecto</th>
                                     <th>Tipo (Torre)</th>
+                                    <th>Piso</th>
                                     <th>Estado Venta</th>
                                     <th>Estado</th>
                                     <th>Inmueble</th>
@@ -56,9 +56,9 @@ $(document).ready(function() {
         columns: [
             {data: 'codigo', name: 'codigo'},
             {data: 'nombre', name: 'nombre'},
-            {data: 'direccion', name: 'direccion'},
             {data: 'nombreProyec', name: 'nombreProyec'},
             {data: 'tipoPropiedad', name: 'tipoPropiedad'},
+            {data: 'numeroPiso', name: 'numeroPiso'},
             {data: 'estadoVenta', name: 'estadoVenta'},
             {data: 'estadoString', name: 'estadoString'},
             {data: 'codigo', name: 'codigo'},            
