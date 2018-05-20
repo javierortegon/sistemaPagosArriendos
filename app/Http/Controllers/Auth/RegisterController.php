@@ -56,9 +56,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'documento' => 'required|unique:users,documento',
-            'telefono' => 'required|unique:users,telefono,',
             'password' => 'required|string|min:6|confirmed',
         ]);
         
@@ -108,7 +107,7 @@ class RegisterController extends Controller
 
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+                        ?: redirect('verUsuarios');
     }
 
 

@@ -227,12 +227,12 @@ Route::middleware(['auth'])->group(function() {
 
      //ruta para editar las ventas
     Route::get('ventas/editar/{id}', [
-        'middleware' => 'permission:propiedades.editar',     
+        'middleware' => 'permission:verVentas',     
         'uses' => 'VentasController@getEditarVenta'
     ]);
 
     Route::put('ventas/editar/{id}', [
-        'middleware' => 'permission:propiedades.editar',     
+        'middleware' => 'permission:verVentas',     
         'uses' => 'VentasController@postEditarVenta'
     ]);
 
