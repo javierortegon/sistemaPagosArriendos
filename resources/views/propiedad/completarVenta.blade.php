@@ -105,7 +105,7 @@
                                         <div class="form-group{{ $errors->has('documentoComprador1') ? ' has-error' : '' }}">
                                             <label for="documentoComprador1" class="col-md-4 control-label">Documento</label>
                                             <div class="col-md-6">
-                                                <input id="documentoComprador1" type="text" class="form-control" name="documento" value = "{{$venta['documento']}}" readonly>
+                                                <input id="documentoComprador1" type="text" class="form-control" name="documentoComprador1" value = "{{$venta['documento']}}" readonly>
                                                 @if ($errors->has('documentoComprador1'))
                                                     <span class="help-block">
                                                         <strong>Este documento ya está en uso</strong>
@@ -275,7 +275,7 @@
                                             <label class="col-md-6 segundoComprador"><input type="checkbox" class = "segundoComprador" id="segundoComprador" name="segundoComprador" value="segundoComprador" checked> Ingresar segundo comprador</label>
                                         @endif
                                     </div>
-                                    <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">                                    
+                                    <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">                                    
                                         @if ($errors->has('documento'))
                                         <div class="col-md-4">
                                         </div>
@@ -383,7 +383,7 @@
                                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                                             <label for="documento" class="col-md-4 control-label">Documento</label>
                                             <div class="col-md-6">
-                                                <input id="documento" type="text" class="form-control" name="documento2" value="{{ old('documento2') }}">
+                                                <input id="documento" type="text" class="form-control" name="documento" value="{{ old('documento') }}">
                                                 @if ($errors->has('documento'))
                                                     <span class="help-block">
                                                         <strong>Este documento ya está en uso</strong>

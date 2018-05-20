@@ -353,13 +353,23 @@ class VentasController extends Controller
         if($request->segundoComprador != ""){
             $origenUsuario = $request->input('usuarioNoE');
             if($origenUsuario == "nuevo"){
+                
                 $this->validatorDoc($request->all())->validate();
+                
+                /*
+                $docexist = User::where('documento','=',$request->documento)->get();
+
+                if(count($docexist) > 0){
+                    Notification::error('El documento que usú para el usuario 2 ya existe en la base de datos');
+                    return redirect ('ventas/editar/'.$id);
+                }*/
+                
                 $comprador2 = new User;
                 $comprador2->name = $request->name2;
                 $comprador2->email = $request->email2;
                 //$comprador2->password = bcrypt($request->documento2);
                 $comprador2->tipo_documento = $request->tipo_documento2;
-                $comprador2->documento = $request->documento2;
+                $comprador2->documento = $request->documento;
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
@@ -369,11 +379,11 @@ class VentasController extends Controller
                 $idComprador2 = $comprador2->id;
             
                 $rolesUsers = new RolesUsers;
-                $rolesUsers->user_id = $idComprador;
+                $rolesUsers->user_id = $idComprador2;
                 $rolesUsers->role_id = 3;
                 $rolesUsers->save();
                 
-                Notification::success('Usuario creado correctamente');
+                Notification::success('Comprador 2 creado correctamente');
             } else {
                 $idComprador2 = $request->input('id_usuario2');
                 $comprador2 = User::find($idComprador2);
