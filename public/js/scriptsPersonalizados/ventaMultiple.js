@@ -169,7 +169,7 @@ $(document).ready(function(){
 
 
         propiedades += '<td>';
-        propiedades += '<input type="text">';
+        propiedades += '<input type="text" value = "'+propActual+'">';
         propiedades += '</td>';
 
         propiedades += '<td>';
@@ -177,12 +177,12 @@ $(document).ready(function(){
         propiedades += '</td>';
         propiedades += '</tr>';
         $("#propiedades").html(propiedades);
-    });
-
-    $('.deletePropiedad').click(function(){
-        alert('sad');
-        //idABorrar = "#row"+$( this ).name();
-        //$(idABorrar).remove();
+        idBoton = '#delete'+propActual;
+        $('.deletePropiedad').click(function(){
+            idABorrar = "#row"+$(this).name();
+            alert(idABorrar);
+            //$(idABorrar).remove();
+        });
     });
     
 });

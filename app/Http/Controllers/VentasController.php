@@ -69,6 +69,11 @@ class VentasController extends Controller
         ]);
     }
     public function postVender($id, Request $request){
+        $propiedad = Propiedad::select( 'propiedades.id as id', 
+                                        'tipos_propiedad.valor as valor')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->where('propiedades.id', '=', $id)
+        ->first();
         $origenUsuario = $request->input('usuarioNoE');
         if($origenUsuario == "nuevo"){
             $this->validator1($request->all())->validate();
@@ -104,7 +109,7 @@ class VentasController extends Controller
         if($consultaVenta == 0){
             $venta = new Venta;
             $venta->fecha = date('Y-m-d');
-            $venta->valor = $request->valor;
+            $venta->valor = $propiedad->valor;
             $venta->metodo_pago = $request->metodoPago;
             $venta->estado = 1;
             $venta->propiedad = $id;
