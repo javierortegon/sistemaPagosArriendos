@@ -62,16 +62,9 @@ class VentasController extends Controller
 
     }
     
-    protected function validator1(array $data)
-    {
-        return Validator::make($data, [
-            'telefono' => 'required|unique:users|max:255',
-        ]);
-    }
     public function postVender($id, Request $request){
         $origenUsuario = $request->input('usuarioNoE');
         if($origenUsuario == "nuevo"){
-            $this->validator1($request->all())->validate();
             $comprador = new User;
             $comprador->name = $request->name;
             $comprador->email = $request->email;
