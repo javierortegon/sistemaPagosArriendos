@@ -321,7 +321,7 @@
                                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                                 <label class="col-md-4 control-label">Buscar usuario:</label>
                                                 <div class="col-md-6">
-                                                    <select required name="campo" id="campoParaBuscar">
+                                                    <select name="campo" id="campoParaBuscar">
                                                         <option value="">Seleccionar</option>
                                                         <option value="name">name</option>
                                                         <option value="email">email</option>

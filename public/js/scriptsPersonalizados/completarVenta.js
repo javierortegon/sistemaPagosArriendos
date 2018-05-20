@@ -18,17 +18,21 @@ $(document).ready(function(){
     if(document.getElementById("rbUsuarioExistente").checked){
         $("#divBusquedaUsuarioExistente").show(400);
         $("#id_usuario2").attr('required', 'required');
+        $('#documento').attr('readonly', true);                                
+
     }
     else{
         $("#divBusquedaUsuarioExistente").hide(400);
-        $('#id_usuario2').removeAttr('required');            
+        $('#id_usuario2').removeAttr('required');     
+        $('#documento').attr('readonly', true);                                
+       
     }
     
     //Inicializar campos requeridos
     if(document.getElementById("segundoComprador").checked){
         $("#name2").attr('required', 'required');
         $("#email2").attr('required', 'required');
-        $("#documento2").attr('required', 'required');
+        $("#documento").attr('required', 'required');
         $("#telefono2").attr('required', 'required');
         $("#direccion2").attr('required', 'required');
         $("#datosUsuario2").show(400);
@@ -36,7 +40,7 @@ $(document).ready(function(){
         $('#id_usuario2').removeAttr('required');                        
         $('#name2').removeAttr('required'); 
         $("#email2").removeAttr('required');
-        $("#documento2").removeAttr('required');
+        $("#documento").removeAttr('required');
         $("#telefono2").removeAttr('required');
         $("#direccion2").removeAttr('required');
         $("#datosUsuario2").hide(400);
@@ -44,16 +48,20 @@ $(document).ready(function(){
     if(document.getElementById("rbUsuarioExistente").checked){
         $("#divBusquedaUsuarioExistente").show(400);
         $("#id_usuario2").attr('required', 'required');
+        $('#documento').attr('readonly', true);                                
+        
     }
     else{
         $("#divBusquedaUsuarioExistente").hide(400);
-        $('#id_usuario2').removeAttr('required');            
+        $('#id_usuario2').removeAttr('required'); 
+        $('#documento').attr('readonly', false);                                
+                   
     }
     $('.segundoComprador').click(function(){
         if(document.getElementById("segundoComprador").checked){
             $("#name2").attr('required', 'required');
             $("#email2").attr('required', 'required');
-            $("#documento2").attr('required', 'required');
+            $("#documento").attr('required', 'required');
             $("#telefono2").attr('required', 'required');
             $("#direccion2").attr('required', 'required');
             $("#datosUsuario2").show(400);
@@ -61,7 +69,7 @@ $(document).ready(function(){
             $('#id_usuario2').removeAttr('required');                        
             $('#name2').removeAttr('required'); 
             $("#email2").removeAttr('required');
-            $("#documento2").removeAttr('required');
+            $("#documento").removeAttr('required');
             $("#telefono2").removeAttr('required');
             $("#direccion2").removeAttr('required');
             $("#datosUsuario2").hide(400);
@@ -69,10 +77,13 @@ $(document).ready(function(){
         if(document.getElementById("rbUsuarioExistente").checked){
             $("#divBusquedaUsuarioExistente").show(400);
             $("#id_usuario2").attr('required', 'required');
+            $('#documento').attr('readonly', true);                                
         }
         else{
             $("#divBusquedaUsuarioExistente").hide(400);
-            $('#id_usuario2').removeAttr('required');            
+            $('#id_usuario2').removeAttr('required'); 
+            $('#documento').attr('readonly', false);                    
+                       
         }
     });
 
@@ -81,16 +92,20 @@ $(document).ready(function(){
         if(document.getElementById("rbUsuarioExistente").checked){
             $("#divBusquedaUsuarioExistente").show(400);
             $("#id_usuario2").attr('required', 'required');
+            $('#documento').attr('readonly', true);                    
+            
             
         }
         else{
             $("#divBusquedaUsuarioExistente").hide(400);
-            $('#id_usuario2').removeAttr('required');                        
+            $('#id_usuario2').removeAttr('required');    
+            $('#documento').attr('readonly', false);                    
+                                
         }
         $('#id_usuario2').val("");   
         $('#name2').val("");
         $('#email2').val("");
-        $('#documento2').val("");
+        $('#documento').val("");
         $('#telefono2').val("");
         $('#direccion2').val("");
         $('#barrio2').val("");
@@ -173,7 +188,8 @@ $(document).ready(function(){
             $('#id_usuario2').val(jsonUsuarios[idUsuario].id);
             $('#name2').val(jsonUsuarios[idUsuario].name);
             $('#email2').val(jsonUsuarios[idUsuario].email);
-            $('#documento2').val(jsonUsuarios[idUsuario].documento);
+            $('#documento').val(jsonUsuarios[idUsuario].documento);
+            $('#documento').attr('readonly', true);            
             $('#telefono2').val(jsonUsuarios[idUsuario].telefono);
             $('#direccion2').val(jsonUsuarios[idUsuario].direccion);
             $('#barrio2').val(jsonUsuarios[idUsuario].barrio);
@@ -191,7 +207,8 @@ $(document).ready(function(){
             $('#id_usuario2').val("");   
             $('#name2').val("");
             $('#email2').val("");
-            $('#documento2').val("");
+            $('#documento').val("");
+            $('#documento').attr('readonly', false);                        
             $('#telefono2').val("");
             $('#direccion2').val("");
             $('#barrio2').val("");
