@@ -380,7 +380,7 @@
                                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                                             <label for="documento" class="col-md-4 control-label">Documento</label>
                                             <div class="col-md-6">
-                                                <input id="documento" type="text" class="form-control" name="documento2" value="{{ old('documento2') }}" >
+                                                <input id="documento" type="text" class="form-control" name="documento" value="{{ old('documento') }}" >
                                                 @if ($errors->has('documento'))
                                                     <span class="help-block">
                                                         <strong>Este documento ya está en uso</strong>
