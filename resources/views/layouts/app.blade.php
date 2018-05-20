@@ -156,7 +156,9 @@
 
         @yield('content')
     </div>
-
+    <footer class="navbar-fixed-bottom" style="text-align: center; background: #DD9D00; color: #fff">
+        <div class="row">Desarrollado por SIESIS / © 2018</div>
+    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
