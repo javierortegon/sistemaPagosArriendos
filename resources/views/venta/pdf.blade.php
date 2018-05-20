@@ -117,7 +117,7 @@
 @if (count($datosSegunCompra) > 0)
     @foreach($datosSegunCompra as $ventaData)
         <h3 style="text-align: center">Datos del Reservante (2):</h3>
-        <div style="border: solid 1px; width: 100%; margin-bottom: 100px; vertical-align: top;">
+        <div style="border: solid 1px; width: 100%; margin-bottom: 140px; vertical-align: top;">
             <table  style="width: 100%">
                 <tr style="width: 100%;">
                     <td style="width: 50%;" colspan="2">
