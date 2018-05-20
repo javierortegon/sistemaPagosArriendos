@@ -18,7 +18,7 @@ $(document).ready(function(){
     if(document.getElementById("rbUsuarioExistente").checked){
         $("#divBusquedaUsuarioExistente").show(400);
         $("#id_usuario2").attr('required', 'required');
-        $('#documento').attr('readonly', true);                                
+        $('#documento').attr('readonly', true);
 
     }
     else{
@@ -36,6 +36,22 @@ $(document).ready(function(){
         $("#telefono2").attr('required', 'required');
         $("#direccion2").attr('required', 'required');
         $("#datosUsuario2").show(400);
+            $('#id_usuario2').attr('required', 'required');  
+            $('#name2').attr('required', 'required');
+            $('#email2').attr('required', 'required');
+            $('#documento').attr('required', 'required');                       
+            $('#telefono2').attr('required', 'required');
+            $('#direccion2').attr('required', 'required');
+            $('#barrio2').attr('required', 'required');
+            $('#ciudad2').attr('required', 'required');
+            $('#estado_civil2').attr('required', 'required');
+            $('#tipo_representacion2').attr('required', 'required');
+            $('#ocupacion2').attr('required', 'required');
+            $('#cargo2').attr('required', 'required');
+            $('#empresa2').attr('required', 'required');
+            $('#tipo_vinculacion2').attr('required', 'required');
+            $('#tipo_contrato2').attr('required', 'required');
+            $('#encuesta2').attr('required', 'required');
     } else {
         $('#id_usuario2').removeAttr('required');                        
         $('#name2').removeAttr('required'); 
@@ -44,17 +60,65 @@ $(document).ready(function(){
         $("#telefono2").removeAttr('required');
         $("#direccion2").removeAttr('required');
         $("#datosUsuario2").hide(400);
+            $('#id_usuario2').removeAttr('required');  
+            $('#name2').removeAttr('required');
+            $('#email2').removeAttr('required');
+            $('#documento').removeAttr('required');                        
+            $('#telefono2').removeAttr('required');
+            $('#direccion2').removeAttr('required');
+            $('#barrio2').removeAttr('required');
+            $('#ciudad2').removeAttr('required');
+            $('#estado_civil2').removeAttr('required');
+            $('#tipo_representacion2').removeAttr('required');
+            $('#ocupacion2').removeAttr('required');
+            $('#cargo2').removeAttr('required');
+            $('#empresa2').removeAttr('required');
+            $('#tipo_vinculacion2').removeAttr('required');
+            $('#tipo_contrato2').removeAttr('required');
+            $('#encuesta2').removeAttr('required');
     }
     if(document.getElementById("rbUsuarioExistente").checked){
         $("#divBusquedaUsuarioExistente").show(400);
         $("#id_usuario2").attr('required', 'required');
-        $('#documento').attr('readonly', true);                                
+        $('#documento').attr('readonly', true);  
+            $('#id_usuario2').attr('required', 'required');  
+            $('#name2').attr('required', 'required');
+            $('#email2').attr('required', 'required');
+            $('#documento').attr('required', 'required');                       
+            $('#telefono2').attr('required', 'required');
+            $('#direccion2').attr('required', 'required');
+            $('#barrio2').attr('required', 'required');
+            $('#ciudad2').attr('required', 'required');
+            $('#estado_civil2').attr('required', 'required');
+            $('#tipo_representacion2').attr('required', 'required');
+            $('#ocupacion2').attr('required', 'required');
+            $('#cargo2').attr('required', 'required');
+            $('#empresa2').attr('required', 'required');
+            $('#tipo_vinculacion2').attr('required', 'required');
+            $('#tipo_contrato2').attr('required', 'required');
+            $('#encuesta2').attr('required', 'required');                              
         
     }
     else{
         $("#divBusquedaUsuarioExistente").hide(400);
         $('#id_usuario2').removeAttr('required'); 
-        $('#documento').attr('readonly', false);                                
+        $('#documento').attr('readonly', false); 
+            $('#id_usuario2').removeAttr('required');  
+            $('#name2').removeAttr('required');
+            $('#email2').removeAttr('required');
+            $('#documento').removeAttr('required');                        
+            $('#telefono2').removeAttr('required');
+            $('#direccion2').removeAttr('required');
+            $('#barrio2').removeAttr('required');
+            $('#ciudad2').removeAttr('required');
+            $('#estado_civil2').removeAttr('required');
+            $('#tipo_representacion2').removeAttr('required');
+            $('#ocupacion2').removeAttr('required');
+            $('#cargo2').removeAttr('required');
+            $('#empresa2').removeAttr('required');
+            $('#tipo_vinculacion2').removeAttr('required');
+            $('#tipo_contrato2').removeAttr('required');
+            $('#encuesta2').removeAttr('required');                               
                    
     }
     $('.segundoComprador').click(function(){
