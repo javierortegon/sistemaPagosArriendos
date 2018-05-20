@@ -555,7 +555,7 @@
                                         <div class="form-group{{ $errors->has('cita') ? ' has-error' : '' }}">
                                             <label for="cita" class="col-md-4 control-label">Cita para documentos:</label>
                                             <div class="col-md-6">
-                                                <input id="cita" type="datetime-local" class="form-control" name="cita" required>
+                                                <input id="cita" type="datetime-local" class="form-control" name="cita" title="Hora Militar o AM-PM segun la hora del pc" required>
                                             </div>
                                         </div>
 

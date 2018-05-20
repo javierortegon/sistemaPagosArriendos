@@ -1,10 +1,15 @@
 <img style="width: 100%;margin-top:-48px;" src="{{{ asset('img/head_pdf.png') }}}">
+
+@if (count($venta) <= 0)
+    <p>NO TIENE DATOS COMPLETOS PARA GENERAR EL PDF</p>
+@else
+
 @foreach($venta as $ventaData)
     <div style="text-align: center">
         <p>
             ORDEN DE RESERVA<br>
             PROYECTO “{{ $ventaData->proyectoNombre }}”<br>
-            TORRE 1<br>
+            {{ strtoupper($ventaData->tipoPropiNombre) }}<br>
             Carrera 4 No. 18 - 22 Bogotá D.C.<br>
         </p>
     </div>
@@ -69,10 +74,10 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 50%;">
+                <td style="width: 50%;" colspan="2">
                     Estado Civil: <span style="text-decoration: underline;"> {{ $ventaData->estado_civil }} </span>
                 </td>
-                <td style="width: 50%;" colspan="2">
+                <td style="width: 50%;" colspan="1">
                     Tipo de Representación: <span style="text-decoration: underline;"> {{ $ventaData->tipo_representacion }} </span>
                 </td>
             </tr>
@@ -147,10 +152,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 50%;">
+                    <td style="width: 50%;" colspan="2">
                         Estado Civil: <span style="text-decoration: underline;"> {{ $ventaData->estado_civil }} </span>
                     </td>
-                    <td style="width: 50%;" colspan="2">
+                    <td style="width: 50%;" colspan="1">
                         Tipo de Representación: <span style="text-decoration: underline;"> {{ $ventaData->tipo_representacion }} </span>
                     </td>
                 </tr>
@@ -223,10 +228,10 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 50%;">
+                <td style="width: 50%;" colspan="2">
                     Estado Civil: <span style="text-decoration: underline;"> </span>
                 </td>
-                <td style="width: 50%;" colspan="2">
+                <td style="width: 50%;" colspan="1">
                     Tipo de Representación: <span style="text-decoration: underline;">  </span>
                 </td>
             </tr>
@@ -579,3 +584,4 @@
             </tr>
         </table>
     </div>
+    @endif  
