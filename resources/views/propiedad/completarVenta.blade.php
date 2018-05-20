@@ -71,7 +71,7 @@
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label for="name" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
-                                                <input id="name" type="text" class="form-control" name="name" value="{{ $venta['name'] }}" required autofocus>
+                                                <input id="name" type="text" class="form-control" name="name" value="{{ $venta['name'] }}" readonly>
                                                 @if ($errors->has('name'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('name') }}</strong>
@@ -82,7 +82,7 @@
                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                             <label for="email" class="col-md-4 control-label">E-Mail</label>
                                             <div class="col-md-6">
-                                                <input id="email" type="email" class="form-control" name="email" value="{{ $venta['email'] }}" required>
+                                                <input id="email" type="email" class="form-control" name="email" value="{{ $venta['email'] }}" autofocus required>
                                                 @if ($errors->has('email'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('email') }}</strong>
@@ -102,19 +102,24 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
-                                                <label for="documento" class="col-md-4 control-label">Documento</label>
-                                                <div class="col-md-6">
-                                                    <input id="documento" type="text" class="form-control" name="documento" value = "{{$venta['documento']}}" required>
-                                                </div>
+                                        <div class="form-group{{ $errors->has('documentoComprador1') ? ' has-error' : '' }}">
+                                            <label for="documentoComprador1" class="col-md-4 control-label">Documento</label>
+                                            <div class="col-md-6">
+                                                <input id="documentoComprador1" type="text" class="form-control" name="documento" value = "{{$venta['documento']}}" readonly>
+                                                @if ($errors->has('documentoComprador1'))
+                                                    <span class="help-block">
+                                                        <strong>Este documento ya está en uso</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                                             <label for="telefono" class="col-md-4 control-label">Teléfono</label>
                                             <div class="col-md-6">
-                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ $venta['telefono'] }}" required>
+                                                <input id="telefono" type="text" class="form-control" name="telefono" value="{{ $venta['telefono'] }}" readonly>
                                                 @if ($errors->has('telefono'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                                        <strong>Este teléfono ya está en uso</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -270,6 +275,16 @@
                                             <label class="col-md-6 segundoComprador"><input type="checkbox" class = "segundoComprador" id="segundoComprador" name="segundoComprador" value="segundoComprador" checked> Ingresar segundo comprador</label>
                                         @endif
                                     </div>
+                                    <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">                                    
+                                        @if ($errors->has('documento'))
+                                        <div class="col-md-4">
+                                        </div>
+                                                    <span class=" col-md-6 help-block" style="color:red">
+                                                        <strong>El documento que usó para el comprador 2 ya está en uso, por favor diligencie nuevamente el formulario</strong>
+                                                    </span>
+                                        @endif
+                                    </div>
+                                        
                                     
                                     <div id="datosUsuario2" hidden>
                                         <div class="col-md-4">
@@ -334,7 +349,7 @@
                                         <div class="form-group{{ $errors->has('name2') ? ' has-error' : '' }}">
                                             <label for="name2" class="col-md-4 control-label">Nombre</label>
                                             <div class="col-md-6">
-                                                <input id="name2" type="text" class="form-control" name="name2" value="{{ $comprador2['name'] }}"  autofocus>
+                                                <input id="name2" type="text" class="form-control" name="name2" value="{{ old('name2') }}"  autofocus>
                                                 @if ($errors->has('name2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('name2') }}</strong>
@@ -345,7 +360,7 @@
                                         <div class="form-group{{ $errors->has('email2') ? ' has-error' : '' }}">
                                             <label for="email2" class="col-md-4 control-label">E-Mail</label>
                                             <div class="col-md-6">
-                                                <input id="email2" type="email2" class="form-control" name="email2" value="{{ $comprador2['email'] }}" >
+                                                <input id="email2" type="email2" class="form-control" name="email2" value="{{ old('email2') }}" >
                                                 @if ($errors->has('email2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('email2') }}</strong>
@@ -365,19 +380,24 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group{{ $errors->has('documento2') ? ' has-error' : '' }}">
-                                                <label for="documento2" class="col-md-4 control-label">Documento</label>
-                                                <div class="col-md-6">
-                                                    <input id="documento2" type="text" class="form-control" name="documento2" value="{{ $comprador2['documento'] }}">
-                                                </div>
+                                        <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
+                                            <label for="documento" class="col-md-4 control-label">Documento</label>
+                                            <div class="col-md-6">
+                                                <input id="documento" type="text" class="form-control" name="documento2" value="{{ old('documento2') }}">
+                                                @if ($errors->has('documento'))
+                                                    <span class="help-block">
+                                                        <strong>Este documento ya está en uso</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </div>
                                         <div class="form-group{{ $errors->has('telefono2') ? ' has-error' : '' }}">
                                             <label for="telefono2" class="col-md-4 control-label">Teléfono</label>
                                             <div class="col-md-6">
-                                                <input id="telefono2" type="text" class="form-control" name="telefono2" value="{{$comprador2['telefono'] }}" >
+                                                <input id="telefono2" type="text" class="form-control" name="telefono2" value="{{old('telefono2') }}" >
                                                 @if ($errors->has('telefono2'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('telefono2') }}</strong>
+                                                        <strong>Este teléfono ya está en uso</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -385,7 +405,7 @@
                                         <div class="form-group{{ $errors->has('direccion2') ? ' has-error' : '' }}">
                                             <label for="direccion2" class="col-md-4 control-label">Dirección</label>
                                             <div class="col-md-6">
-                                                <input id="direccion2" type="text" class="form-control" name="direccion2" value="{{ $comprador2['direccion'] }}" >
+                                                <input id="direccion2" type="text" class="form-control" name="direccion2" value="{{ old('direccion2') }}" >
                                                 @if ($errors->has('direccion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('direccion2') }}</strong>
@@ -397,7 +417,7 @@
                                         <div class="form-group{{ $errors->has('barrio2') ? ' has-error' : '' }}">
                                             <label for="barrio2" class="col-md-4 control-label">Barrio</label>
                                             <div class="col-md-6">
-                                                <input id="barrio2" type="text" class="form-control" name="barrio2" value="{{ $comprador2['barrio'] }}" >
+                                                <input id="barrio2" type="text" class="form-control" name="barrio2" value="{{ old('barrio2') }}" >
                                                 @if ($errors->has('barrio2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('barrio2') }}</strong>
@@ -446,7 +466,7 @@
                                         <div class="form-group{{ $errors->has('ocupacion2') ? ' has-error' : '' }}">
                                             <label for="ocupacion2" class="col-md-4 control-label">Ocupación</label>
                                             <div class="col-md-6">
-                                                <input id="ocupacion2" type="text" class="form-control" name="ocupacion2" value="{{ $comprador2['ocupacion'] }}" >
+                                                <input id="ocupacion2" type="text" class="form-control" name="ocupacion2" value="{{ old('ocupacion2') }}" >
                                                 @if ($errors->has('ocupacion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('ocupacion2') }}</strong>
@@ -458,7 +478,7 @@
                                         <div class="form-group{{ $errors->has('cargo2') ? ' has-error' : '' }}">
                                             <label for="cargo2" class="col-md-4 control-label">Cargo</label>
                                             <div class="col-md-6">
-                                                <input id="cargo2" type="text" class="form-control" name="cargo2" value="{{ $comprador2['cargo'] }}" >
+                                                <input id="cargo2" type="text" class="form-control" name="cargo2" value="{{ old('cargo2') }}" >
                                                 @if ($errors->has('cargo2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('cargo2') }}</strong>
@@ -470,7 +490,7 @@
                                         <div class="form-group{{ $errors->has('empresa2') ? ' has-error' : '' }}">
                                             <label for="empresa2" class="col-md-4 control-label">Empresa</label>
                                             <div class="col-md-6">
-                                                <input id="empresa2" type="text" class="form-control" name="empresa2" value="{{ $comprador2['empresa'] }}" >
+                                                <input id="empresa2" type="text" class="form-control" name="empresa2" value="{{ old('empresa2') }}" >
                                                 @if ($errors->has('empresa2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('empresa2') }}</strong>
@@ -482,7 +502,7 @@
                                         <div class="form-group{{ $errors->has('tipo_vinculacion2') ? ' has-error' : '' }}">
                                             <label for="tipo_vinculacion2" class="col-md-4 control-label">Tiempo de Vinculación</label>
                                             <div class="col-md-6">
-                                                <input id="tipo_vinculacion2" type="text" class="form-control" name="tipo_vinculacion2" value="{{ $comprador2['tipo_vinculacion'] }}" >
+                                                <input id="tipo_vinculacion2" type="text" class="form-control" name="tipo_vinculacion2" value="{{ old('tipo_vinculacion2') }}" >
                                                 @if ($errors->has('tipo_vinculacion2'))
                                                     <span class="help-block">
                                                         <strong>{{ $errors->first('tipo_vinculacion2') }}</strong>

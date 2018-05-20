@@ -62,7 +62,7 @@ class VentasController extends Controller
 
     }
     
-    protected function validator1(array $data)
+    protected function validatorDoc(array $data)
     {
         return Validator::make($data, [
             'documento' => 'required|unique:users|max:255',
@@ -76,7 +76,7 @@ class VentasController extends Controller
         ->first();
         $origenUsuario = $request->input('usuarioNoE');
         if($origenUsuario == "nuevo"){
-            $this->validator1($request->all())->validate();
+            $this->validatorDoc($request->all())->validate();
             $comprador = new User;
             $comprador->name = $request->name;
             $comprador->password = bcrypt($request->documento);
@@ -322,17 +322,11 @@ class VentasController extends Controller
         $comprador->email = $request->email;
         //$comprador->password = bcrypt($request->documento);
         $comprador->tipo_documento = $request->tipo_documento;
-        $comprador->documento = $request->documento;
         $comprador->telefono = $request->telefono;
         $comprador->direccion = $request->direccion;
         $comprador->estado = 1;
-        try{
-            $comprador->save();
-            Notification::success('Comprador 1 actualizado con exito');            
-        } catch(\Illuminate\Database\QueryException $ex) {
-            Notification::error('Error en comprador1: '.$ex->getMessage());
-            return redirect ('ventas/editar/'.$id);
-        }
+        $comprador->save();
+        
         
 
         $detallesAll = DatosComprador::where('id_usuario','=',$venta->comprador)->get();
@@ -354,17 +348,12 @@ class VentasController extends Controller
         $detalles->tipo_contrato = $request->tipo_contrato;
         $detalles->encuesta = $request->encuesta;
         $detalles->id_usuario = $venta->comprador;
-        try{
-            $detalles->save();
-            Notification::success('Detalles del Comprador 1 actualizados con exito');                        
-        } catch(\Illuminate\Database\QueryException $ex) {
-            Notification::error('Error en detalles del comprador1: '.$ex->getMessage());
-            return redirect ('ventas/editar/'.$id);
-        }
+        $detalles->save();
         
         if($request->segundoComprador != ""){
             $origenUsuario = $request->input('usuarioNoE');
             if($origenUsuario == "nuevo"){
+                $this->validatorDoc($request->all())->validate();
                 $comprador2 = new User;
                 $comprador2->name = $request->name2;
                 $comprador2->email = $request->email2;
@@ -374,13 +363,8 @@ class VentasController extends Controller
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
-                try{
-                    $comprador2->save();
-                    Notification::success('Comprador 2 actualizado con exito');                                
-                } catch(\Illuminate\Database\QueryException $ex) {
-                    Notification::error('Error en comprador2: '.$ex->getMessage());
-                    return redirect ('ventas/editar/'.$id);
-                }
+                $comprador2->save();
+
 
                 $idComprador2 = $comprador2->id;
             
@@ -400,14 +384,7 @@ class VentasController extends Controller
                 $comprador2->telefono = $request->telefono2;
                 $comprador2->direccion = $request->direccion2;
                 $comprador2->estado = 1;
-                try{
-                    $comprador2->save();
-                    Notification::success('Comprador 2 actualizado con exito');            
-                    
-                } catch(\Illuminate\Database\QueryException $ex) {
-                    Notification::error('Error en comprador2: '.$ex->getMessage());
-                    return redirect ('ventas/editar/'.$id);
-                }
+                $comprador2->save();
             }
             
             $detallesAll2 = DatosComprador::where('id_usuario','=',$idComprador2)->get();
@@ -429,13 +406,7 @@ class VentasController extends Controller
             $detalles2->tipo_contrato = $request->tipo_contrato2;
             $detalles2->encuesta = $request->encuesta2;
             $detalles2->id_usuario = $idComprador2;
-            try{
-                $detalles2->save();
-                Notification::success('Detalles del Comprador 2 actualizados con exito');                        
-            } catch(\Illuminate\Database\QueryException $ex) {
-                Notification::error('Error en detalles del comprador2: '.$ex->getMessage());
-                return redirect ('ventas/editar/'.$id);
-            }
+            $detalles2->save();
             
             $venta->comprador2 = $idComprador2;
             $venta->save();
@@ -452,12 +423,13 @@ class VentasController extends Controller
         $cita->start_date = $request->cita;
         $cita->end_date = $request->cita;
         try{
-            $cita->save();
-            Notification::success('Cita registrada con exito');                                    
+            $cita->save();                                   
         } catch(\Illuminate\Database\QueryException $ex) {
-            Notification::error('Error al registrar la cita: recuerda que el formato es aaaa/mm/dd hh:mm:ss');
+            Notification::error('Error al registrar la cita');
             return redirect ('ventas/editar/'.$id);
         }
+
+        Notification::success('Venta actualizada con exito');        
         return redirect('/verVentas');
         
     }
