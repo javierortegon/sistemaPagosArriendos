@@ -65,7 +65,7 @@ class VentasController extends Controller
     protected function validator1(array $data)
     {
         return Validator::make($data, [
-            'telefono' => 'required|unique:users|max:255',
+            'documento' => 'required|unique:users|max:255',
         ]);
     }
     public function postVender($id, Request $request){
@@ -79,11 +79,9 @@ class VentasController extends Controller
             $this->validator1($request->all())->validate();
             $comprador = new User;
             $comprador->name = $request->name;
-            $comprador->email = $request->email;
             $comprador->password = bcrypt($request->documento);
             $comprador->documento = $request->documento;
             $comprador->telefono = $request->telefono;
-            $comprador->direccion = $request->direccion;
             $comprador->estado = 1;
             $comprador->save();
             $idComprador = $comprador->id;

@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     $("#name").attr('required', 'required');
     $("#telefono").attr('required', 'required');
+    $("#documento").attr('required', 'required');
 
     //Definiendo la alerta para pedir busqueda de usuario
     $('#clienteExistenteNombre').get(0).oninvalid = function(e) {
@@ -49,6 +50,7 @@ $(document).ready(function(){
             
             $("#name").removeAttr('required');
             $("#telefono").removeAttr('required');
+            $("#documento").removeAttr('required');
 
             $('#clienteExistenteNombre').attr('required', 'required');
         }
@@ -58,6 +60,7 @@ $(document).ready(function(){
             
             $("#name").attr('required', 'required');
             $("#telefono").attr('required', 'required');
+            $("#documento").attr('required', 'required');
 
             $('#clienteExistenteNombre').removeAttr('required');
 

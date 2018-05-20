@@ -97,7 +97,18 @@
                                                     @endif
                                                 </div>
                                             </div>
-
+                                            
+                                            <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
+                                                <label for="documento" class="col-md-4 control-label">Documento</label>
+                                                <div class="col-md-6">
+                                                    <input id="documento" type="text" class="form-control" name="documento" value="{{ old('documento') }}" required>
+                                                    @if ($errors->has('documento'))
+                                                        <span class="help-block">
+                                                            <strong>El documento ya está en uso</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                            </div>
 
                                             <div class="form-group{{ $errors->has('telefono') ? ' has-error' : '' }}">
                                                 <label for="telefono" class="col-md-4 control-label">Teléfono</label>
