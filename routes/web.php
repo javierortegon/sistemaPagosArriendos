@@ -137,8 +137,8 @@ Route::middleware(['auth'])->group(function() {
 
     //ruta para añadir arrendatario a la propiedad
     Route::get('propiedad/vender/{id}', [
-        //'middleware' => 'permission:propiedades.vender',
-        'middleware' => 'permission:propiedades.editar',
+        'middleware' => 'permission:propiedades.vender',
+        //'middleware' => 'permission:propiedades.editar',
         'uses' => 'VentasController@getVender'
     ])->name('propiedades.vender');
 

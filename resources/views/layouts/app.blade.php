@@ -92,7 +92,7 @@
                                     <li><a href="{{ route('verPropiedades') }}">Consultar y Asignar</a></li>
                                     @endcan
 
-                                    @can('propiedades.cargar')
+                                    @can('registroPropiedad')
                                     <li><a href="{{ route('propiedades.cargar') }}">Carga CSV de Inmuebles</a></li>
                                     @endcan
 
@@ -120,7 +120,7 @@
                                     <li><a href="{{ route('verUsuarios') }}">Consultar Usuarios</a></li>
                                     @endcan
 
-                                    @can('usuarios.cargar')
+                                    @can('registroPropiedad')
                                     <li><a href="{{ route('importUsers') }}">Carga CSV de Usuarios</a></li>
                                     @endcan
 
