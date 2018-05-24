@@ -268,6 +268,15 @@ Route::middleware(['auth'])->group(function() {
     Route::get('reporteVentas', 
     'ReportesController@reporteVentas'
     )->name('reporteVentas')->middleware('permission:propiedades.editar');
+    
+    Route::get('documentos/check/{id}', 
+    'DocumentosController@getCheckDocumentos'
+    )->name('documentos/check/{id}')->middleware('permission:propiedades.editar');
+
+    Route::put('documentos/registrar/{id}', 
+    'DocumentosController@putRegistrarDocumentos'
+    )->name('documentos/registrar/{id}')->middleware('permission:propiedades.editar');
+    
 
 });
 
