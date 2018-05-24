@@ -262,6 +262,7 @@ Route::middleware(['auth'])->group(function() {
 
 });
 
+Route::get('pruebaexcel', 'ReportesController@prueba888');
 
 /*
 |

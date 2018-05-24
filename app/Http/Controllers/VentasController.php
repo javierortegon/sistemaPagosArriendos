@@ -443,4 +443,44 @@ class VentasController extends Controller
         return redirect('/verVentas');
         
     }
+
+    public function reporteVentas(){
+        $venta = Venta::select( 
+                                'propiedades.id as idPropiedad', 
+                                'propiedades.codigo', 
+                                'propiedades.nombre', 
+                                'propiedades.direccion as direccionPropiedad', 
+                                'propiedades.estado', 
+                                'proyectos.nombre as nombreProyec',
+                                'tipos_propiedad.nombre as tipo',
+                                'tipos_propiedad.valor as valor',
+                                'users.name as name',
+                                'users.email as email',
+                                'users.telefono as telefono',
+                                'users.tipo_documento as tipo_documento',
+                                'users.documento as documento',
+                                'users.direccion as direccion',
+                                'datos_comprador.barrio as barrio',
+                                'datos_comprador.ciudad as ciudad',
+                                'datos_comprador.estado_civil as estado_civil',
+                                'datos_comprador.tipo_representacion as tipo_representacion',
+                                'datos_comprador.ocupacion as ocupacion',
+                                'datos_comprador.cargo as cargo',
+                                'datos_comprador.empresa as empresa',
+                                'datos_comprador.tipo_vinculacion as tipo_vinculacion',
+                                'datos_comprador.tipo_contrato as tipo_contrato',
+                                'datos_comprador.encuesta as encuesta',
+                                'datos_comprador.id_usuario as id_usuario'
+                                )
+        ->join('propiedades','ventas.propiedad','=','propiedades.id')
+        ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+        ->join('users', 'ventas.comprador', '=', 'users.id')
+        ->leftJoin('datos_comprador', 'users.id','=','datos_comprador.id_usuario')
+        ->where([   ['ventas.id', '=', $id],
+                    ['ventas.estado', '=', '1']
+                    ])
+        ->first();
+        
+    }
 }
