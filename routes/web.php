@@ -265,9 +265,9 @@ Route::middleware(['auth'])->group(function() {
     |
     */ 
 
-    Route::get('pruebaexcel', 
+    Route::get('reporteVentas', 
     'ReportesController@reporteVentas'
-    )->name('agenda/getdatatable')->middleware('permission:propiedades.editar');
+    )->name('reporteVentas')->middleware('permission:propiedades.editar');
 
 });
 

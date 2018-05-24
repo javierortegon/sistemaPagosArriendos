@@ -106,6 +106,17 @@
                                 </ul>
                             </li>
 
+                            @can('registroPropiedad')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Reportes
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('reporteVentas') }}">Reporte Ventas</a></li> 
+                                </ul>
+                            </li>
+                            @endcan
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Usuario
