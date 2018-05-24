@@ -258,11 +258,19 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'AgendaController@getAgenda'
     ])->name('verAgenda')->middleware('permission:verVentas');
 
-    
+
+    /*
+    |
+    |RUTAS PERSONALIZADAS PARA REPORTES
+    |
+    */ 
+
+    Route::get('pruebaexcel', 
+    'ReportesController@reporteVentas'
+    )->name('agenda/getdatatable')->middleware('permission:propiedades.editar');
 
 });
 
-Route::get('pruebaexcel', 'ReportesController@prueba888');
 
 /*
 |
