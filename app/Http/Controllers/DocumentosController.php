@@ -43,7 +43,7 @@ class DocumentosController extends Controller
         ->join('users', 'ventas.comprador', '=', 'users.id')
         ->where('ventas.id','=',$idVenta)
         ->first();
-        $documentos =   Documento::select('created_at', 'documento', 'informacion_adicional')
+        $documentos =   Documento::select('created_at', 'fecha_entrega', 'documento', 'informacion_adicional')
                         ->where('venta_id','=',$idVenta)
                         ->get();
         return view('venta.agregarDocumentos',['venta' => $venta, 'documentos' => $documentos]);
@@ -60,6 +60,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->encargoFiduciario); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->encargoFiduciario;
                 $documento->venta_id = $id;
                 $documento->save();
@@ -75,6 +76,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->cedula); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->cedula;
                 $documento->venta_id = $id;
                 $documento->save();
@@ -90,6 +92,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->certificacionLaboral); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->certificacionLaboral;
                 $documento->venta_id = $id;
                 $documento->save();
@@ -105,6 +108,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->declaracionDeRenta); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->declaracionDeRenta;
                 $documento->venta_id = $id;
                 $documento->save();
@@ -120,6 +124,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->subsidio); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->subsidio;
                 $documento->venta_id = $id;
                 $documento->save();
@@ -135,6 +140,7 @@ class DocumentosController extends Controller
                 Notification::error('Ya existia el documento '.$request->tarjetaDeFiducia); 
             } else{
                 $documento = new Documento;
+                $documento->fecha_entrega = $request->fecha_entrega;
                 $documento->documento = $request->tarjetaDeFiducia;
                 $documento->informacion_adicional = $request->numeroTarjetaFiducia;
                 $documento->venta_id = $id;

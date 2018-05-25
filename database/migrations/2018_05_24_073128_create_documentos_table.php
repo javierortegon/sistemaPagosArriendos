@@ -15,6 +15,7 @@ class CreateDocumentosTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('fecha_entrega');
             $table->string('documento');
             $table->string('informacion_adicional')->nullable();
             $table->integer('venta_id')->unsigned();

@@ -52,24 +52,28 @@
                     @if(count($documentos)>0)
                     <div class="panel-heading">Documentos entregados</div>
                     <div class="panel-body">
-                        <table class="table">
-                            <thead>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha de registro en base de datos</th>
+                                        <th>Fecha de entrega (registrada por usuario)</th>
+                                        <th>Documento entregado</th>
+                                        <th>Información adicional</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach( $documentos as $documento )
                                 <tr>
-                                    <th>Fecha</th>
-                                    <th>Documento</th>
-                                    <th>Información adicional</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach( $documentos as $documento )
-                            <tr>
-                                <td>{{ $documento['created_at'] }}</td>
-                                <td>{{ $documento['documento'] }}</td>
-                                <td>{{ $documento['informacion_adicional'] }}</td>
-                            </tr>                                        
-                            @endforeach
-                            </tbody>
-                        </table>
+                                    <td>{{ $documento['created_at'] }}</td>
+                                    <td>{{ $documento['fecha_entrega'] }}</td>
+                                    <td>{{ $documento['documento'] }}</td>
+                                    <td>{{ $documento['informacion_adicional'] }}</td>
+                                </tr>                                        
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     @endif
 
@@ -83,16 +87,22 @@
                                 {{-- TODO: Protección contra CSRF --}}
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <div >
-                                            <label class="col-md-4 segundoComprador"><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario"> Encargo fiduciario</label>
-                                            <label class="col-md-6 segundoComprador"><input type="checkbox" class = "documentos" name="cedula" value="Cedula"> Cédula</label>
-                                            <label class="col-md-4 segundoComprador"><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral"> Certificación Laboral</label>
-                                            <label class="col-md-6 segundoComprador"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta"> Declaración de renta</label>
-                                            <label class="col-md-4 segundoComprador"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio"> Subsidio</label>
-                                            <label class="col-md-6 segundoComprador" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia"> Tarjeta de Fiducia</label>
-                                            <label class="col-md-4 segundoComprador"> Número Tarjeta Fiducia</label>
-                                            <div class="col-md-6 6egundoComprador"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" readonly></div>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario"> Encargo fiduciario</label>
+                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="cedula" value="Cedula"> Cédula</label>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral"> Certificación Laboral</label>
+                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta"> Declaración de renta</label>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio"> Subsidio</label>
+                                            <label class="col-md-6" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia"> Tarjeta de Fiducia</label>
+                                            <label class="col-md-4"> Número Tarjeta Fiducia</label>
+                                            <div class="col-md-6"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" readonly></div>
                                     </div>
 								</div>
+                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                    <label class="col-md-4">Fecha de entrega:</label>
+                                    <div class="col-md-6">
+                                        <input type="date" name="fecha_entrega" required>
+                                    </div>
+                                </div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
 								
 
