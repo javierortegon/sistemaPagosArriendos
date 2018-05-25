@@ -267,35 +267,35 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('reporteVentas', 
     'ReportesController@reporteVentas'
-    )->name('reporteVentas')->middleware('permission:propiedades.verVentas');
+    )->name('reporteVentas')->middleware('permission:verVentas');
 
     Route::get('reporteVentasTorre1', 
     'ReportesController@reporteVentasTorre1'
-    )->name('reporteVentasTorre1')->middleware('permission:propiedades.verVentas');
+    )->name('reporteVentasTorre1')->middleware('permission:verVentas');
 
     Route::get('reporteVentasTorre2', 
     'ReportesController@reporteVentasTorre2'
-    )->name('reporteVentasTorre2')->middleware('permission:propiedades.verVentas');
+    )->name('reporteVentasTorre2')->middleware('permission:verVentas');
 
     Route::get('reporteDisponibles', 
     'ReportesController@disponibles'
-    )->name('reporteDisponibles')->middleware('permission:propiedades.verVentas');
+    )->name('reporteDisponibles')->middleware('permission:verVentas');
     
     Route::get('reporteAnuladas', 
     'ReportesController@reporteVentasAnuladas'
-    )->name('reporteAnuladas')->middleware('permission:propiedades.verVentas');
+    )->name('reporteAnuladas')->middleware('permission:verVentas');
     
     Route::get('reporteCitasHoy', 
     'ReportesController@reporteCitasHoy'
-    )->name('reporteCitasHoy')->middleware('permission:propiedades.verVentas');    
+    )->name('reporteCitasHoy')->middleware('permission:verVentas');    
 
     Route::get('documentos/check/{id}', 
     'DocumentosController@getCheckDocumentos'
-    )->name('documentos/check/{id}')->middleware('permission:propiedades.verVentas');
+    )->name('documentos/check/{id}')->middleware('permission:verVentas');
 
     Route::put('documentos/registrar/{id}', 
     'DocumentosController@putRegistrarDocumentos'
-    )->name('documentos/registrar/{id}')->middleware('permission:propiedades.verVentas');
+    )->name('documentos/registrar/{id}')->middleware('permission:verVentas');
     
 
 });
