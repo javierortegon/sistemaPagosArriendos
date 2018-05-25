@@ -49,6 +49,31 @@
 
 							</form>				
 					</div>
+                    @if(count($novedades)>0)
+                    <div class="panel-heading">Novedades</div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Novedad</th>
+                                        <th>Usuario que registra</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach( $novedades as $novedad )
+                                <tr>
+                                    <td>{{ $novedad['fecha'] }}</td>
+                                    <td>{{ $novedad['novedad'] }}</td>
+                                    <td>{{ $novedad['quienRegistra'] }}</td>
+                                </tr>                                        
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
                     @if(count($documentos)>0)
                     <div class="panel-heading">Documentos entregados</div>
                     <div class="panel-body">
@@ -93,7 +118,7 @@
                                             <label class="col-md-6"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta"> Declaración de renta</label>
                                             <label class="col-md-4"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio"> Subsidio</label>
                                             <label class="col-md-6" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia"> Tarjeta de Fiducia</label>
-                                            <label class="col-md-4"> Número Tarjeta Fiducia</label>
+                                            <label class="col-md-4"> Número Tarjeta Fiducia:</label>
                                             <div class="col-md-6"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" readonly></div>
                                     </div>
 								</div>
@@ -102,9 +127,16 @@
                                     <div class="col-md-6">
                                         <input type="date" name="fecha_entrega" required>
                                     </div>
-                                </div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                </div>
 
-								
+								<div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
+                                    <label class="col-md-4">Novedades y comentarios:</label>
+						            <div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
+                                        <div class="col-md-6">
+						            		<textarea name="novedades" id="novedades" class="form-control" required></textarea>
+						            	</div>
+						            </div>
+                                </div>
 
 								<div class="form-group">
 									<div class="col-md-6 col-md-offset-4">

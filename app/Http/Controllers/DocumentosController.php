@@ -46,7 +46,13 @@ class DocumentosController extends Controller
         $documentos =   Documento::select('created_at', 'fecha_entrega', 'documento', 'informacion_adicional')
                         ->where('venta_id','=',$idVenta)
                         ->get();
-        return view('venta.agregarDocumentos',['venta' => $venta, 'documentos' => $documentos]);
+        $novedades = NovedadVenta::select(  'novedadesVentas.created_at as fecha',
+                                            'novedadesVentas.novedad as novedad',
+                                            'users.name as quienRegistra'
+                                            )->where('venta_id','=',$idVenta)
+                                            ->join('users','novedadesVentas.quien_registra_id','=','users.id')
+                                            ->get();
+        return view('venta.agregarDocumentos',['venta' => $venta, 'documentos' => $documentos,'novedades' => $novedades]);
     }
 
     public function putRegistrarDocumentos($id, Request $request){
@@ -148,6 +154,11 @@ class DocumentosController extends Controller
                 Notification::success($request->tarjetaDeFiducia.' registrado con exito'); 
             }
         }
+        $novedad = new NovedadVenta;
+        $novedad->venta_id = $id;
+        $novedad->novedad = $request->input('novedades');
+        $novedad->quien_registra_id = Auth::id();
+        $novedad->save();
         return redirect('documentos/check/'.$id);
     }
 }

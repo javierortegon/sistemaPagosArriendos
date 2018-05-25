@@ -6,7 +6,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
-					<div class="panel-heading">Registro Venta</div>
+					<div class="panel-heading">Datos de la venta a editar</div>
 					<div class="panel-body">
                             @if ($venta['estado'] == 0)
 
@@ -17,13 +17,8 @@
                                 </div>
 
                             @else
-                                <form class="form-horizontal"  method="POST" action="{{  url('ventas/editar').'/'.$venta['id'] }}">
-                                    <input type="hidden" name="_method" value="PUT">
-                                    {{ csrf_field() }}
+                                
                                     <div id="datosPropiedad">
-                                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                            <label class="col-md-4 control-label">DATOS DE LA PROPIEDAD</label>
-                                        </div>
 
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">Codigo</label>
@@ -60,8 +55,40 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <br />
-                                    <br />
+                                </div>
+                                <br />
+                                <br />
+                                @if(count($novedades)>0)
+                                <div class="panel-heading">Novedades</div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Novedad</th>
+                                                    <th>Usuario que registra</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach( $novedades as $novedad )
+                                            <tr>
+                                                <td>{{ $novedad['fecha'] }}</td>
+                                                <td>{{ $novedad['novedad'] }}</td>
+                                                <td>{{ $novedad['quienRegistra'] }}</td>
+                                            </tr>                                        
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="panel-heading">Datos usuarios</div>
+					            <div class="panel-body">
+
+                                    <form class="form-horizontal"  method="POST" action="{{  url('ventas/editar').'/'.$venta['id'] }}">
+                                    <input type="hidden" name="_method" value="PUT">
+                                    {{ csrf_field() }}
 
                                     <div id="datosUsuario1">
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -572,6 +599,14 @@
                                                     <option value="otro">Otro</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
+                                            <label for="novedades" class="col-md-4 control-label">Novedades y comentarios:</label>
+								            <div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
+                                                <div class="col-md-6">
+								            		<textarea name="novedades" id="novedades" class="form-control" required></textarea>
+								            	</div>
+								            </div>
                                         </div>
                                     </div>
 

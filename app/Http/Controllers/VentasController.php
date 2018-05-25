@@ -289,6 +289,13 @@ class VentasController extends Controller
         ->leftJoin('datos_comprador', 'users.id','=','datos_comprador.id_usuario')
         ->where('users.id','=',$venta->comprador2)
         ->first();
+        
+        $novedades = NovedadVenta::select(  'novedadesVentas.created_at as fecha',
+                                            'novedadesVentas.novedad as novedad',
+                                            'users.name as quienRegistra'
+                                            )->where('venta_id','=',$id)
+                                            ->join('users','novedadesVentas.quien_registra_id','=','users.id')
+                                            ->get();
 
         $clienteExistenteRegistrado = 0;
 
@@ -302,7 +309,7 @@ class VentasController extends Controller
         $valor = substr_replace($valor, '`', $pos-3, 0);
         $valor = substr_replace($valor, '$ ', 0, 0);
         
-        return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado, 'valor' => $valor]);    
+        return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado, 'valor' => $valor, 'novedades' => $novedades]);    
     }
 
 
@@ -439,6 +446,11 @@ class VentasController extends Controller
             Notification::error('Error al registrar la cita');
             return redirect ('ventas/editar/'.$id);
         }
+        $novedad = new NovedadVenta;
+        $novedad->venta_id = $id;
+        $novedad->novedad = $request->input('novedades');
+        $novedad->quien_registra_id = Auth::id();
+        $novedad->save();
 
         Notification::success('Venta actualizada con exito');        
         return redirect('/verVentas');
