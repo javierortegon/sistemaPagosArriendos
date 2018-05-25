@@ -267,35 +267,35 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('reporteVentas', 
     'ReportesController@reporteVentas'
-    )->name('reporteVentas')->middleware('permission:propiedades.editar');
+    )->name('reporteVentas')->middleware('permission:propiedades.verVentas');
 
     Route::get('reporteVentasTorre1', 
     'ReportesController@reporteVentasTorre1'
-    )->name('reporteVentasTorre1')->middleware('permission:propiedades.editar');
+    )->name('reporteVentasTorre1')->middleware('permission:propiedades.verVentas');
 
     Route::get('reporteVentasTorre2', 
     'ReportesController@reporteVentasTorre2'
-    )->name('reporteVentasTorre2')->middleware('permission:propiedades.editar');
+    )->name('reporteVentasTorre2')->middleware('permission:propiedades.verVentas');
 
     Route::get('reporteDisponibles', 
     'ReportesController@disponibles'
-    )->name('reporteDisponibles')->middleware('permission:propiedades.editar');
+    )->name('reporteDisponibles')->middleware('permission:propiedades.verVentas');
     
     Route::get('reporteAnuladas', 
     'ReportesController@reporteVentasAnuladas'
-    )->name('reporteAnuladas')->middleware('permission:propiedades.editar');
+    )->name('reporteAnuladas')->middleware('permission:propiedades.verVentas');
     
     Route::get('reporteCitasHoy', 
     'ReportesController@reporteCitasHoy'
-    )->name('reporteCitasHoy')->middleware('permission:propiedades.editar');    
+    )->name('reporteCitasHoy')->middleware('permission:propiedades.verVentas');    
 
     Route::get('documentos/check/{id}', 
     'DocumentosController@getCheckDocumentos'
-    )->name('documentos/check/{id}')->middleware('permission:propiedades.editar');
+    )->name('documentos/check/{id}')->middleware('permission:propiedades.verVentas');
 
     Route::put('documentos/registrar/{id}', 
     'DocumentosController@putRegistrarDocumentos'
-    )->name('documentos/registrar/{id}')->middleware('permission:propiedades.editar');
+    )->name('documentos/registrar/{id}')->middleware('permission:propiedades.verVentas');
     
 
 });
