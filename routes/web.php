@@ -268,7 +268,27 @@ Route::middleware(['auth'])->group(function() {
     Route::get('reporteVentas', 
     'ReportesController@reporteVentas'
     )->name('reporteVentas')->middleware('permission:propiedades.editar');
+
+    Route::get('reporteVentasTorre1', 
+    'ReportesController@reporteVentasTorre1'
+    )->name('reporteVentasTorre1')->middleware('permission:propiedades.editar');
+
+    Route::get('reporteVentasTorre2', 
+    'ReportesController@reporteVentasTorre2'
+    )->name('reporteVentasTorre2')->middleware('permission:propiedades.editar');
+
+    Route::get('reporteDisponibles', 
+    'ReportesController@disponibles'
+    )->name('reporteDisponibles')->middleware('permission:propiedades.editar');
     
+    Route::get('reporteAnuladas', 
+    'ReportesController@reporteVentasAnuladas'
+    )->name('reporteAnuladas')->middleware('permission:propiedades.editar');
+    
+    Route::get('reporteCitasHoy', 
+    'ReportesController@reporteCitasHoy'
+    )->name('reporteCitasHoy')->middleware('permission:propiedades.editar');    
+
     Route::get('documentos/check/{id}', 
     'DocumentosController@getCheckDocumentos'
     )->name('documentos/check/{id}')->middleware('permission:propiedades.editar');
