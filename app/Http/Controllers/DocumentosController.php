@@ -43,16 +43,39 @@ class DocumentosController extends Controller
         ->join('users', 'ventas.comprador', '=', 'users.id')
         ->where('ventas.id','=',$idVenta)
         ->first();
+        $documentosQueTiene = array(    0 => 0, 
+                                        1 => 0,
+                                        2 => 0,
+                                        3 => 0,
+                                        4 => 0,
+                                        5 => 0);
         $documentos =   Documento::select('created_at', 'fecha_entrega', 'documento', 'informacion_adicional')
                         ->where('venta_id','=',$idVenta)
                         ->get();
+        $numeroTarjetaFiducia = "";
+        foreach ($documentos as $documento){
+            if($documento->documento == "Encargo Fiduciario"){
+                $documentosQueTiene[0] = 1;
+            } else if ($documento->documento == "Cedula"){
+                $documentosQueTiene[1] = 1;
+            } else if ($documento->documento == "Certificacion Laboral"){
+                $documentosQueTiene[2] = 1;                
+            } else if ($documento->documento == "Declaracion de Renta"){
+                $documentosQueTiene[3] = 1;            
+            } else if ($documento->documento == "Subsidio"){
+                $documentosQueTiene[4] = 1;                
+            } else if ($documento->documento == "Tarjeta de Fiducia"){
+                $documentosQueTiene[5] = 1;
+                $numeroTarjetaFiducia = $documento->informacion_adicional;              
+            }
+        }
         $novedades = NovedadVenta::select(  'novedadesVentas.created_at as fecha',
                                             'novedadesVentas.novedad as novedad',
                                             'users.name as quienRegistra'
                                             )->where('venta_id','=',$idVenta)
                                             ->join('users','novedadesVentas.quien_registra_id','=','users.id')
                                             ->get();
-        return view('venta.agregarDocumentos',['venta' => $venta, 'documentos' => $documentos,'novedades' => $novedades]);
+        return view('venta.agregarDocumentos',['venta' => $venta, 'documentos' => $documentos,'novedades' => $novedades, 'documentosQueTiene' => $documentosQueTiene, 'numeroTarjetaFiducia' => $numeroTarjetaFiducia]);
     }
 
     public function putRegistrarDocumentos($id, Request $request){

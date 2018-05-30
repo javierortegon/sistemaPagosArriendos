@@ -112,14 +112,14 @@
                                 {{-- TODO: Protección contra CSRF --}}
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                     <div >
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario"> Encargo fiduciario</label>
-                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="cedula" value="Cedula"> Cédula</label>
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral"> Certificación Laboral</label>
-                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta"> Declaración de renta</label>
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio"> Subsidio</label>
-                                            <label class="col-md-6" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia"> Tarjeta de Fiducia</label>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario" @if($documentosQueTiene[0] == 1) checked @endif> Encargo fiduciario</label>
+                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="cedula" value="Cedula"@if($documentosQueTiene[1] == 1) checked @endif> Cédula</label>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral" @if($documentosQueTiene[2] == 1) checked @endif> Certificación Laboral</label>
+                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta" @if($documentosQueTiene[3] == 1) checked @endif> Declaración de renta</label>
+                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio" @if($documentosQueTiene[4] == 1) checked @endif> Subsidio</label>
+                                            <label class="col-md-6" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia" @if($documentosQueTiene[5] == 1) checked @endif> Tarjeta de Fiducia</label>
                                             <label class="col-md-4"> Número Tarjeta Fiducia:</label>
-                                            <div class="col-md-6"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" readonly></div>
+                                            <div class="col-md-6"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" @if($documentosQueTiene[5] == 1) value = "{{$numeroTarjetaFiducia}}" @endif></div>
                                     </div>
 								</div>
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
