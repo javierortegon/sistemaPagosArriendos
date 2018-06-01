@@ -49,7 +49,7 @@ class DocumentosController extends Controller
                                         3 => 0,
                                         4 => 0,
                                         5 => 0);
-        $documentos =   Documento::select('created_at', 'fecha_entrega', 'documento', 'informacion_adicional')
+        $documentos =   Documento::select('id','created_at', 'fecha_entrega', 'documento', 'informacion_adicional')
                         ->where('venta_id','=',$idVenta)
                         ->get();
         $numeroTarjetaFiducia = "";
@@ -86,7 +86,6 @@ class DocumentosController extends Controller
                 ['documento','=',$request->encargoFiduciario]
             ])->count();
             if($test>0){
-                Notification::error('Ya existia el documento '.$request->encargoFiduciario); 
             } else{
                 $documento = new Documento;
                 $documento->fecha_entrega = $request->fecha_entrega;
@@ -184,4 +183,44 @@ class DocumentosController extends Controller
         $novedad->save();
         return redirect('documentos/check/'.$id);
     }
+
+    public function getEliminarDocumentos($idVenta){
+        $documentos =   Documento::select('id','created_at', 'fecha_entrega', 'documento', 'informacion_adicional','venta_id')
+                        ->where('venta_id','=',$idVenta)
+                        ->get();
+        $venta = Venta::select(         'ventas.id as id',
+                                        'propiedades.codigo', 
+                                        'users.name as comprador',
+                                        'users.documento as documento',
+                                        'users.telefono as telefono',
+                                        'propiedades.direccion',
+                                        'tipos_propiedad.nombre as tipoPropiedad', 
+                                        'proyectos.nombre as nombreProyec')
+                ->leftJoin('propiedades', 'propiedades.id', '=', 'ventas.propiedad')
+                ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
+                ->join('proyectos', 'propiedades.id_proyecto', '=', 'proyectos.id')
+                ->join('users', 'ventas.comprador', '=', 'users.id')
+                ->where('ventas.id','=',$idVenta)
+                ->first();
+
+        return view('venta.eliminarDocumentos', ['documentos' => $documentos, 'venta' => $venta]);
+    }
+    public function eliminarDocumentos(Request $request){
+        $eliminado = false;
+        for($i = 0; $i < $request->numeroDeDocumentos;$i++){
+            $id = $request->input('eliminar_'.$i);
+            if($id>0){
+                $documento = Documento::find($id);
+                $documento->delete();
+                $eliminado = true;
+            }
+        }
+        if($eliminado){
+            Notification::success('Documentos eliminados correctamente');
+        } else {
+            Notification::warning('No se han eliminado documentos');
+            
+        }
+        return redirect('documentos/check/'.$request->idVenta);
+    }    
 }

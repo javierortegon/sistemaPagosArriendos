@@ -297,7 +297,13 @@ Route::middleware(['auth'])->group(function() {
     'DocumentosController@putRegistrarDocumentos'
     )->name('documentos/registrar/{id}')->middleware('permission:verVentas');
     
+    Route::get('documentos/getEliminar/{idVenta}', 
+    'DocumentosController@getEliminarDocumentos'
+    )->name('documentos/getEliminar')->middleware('permission:propiedades.editar');
 
+    Route::delete('documentos/eliminar', 
+    'DocumentosController@eliminarDocumentos'
+    )->name('documentos/eliminar')->middleware('permission:propiedades.editar');
 });
 
 

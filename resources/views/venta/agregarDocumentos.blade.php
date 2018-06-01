@@ -75,7 +75,7 @@
                     </div>
                     @endif
                     @if(count($documentos)>0)
-                    <div class="panel-heading">Documentos entregados</div>
+                    <div class="panel-heading">Documentos entregados (ya registrados)</div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table">
@@ -102,50 +102,69 @@
                     </div>
                     @endif
 
-                    <div class="panel-heading">Documentos entregados</div>
+                    <div class="panel-heading">Documentos</div>
 
                     <div class="panel-body">
-                            <form class="form-horizontal" action="{{ url('documentos/registrar').'/'.$venta['id'] }}" method="POST">
-                                <input type="hidden" name="_method" value="PUT">
-                                {{-- TODO: Abrir el formulario e indicar el método POST --}}
-                                {{ csrf_field() }}
-                                {{-- TODO: Protección contra CSRF --}}
-                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <div >
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario" @if($documentosQueTiene[0] == 1) checked @endif> Encargo fiduciario</label>
-                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="cedula" value="Cedula"@if($documentosQueTiene[1] == 1) checked @endif> Cédula</label>
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral" @if($documentosQueTiene[2] == 1) checked @endif> Certificación Laboral</label>
-                                            <label class="col-md-6"><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta" @if($documentosQueTiene[3] == 1) checked @endif> Declaración de renta</label>
-                                            <label class="col-md-4"><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio" @if($documentosQueTiene[4] == 1) checked @endif> Subsidio</label>
-                                            <label class="col-md-6" id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia" @if($documentosQueTiene[5] == 1) checked @endif> Tarjeta de Fiducia</label>
-                                            <label class="col-md-4"> Número Tarjeta Fiducia:</label>
-                                            <div class="col-md-6"><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" @if($documentosQueTiene[5] == 1) value = "{{$numeroTarjetaFiducia}}" @endif></div>
-                                    </div>
+                        <form class="form-horizontal" action="{{ url('documentos/registrar').'/'.$venta['id'] }}" method="POST">
+                            <input type="hidden" name="_method" value="PUT">
+                            {{-- TODO: Abrir el formulario e indicar el método POST --}}
+                            {{ csrf_field() }}
+                            {{-- TODO: Protección contra CSRF --}}
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Documento</th>
+                                            <th>Fecha de entrega</th>
+                                        </tr>
+                                    <thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><label><input type="checkbox" class = "documentos" name="encargoFiduciario" value="Encargo Fiduciario" @if($documentosQueTiene[0] == 1) checked disabled @else value="Encargo Fiduciario" @endif> Encargo fiduciario</label></td>
+                                            <td><input class ="date" type="date" name="fecha_entrega_encargo" required></td>
+                                        </tr>
+                                        <tr>    
+                                            <td><label><input type="checkbox" class = "documentos" name="cedula" value="Cedula"@if($documentosQueTiene[1] == 1) checked disabled @endif> Cédula</label></td>
+                                            <td><input class ="date" type="date" name="fecha_entrega_cedula" required></td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td><label><input type="checkbox" class = "documentos" name="certificacionLaboral" value="Certificacion Laboral" @if($documentosQueTiene[2] == 1) checked disabled @endif> Certificación Laboral</label></td>
+                                            <td><input class ="date"  type="date" name="fecha_entrega_certificacionLaboral" required></td>                                    
+                                        </tr>
+                                        <tr>
+                                            <td><label><input type="checkbox" class = "documentos" name="declaracionDeRenta" value="Declaracion de Renta" @if($documentosQueTiene[3] == 1) checked disabled @endif> Declaración de renta</label></td>
+                                            <td><input class ="date"  type="date" name="fecha_entrega_declaracionDeRenta" required></td>
+                                        </tr>
+                                        <tr> 
+                                            <td><label><input type="checkbox" class = "documentos" name="subsidio" value="Subsidio" @if($documentosQueTiene[4] == 1) checked disabled @endif> Subsidio</label></td>
+                                            <td><input class ="date"  type="date" name="fecha_entrega_subsidio" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label id="tarjetaDeFiduciaLabel"><input type="checkbox" class = "documentos" name="tarjetaDeFiducia" id="tarjetaDeFiducia" value="Tarjeta de Fiducia" @if($documentosQueTiene[5] == 1) checked disabled @endif> Tarjeta de Fiducia</label></td>
+                                            <td><input class ="date"  type="date" name="fecha_entrega_tarjetaDeFiducia" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label> Número Tarjeta Fiducia:</label></td>
+                                            <td><div><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" @if($documentosQueTiene[5] == 1) value = "{{$numeroTarjetaFiducia}}" @else disabled @endif></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label> Novedades y comentarios:</label></td>
+                                            <td><div><textarea name="novedades" id="novedades" class="form-control" required></textarea></div></td>
+                                        </tr>
+                                    </tbody>                                        
+                                </table>
+							</div>
+                            
+							
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-3">
+									<button type="submit" class="btn btn-primary">
+										Guardar Información
+									</button>
+                                    <a href="{{ url('documentos/getEliminar/'.$venta['id'])}}" class="btn btn-primary">Eliminar documentos</a>                                    
 								</div>
-                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label class="col-md-4">Fecha de entrega:</label>
-                                    <div class="col-md-6">
-                                        <input type="date" name="fecha_entrega" required>
-                                    </div>
-                                </div>
-
-								<div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
-                                    <label class="col-md-4">Novedades y comentarios:</label>
-						            <div class="form-group{{ $errors->has('novedades') ? ' has-error' : '' }}">
-                                        <div class="col-md-6">
-						            		<textarea name="novedades" id="novedades" class="form-control" required></textarea>
-						            	</div>
-						            </div>
-                                </div>
-
-								<div class="form-group">
-									<div class="col-md-6 col-md-offset-4">
-										<button type="submit" class="btn btn-primary">
-											Guardar Información
-										</button>
-									</div>
-								</div>
-                            </form>				
+							</div>
+                        </form>				
 					</div>
 
 				</div>
@@ -156,6 +175,7 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function() {
+    $('.date').val(new Date().toDateInputValue());
     $('#tarjetaDeFiduciaLabel').click(function(){
         if($('#tarjetaDeFiducia').is(':checked')){
             $('#numeroTarjetaFiducia').attr('readonly', false); 
@@ -166,6 +186,11 @@ $(document).ready(function() {
             $('#numeroTarjetaFiducia').val('');
         }
     });
+});
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
 });
 </script>
 @endsection
