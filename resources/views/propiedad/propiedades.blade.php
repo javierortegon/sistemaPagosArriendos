@@ -18,7 +18,6 @@
                         <table class="table datatable" id="tablaPropiedades">
                             <thead>
                                 <tr>
-                                    <th>Inmueble</th>
                                     <th>Nombre (Subtipo)</th>
                                     <th>Proyecto</th>
                                     <th>Tipo (Torre)</th>
@@ -54,7 +53,6 @@ $(document).ready(function() {
         serverSide: true,
         ajax: '{{ route('propiedades/getdatatable') }}',
         columns: [
-            {data: 'codigo', name: 'codigo'},
             {data: 'nombre', name: 'nombre'},
             {data: 'nombreProyec', name: 'nombreProyec'},
             {data: 'tipoPropiedad', name: 'tipoPropiedad'},
