@@ -17,11 +17,13 @@ class AgendaController extends Controller
         return view('agenda.tablaAgenda');
     }
     public function getDataTableAgenda(){
-        $queryConsulta = Agenda::select( 'event_name',
-                                        'start_date',
-                                        'venta',
+        $queryConsulta = Agenda::select( 'agenda.event_name',
+                                        'agenda.start_date',
+                                        'propiedades.codigo as inmueble',
                                         'users.name as cliente')
         ->join('users','agenda.cliente','=','users.id')
+        ->join('ventas','agenda.venta','=','ventas.id')
+        ->join('propiedades','ventas.propiedad','=','propiedades.id')
         ->get();
         return \DataTables::of($queryConsulta)->make(true);
     }

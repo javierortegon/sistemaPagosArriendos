@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>Cita</th>
                                     <th>Fecha</th>
-                                    <th>Venta</th>
+                                    <th>Inmueble</th>
                                     <th>Usuario</th>
                                 </tr>
                             </thead>
@@ -51,7 +51,7 @@ $(document).ready(function() {
         columns: [
             {data: 'event_name', name: 'event_name'},
             {data: 'start_date', name: 'start_date'},
-            {data: 'venta', name: 'venta'},
+            {data: 'inmueble', name: 'inmueble'},
             {data: 'cliente', name: 'cliente'},
         ],
         pageLenght: 5,
