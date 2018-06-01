@@ -173,6 +173,11 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'UsersController@getUsuarios',
         'middleware' => 'permission:verUsuarios'
     ])->name('verUsuarios'); 
+    
+    Route::get('/verClientes', [
+        'uses' => 'UsersController@getClientes',
+        'middleware' => 'permission:verUsuarios'
+    ])->name('verClientes'); 
 
     //ruta para editar los usuarios
     Route::get('usuario/edit/{id}', [
@@ -348,6 +353,10 @@ Route::get('usuarios/selectAjax/{campo}/{caracteres}',
 Route::get('usuarios/getdatatable', 
 'UsersController@getDataTableUsuarios'
 )->name('usuarios/getdatatable')->middleware('auth');
+
+Route::get('clientes/getdatatable', 
+'UsersController@getDataTableClientes'
+)->name('clientes/getdatatable')->middleware('auth');
 
 Route::get('propiedades/getdatatable', 
 'PropiedadesController@getDataTablePropiedades'

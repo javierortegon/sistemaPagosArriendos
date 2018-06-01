@@ -15,8 +15,11 @@ use Notification;
 class UsersController extends Controller
 {
     public function getUsuarios(){
-        $usuariosPaginados = User::paginate(10);
-        return view ('auth.usuarios', ['usuarios' => $usuariosPaginados ]);
+        return view ('auth.usuarios');
+    }
+
+    public function getClientes(){
+        return view ('auth.clientes');
     }
 
     public function getEdit($id){
@@ -156,9 +159,60 @@ class UsersController extends Controller
         return response()->json($usuarios);
     }
 
+    public function getDataTableClientes(){
+        $idRolDeCliente = 3;
+        $queryConsulta =    User::select(   'users.id',
+                                            'users.name',
+                                            'users.email',
+                                            'users.telefono',
+                                            'users.documento',
+                                            'users.estado',
+                                            'role_user.role_id as rol')
+                            ->leftJoin('role_user', 'role_user.user_id', '=', 'users.id')
+                            ->where('role_user.role_id', '=', 3)->get();
+        return \DataTables::of($queryConsulta)->addColumn('estadoString', function ($user) {
+            $estado = "";
+            if($user->estado == 1){
+                $estado = 'Activo';
+            } else{
+                $estado = 'Inactivo';
+            }
+            return $estado;
+            
+        })->addColumn('roles', function ($user) {
+            $roles =    RolesUsers::select('roles.name')
+                        ->join('roles','role_user.role_id','=','roles.id')
+                        ->where('role_user.user_id','=',$user->id)
+                        ->get();
+
+            $rolesString = "- ";
+            if(count($roles) != 0){
+                foreach($roles as $rol){
+                    $rolesString = $rolesString.$rol->name." - ";
+                }
+            } else{
+                $rolesString = "Sin rol asignado";
+            }
+            return $rolesString;
+            
+        })->addColumn('editar', function ($user) {
+            return  '<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
+                    '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
+                    '<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+        })->rawColumns(['editar', 'action'])->make(true);
+    }
     public function getDataTableUsuarios(){
-        
-        $queryConsulta = User::all();
+        $idRolDeCliente = 3;
+        $queryConsulta =    User::select(   'users.id',
+                                            'users.name',
+                                            'users.email',
+                                            'users.telefono',
+                                            'users.documento',
+                                            'users.estado',
+                                            'role_user.role_id as rol')
+                            ->leftJoin('role_user', 'role_user.user_id', '=', 'users.id')
+                            ->where('role_user.role_id', '<>', 3)
+                            ->orWhereNull('role_user.role_id')->get();
         return \DataTables::of($queryConsulta)->addColumn('estadoString', function ($user) {
             $estado = "";
             if($user->estado == 1){

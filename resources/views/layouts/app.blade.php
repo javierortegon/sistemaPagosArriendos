@@ -136,6 +136,10 @@
                                     @endcan
 
                                     @can('verUsuarios')
+                                    <li><a href="{{ route('verClientes') }}">Consultar Clientes</a></li>
+                                    @endcan
+
+                                    @can('verUsuarios')
                                     <li><a href="{{ route('verUsuarios') }}">Consultar Usuarios</a></li>
                                     @endcan
 
