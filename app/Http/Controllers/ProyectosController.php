@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Proyecto;
 use App\TiposPropiedad;
 use App\Propiedad;
+use App\Venta;
 
 use Notification;
 
@@ -51,9 +52,20 @@ class ProyectosController extends Controller
         $tiposPropiedad = TiposPropiedad::where([
             ['proyecto', '=', $id]
         ])->get();
-        $propiedades = Propiedad::where([
-            ['id_proyecto', '=', $id]
-        ])->paginate(10);
+        $propiedades = Propiedad::select(   'propiedades.id',
+                                            'propiedades.codigo',
+                                            'propiedades.nombre',
+                                            'propiedades.direccion',
+                                            'ventas.estado as estadoVenta',
+                                            'tipos_propiedad.nombre as tipoPropiedad')
+        ->where('id_proyecto', '=', $id)
+        ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad','=','tipos_propiedad.id')
+        ->leftJoin('ventas', 'ventas.propiedad', '=', 'propiedades.id')
+        ->where('ventas.estado','<>','0')
+        ->orWhereNull('ventas.propiedad')
+        ->paginate(10);
+        
+
         return view ('proyecto.detalle', ['proyecto' => $proyecto, 'propiedades' => $propiedades, 'tiposPropiedad' => $tiposPropiedad]);
     }
 

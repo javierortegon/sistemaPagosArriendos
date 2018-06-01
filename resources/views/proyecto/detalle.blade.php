@@ -55,6 +55,7 @@
                                 <th>Nombre</th>
                                 <th>Direccion</th>
                                 <th>Proyecto</th>
+                                <th>Tipo</th>
                                 <th>Estado</th>
                             </tr>
                         </thead>
@@ -65,12 +66,13 @@
                                     <td>{{$propiedad->nombre}}</td>
                                     <td>{{$propiedad->direccion}}</td>
                                     <td>{{$proyecto->nombre}}</td>
+                                    <td>{{$propiedad->tipoPropiedad}}</td>
                                     <td>
-                                        @if ($propiedad->estado == 1)
-                                            Activo
-                                        @else
-                                            Desactivo    
-                                        @endif    
+                                    @if($propiedad->estadoVenta == 1)
+                                        Vendida
+                                    @else
+                                        Disponible
+                                    @endif
                                     </td>
                                 </tr>
                             @endforeach
