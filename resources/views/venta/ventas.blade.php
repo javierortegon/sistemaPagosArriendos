@@ -22,8 +22,8 @@
                                     <th>Teléfono comprador</th>
                                     <th>Inmueble</th>
                                     <th>Direccion</th>
-                                    <th>Tipo de propiedad</th>
                                     <th>Proyecto</th>
+                                    <th>Tipo de propiedad</th>
                                     <th></th>
                                 </tr>
                             </thead>
