@@ -26,6 +26,9 @@
         #menu{
             height: 90px;
         }
+        textarea {
+        	resize: none;
+        }
     </style>
 
     @yield('styles')
