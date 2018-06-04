@@ -13,31 +13,31 @@
                                 
 
                                 <div class="col-md-4"><b>Usuario:</b></div>
-                                <div class="col-md-6">.{{ $venta['comprador'] }}</div>
+                                <div class="col-md-6">{{ $venta['comprador'] }}</div>
 
                                 <div class="col-md-4"><b>Tel{efono:</b></div>
-                                <div class="col-md-6">.{{ $venta['telefono'] }}</div>
+                                <div class="col-md-6">{{ $venta['telefono'] }}</div>
 
                                 <div class="col-md-4"><b>Documento:</b></div>
-                                <div class="col-md-6">.{{ $venta['documento'] }}</div>
+                                <div class="col-md-6">{{ $venta['documento'] }}</div>
 
                                 <div class="col-md-4"><b>Inmueble:</b></div>
-                                <div class="col-md-6">.{{ $venta['codigo'] }}</div>
+                                <div class="col-md-6">{{ $venta['codigo'] }}</div>
 
                                 <div class="col-md-4"><b>Tipo:</b></div>
-                                <div class="col-md-6">.{{ $venta['tipoPropiedad'] }}</div>
+                                <div class="col-md-6">{{ $venta['tipoPropiedad'] }}</div>
 
                                 <div class="col-md-4"><b>Proyecto:</b></div>
-                                <div class="col-md-6">.{{ $venta['nombreProyec'] }}</div>
+                                <div class="col-md-6">{{ $venta['nombreProyec'] }}</div>
 
                                 <div class="col-md-4"><b>Dirección:</b></div>
-                                <div class="col-md-6">.{{ $venta['direccion'] }}</div>
+                                <div class="col-md-6">{{ $venta['direccion'] }}</div>
 
                                 <div class="col-md-4"><b>Proyecto:</b></div>
-                                <div class="col-md-6">.{{ $venta['nombreProyec'] }}</div>
+                                <div class="col-md-6">{{ $venta['nombreProyec'] }}</div>
 
                                 <div class="col-md-4"><b>Tipo:</b></div>
-                                <div class="col-md-6">.{{ $venta['tipoPropiedad'] }}</div>
+                                <div class="col-md-6">{{ $venta['tipoPropiedad'] }}</div>
 
 
 								<input type="hidden" name="_method" value="PUT">

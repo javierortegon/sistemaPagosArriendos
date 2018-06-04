@@ -35,7 +35,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="margin-bottom: 2em">
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div id = "menu" class="navbar-header">

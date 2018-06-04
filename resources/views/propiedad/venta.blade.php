@@ -137,7 +137,6 @@
                                                         <datalist id="usuariosDataList">
                                                         </datalist>
                                                         <br />
-                                                        <br />
                                                         <button type="button" class="btn btn-warning" id="btnSeleccionUsuario">Seleccionar Usuario</button>  
                                                     </div>
                                                 </div>
@@ -178,8 +177,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    
-                                        <br />
                                         <br />
                                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                             <label class="col-md-4 control-label">DETALLES COMPRA</label>

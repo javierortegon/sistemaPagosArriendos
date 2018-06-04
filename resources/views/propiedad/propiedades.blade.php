@@ -6,7 +6,7 @@
 
 @section('content')
 	<div class="">
-		<div class="row">
+		<div class="">
 			<div class="col-md-10 col-md-offset-1">
 				{!!	Notification::showAll()	!!}
 				<div class="panel panel-default">
