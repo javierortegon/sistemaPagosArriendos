@@ -145,7 +145,7 @@
                                         </tr>
                                         <tr>
                                             <td><label> Número Tarjeta Fiducia:</label></td>
-                                            <td><div><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" @if($documentosQueTiene[5] == 1) value = "{{$numeroTarjetaFiducia}}" @else disabled @endif></div></td>
+                                            <td><div><input type="text" name = "numeroTarjetaFiducia" id="numeroTarjetaFiducia" @if($documentosQueTiene[5] == 1) value = "{{$numeroTarjetaFiducia}}" disabled @else readonly @endif></div></td>
                                         </tr>
                                         <tr>
                                             <td><label> Novedades y comentarios:</label></td>
