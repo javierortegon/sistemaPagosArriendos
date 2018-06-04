@@ -75,9 +75,9 @@ class ProyectosController extends Controller
         
         $queryConsulta = Proyecto::all();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($proyecto) {
-            return  '<a href="'.url('proyecto/detalle/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles del proyecto</a>'." ".
-                    '<a href="'.url('tiposPropiedad/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver tipos de inmueble</a>'." ".
-                    '<a href="'.url('proyecto/edit/'. $proyecto['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
+            return  '<a href="'.url('proyecto/detalle/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Detalles proyecto</a>'." ".
+                    '<a href="'.url('tiposPropiedad/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Ver tipos de inmueble</a>'." ".
+                    '<a href="'.url('proyecto/edit/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Editar</a>';
         })->rawColumns(['editar', 'action'])->make(true);
 
     }

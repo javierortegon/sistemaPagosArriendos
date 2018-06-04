@@ -141,13 +141,13 @@ class PropiedadesController extends Controller
                 }
             }
             if($ventaEstado != 1){
-                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
-                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
-                        '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Ver detalles</a>'." ".
+                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Editar</a>'." ".
+                        '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Vender</a>';
             } else {
-                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
-                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
-                        '<a class="btn btn-xs btn-warning" disabled><i class="glyphicon glyphicon-edit"></i> Vender</a>';
+                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Ver detalles</a>'." ".
+                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Editar</a>'." ".
+                        '<a class="btn btn-sm btn-warning" disabled>Vender</a>';
             }
             
         })->rawColumns(['editar', 'action'])->make(true);
