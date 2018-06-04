@@ -1,0 +1,2045 @@
+
+
+  // Controla el guardado automático de los archivos modificados. Valores aceptados: "off", "afterDelay", "onFocusChange" (el editor pierde el foco), "onWindowChange" (la ventana pierde el foco) . Si se establece en "afterDelay", puede configurar el retraso en "files.autoSaveDelay".
+  "files.autoSave": "off",
+
+  // Controla el tamaño de fuente en píxeles.
+  "editor.fontSize": 14,
+
+  // Controla la familia de fuentes.
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+
+  // El número de espacios a los que equivale una tabulación. Este valor se invalida según el contenido del archivo cuando `editor.detectIndentation` está activado.
+  "editor.tabSize": 4,
+
+  // Controla cómo debe representar el editor los espacios en blanco. Las posibilidades son "none", "boundary" y "all". La opción "boundary" no representa los espacios individuales entre palabras.
+  "editor.renderWhitespace": "none",
+
+  // Controla el estilo del cursor. Los valores aceptados son "block", "block-outline", "line", "line-thin", "underline" y "underline-thin"
+  "editor.cursorStyle": "line",
+
+  // El modificador que se usará para agregar varios cursores con el mouse. "ctrlCmd" se asigna a "Control" en Windows y Linux y a "Comando" en macOS. Los gestos del mouse "Ir a la definición" y "Abrir vínculo" se adaptarán de modo que no entren en conflicto con el modificador multicurso
+  "editor.multiCursorModifier": "alt",
+
+  // Insertar espacios al presionar TAB. Este valor se invalida en función del contenido del archivo cuando "editor.detectIndentation" está activado.
+  "editor.insertSpaces": true,
+
+  // Controla cómo se deben ajustar las líneas. Pueden ser:
+  //  - "off" (deshabilitar ajuste),
+  //  - "on" (ajuste de ventanilla),
+  //  - "wordWrapColumn" (ajustar en "editor.wordWrapColumn") o
+  //  - "bounded" (ajustar en la parte mínima de la ventanilla y "editor.wordWrapColumn").
+  "editor.wordWrap": "off",
+
+  // Configurar los patrones globales para excluir archivos y carpetas. Por ejemplo, el explorador de archivos decide que archivos y carpetas mostrar u ocultar según esta configuración.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true
+  },
+
+  // Configure asociaciones de archivo para los lenguajes (por ejemplo, "*.extension": "html"). Estas asociaciones tienen prioridad sobre las asociaciones predeterminadas de los lenguajes instalados.
+  "files.associations": {}
+
+}
+,
+{
+
+
+  // Controla si el editor de diferencias muestra los cambios de espacio inicial o espacio final como diferencias.
+  "diffEditor.ignoreTrimWhitespace": true,
+
+  // Controla si el editor de diff muestra indicadores +/- para cambios agregados/quitados
+  "diffEditor.renderIndicators": true,
+
+  // Controla si el editor de diferencias muestra las diferencias en paralelo o alineadas.
+  "diffEditor.renderSideBySide": true,
+
+  // Controla si se deben aceptar sugerencias en los caracteres de confirmación. Por ejemplo, en Javascript, el punto y coma (";") puede ser un carácter de confirmación que acepta una sugerencia y escribe ese carácter.
+  "editor.acceptSuggestionOnCommitCharacter": true,
+
+  // Controla si las sugerencias deben aceptarse en "Entrar" (además de "TAB"). Ayuda a evitar la ambigüedad entre insertar nuevas líneas o aceptar sugerencias. El valor "smart" significa que solo se acepta una sugerencia con Entrar cuando se realiza un cambio textual.
+  "editor.acceptSuggestionOnEnter": "on",
+
+  // Controla si el editor se debe ejecutar en un modo optimizado para lectores de pantalla.
+  "editor.accessibilitySupport": "auto",
+
+  // Controla si el editor debe cerrar automáticamente los corchetes después de abrirlos
+  "editor.autoClosingBrackets": true,
+
+  // Controla si el editor debería ajustar automáticamente la sangría cuando los usuarios escriben, pegan o mueven líneas. Las reglas de sangría del idioma deben estar disponibles
+  "editor.autoIndent": true,
+
+  // Tipos de acción de código que se ejecutarán en guardar.
+  "editor.codeActionsOnSave": {},
+
+  // Tiempo de espera para ejecutar acciones de código en guardar.
+  "editor.codeActionsOnSaveTimeout": 750,
+
+  // Controla si el editor muestra CodeLens
+  "editor.codeLens": true,
+
+  // Controla si el editor debe representar el Selector de colores y los elementos Decorator de color en línea.
+  "editor.colorDecorators": true,
+
+  // Controlar el estilo de animación del cursor.
+  "editor.cursorBlinking": "blink",
+
+  // Controla el estilo del cursor. Los valores aceptados son "block", "block-outline", "line", "line-thin", "underline" y "underline-thin"
+  "editor.cursorStyle": "line",
+
+  // Controla el ancho del cursor cuando editor.cursorStyle se establece a 'line'
+  "editor.cursorWidth": 0,
+
+  // Al abrir un archivo, se detectarán `editor.tabSize` y `editor.insertSpaces` en función del contenido del archivo.
+  "editor.detectIndentation": true,
+
+  // Controla si el editor debe permitir mover selecciones mediante arrastrar y colocar.
+  "editor.dragAndDrop": true,
+
+  // Controla si al copiar sin selección se copia la línea actual.
+  "editor.emptySelectionClipboard": true,
+
+  // Controla si el indicador Buscar en selección se activa cuando se seleccionan varios caracteres o líneas de texto en el editor
+  "editor.find.autoFindInSelection": false,
+
+  // Controla si se inicializa la cadena de búsqueda en Buscar widget en la selección del editor
+  "editor.find.seedSearchStringFromSelection": true,
+
+  // Controla si el editor tiene habilitado el plegado de código.
+  "editor.folding": true,
+
+  // Controla la forma en que se calculan las gamas plegables. Las selecciones ' auto' utilizan una estrategia de plegado específica del idioma, si está disponible. 'Sangría' obliga a utilizar la estrategia de plegado con sangría.
+  "editor.foldingStrategy": "auto",
+
+  // Controla la familia de fuentes.
+  "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+
+  // Habilita las ligaduras tipográficas.
+  "editor.fontLigatures": false,
+
+  // Controla el tamaño de fuente en píxeles.
+  "editor.fontSize": 14,
+
+  // Controla el grosor de la fuente.
+  "editor.fontWeight": "normal",
+
+  // Controla si el editor debe formatear automáticamente el contenido pegado. Debe haber disponible un formateador capaz de aplicar formato a un intervalo dentro de un documento.
+  "editor.formatOnPaste": false,
+
+  // Formatea un archivo al guardarlo. Debe haber un formateador disponible, el archivo no debe guardarse automáticamente y el editor no debe estar cerrándose.
+  "editor.formatOnSave": false,
+
+  // Tiempo de espera de aplicación de formato al guardar. Especifica un límite de tiempo en milisegundos para los comandos formatOnSave. Los comandos que tarden más del tiempo de espera especificado se cancelarán.
+  "editor.formatOnSaveTimeout": 750,
+
+  // Controla si el editor debe dar formato automáticamente a la línea después de escribirla
+  "editor.formatOnType": false,
+
+  // Controla si el editor debe representar el margen de glifo vertical. El margen de glifo se usa, principalmente, para depuración.
+  "editor.glyphMargin": true,
+
+  // Controla si el cursor debe ocultarse en la regla de visión general.
+  "editor.hideCursorInOverviewRuler": false,
+
+  // Insertar espacios al presionar TAB. Este valor se invalida en función del contenido del archivo cuando "editor.detectIndentation" está activado.
+  "editor.insertSpaces": true,
+
+  // Manejo especial para archivos grandes para desactivar ciertas funciones de memoria intensiva.
+  "editor.largeFileOptimizations": true,
+
+  // Controla el espacio entre letras en pixels.
+  "editor.letterSpacing": 0,
+
+  // Permite que el foco de acción del código
+  "editor.lightbulb.enabled": true,
+
+  // Controla la altura de línea. Utilice 0 para calcular el valor de lineHeight a partir de fontSize.
+  "editor.lineHeight": 0,
+
+  // Controla la visualización de números de línea.
+  "editor.lineNumbers": "on",
+
+  // Controla si el editor debe detectar enlaces y hacerlos cliqueables
+  "editor.links": true,
+
+  // Resaltar corchetes coincidentes cuando se seleccione uno de ellos.
+  "editor.matchBrackets": true,
+
+  // Controla si se muestra el minimapa
+  "editor.minimap.enabled": true,
+
+  // Limitar el ancho del minimapa para presentar como mucho un número de columnas determinado
+  "editor.minimap.maxColumn": 120,
+
+  // Presentar los caracteres reales en una línea (por oposición a bloques de color)
+  "editor.minimap.renderCharacters": true,
+
+  // Controla si el control deslizante del minimapa es ocultado automáticamente.
+  "editor.minimap.showSlider": "mouseover",
+
+  // Controla el lado dónde rendir el minimapa.
+  "editor.minimap.side": "right",
+
+  // Se utilizará un multiplicador en los eventos de desplazamiento de la rueda del mouse `deltaX` y `deltaY`
+  "editor.mouseWheelScrollSensitivity": 1,
+
+  // Ampliar la fuente del editor cuando se use la rueda del mouse mientras se presiona Ctrl
+  "editor.mouseWheelZoom": false,
+
+  // Combinar varios cursores cuando se solapan.
+  "editor.multiCursorMergeOverlapping": true,
+
+  // El modificador que se usará para agregar varios cursores con el mouse. "ctrlCmd" se asigna a "Control" en Windows y Linux y a "Comando" en macOS. Los gestos del mouse "Ir a la definición" y "Abrir vínculo" se adaptarán de modo que no entren en conflicto con el modificador multicurso
+  "editor.multiCursorModifier": "alt",
+
+  // Controla si el editor debe resaltar los símbolos semánticos.
+  "editor.occurrencesHighlight": true,
+
+  // Controla si debe dibujarse un borde alrededor de la regla de información general.
+  "editor.overviewRulerBorder": true,
+
+  // Controla el número de decoraciones que pueden aparecer en la misma posición en la regla de visión general
+  "editor.overviewRulerLanes": 3,
+
+  // Habilita el desplegable que muestra documentación de los parámetros e información de los tipos mientras escribe
+  "editor.parameterHints": true,
+
+  // Controla si las sugerencias deben mostrarse automáticamente mientras se escribe
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+
+  // Controla el retardo en ms tras el cual aparecerán sugerencias rápidas
+  "editor.quickSuggestionsDelay": 10,
+
+  // Controla si el editor debe representar caracteres de control
+  "editor.renderControlCharacters": false,
+
+  // Controla si el editor debe representar guías de sangría.
+  "editor.renderIndentGuides": true,
+
+  // Controla cómo el editor debe presentar el resaltado de línea. Las posibilidades son "ninguno", "margen", "línea" y "todo".
+  "editor.renderLineHighlight": "line",
+
+  // Controla cómo debe representar el editor los espacios en blanco. Las posibilidades son "none", "boundary" y "all". La opción "boundary" no representa los espacios individuales entre palabras.
+  "editor.renderWhitespace": "none",
+
+  // Controla si las selecciones tienen esquinas redondeadas
+  "editor.roundedSelection": true,
+
+  // Representar reglas verticales después de un cierto número de caracteres monoespacio. Usar multiples valores para multiples reglas. No se dibuja ninguna regla si la matriz esta vacía.
+  "editor.rulers": [],
+
+  // Controla si el editor se seguirá desplazando después de la última línea
+  "editor.scrollBeyondLastLine": true,
+
+  // Controla si el portapapeles principal de Linux debe admitirse.
+  "editor.selectionClipboard": true,
+
+  // Controla si el editor debería destacar coincidencias similares a la selección
+  "editor.selectionHighlight": true,
+
+  // Controla cuándo los controles de plegado del margen son ocultados automáticamente.
+  "editor.showFoldingControls": "mouseover",
+
+  // Controla si el editor se desplaza con una animación
+  "editor.smoothScrolling": false,
+
+  // Controla si se muestran los fragmentos de código con otras sugerencias y cómo se ordenan.
+  "editor.snippetSuggestions": "inline",
+
+  // Mantiene abierto el editor interactivo incluso al hacer doble clic en su contenido o presionar Escape.
+  "editor.stablePeek": false,
+
+  // Tamaño de fuente para el widget de sugerencias
+  "editor.suggestFontSize": 0,
+
+  // Alto de línea para el widget de sugerencias
+  "editor.suggestLineHeight": 0,
+
+  // Controla si las sugerencias deben aparecer de forma automática al escribir caracteres desencadenadores
+  "editor.suggestOnTriggerCharacters": true,
+
+  // Controla cómo se preseleccionan las sugerencias cuando se muestra la lista,
+  "editor.suggestSelection": "recentlyUsed",
+
+  // Inserta fragmentos de código cuando el prefijo coincide. Funciona mejor si la opción 'quickSuggestions' no está habilitada.
+  "editor.tabCompletion": false,
+
+  // El número de espacios a los que equivale una tabulación. Este valor se invalida según el contenido del archivo cuando `editor.detectIndentation` está activado.
+  "editor.tabSize": 4,
+
+  // Reemplaza los colores y el estilo de fuente del editor del tema de color seleccionado.
+  "editor.tokenColorCustomizations": {},
+
+  // Quitar espacio en blanco final autoinsertado
+  "editor.trimAutoWhitespace": true,
+
+  // La inserción y eliminación del espacio en blanco sigue a las tabulaciones.
+  "editor.useTabStops": true,
+
+  // Habilita sugerencias basadas en palabras.
+  "editor.wordBasedSuggestions": true,
+
+  // Caracteres que se usarán como separadores de palabras al realizar operaciones o navegaciones relacionadas con palabras.
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+
+  // Controla cómo se deben ajustar las líneas. Pueden ser:
+  //  - "off" (deshabilitar ajuste),
+  //  - "on" (ajuste de ventanilla),
+  //  - "wordWrapColumn" (ajustar en "editor.wordWrapColumn") o
+  //  - "bounded" (ajustar en la parte mínima de la ventanilla y "editor.wordWrapColumn").
+  "editor.wordWrap": "off",
+
+  // Controls the wrapping column of the editor when `editor.wordWrap` is 'wordWrapColumn' or 'bounded'.
+  "editor.wordWrapColumn": 80,
+
+  // Controla el sangrado de las líneas ajustadas. Puede ser uno los valores 'none', 'same' o 'indent'.
+  "editor.wrappingIndent": "same"
+
+}
+,
+{
+
+
+  // Si desea mostrar siempre la sección proveedor de control de código fuente.
+  "scm.alwaysShowProviders": false,
+
+  // Controla las decoraciones de diff en el editor.
+  "scm.diffDecorations": "all",
+
+  // Controla el ancho (px) de las decoraciones de diferencias en el medianil (agregadas y modificadas).
+  "scm.diffDecorationsGutterWidth": 3
+
+}
+,
+{
+
+
+  // Controla la visibilidad de la barra de actividades en el área de trabajo.
+  "workbench.activityBar.visible": true,
+
+  // Reemplaza los colores del tema de color actual
+  "workbench.colorCustomizations": {},
+
+  // Specifies the color theme used in the workbench.
+  "workbench.colorTheme": "Default Dark+",
+
+  // Controla el número de comandos utilizados recientemente que se mantendrán en el historial de la paleta de comandos. Establezca el valor a 0 para desactivar el historial de comandos.
+  "workbench.commandPalette.history": 50,
+
+  // Controla si la última entrada introducida en la paleta de comandos debería ser restaurada cuando sea abierta la próxima vez.
+  "workbench.commandPalette.preserveInput": false,
+
+  // Controla si los editores que muestran un archivo deben cerrarse automáticamente cuando otro proceso elimina el archivo o le cambia el nombre. Si se deshabilita esta opción y se da alguna de estas circunstancias, se mantiene el editor abierto con modificaciones. Tenga en cuenta que, cuando se eliminan archivos desde la aplicación, siempre se cierra el editor y que los archivos con modificaciones no se cierran nunca para preservar los datos.
+  "workbench.editor.closeOnFileDelete": true,
+
+  // Controla si los editores abiertos se muestran en vista previa. Los editores en vista previa se reutilizan hasta que se guardan (por ejemplo, mediante doble clic o editándolos) y se muestran en cursiva.
+  "workbench.editor.enablePreview": true,
+
+  // Controla si los editores abiertos mediante Quick Open se muestran en modo de vista previa. Los editores en modo de vista previa se reutilizan hasta que se conservan (por ejemplo, mediante doble clic o editándolos).
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+
+  // Controla el formato de la etiqueta para un editor. Modificar este ajuste puede hacer, por ejemplo, que sea más fácil entender la ubicación de un archivo: - corta: 'parent' - media: 'workspace/src/parent' - larga: '/home/user/workspace/src/parect' - por defecto: '.../parent', cuando otra pestaña comparte el mismo título, o la ruta de acceso relativa del espacio de trabajo si las pestañas están deshabilitadas
+  "workbench.editor.labelFormat": "default",
+
+  // Controla dónde se abren los editores. Seleccione 'izquierda' o 'derecha' para abrir los editores situados a la izquierda o la derecha del que está actualmente activo. Seleccione 'primero' o 'último' para abrir los editores con independencia del que esté actualmente activo. 
+  "workbench.editor.openPositioning": "right",
+
+  // Controla si un editor se muestra en alguno de los grupos visibles cuando se abre. Si se deshabilita esta opción, un editor preferirá abrirse en el grupo de editores activo en ese momento. Si se habilita, un editor ya abierto se mostrará en lugar de volver a abrirse en el grupo de editores activo. Tenga en cuenta que hay casos en los que esta opción se omite; por ejemplo, cuando se fuerza la apertura de un editor en un grupo específico o junto al grupo activo actual.
+  "workbench.editor.revealIfOpen": false,
+
+  // Controla si los editores abiertos deben mostrarse o no con un icono. Requiere que también se habilite un tema de icono.
+  "workbench.editor.showIcons": true,
+
+  // Controla si los editores abiertos se deben mostrar o no en pestañas.
+  "workbench.editor.showTabs": true,
+
+  // Controla la posición de los botones de cierre de pestañas del editor o los deshabilita si se establece en "off".
+  "workbench.editor.tabCloseButton": "right",
+
+  // Controla el tamaño de las pestañas del editor. Configurado para 'fit' para mantener las pestañas siempre lo suficientemente grandes para mostrar la etiqueta completa del editor. Establezca 'shrink' para permitir que las pestañas se vuelvan más pequeñas cuando el espacio disponible no sea suficiente para mostrar todas las pestañas juntas.
+  "workbench.editor.tabSizing": "fit",
+
+  // Especifica el tema de icono utilizado en el área de trabajo o "null" para no mostrar ningún icono de archivo.
+  "workbench.iconTheme": "vs-seti",
+
+  // El modificador que se usará para agregar un elemento en árboles y listas a una selección múltiple con el mouse (por ejemplo en el explorador, los editores abiertos y la vista SCM). ' ctrlCmd ' se asigna a ' control ' en Windows y Linux y a ' Command ' en macOS. Los gestos de ratón "abrir a lado", si se admiten, se adaptarán de tal manera que no estén en conflicto con el modificador multiselección.
+  "workbench.list.multiSelectModifier": "ctrlCmd",
+
+  // Controla cómo abrir elementos en árboles y listas con el ratón (si está soportado). Establecer en ' singleClick ' para abrir elementos con un solo clic del ratón y ' DoubleClick ' para abrir sólo a través del doble clic del ratón. Para los elementos padres con hijos en los árboles, este ajuste controlará si un solo clic expande el padre o un doble clic. Tenga en cuenta que algunos árboles y listas pueden optar por ignorar esta configuración si no es aplicable
+  "workbench.list.openMode": "singleClick",
+
+  // Controla la ubicación predeterminada del panel. Puede mostrarse en la parte inferior o a la derecha de la mesa de banco.
+  "workbench.panel.defaultLocation": "bottom",
+
+  // Controla si Quick Open debe cerrarse automáticamente cuando pierde el foco.
+  "workbench.quickOpen.closeOnFocusLost": true,
+
+  // Controla si habilita el modo de búsqueda de lenguaje natural para la configuración.
+  "workbench.settings.enableNaturalLanguageSearch": true,
+
+  // Controla si la configuración de apertura también abre un editor que muestra todos los valores predeterminados.
+  "workbench.settings.openDefaultSettings": true,
+
+  // Controla la ubicación de la barra lateral. Puede mostrarse a la izquierda o a la derecha del área de trabajo.
+  "workbench.sideBar.location": "left",
+
+  // Controla qué editor se muestra al inicio, si no se restaura ninguno de la sesión anterior. Seleccione "none" para iniciar sin editor, "welcomePage" para abrir la página principal (opción predeterminada), "newUntitledFile" para abrir un archivo nuevo sin título (solo cuando se abre un área de trabajo vacía).
+  "workbench.startupEditor": "welcomePage",
+
+  // Controla la visibilidad de los comentarios de Twitter (smiley) en la barra de estado en la parte inferior del área de trabajo.
+  "workbench.statusBar.feedback.visible": true,
+
+  // Controla la visibilidad de la barra de estado en la parte inferior del área de trabajo.
+  "workbench.statusBar.visible": true,
+
+  // Si esta opción está habilitada, se muestran sugerencias de marca de agua cuando no hay ningún editor abierto.
+  "workbench.tips.enabled": true,
+
+  // Controla el esplazamiento horizontal de los árboles en la mesa de trabajo.
+  "workbench.tree.horizontalScrolling": false,
+
+  // Controla la visibilidad de las acciones en el encabezado de la vista. Las acciones en el encabezado de la vista pueden ser siempre visibles, o solo cuando la vista es enfocada o apuntada.
+  "workbench.view.alwaysShowHeaderActions": false
+
+}
+,
+{
+
+
+  // Controla si, al cerrar el último editor, debe cerrarse también la ventana. Esta configuración se aplica solo a ventanas que no muestran carpetas.
+  "window.closeWhenEmpty": false,
+
+  // Controla el título de la ventana en función del editor activo. Las variables se reemplazan según el contexto:
+  // ${activeEditorShort}: nombre del archivo (por ejemplo, miArchivo.txt).
+  // ${activeEditorMedium}: ruta de acceso del archivo relativa a la carpeta del área de trabajo (por ejemplo, miCarpeta/miArchivo.txt).
+  // ${activeEditorLong}: ruta de acceso completa del archivo (por ejemplo, /Usuarios/Desarrollo/miProyecto/miCarpeta/miArchivo.txt).
+  // ${folderName}: nombre de la carpeta del área de trabajo que contiene el archivo (por ejemplo, miCarpeta).
+  // ${folderPath}: ruta de acceso de la carpeta del área de trabajo que contiene el archivo (por ejemplo, /Usuarios/Desarrollo/miCarpeta).
+  // ${rootName}: nombre del área de trabajo (por ejemplo, miCarpeta o miÁreaDeTrabajo).
+  // ${rootPath}: ruta de acceso del área de trabajo (por ejemplo, /Usuarios/Desarrollo/miÁreaDeTrabajo).
+  // ${appName}: nombre de la aplicación (por ejemplo, VS Code).
+  // ${dirty}: indicador de modificaciones si se han realizado cambios en el editor activo.
+  // ${separator}: separador condicional (" - ") que solo se muestra cuando está rodeado de variables con valores o texto estático.
+  "window.title": "${dirty}${activeEditorShort}${separator}${rootName}${separator}${appName}",
+
+  // Ajuste el nivel de zoom de la ventana. El tamaño original es 0 y cada incremento (por ejemplo, 1) o disminución (por ejemplo, -1) representa una aplicación de zoom un 20 % más grande o más pequeño. También puede especificar decimales para ajustar el nivel de zoom con una granularidad más precisa.
+  "window.zoomLevel": 0
+
+}
+,
+{
+
+
+  // Configure asociaciones de archivo para los lenguajes (por ejemplo, "*.extension": "html"). Estas asociaciones tienen prioridad sobre las asociaciones predeterminadas de los lenguajes instalados.
+  "files.associations": {},
+
+  // Cuando está activada, intentará adivinar la codificación del juego de caracteres al abrir archivos. Este ajuste puede configurarse también por idioma.
+  "files.autoGuessEncoding": false,
+
+  // Controla el guardado automático de los archivos modificados. Valores aceptados: "off", "afterDelay", "onFocusChange" (el editor pierde el foco), "onWindowChange" (la ventana pierde el foco) . Si se establece en "afterDelay", puede configurar el retraso en "files.autoSaveDelay".
+  "files.autoSave": "off",
+
+  // Controla el retraso en MS tras el cual un archivo con modificaciones se guarda automáticamente. Solo se aplica si "files.autoSave" está establecido en "afterDelay"
+  "files.autoSaveDelay": 1000,
+
+  // El modo de lenguaje predeterminado que se asigna a nuevos archivos.
+  "files.defaultLanguage": "",
+
+  // La codificación del juego de caracteres predeterminada que debe utilizarse al leer y escribir archivos. Este ajuste puede configurarse también por idioma.
+  "files.encoding": "utf8",
+
+  // Carácter predeterminado de final de línea. Utilice \n para LF y \r\n para CRLF.
+  "files.eol": "\n",
+
+  // Configurar los patrones globales para excluir archivos y carpetas. Por ejemplo, el explorador de archivos decide que archivos y carpetas mostrar u ocultar según esta configuración.
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true
+  },
+
+  // Controla si los archivos no guardados se recuerdan entre las sesiones, lo que permite omitir el mensaje para guardar al salir del editor.
+  "files.hotExit": "onExit",
+
+  // Si se habilita, inserte una nueva línea final al final del archivo cuando lo guarde.
+  "files.insertFinalNewline": false,
+
+  // Controla la memoria disponible para VS Code después de reiniciar, cuando se intenta abrir archivos de gran tamaño. Afecta de la misma manera si se especifica --max-memory = NUEVOTAMAÑO en la línea de comandos. 
+  "files.maxMemoryForLargeFilesMB": 4096,
+
+  // Cuando se habilita, recorta todas las nuevas líneas después de la última nueva línea al final del archivo al guardarlo
+  "files.trimFinalNewlines": false,
+
+  // Si se habilita, se recortará el espacio final cuando se guarde un archivo.
+  "files.trimTrailingWhitespace": false,
+
+  // Utilice el nuevo monitor de archivo experimental.
+  "files.useExperimentalFileWatcher": false,
+
+  // Configure patrones globales de las rutas de acceso de archivo que se van a excluir de la inspección de archivos. Los patrones deben coincidir con rutas de acceso absolutas (por ejemplo, prefijo ** o la ruta de acceso completa para que la coincidencia sea correcta). Al cambiar esta configuración, es necesario reiniciar. Si observa que Code consume mucho tiempo de CPU al iniciarse, puede excluir las carpetas grandes para reducir la carga inicial. 
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true
+  }
+
+}
+,
+{
+
+
+  // Controla si al encender el Modo Zen también se centra el diseño.
+  "zenMode.centerLayout": true,
+
+  // Controla si activar el modo Zen pone también el trabajo en modo de pantalla completa.
+  "zenMode.fullScreen": true,
+
+  // Controla si la activación del modo zen oculta también la barra de estado en la parte izquierda del área de trabajo.
+  "zenMode.hideActivityBar": true,
+
+  // Controla si la activación del modo zen oculta también la barra de estado en la parte inferior del área de trabajo.
+  "zenMode.hideStatusBar": true,
+
+  // Controla si la activación del modo zen también oculta las pestañas del área de trabajo.
+  "zenMode.hideTabs": true,
+
+  // Controla si una ventana debe restaurarse a modo zen si se cerró en modo zen.
+  "zenMode.restore": false
+
+}
+,
+{
+
+
+  // Controla si el explorador debe mostrar y seleccionar automáticamente los archivos al abrirlos.
+  "explorer.autoReveal": true,
+
+  // Controla si el explorador debe pedir la confirmación al borrar un archivo utilizando la papelera.
+  "explorer.confirmDelete": true,
+
+  // Controla si el explorador debe pedir la confirmación al reubicar archivos o carpetas a través de arrastrar y soltar.
+  "explorer.confirmDragAndDrop": true,
+
+  // Controla si las decoraciones de archivo deben utilizar insignias
+  "explorer.decorations.badges": true,
+
+  // Controla si las decoraciones de archivo deben utilizar colores. 
+  "explorer.decorations.colors": true,
+
+  // Controla si el explorador debe permitir mover archivos y carpetas mediante la función arrastrar y colocar.
+  "explorer.enableDragAndDrop": true,
+
+  // Número de editores mostrados en el panel de editores abiertos.
+  "explorer.openEditors.visible": 9,
+
+  // Controla el criterio de ordenación de los archivos y las carpetas en el explorador. Además del orden "default", puede establecer el orden en "mixed" (los archivos y las carpetas se ordenan combinados), "type" (por tipo de archivo), "modified" (por fecha de última modificación) o "filesFirst" (los archivos se colocan antes que las carpetas).
+  "explorer.sortOrder": "default"
+
+}
+,
+{
+
+
+  // Configure patrones globales para excluir archivos y carpetas de las búsquedas. Hereda todos los patrones globales de la configuración files.exclude.
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true
+  },
+
+  // Controla si debe seguir enlaces simbólicos durante la búsqueda.
+  "search.followSymlinks": true,
+
+  // Controla si la búsqueda se mostrará como una vista en la barra lateral o como un panel en el área del panel para un espacio más horizontal. La siguiente versión de la búsqueda en el panel tendrá un mejor diseño horizontal y esto ya no será una vista previa.
+  "search.location": "sidebar",
+
+  // Configurar para incluir los resultados de una búsqueda global de símbolos en los resultados de archivos de Quick Open.
+  "search.quickOpen.includeSymbols": false,
+
+  // Proporciona busquedas de mayúsculas y minúsculas si el patrón es todo en minúsculas, de lo contrario, busca en mayúsculas y minúsculas
+  "search.smartCase": false,
+
+  // Controla si se utilizan los archivos .gitignore e .ignore al buscar archivos.
+  "search.useIgnoreFiles": true,
+
+  // Controla si se utiliza ripgrep en la búsqueda de texto y ficheros
+  "search.useRipgrep": true
+
+}
+,
+{
+
+
+  // El valor del proxy que se debe utilizar. Si no se establece, se tomará de las variables de entorno http_proxy y https_proxy
+  "http.proxy": "",
+
+  // Valor que debe enviarse como encabezado de 'Proxy-Authorization' para cada solicitud de red.
+  "http.proxyAuthorization": null,
+
+  // Indica si el certificado del servidor proxy debe comprobarse en la lista de entidades de certificación proporcionada.
+  "http.proxyStrictSSL": true
+
+}
+,
+{
+
+
+  // Controla la lógica de distribución de las pulsaciones de teclas para usar `code` (recomendado) o `keyCode`.
+  "keyboard.dispatch": "code"
+
+}
+,
+{
+
+
+  // Permite establecer un punto de interrupción en cualquier archivo.
+  "debug.allowBreakpointsEverywhere": false,
+
+  // Controls if the non debug hovers should be enabled while debugging. If true the hover providers will be called to provide a hover. Regular hovers will not be shown even if this setting is true.
+  "debug.enableAllHovers": false,
+
+  // Controla si debe ocultarse la barra flotante de acciones de depuración
+  "debug.hideActionBar": false,
+
+  // Mostrar valores de variable en línea en el editor durante la depuración
+  "debug.inlineValues": false,
+
+  // Controla el comportamiento de la consola de depuración interna.
+  "debug.internalConsoleOptions": "openOnFirstSessionStart",
+
+  // Controla si debe abrirse la vista de depuración al iniciar una sesión de depuración.
+  "debug.openDebug": "openOnFirstSessionStart",
+
+  // Abrir automáticamente la vista del explorador al final de una sesión de depuración
+  "debug.openExplorerOnEnd": false,
+
+  // Controla cuando se debe mostrar la barra de estado de depuración
+  "debug.showInStatusBar": "onFirstSessionStart",
+
+  // Configuración de lanzamiento para depuración global. Debe utilizarse como una alternativa a “launch.json” en espacios de trabajo compartidos.
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  }
+
+}
+,
+{
+
+
+  // Habilita o deshabilita el cierre automático de las etiquetas HTML.
+  "html.autoClosingTags": true,
+
+  // Lista de etiquetas, separadas por comas, en las que el contenido no debe volver a formatearse. "null" se establece de manera predeterminada en la etiqueta "pre".
+  "html.format.contentUnformatted": "pre,code,textarea",
+
+  // Habilitar o deshabilitar el formateador HTML predeterminado
+  "html.format.enable": true,
+
+  // Finalizar con una nueva línea.
+  "html.format.endWithNewline": false,
+
+  // Lista de etiquetas, separadas por comas, que deben tener una nueva línea adicional delante. "null" tiene como valores predeterminados "head, body, /html".
+  "html.format.extraLiners": "head, body, /html",
+
+  // Formato y sangría {{#foo}} y {{/foo}}.
+  "html.format.indentHandlebars": false,
+
+  // Aplicar sangría a las secciones <head> y <body>.
+  "html.format.indentInnerHtml": false,
+
+  // Número máximo de saltos de línea que deben conservarse en un fragmento. Use "null" para que el número sea ilimitado.
+  "html.format.maxPreserveNewLines": null,
+
+  // Indica si los saltos de línea existentes delante de los elementos deben conservarse. Solo funciona delante de los elementos, no dentro de las etiquetas o con texto.
+  "html.format.preserveNewLines": true,
+
+  // Lista de etiquetas, separadas por comas, a las que no se debe volver a aplicar formato. El valor predeterminado de "null" son todas las etiquetas mostradas en https://www.w3.org/TR/html5/dom.html#phrasing-content.
+  "html.format.unformatted": "wbr",
+
+  // Ajustar atributos.
+  "html.format.wrapAttributes": "auto",
+
+  // Cantidad máxima de caracteres por línea (0 = deshabilitar).
+  "html.format.wrapLineLength": 120,
+
+  // Configura si la compatibilidad con el lenguaje HTML integrada sugiere etiquetas y propiedades de Angular V1.
+  "html.suggest.angular1": true,
+
+  // Configura si la compatibilidad con el lenguaje HTML integrada sugiere etiquetas, propiedades y valores de HTML5.
+  "html.suggest.html5": true,
+
+  // Configura si la compatibilidad con el lenguaje HTML integrada sugiere etiquetas, propiedades y valores de Ionic.
+  "html.suggest.ionic": true,
+
+  // Hace un seguimiento de la comunicación entre VSCode y el servidor de lenguaje HTML.
+  "html.trace.server": "off",
+
+  // Configura si la compatibilidad con el lenguaje HTML incorporado valida los scripts insertados.
+  "html.validate.scripts": true,
+
+  // Configura si la compatibilidad con el lenguaje HTML incorporado valida los estilos insertados.
+  "html.validate.styles": true
+
+}
+,
+{
+
+
+  // Habilitar/deshabilitar formateador JSON predeterminado (requiere reiniciar)
+  "json.format.enable": true,
+
+  // Asociar esquemas a archivos JSON en el proyecto actual
+  "json.schemas": [],
+
+  // Realiza el seguimiento de la comunicación entre VS Code y el servidor de lenguaje JSON.
+  "json.trace.server": "off"
+
+}
+,
+{
+
+
+  // Establece cómo los saltos de línea son representados en la vista previa de markdown. Estableciendolo en 'true' crea un <br> para cada nueva línea.
+  "markdown.preview.breaks": false,
+
+  // Haga doble clic en la vista previa de Markdown para cambiar al editor.
+  "markdown.preview.doubleClickToSwitchToEditor": true,
+
+  // Controla la familia de la fuente utilizada en la previsualización del descuento.
+  "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif",
+
+  // Controla el tamaño de la fuente en píxeles utilizado en la previsualización del descuento.
+  "markdown.preview.fontSize": 14,
+
+  // Controla la altura de línea utilizada en la previsualización del descuento. Este número es relativo al tamaño de la fuente.
+  "markdown.preview.lineHeight": 1.6,
+
+  // Habilitar o deshabilitar la conversión de texto de tipo URL a enlaces en la vista previa de markdown.
+  "markdown.preview.linkify": true,
+
+  // Marca la selección del editor actual en la vista previa de Markdown.
+  "markdown.preview.markEditorSelection": true,
+
+  // Al desplazarse en la vista previa de Markdown, se actualiza la vista del editor.
+  "markdown.preview.scrollEditorWithPreview": true,
+
+  // Al desplazarse en el editor de Markdown, se actualiza la vista de la previsualización .
+  "markdown.preview.scrollPreviewWithEditor": true,
+
+  // Establece cómo se debe representar el asunto de la parte delantera de YAML en la vista previa del descuento. 'hide' quita el asunto de la parte delantera. De lo contrario, el asunto de la parte delantera se trata como contenido del descuento.
+  "markdown.previewFrontMatter": "hide",
+
+  // Una lista de direcciones URL o rutas de acceso locales a hojas de estilo CSS que utilizar desde la vista previa del descuento. Las tutas de acceso relativas se interpretan en relación con la carpeta abierta en el explorador. Si no hay ninguna carpeta abierta, se interpretan en relación con la ubicación del archivo del descuento. Todos los '\' deben escribirse como '\\'.
+  "markdown.styles": [],
+
+  // Habilitar registro de depuración para las extensiones de Markdown. 
+  "markdown.trace": "off"
+
+}
+,
+{
+
+
+  // Configura si se habilitan las sugerencias del lenguaje PHP integradas. La asistencia sugiere variables y opciones globales de PHP.
+  "php.suggest.basic": true,
+
+  // Habilita o deshabilita la validación integrada de PHP.
+  "php.validate.enable": true,
+
+  // Señala al ejecutable PHP.
+  "php.validate.executablePath": null,
+
+  // Indica si linter se ejecuta al guardar o al escribir.
+  "php.validate.run": "onSave"
+
+}
+,
+{
+
+
+  // Habilita o deshabilita el formateador predeterminado de JavaScript.
+  "javascript.format.enable": true,
+
+  // Define el tratamiento del espacio después de un delimitador de coma.
+  "javascript.format.insertSpaceAfterCommaDelimiter": true,
+
+  // Define el manejo del espacio después de la palabra clave constructor. Requiere TypeScript >= 2.3.0
+  "javascript.format.insertSpaceAfterConstructor": false,
+
+  // Define el tratamiento del espacio después de la palabra clave function para las funciones anónimas.
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+
+  // Define el tratamiento del espacio después de las palabras clave en una instrucción de flujo de control.
+  "javascript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
+
+  // Define el tratamiento del espacio después de la llave de apertura y antes de la llave de cierre de las expresiones JSX. Requiere TypeScript >= 2.0.6.
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar llaves no vacías. Requiere TypeScript > = 2.3.0.
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar los soportes no vacíos.
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar paréntesis no vacíos.
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+
+  // Define el tratamiento del espacio después de la llave de apertura y antes de la llave de cierre de cadenas de plantilla. Requiere TypeScript >= 2.0.6.
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+
+  //  Define el tratamiento del espacio después de punto y coma en una instrucción for.
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": true,
+
+  // Define el tratamiento del espacio después de un operador binario.
+  "javascript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+
+  // Define el tratamiento del espacio delante de los paréntesis de los argumentos de las funciones. Requiere TypeScript >= 2.1.5.
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+
+  // Define si una llave de apertura se incluye en una nueva línea para los bloques de control o no.
+  "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+
+  // Define si una llave de apertura se incluye en una nueva línea para las funciones o no.
+  "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+
+  // Habilita/deshabilita la comprobación semántica de los archivos JavaScript. Los archivos jsconfig.json o tsconfig.json reemplazan esta configuración. Se requiere TypeScript >=2.3.1.
+  "javascript.implicitProjectConfig.checkJs": false,
+
+  // Activar/desactivar 'experimentalDecorators' para los archivos JavaScript que no son parte de un proyecto. Los archivos jsconfig.json o tsconfig.json reemplazan esta configuración. Requiere inicio > = 2.3.1. 
+  "javascript.implicitProjectConfig.experimentalDecorators": false,
+
+  // Habilitar/deshabilitar nombres únicos de la lista de sugerencias en los archivos de JavaScript. 
+  "javascript.nameSuggestions": true,
+
+  // Habilitar/deshabilitar las referencias de CodeLens en los archivos de JavaScript.
+  "javascript.referencesCodeLens.enabled": false,
+
+  // Habilitar/deshabilitar sugerencias de diagnóstico para los archivos JavaScript en el editor. Requiere TypeScript > = 2.8 
+  "javascript.suggestionActions.enabled": true,
+
+  // Habilita o deshabilita la validación de JavaScript.
+  "javascript.validate.enable": true,
+
+  // Habilita o deshabilita comentarios automaticos de JSDoc
+  "jsDocCompletion.enabled": true,
+
+  // Enable/disable auto import suggestions. Requires TypeScript >=2.6.1
+  "typescript.autoImportSuggestions.enabled": true,
+
+  // Compruebe si NPM está instalado para la adquisición automática de tipos.
+  "typescript.check.npmIsInstalled": true,
+
+  // Desactiva la adquisición automática de tipos. Requiere TypeScript >= 2.0.6.
+  "typescript.disableAutomaticTypeAcquisition": false,
+
+  // Habilita/deshabilita los marcadores de plegado sensibles a la sintaxis.
+  "typescript.experimental.syntaxFolding": false,
+
+  // Habilita o deshabilita el formateador predeterminado de TypeScript.
+  "typescript.format.enable": true,
+
+  // Define el tratamiento del espacio después de un delimitador de coma.
+  "typescript.format.insertSpaceAfterCommaDelimiter": true,
+
+  // Define el manejo del espacio después de la palabra clave constructor. Requiere TypeScript >= 2.3.0
+  "typescript.format.insertSpaceAfterConstructor": false,
+
+  // Define el tratamiento del espacio después de la palabra clave function para las funciones anónimas.
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+
+  // Define el tratamiento del espacio después de las palabras clave en una instrucción de flujo de control.
+  "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": true,
+
+  // Define el tratamiento del espacio después de la llave de apertura y antes de la llave de cierre de las expresiones JSX. Requiere TypeScript >= 2.0.6.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar llaves no vacías. Requiere TypeScript > = 2.3.0.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar los soportes no vacíos.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+
+  // Define el manejo del espacio después de abrir y antes de cerrar paréntesis no vacíos.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+
+  // Define el tratamiento del espacio después de la llave de apertura y antes de la llave de cierre de cadenas de plantilla. Requiere TypeScript >= 2.0.6.
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+
+  //  Define el tratamiento del espacio después de punto y coma en una instrucción for.
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
+
+  // Define el control del espacio después de las aserciones de tipos en TypeScript. Requiere TypeScript >= 2.4
+  "typescript.format.insertSpaceAfterTypeAssertion": false,
+
+  // Define el tratamiento del espacio después de un operador binario.
+  "typescript.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+
+  // Define el tratamiento del espacio delante de los paréntesis de los argumentos de las funciones. Requiere TypeScript >= 2.1.5.
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+
+  // Define si una llave de apertura se incluye en una nueva línea para los bloques de control o no.
+  "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+
+  // Define si una llave de apertura se incluye en una nueva línea para las funciones o no.
+  "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
+
+  // Habilita o deshabilita implementaciones de CodeLens. Requiere TypeScript >= 2.2.0.
+  "typescript.implementationsCodeLens.enabled": false,
+
+  // Establece la configuración regional para reportar errores de TypeScript. Requiere TypeScript > = 2.6.0. Por defecto, utiliza el valor 'null'  de VS Code para errores de TypeScript.
+  "typescript.locale": null,
+
+  // Activar o desactiva las sugerencias rápidas al escribir una ruta de importación.
+  "typescript.quickSuggestionsForPaths": true,
+
+  // Habilitar/deshabilitar las referencias de CodeLens en los archivos de TypeScript. Requiere TypeScript  >= 2.0.6.
+  "typescript.referencesCodeLens.enabled": false,
+
+  // Notificar comprobaciones de estilo como advertencias
+  "typescript.reportStyleChecksAsWarnings": true,
+
+  // Enable/disable suggestion diagnostics for TypeScript files in the editor. Requires TypeScript >= 2.8.
+  "typescript.suggestionActions.enabled": true,
+
+  // Controla la auto detección de tareas del CAC. 'off' inhabilita esta función. 'build' crea una ejecución de compilación de tareas. 'watch' sólo crea compilación y 'watch tasks' 'on' crea tanto construir y ver tareas. Por defecto = 'on'. 
+  "typescript.tsc.autoDetect": "on",
+
+  // Especifica la ruta de acceso de carpeta que contiene los archivos lib*.d.ts y tsserver que se van a usar.
+  "typescript.tsdk": null,
+
+  // votes Habilita los registros del servidor TS a un archivo. Este registro se puede utilizar para diagnosticar problemas en el servidor TS. Este registro puede contener rutas de acceso, código fuente y posiblemente otra información sensitiva acerca del proyecto.
+  "typescript.tsserver.log": "off",
+
+  // Habilita el seguimiento de mensajes al servidor TS. Este seguimiento se puede utilizar para diagnosticar problemas en el servidor TS. Este seguimiento puede contener rutas de acceso, código fuente y posiblemente otra información sensitiva acerca del proyecto.
+  "typescript.tsserver.trace": "off",
+
+  // Complete las funciones con la signatura de parámetro.
+  "typescript.useCodeSnippetsOnMethodSuggest": false,
+
+  // Habilita o deshabilita la validación de TypeScript.
+  "typescript.validate.enable": true
+
+}
+,
+{
+
+
+  // Número de parámetros no válido
+  "css.lint.argumentsInColorFunction": "error",
+
+  // No use ancho o alto con el relleno o los bordes.
+  "css.lint.boxModel": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, compruebe que también haya incluido el resto de propiedades específicas del proveedor.
+  "css.lint.compatibleVendorPrefixes": "ignore",
+
+  // No use definiciones de estilo duplicadas
+  "css.lint.duplicateProperties": "ignore",
+
+  // No use conjuntos de reglas vacíos
+  "css.lint.emptyRules": "warning",
+
+  // Le recomendamos no usar 'float'. Los floats producen CSS frágiles, fáciles de corromper si cambia cualquier aspecto del diseño.
+  "css.lint.float": "ignore",
+
+  // La regla @font-face debe definir las propiedades "src" y "font-family"
+  "css.lint.fontFaceProperties": "warning",
+
+  // Los colores hexadecimales deben estar formados por tres o seis números hexadecimales.
+  "css.lint.hexColorLength": "error",
+
+  // Los selectores no deben contener identificadores porque estas reglas están estrechamente ligadas a HTML.
+  "css.lint.idSelector": "ignore",
+
+  // Las modificaciones de IE solo son necesarias cuando admiten IE7 y anteriores
+  "css.lint.ieHack": "ignore",
+
+  // Le recomendamos no usar !important. Esto indica que la especificidad de todo el CSS está fuera de control y que debe refactorizarse.
+  "css.lint.important": "ignore",
+
+  // Las instrucciones Import no se cargan en paralelo
+  "css.lint.importStatement": "ignore",
+
+  // La propiedad se ignora a causa de la pantalla. Por ejemplo, con 'display: inline', el ancho, el alto, el margen superior e inferior y las propiedades de float no tienen efecto.
+  "css.lint.propertyIgnoredDueToDisplay": "warning",
+
+  // Se sabe que el selector universal (*) es lento
+  "css.lint.universalSelector": "ignore",
+
+  // Propiedad desconocida.
+  "css.lint.unknownProperties": "warning",
+
+  // Propiedad específica del proveedor desconocida.
+  "css.lint.unknownVendorSpecificProperties": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, incluya también la propiedad estándar.
+  "css.lint.vendorPrefix": "warning",
+
+  // No se necesita una unidad para cero
+  "css.lint.zeroUnits": "ignore",
+
+  // Hace un seguimiento de la comunicación entre VSCode y el servidor de lenguaje CSS.
+  "css.trace.server": "off",
+
+  // Habilita o deshabilita todas las validaciones
+  "css.validate": true
+
+}
+,
+{
+
+
+  // Número de parámetros no válido
+  "less.lint.argumentsInColorFunction": "error",
+
+  // No use ancho o alto con el relleno o los bordes.
+  "less.lint.boxModel": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, compruebe que también haya incluido el resto de propiedades específicas del proveedor.
+  "less.lint.compatibleVendorPrefixes": "ignore",
+
+  // No use definiciones de estilo duplicadas
+  "less.lint.duplicateProperties": "ignore",
+
+  // No use conjuntos de reglas vacíos
+  "less.lint.emptyRules": "warning",
+
+  // Le recomendamos no usar 'float'. Los floats producen CSS frágiles, fáciles de corromper si cambia cualquier aspecto del diseño.
+  "less.lint.float": "ignore",
+
+  // La regla @font-face debe definir las propiedades "src" y "font-family"
+  "less.lint.fontFaceProperties": "warning",
+
+  // Los colores hexadecimales deben estar formados por tres o seis números hexadecimales.
+  "less.lint.hexColorLength": "error",
+
+  // Los selectores no deben contener identificadores porque estas reglas están estrechamente ligadas a HTML.
+  "less.lint.idSelector": "ignore",
+
+  // Las modificaciones de IE solo son necesarias cuando admiten IE7 y anteriores
+  "less.lint.ieHack": "ignore",
+
+  // Le recomendamos no usar !important. Esto indica que la especificidad de todo el CSS está fuera de control y que debe refactorizarse.
+  "less.lint.important": "ignore",
+
+  // Las instrucciones Import no se cargan en paralelo
+  "less.lint.importStatement": "ignore",
+
+  // La propiedad se ignora a causa de la pantalla. Por ejemplo, con 'display: inline', el ancho, el alto, el margen superior e inferior y las propiedades de float no tienen efecto.
+  "less.lint.propertyIgnoredDueToDisplay": "warning",
+
+  // Se sabe que el selector universal (*) es lento
+  "less.lint.universalSelector": "ignore",
+
+  // Propiedad desconocida.
+  "less.lint.unknownProperties": "warning",
+
+  // Propiedad específica del proveedor desconocida.
+  "less.lint.unknownVendorSpecificProperties": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, incluya también la propiedad estándar.
+  "less.lint.vendorPrefix": "warning",
+
+  // No se necesita una unidad para cero
+  "less.lint.zeroUnits": "ignore",
+
+  // Habilita o deshabilita todas las validaciones
+  "less.validate": true
+
+}
+,
+{
+
+
+  // Número de parámetros no válido
+  "scss.lint.argumentsInColorFunction": "error",
+
+  // No use ancho o alto con el relleno o los bordes.
+  "scss.lint.boxModel": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, compruebe que también haya incluido el resto de propiedades específicas del proveedor.
+  "scss.lint.compatibleVendorPrefixes": "ignore",
+
+  // No use definiciones de estilo duplicadas
+  "scss.lint.duplicateProperties": "ignore",
+
+  // No use conjuntos de reglas vacíos
+  "scss.lint.emptyRules": "warning",
+
+  // Le recomendamos no usar 'float'. Los floats producen CSS frágiles, fáciles de corromper si cambia cualquier aspecto del diseño.
+  "scss.lint.float": "ignore",
+
+  // La regla @font-face debe definir las propiedades "src" y "font-family"
+  "scss.lint.fontFaceProperties": "warning",
+
+  // Los colores hexadecimales deben estar formados por tres o seis números hexadecimales.
+  "scss.lint.hexColorLength": "error",
+
+  // Los selectores no deben contener identificadores porque estas reglas están estrechamente ligadas a HTML.
+  "scss.lint.idSelector": "ignore",
+
+  // Las modificaciones de IE solo son necesarias cuando admiten IE7 y anteriores
+  "scss.lint.ieHack": "ignore",
+
+  // Le recomendamos no usar !important. Esto indica que la especificidad de todo el CSS está fuera de control y que debe refactorizarse.
+  "scss.lint.important": "ignore",
+
+  // Las instrucciones Import no se cargan en paralelo
+  "scss.lint.importStatement": "ignore",
+
+  // La propiedad se ignora a causa de la pantalla. Por ejemplo, con 'display: inline', el ancho, el alto, el margen superior e inferior y las propiedades de float no tienen efecto.
+  "scss.lint.propertyIgnoredDueToDisplay": "warning",
+
+  // Se sabe que el selector universal (*) es lento
+  "scss.lint.universalSelector": "ignore",
+
+  // Propiedad desconocida.
+  "scss.lint.unknownProperties": "warning",
+
+  // Propiedad específica del proveedor desconocida.
+  "scss.lint.unknownVendorSpecificProperties": "ignore",
+
+  // Cuando use un prefijo específico del proveedor, incluya también la propiedad estándar.
+  "scss.lint.vendorPrefix": "warning",
+
+  // No se necesita una unidad para cero
+  "scss.lint.zeroUnits": "ignore",
+
+  // Habilita o deshabilita todas las validaciones
+  "scss.validate": true
+
+}
+,
+{
+
+
+  // Si se pone en true, las notificaciones para las recomendaciones de la extensión dejarán de aparecer.
+  "extensions.ignoreRecommendations": false,
+
+  // Si se activa esta opcíón, las recomendaciones no se obtendrán ni se mostrarán a menos que el usuario lo solicite específicamente.
+  "extensions.showRecommendationsOnlyOnDemand": false
+
+}
+,
+{
+
+
+  // Personaliza el tipo de terminal para iniciar.
+  "terminal.explorerKind": "integrated"
+
+}
+,
+{
+
+
+  // Conjunto de identificadores de comando cuyos enlaces de teclado no se enviarán al shell, sino que siempre se controlarán con Code. Esto permite el uso de enlaces de teclado que normalmente consumiría el shell para funcionar igual que cuando el terminal no tiene el foco; por ejemplo, Ctrl+P para iniciar Quick Open.
+  "terminal.integrated.commandsToSkipShell": [
+    "editor.action.toggleTabFocusMode",
+    "workbench.action.debug.continue",
+    "workbench.action.debug.pause",
+    "workbench.action.debug.restart",
+    "workbench.action.debug.run",
+    "workbench.action.debug.start",
+    "workbench.action.debug.stepInto",
+    "workbench.action.debug.stepOut",
+    "workbench.action.debug.stepOver",
+    "workbench.action.debug.stop",
+    "workbench.action.focusActiveEditorGroup",
+    "workbench.action.focusFirstEditorGroup",
+    "workbench.action.focusSecondEditorGroup",
+    "workbench.action.focusThirdEditorGroup",
+    "workbench.action.navigateDown",
+    "workbench.action.navigateLeft",
+    "workbench.action.navigateRight",
+    "workbench.action.navigateUp",
+    "workbench.action.openNextRecentlyUsedEditorInGroup",
+    "workbench.action.openPreviousRecentlyUsedEditorInGroup",
+    "workbench.action.quickOpen",
+    "workbench.action.quickOpenPreviousEditor",
+    "workbench.action.quickOpenView",
+    "workbench.action.showCommands",
+    "workbench.action.tasks.build",
+    "workbench.action.tasks.restartTask",
+    "workbench.action.tasks.runTask",
+    "workbench.action.tasks.showLog",
+    "workbench.action.tasks.showTasks",
+    "workbench.action.tasks.terminate",
+    "workbench.action.tasks.test",
+    "workbench.action.terminal.clear",
+    "workbench.action.terminal.clearSelection",
+    "workbench.action.terminal.copySelection",
+    "workbench.action.terminal.deleteWordLeft",
+    "workbench.action.terminal.deleteWordRight",
+    "workbench.action.terminal.findWidget.history.showNext",
+    "workbench.action.terminal.findWidget.history.showPrevious",
+    "workbench.action.terminal.focus",
+    "workbench.action.terminal.focusAtIndex1",
+    "workbench.action.terminal.focusAtIndex2",
+    "workbench.action.terminal.focusAtIndex3",
+    "workbench.action.terminal.focusAtIndex4",
+    "workbench.action.terminal.focusAtIndex5",
+    "workbench.action.terminal.focusAtIndex6",
+    "workbench.action.terminal.focusAtIndex7",
+    "workbench.action.terminal.focusAtIndex8",
+    "workbench.action.terminal.focusAtIndex9",
+    "workbench.action.terminal.focusFindWidget",
+    "workbench.action.terminal.focusNext",
+    "workbench.action.terminal.focusNextPane",
+    "workbench.action.terminal.focusPrevious",
+    "workbench.action.terminal.focusPreviousPane",
+    "workbench.action.terminal.hideFindWidget",
+    "workbench.action.terminal.kill",
+    "workbench.action.terminal.moveToLineEnd",
+    "workbench.action.terminal.moveToLineStart",
+    "workbench.action.terminal.new",
+    "workbench.action.terminal.newInActiveWorkspace",
+    "workbench.action.terminal.paste",
+    "workbench.action.terminal.resizePaneDown",
+    "workbench.action.terminal.resizePaneLeft",
+    "workbench.action.terminal.resizePaneRight",
+    "workbench.action.terminal.resizePaneUp",
+    "workbench.action.terminal.runActiveFile",
+    "workbench.action.terminal.runSelectedText",
+    "workbench.action.terminal.scrollDown",
+    "workbench.action.terminal.scrollDownPage",
+    "workbench.action.terminal.scrollToBottom",
+    "workbench.action.terminal.scrollToNextCommand",
+    "workbench.action.terminal.scrollToPreviousCommand",
+    "workbench.action.terminal.scrollToTop",
+    "workbench.action.terminal.scrollUp",
+    "workbench.action.terminal.scrollUpPage",
+    "workbench.action.terminal.selectAll",
+    "workbench.action.terminal.selectToNextCommand",
+    "workbench.action.terminal.selectToPreviousCommand",
+    "workbench.action.terminal.split",
+    "workbench.action.terminal.splitInActiveWorkspace",
+    "workbench.action.terminal.toggleTerminal",
+    "workbench.action.togglePanel"
+  ],
+
+  // Indica si debe confirmarse a la salida si hay sesiones de terminal activas.
+  "terminal.integrated.confirmOnExit": false,
+
+  // Cuando se establece, el texto seleccionado en el terminal se copiará en el portapapeles.
+  "terminal.integrated.copyOnSelection": false,
+
+  // Controla si el cursor del terminal parpadea.
+  "terminal.integrated.cursorBlinking": false,
+
+  // Controla el estilo de cursor del terminal.
+  "terminal.integrated.cursorStyle": "block",
+
+  // Una ruta de acceso de inicio explícita en la que se iniciará el terminal; se utiliza como el directorio de trabajo actual (cwd) para el proceso de shell. Puede resultar especialmente útil en una configuración de área de trabajo si la raíz de directorio no es un cwd práctico.
+  "terminal.integrated.cwd": "",
+
+  // Si la campana terminal está activada o no.
+  "terminal.integrated.enableBell": false,
+
+  // Objeto con variables de entorno que se agregarán al proceso de VS Code para que las use el terminal en Linux
+  "terminal.integrated.env.linux": {},
+
+  // Objeto con variables de entorno que se agregarán al proceso de VS Code para que las use el terminal en OS X
+  "terminal.integrated.env.osx": {},
+
+  // Objeto con variables de entorno que se agregarán al proceso de VS Code para que las use el terminal en Windows
+  "terminal.integrated.env.windows": {},
+
+  // Indica si se restauran automáticamente las sesiones del terminal para el área de trabajo cuando se inicia VS Code. Esta es una opción experimental; puede tener errores y podría cambiar en el futuro.
+  "terminal.integrated.experimentalRestore": false,
+
+  // Controla la familia de fuentes del terminal, que está establecida de manera predeterminada en el valor de editor.fontFamily.
+  "terminal.integrated.fontFamily": "",
+
+  // Controla el tamaño de la fuente en píxeles del terminal.
+  "terminal.integrated.fontSize": 14,
+
+  // Espesor de fuente que debe usarse en el terminal para el texto que no está en negrita.
+  "terminal.integrated.fontWeight": "normal",
+
+  // Espesor de fuente que debe usarse en el terminal para el texto en negrita.
+  "terminal.integrated.fontWeightBold": "bold",
+
+  // Controla el alto de línea del terminal. Este número se multiplica por el tamaño de fuente del terminal para obtener el alto de línea real en píxeles.
+  "terminal.integrated.lineHeight": 1,
+
+  // Trate la tecla de opción como la clave meta en el terminal en macOS.
+  "terminal.integrated.macOptionIsMeta": false,
+
+  // Controla el modo en el que el terminal reacciona al clic con el botón derecho. Las posibilidades son "default", "copyPaste" y "selectWord". "default" muestra el menú contextual. "copyPaste" copia si hay algo seleccionado; de lo contrario, pega. "selectWord" selecciona la palabra que hay debajo del cursor y muestra el menú contextual.
+  "terminal.integrated.rightClickBehavior": "default",
+
+  // Controla la cantidad máxima de líneas que mantiene el terminal en su búfer.
+  "terminal.integrated.scrollback": 1000,
+
+  // Controla si las variables de configuración regional se definen al inicio del terminal. El valor predeterminado es true en OS X y false en las demás plataformas.
+  "terminal.integrated.setLocaleVariables": false,
+
+  // La ruta de acceso del shell que el terminal usa en Linux.
+  "terminal.integrated.shell.linux": "/bin/bash",
+
+  // La ruta de acceso del shell que el terminal usa en OS X.
+  "terminal.integrated.shell.osx": "/bin/bash",
+
+  // Ruta de acceso del shell que el terminal utiliza en Windows. Cuando se usan shells distribuidos con Windows (cmd, PowerShell o Bash en Ubuntu).
+  "terminal.integrated.shell.windows": "cmd.exe",
+
+  // Los argumentos de la línea de comandos que se usarán en el terminal de Linux.
+  "terminal.integrated.shellArgs.linux": [],
+
+  // Los argumentos de la línea de comandos que se usarán en el terminal de OS X.
+  "terminal.integrated.shellArgs.osx": [
+    "-l"
+  ],
+
+  // Argumentos de la línea de comandos que se usan cuando se utiliza el terminal Windows.
+  "terminal.integrated.shellArgs.windows": [],
+
+  // Mostrar alerta 'El proceso de terminal terminó con el código de salida ' cuando el código de salida no es cero.
+  "terminal.integrated.showExitAlert": true
+
+}
+,
+{
+
+
+  // Controla si la vista Problemas debe revelar automáticamente los archivos cuando los abre
+  "problems.autoReveal": true,
+
+  // Mostrar Errores y Advertencias en la carpeta y ficheros.
+  "problems.decorations.enabled": true
+
+}
+,
+{
+
+
+  // Habilite los informes de bloqueo para enviarlos a Microsoft. Esta opción requiere reiniciar para que tenga efecto.
+  "telemetry.enableCrashReporter": true,
+
+  // Habilite los datos de uso y los errores para enviarlos a Microsoft.
+  "telemetry.enableTelemetry": true
+
+}
+,
+{
+
+
+  // Si la búsqueda automática está habilitada
+  "git.autofetch": false,
+
+  // Indica si la actualización automática está habilitada
+  "git.autorefresh": true,
+
+  // Si se deben detectar automáticamente los repositories 
+  "git.autoRepositoryDetection": true,
+
+  // Controla el tipo de ramas listadas cuando ejecuta "Desproteger". "Todo" muetra todas las referencias, "local" solamente las ramas locales y "remoto" las ramas remotas.
+  "git.checkoutType": "all",
+
+  // Confirmar antes de sincronizar repositorios GIT
+  "git.confirmSync": true,
+
+  // Controla el contador de insignia de Git. "Todo" cuenta todos los cambios. "Seguimiento" solamente cuenta los cambios realizados. "Desactivado" lo desconecta.
+  "git.countBadge": "all",
+
+  // Controla si Git contribuye los colores y distintivos al explorador y a los editores abiertos.
+  "git.decorations.enabled": true,
+
+  // La ubicación predeterminada en la que se clona un repositorio git
+  "git.defaultCloneDirectory": null,
+
+  // Controla si se detectan automáticamente los submódulos Git. 
+  "git.detectSubmodules": true,
+
+  // Controla el límite de submódulos de git detectados.
+  "git.detectSubmodulesLimit": 10,
+
+  // Habilitar confirmar firma con GPG.
+  "git.enableCommitSigning": false,
+
+  // Si GIT está habilitado
+  "git.enabled": true,
+
+  // Confirmar todos los cambios cuando no hay elementos almacenados provisionalmente.
+  "git.enableSmartCommit": false,
+
+  // Ignora las advertencias hereradas de Git
+  "git.ignoreLegacyWarning": false,
+
+  // 
+  // Ignora advertencias cuando se encuentran muchos cambios en un repositorio.
+  "git.ignoreLimitWarning": false,
+
+  // Ignora la advertencia cuando falta Git
+  "git.ignoreMissingGitWarning": false,
+
+  // Controla cuándo mostrar el mensaje de validación de entrada en el contador de entrada.
+  "git.inputValidation": "warn",
+
+  // Controla si Git debe comprobar los archivos no guardados antes de confirmar las actualizaciones. 
+  "git.promptToSaveFilesBeforeCommit": false,
+
+  // Controla si se debe mostrar una acción de archivo abierto en la vista de cambios en Git
+  "git.showInlineOpenFileAction": true
+
+}
+,
+{
+
+
+  // A path to file or object containing the configuration options for js-beautify. If the .jsbeautifyrc file exists in project root, it overrides this configuration.
+  "beautify.config": null,
+
+  // List of paths to ignore when using VS Code format command, including format on save. Uses glob pattern matching.
+  "beautify.ignore": [],
+
+  // Link file types to the beautifier type
+  "beautify.language": {
+    "js": {
+      "type": [
+        "javascript",
+        "json"
+      ],
+      "filename": [
+        ".jshintrc",
+        ".jsbeautify"
+      ]
+    },
+    "css": [
+      "css",
+      "scss"
+    ],
+    "html": [
+      "htm",
+      "html"
+    ]
+  }
+
+}
+,
+{
+
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [git-commit].
+  "[git-commit]":  {
+    "editor.rulers": [
+        72
+    ]
+  },
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [go].
+  "[go]":  {
+    "editor.insertSpaces": false
+  },
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [json].
+  "[json]":  {
+    "editor.quickSuggestions": {
+        "strings": true
+    }
+  },
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [makefile].
+  "[makefile]":  {
+    "editor.insertSpaces": false
+  },
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [markdown].
+  "[markdown]":  {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false
+  },
+
+  // Establecer los valores de configuración que se reemplazarán para el lenguaje [yaml].
+  "[yaml]":  {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": false
+  }
+
+}
+,
+{
+
+
+  // A list of style sheet file extensions you want the extension to look for.
+  "css.fileExtensions": [
+    "css",
+    "scss"
+  ],
+
+  // A list of remote style sheets.
+  "css.remoteStyleSheets": []
+
+}
+,
+{
+
+
+  // Controla si la detección automática de tareas Jake estan activada/desactivada. El valor predeterminado es "activada".
+  "jake.autoDetect": "on"
+
+}
+,
+{
+
+
+  // Habilitar/deshabilitar CodeLens de fusionar bloque de conflictos en el editor
+  "merge-conflict.codeLens.enabled": true,
+
+  // Habilitar/deshabilitar decoradores de conflictos de fusión en el editor
+  "merge-conflict.decorators.enabled": true
+
+}
+,
+{
+
+
+  // Este ajuste permite cambiar el icono de archivo por defecto para los temas oscuros.
+  "vsicons.associations.fileDefault.file": null,
+
+  // Este ajuste permite cambiar el icono de archivo por defecto para los temas claros.
+  "vsicons.associations.fileDefault.file_light": null,
+
+  // Estas asociaciones personalizadas sobrescribirán las asociaciones de archivo definidas por defecto.
+  "vsicons.associations.files": [],
+
+  // Este ajuste permite cambiar el icono de carpeta por defecto para los temas oscuros.
+  "vsicons.associations.folderDefault.folder": null,
+
+  // Este ajuste permite cambiar el icono de carpeta por defecto para los temas claros.
+  "vsicons.associations.folderDefault.folder_light": null,
+
+  // Este ajuste permite cambiar el icono de carpeta raíz por defecto para los temas oscuros.
+  "vsicons.associations.folderDefault.root_folder": null,
+
+  // Este ajuste permite cambiar el icono de carpeta raíz por defecto para los temas claros.
+  "vsicons.associations.folderDefault.root_folder_light": null,
+
+  // Estas asociaciones personalizadas sobrescribirán las asociaciones de carpeta definidas por defecto.
+  "vsicons.associations.folders": [],
+
+  // La ruta física del directorio padre del directorio de iconos personalizados que reside en la máquina local.
+  "vsicons.customIconFolderPath": "",
+
+  // Si 'true', no se mostrará el mensaje 'reiniciar' al cambiar manualmente las configuraciones.
+  "vsicons.dontShowConfigManuallyChangedMessage": false,
+
+  // Si 'true', no se mostrará más el mensaje de aviso de nueva versión.
+  "vsicons.dontShowNewVersionMessage": false,
+
+  // Si 'true', la extensión activará los iconos de Angular en las extensiones conocidas.
+  "vsicons.presets.angular": false,
+
+  // Si 'true', todas las carpetas tendrán el mismo icono genérico.
+  "vsicons.presets.foldersAllDefaultIcon": false,
+
+  // Si 'true', la extensión procederá a no mostrar los iconos de carpeta del 'Explorador'.
+  "vsicons.presets.hideExplorerArrows": false,
+
+  // Si 'true', los iconos de carpeta no serán visibles.
+  "vsicons.presets.hideFolders": false,
+
+  // Si 'true', la extensión usará el icono oficial de JS.
+  "vsicons.presets.jsOfficial": false,
+
+  // Si 'true', la extensión usará el icono oficial de JSON.
+  "vsicons.presets.jsonOfficial": false,
+
+  // Si 'true', la extensión usará el icono oficial de TS.
+  "vsicons.presets.tsOfficial": false,
+
+  // Si 'true', la extensión reiniciará vscode automáticamente cada vez que se detecte un nuevo tipo de proyecto.
+  "vsicons.projectDetection.autoReload": false,
+
+  // Si 'true', se desactivará la detección de tipos de proyecto.
+  "vsicons.projectDetection.disableDetect": false
+
+}
+,
+{
+
+
+  // Enable format blade file
+  "blade.format.enable": false
+
+}
+,
+{
+
+
+  // Automatically add brackets for functions.
+  "python.autoComplete.addBrackets": false,
+
+  // List of paths to libraries and the like that need to be imported by auto complete engine. E.g. when using Google App SDK, the paths are not in system path, hence need to be added into this list.
+  "python.autoComplete.extraPaths": [],
+
+  // Comma delimited list of modules preloaded to speed up Auto Complete (e.g. add Numpy, Pandas, etc, items slow to load when autocompleting).
+  "python.autoComplete.preloadModules": [],
+
+  // Controls appearance of methods with double underscores in the completion list.
+  "python.autoComplete.showAdvancedMembers": false,
+
+  // Whether to check if Python is installed (also warn when using the macOS-installed Python).
+  "python.disableInstallationCheck": false,
+
+  // Do not display a prompt to install these features
+  "python.disablePromptForFeatures": [],
+
+  // Absolute path to a file containing environment variable definitions.
+  "python.envFile": "${workspaceFolder}/.env",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.formatting.autopep8Args": [],
+
+  // Path to autopep8, you can use a custom version of autopep8 by modifying this setting to include the full path.
+  "python.formatting.autopep8Path": "autopep8",
+
+  // Provider for formatting. Possible options include 'autopep8' and 'yapf'.
+  "python.formatting.provider": "autopep8",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.formatting.yapfArgs": [],
+
+  // Path to yapf, you can use a custom version of yapf by modifying this setting to include the full path.
+  "python.formatting.yapfPath": "yapf",
+
+  // Whether to install Python modules globally when not using an environment.
+  "python.globalModuleInstallation": false,
+
+  // Memory limit for the Jedi completion engine in megabytes. Zero (default) means 1024 MB. -1 means unlimited (disable memory limit check)
+  "python.jediMemoryLimit": 0,
+
+  // Path to directory containing the Jedi library (this path will contain the 'Jedi' sub directory).
+  "python.jediPath": "",
+
+  // Whether to lint Python files.
+  "python.linting.enabled": true,
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.flake8Args": [],
+
+  // Severity of Flake8 message type 'E'.
+  "python.linting.flake8CategorySeverity.E": "Error",
+
+  // Severity of Flake8 message type 'F'.
+  "python.linting.flake8CategorySeverity.F": "Error",
+
+  // Severity of Flake8 message type 'W'.
+  "python.linting.flake8CategorySeverity.W": "Warning",
+
+  // Whether to lint Python files using flake8
+  "python.linting.flake8Enabled": false,
+
+  // Path to flake8, you can use a custom version of flake8 by modifying this setting to include the full path.
+  "python.linting.flake8Path": "flake8",
+
+  // Patterns used to exclude files or folders from being linted.
+  "python.linting.ignorePatterns": [
+    ".vscode/*.py",
+    "**/site-packages/**/*.py"
+  ],
+
+  // Whether to lint Python files when saved.
+  "python.linting.lintOnSave": true,
+
+  // Controls the maximum number of problems produced by the server.
+  "python.linting.maxNumberOfProblems": 100,
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent"
+  ],
+
+  // Severity of Mypy message type 'Error'.
+  "python.linting.mypyCategorySeverity.error": "Error",
+
+  // Severity of Mypy message type 'Note'.
+  "python.linting.mypyCategorySeverity.note": "Information",
+
+  // Whether to lint Python files using mypy.
+  "python.linting.mypyEnabled": false,
+
+  // Path to mypy, you can use a custom version of mypy by modifying this setting to include the full path.
+  "python.linting.mypyPath": "mypy",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.pep8Args": [],
+
+  // Severity of Pep8 message type 'E'.
+  "python.linting.pep8CategorySeverity.E": "Error",
+
+  // Severity of Pep8 message type 'W'.
+  "python.linting.pep8CategorySeverity.W": "Warning",
+
+  // Whether to lint Python files using pep8
+  "python.linting.pep8Enabled": false,
+
+  // Path to pep8, you can use a custom version of pep8 by modifying this setting to include the full path.
+  "python.linting.pep8Path": "pep8",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.prospectorArgs": [],
+
+  // Whether to lint Python files using prospector.
+  "python.linting.prospectorEnabled": false,
+
+  // Path to Prospector, you can use a custom version of prospector by modifying this setting to include the full path.
+  "python.linting.prospectorPath": "prospector",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.pydocstyleArgs": [],
+
+  // Whether to lint Python files using pydocstyle
+  "python.linting.pydocstyleEnabled": false,
+
+  // Path to pydocstyle, you can use a custom version of pydocstyle by modifying this setting to include the full path.
+  "python.linting.pydocstylePath": "pydocstyle",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.pylamaArgs": [],
+
+  // Whether to lint Python files using pylama.
+  "python.linting.pylamaEnabled": false,
+
+  // Path to pylama, you can use a custom version of pylama by modifying this setting to include the full path.
+  "python.linting.pylamaPath": "pylama",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.linting.pylintArgs": [],
+
+  // Severity of Pylint message type 'Convention/C'.
+  "python.linting.pylintCategorySeverity.convention": "Information",
+
+  // Severity of Pylint message type 'Error/E'.
+  "python.linting.pylintCategorySeverity.error": "Error",
+
+  // Severity of Pylint message type 'Fatal/F'.
+  "python.linting.pylintCategorySeverity.fatal": "Error",
+
+  // Severity of Pylint message type 'Refactor/R'.
+  "python.linting.pylintCategorySeverity.refactor": "Hint",
+
+  // Severity of Pylint message type 'Warning/W'.
+  "python.linting.pylintCategorySeverity.warning": "Warning",
+
+  // Whether to lint Python files using pylint.
+  "python.linting.pylintEnabled": true,
+
+  // Path to Pylint, you can use a custom version of pylint by modifying this setting to include the full path.
+  "python.linting.pylintPath": "pylint",
+
+  // Whether to run Pylint with minimal set of rules.
+  "python.linting.pylintUseMinimalCheckers": true,
+
+  // Path to Python, you can use a custom version of Python by modifying this setting to include the full path.
+  "python.pythonPath": "python",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.sortImports.args": [],
+
+  // Path to isort script, default using inner version
+  "python.sortImports.path": "",
+
+  // Activate Python Environment in Terminal created using the Extension.
+  "python.terminal.activateEnvironment": true,
+
+  // When executing a file in the terminal, whether to use execute in the file's directory, instead of the current open folder.
+  "python.terminal.executeInFileDir": false,
+
+  // Python launch arguments to use when executing a file in the terminal.
+  "python.terminal.launchArgs": [],
+
+  // Optional working directory for unit tests.
+  "python.unitTest.cwd": null,
+
+  // IP Address of the of the local unit test server (default is localhost or use 127.0.0.1).
+  "python.unitTest.debugHost": "localhost",
+
+  // Port number used for debugging of unittests.
+  "python.unitTest.debugPort": 3000,
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.unitTest.nosetestArgs": [],
+
+  // Path to nosetests, you can use a custom version of nosetests by modifying this setting to include the full path.
+  "python.unitTest.nosetestPath": "nosetests",
+
+  // Whether to enable or disable unit testing using nosetests.
+  "python.unitTest.nosetestsEnabled": false,
+
+  // Where to prompt to configure a test framework if potential tests directories are discovered.
+  "python.unitTest.promptToConfigure": true,
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.unitTest.pyTestArgs": [],
+
+  // Whether to enable or disable unit testing using pytest.
+  "python.unitTest.pyTestEnabled": false,
+
+  // Path to pytest (pytest), you can use a custom version of pytest by modifying this setting to include the full path.
+  "python.unitTest.pyTestPath": "pytest",
+
+  // Arguments passed in. Each argument is a separate item in the array.
+  "python.unitTest.unittestArgs": [
+    "-v",
+    "-s",
+    ".",
+    "-p",
+    "*test*.py"
+  ],
+
+  // Whether to enable or disable unit testing using unittest.
+  "python.unitTest.unittestEnabled": false,
+
+  // Use the experimental debugger when debugging unit tests.
+  "python.unitTest.useExperimentalDebugger": false,
+
+  // Folders in your home directory to look into for virtual environments.
+  "python.venvFolders": [
+    "envs",
+    ".pyenv",
+    ".direnv"
+  ],
+
+  // Path to folder with a list of Virtual Environments (e.g. ~/.pyenv, ~/Envs, ~/.virtualenvs).
+  "python.venvPath": "",
+
+  // Fully qualilified path to the ctags executable (else leave as ctags, assuming it is in current path).
+  "python.workspaceSymbols.ctagsPath": "ctags",
+
+  // Set to 'false' to disable Workspace Symbol provider using ctags.
+  "python.workspaceSymbols.enabled": true,
+
+  // Pattern used to exclude files and folders from ctags See http://ctags.sourceforge.net/ctags.html.
+  "python.workspaceSymbols.exclusionPatterns": [
+    "**/site-packages/**"
+  ],
+
+  // Whether to re-build the tags file on when changes made to python files are saved.
+  "python.workspaceSymbols.rebuildOnFileSave": true,
+
+  // Whether to re-build the tags file on start (defaults to true).
+  "python.workspaceSymbols.rebuildOnStart": true,
+
+  // Fully qualified path to tag file (exuberant ctag file), used to provide workspace symbols.
+  "python.workspaceSymbols.tagFilePath": "${workspaceFolder}/.vscode/tags"
+
+}
+,
+{
+
+
+  // [Opcional] Opciones de configuración para localización en la configuración regional configurada en VSCode (debe reiniciar VSCode para que la configuración surta efecto)
+  "mssql.applyLocalization": false,
+
+  // Los perfiles de conexión definidos en 'Configuración de usuario' se muestran bajo el comando ' MS SQL: Conect' en la paleta de comandos.
+  "mssql.connections": [
+    {
+      "server": "{{put-server-name-here}}",
+      "database": "{{put-database-name-here}}",
+      "user": "{{put-username-here}}",
+      "password": "{{put-password-here}}"
+    }
+  ],
+
+  // [Opcional] Opciones de configuración para copiar resultados desde la vista de resultados
+  "mssql.copyIncludeHeaders": false,
+
+  // [Opcional] Opciones de configuración para copiar resultados de varias líneas desde la vista de resultados
+  "mssql.copyRemoveNewLine": true,
+
+  // ¿Se deben alinear las definiciones de columna?
+  "mssql.format.alignColumnDefinitionsInColumns": false,
+
+  // Los tipos de dato deben ser formateados como MAYÚSCULAS, minúsculas, o ninguno (sin formato)
+  "mssql.format.datatypeCasing": "none",
+
+  // Las palabras clave deben tener formato como MAYÚSCULAS, minúsculas, o ninguno (sin formato)
+  "mssql.format.keywordCasing": "none",
+
+  // Las comas deben colocarse al principio de cada frase en una lista por ejemplo, ', mycolumn2' en vez de al final por ejemplo, 'mycolumn1',
+  "mssql.format.placeCommasBeforeNextStatement": false,
+
+  // ¿Deben dividirse las referencias a objetos en en sentencias select en líneas separadas? Por ejemplo, para 'SELECT C1, C2 FROM T1' C1 y C2 estarán en líneas separadas
+  "mssql.format.placeSelectStatementReferencesOnNewLine": false,
+
+  // Debe habilitar la comprobación de errores de IntelliSense 
+  "mssql.intelliSense.enableErrorChecking": true,
+
+  // Debe habilitar IntelliSense
+  "mssql.intelliSense.enableIntelliSense": true,
+
+  // Debe habilitar la información rápida de IntelliSense
+  "mssql.intelliSense.enableQuickInfo": true,
+
+  // Debe habilitar las sugerencias de IntelliSense
+  "mssql.intelliSense.enableSuggestions": true,
+
+  // Las sugerencias de IntelliSense debe estar en minúsculas
+  "mssql.intelliSense.lowerCaseSuggestions": false,
+
+  // [Opcional] Registrar los resultados de depuración a la consola de VS Code (ayuda-> Interruptor de herramientas de desarrollo)
+  "mssql.logDebugInfo": false,
+
+  // El número máximo de conexiones recientemente utilizadas para almacenar en la lista de conexiones.
+  "mssql.maxRecentConnections": 5,
+
+  // True para que el panel de mensajes esté abierto de forma predeterminada; false para que esté cerrado
+  "mssql.messagesDefaultOpen": true,
+
+  // ¿Se deben mostrar las columnas BIT como números (1 o 0)? Si es false, las columnas BIT se mostrarán como 'true' o 'false'
+  "mssql.query.displayBitAsNumber": true,
+
+  // Establece la familia de fuentes para la grilla de resultados; dejarlo en blanco para usar la fuente del editor
+  "mssql.resultsFontFamily": "-apple-system,BlinkMacSystemFont,Segoe WPC,Segoe UI,HelveticaNeue-Light,Ubuntu,Droid Sans,sans-serif",
+
+  // Establecer el tamaño de fuente para la grilla de resultados; Dejar en blanco para utilizar el tamaño del editor
+  "mssql.resultsFontSize": 13,
+
+  // [Opcional] Cuando se esteblece en true, los encabezados de columna se incluyen al guardar resultados como CSV
+  "mssql.saveAsCsv.includeHeaders": true,
+
+  // Accesos directos relacionados con la ventana de resultados
+  "mssql.shortcuts": {
+    "_comment": "Short cuts must follow the format (ctrl)+(shift)+(alt)+[key]",
+    "event.toggleResultPane": "ctrl+alt+r",
+    "event.toggleMessagePane": "ctrl+alt+y",
+    "event.prevGrid": "ctrl+up",
+    "event.nextGrid": "ctrl+down",
+    "event.copySelection": "ctrl+c",
+    "event.copyWithHeaders": "",
+    "event.maximizeGrid": "",
+    "event.selectAll": "",
+    "event.saveAsJSON": "",
+    "event.saveAsCSV": "",
+    "event.saveAsExcel": ""
+  },
+
+  // [Opcional] Si el tiempo de ejecución se mostrará para lotes individuales
+  "mssql.showBatchTime": false,
+
+  // [Opcional] Opciones de configuración para en cual columna se deben abrir los nuevos páneles de resultados
+  "mssql.splitPaneSelection": "next"
+
+}
+,
+{
+
+
+  // Controla si la detección automática de scripts npm está activada o desactivada. Por defecto está activada.
+  "npm.autoDetect": "on",
+
+  // Enable an explorer view for npm scripts.
+  "npm.enableScriptExplorer": false,
+
+  // Configura patrones globales para carpetas que deben excluirse de la detección automática de scripts. 
+  "npm.exclude": "",
+
+  // El administrador de paquetes utilizado para ejecutar secuencias de comandos. 
+  "npm.packageManager": "npm",
+
+  // Ejecutar comandos de npm con la opción '--silent'
+  "npm.runSilent": false
+
+}
+,
+{
+
+
+  // Controla si la detección automática de tareas Gulp esta activada/desactivada. El valor predeterminado es "activada".
+  "gulp.autoDetect": "on"
+
+}
+,
+{
+
+
+  // Una serie de idiomas donde no deben ampliar las abreviaturas de Emmet.
+  "emmet.excludeLanguages": [
+    "markdown"
+  ],
+
+  // Ruta de acceso a una carpeta que contiene los perfiles y fragmentos de Emmet.
+  "emmet.extensionsPath": null,
+
+  // Habilite las abreviaturas de Emmet en idiomas que no sean compatibles de forma predeterminada. Añada una asignación aquí entre el idioma y el idioma admitido por Emmet.
+  //  Ej.: { "Vue-HTML ": "HTML ", "JavaScript ": "javascriptreact "}
+  "emmet.includeLanguages": {},
+
+  // Cuando se establece en falso, se analiza el archivo entero para determinar si la posición actual es válida para la expansión de abreviaturas de Emmet. Cuando se establece en verdadero, sólo el contenido alrededor de la posición actual en archivos css, scss/less es analizado.
+  "emmet.optimizeStylesheetParsing": true,
+
+  // Preferencias usadas para modificar el comportamiento de algunas acciones y resoluciones de Emmet.
+  "emmet.preferences": {},
+
+  // Muestra posibles abreviaciones Emmet como sugerencias. No se aplica a hojas de estilos ni cuando emmet.showExpandedAbbreviation está establecido en "never". 
+  "emmet.showAbbreviationSuggestions": true,
+
+  // Muestra abreviaciones Emmet expandidas como sugerencias. La opción "inMarkupAndStylesheetFilesOnly" se aplica a HTML, HAML, Jade, Slim, XML, XSL, CSS, SCSS, SASS, LESS y Stylus. La opción "always" se aplica a todas las partes del archivo, independientemente de que sea de marcado o CSS. 
+  "emmet.showExpandedAbbreviation": "always",
+
+  // Si es "true", las sugerencias Emmet se muestran como fragmentos de código, de modo que puede ordenarlas por el valor editor.snippetSuggestions. 
+  "emmet.showSuggestionsAsSnippets": false,
+
+  // Defina el perfil de la sintaxis especificada o use su propio perfil con reglas específicas.
+  "emmet.syntaxProfiles": {},
+
+  // Cuando se habilita, se expande la abreviación Emmet al presionar la tecla TAB. 
+  "emmet.triggerExpansionOnTab": false,
+
+  // Variables para ser utilizadas en fragmentos de código de Emmet
+  "emmet.variables": {}
+
+}
+,
+{
+
+
+  // Controla si la detección automática de tareas Grunt está activada o desactivada. Por defecto está activada.
+  "grunt.autoDetect": "on"
+
+}
+,
+{
+
+
+  // A path to file or object containing the configuration options for js-beautify. If the .jsbeautifyrc file exists in project root, it overrides this configuration.
+  "beautify.config": null,
+
+  // List of paths to ignore when using VS Code format command, including format on save. Uses glob pattern matching.
+  "beautify.ignore": [],
+
+  // Link file types to the beautifier type
+  "beautify.language": {
+    "js": {
+      "type": [
+        "javascript",
+        "json"
+      ],
+      "filename": [
+        ".jshintrc",
+        ".jsbeautify"
+      ]
+    },
+    "css": [
+      "css",
+      "scss"
+    ],
+    "html": [
+      "htm",
+      "html",
+      "php",
+      "blade.php"
+    ]
+  }
