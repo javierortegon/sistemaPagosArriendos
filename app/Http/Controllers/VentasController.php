@@ -154,10 +154,20 @@ class VentasController extends Controller
         ->where('ventas.estado','=',1)
         ->get();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($venta) {
-            return  '<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-sm btn-primary"> Anular venta</a>'.' '.
-                    '<a href="'.url('ventas/pdf/'. $venta->id).'" class="btn btn-sm btn-primary">Imprimir pdf</a>'.' '.
-                    '<a href="'.url('documentos/check/'. $venta->id).'" class="btn btn-sm btn-primary">Agregar Documentos</a>'.' '.
-                    '<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-sm btn-primary">Editar venta</a>';
+            $htmlString =  "";
+            if (\Shinobi::can('verVentas')){
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-sm btn-primary">Editar venta</a>';
+            }
+            if (\Shinobi::can('propiedades.editar')){
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-sm btn-primary"> Anular venta</a>';
+            }
+            if (\Shinobi::can('verVentas')){
+                $htmlString = $htmlString." ".'<a href="'.url('documentos/check/'. $venta->id).'" class="btn btn-sm btn-primary">Agregar Documentos</a>';
+            }
+            if (\Shinobi::can('venta.pdf')){
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/pdf/'. $venta->id).'" class="btn btn-sm btn-primary">Imprimir pdf</a>';
+            }
+            return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
     }
 

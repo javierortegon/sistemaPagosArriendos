@@ -140,16 +140,20 @@ class PropiedadesController extends Controller
                     $ventaEstado = 1;
                 }
             }
-            if($ventaEstado != 1){
-                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Ver detalles</a>'." ".
-                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Editar</a>'." ".
-                        '<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Vender</a>';
-            } else {
-                return  '<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Ver detalles</a>'." ".
-                        '<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Editar</a>'." ".
-                        '<a class="btn btn-sm btn-warning" disabled>Vender</a>';
+            $htmlString =   "";
+            if (\Shinobi::can('propiedades.vender')){
+                $htmlString = $htmlString." ".'<a href="'.url('propiedad/detalles/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Ver detalles</a>';
+                if($ventaEstado != 1){
+                    $htmlString = $htmlString." ".'<a href="'.url('propiedad/vender/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Vender</a>';
+                } else {
+                    $htmlString = $htmlString." ".'<a class="btn btn-sm btn-warning" disabled>Vender</a>';                
+                }
             }
-            
+            if (\Shinobi::can('propiedades.editar')){
+                $htmlString = $htmlString." ".'<a href="'.url('propiedad/edit/'. $propiedad['id']).'" class="btn btn-sm btn-primary">Editar</a>';
+            }
+            return $htmlString;
+
         })->rawColumns(['editar', 'action'])->make(true);
 
     }

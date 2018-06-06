@@ -197,9 +197,20 @@ Route::middleware(['auth'])->group(function() {
 
     // Get detalles usuarios
     Route::get('usuario/detalles/{id}', [
-        'uses' => 'UsersController@getDetallesUsuario'
+        'uses' => 'UsersController@getDetallesUsuario',
+        'middleware' => 'permission:verUsuarios'
+    ]);
+    //ruta para editar los roles de los usuarios
+    Route::get('usuario/editRol/{id}', [
+        'middleware' => 'permission:usuarios.edit',
+        'uses' => 'UsersController@getEditRol'
     ]);
 
+    //ruta para recibir los datos de los roles editados
+    Route::put('usuario/editRol/{id}', [
+        'middleware' => 'permission:usuarios.edit',        
+        'uses' => 'UsersController@putEditRol'
+    ]);
 
     /*
     |
@@ -331,17 +342,7 @@ Route::get('/', function () {
 |
 */
 
-//ruta para editar los roles de los usuarios
-Route::get('usuario/editRol/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'UsersController@getEditRol'
-]);
 
-//ruta para recibir los datos de los roles editados
-Route::put('usuario/editRol/{id}', [
-    'middleware' => 'auth',
-    'uses' => 'UsersController@putEditRol'
-]);
 
 //Para AJAX
 

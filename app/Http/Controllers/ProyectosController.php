@@ -75,10 +75,17 @@ class ProyectosController extends Controller
         
         $queryConsulta = Proyecto::all();
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($proyecto) {
-            return  '<a href="'.url('proyecto/detalle/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Detalles proyecto</a>'." ".
-                    '<a href="'.url('tiposPropiedad/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Ver tipos de inmueble</a>'." ".
-                    '<a href="'.url('proyecto/edit/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Editar</a>';
+            $htmlString =   "";
+            if (\Shinobi::can('proyectos.detalle')){
+                $htmlString = $htmlString." ".'<a href="'.url('proyecto/detalle/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Detalles proyecto</a>';
+            }
+            if (\Shinobi::can('proyectos.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('proyecto/edit/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Editar</a>';
+            }
+            if (\Shinobi::can('proyectos.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('tiposPropiedad/'. $proyecto['id']).'" class="btn btn-sm btn-primary">Administrar tipos de inmueble</a>';
+            }
+            return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
-
     }
 }

@@ -196,9 +196,17 @@ class UsersController extends Controller
             return $rolesString;
             
         })->addColumn('editar', function ($user) {
-            return  '<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
-                    '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
-                    '<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+            $htmlString =  "";
+            if (\Shinobi::can('verUsuarios')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>';
+            }
+            if (\Shinobi::can('usuarios.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
+            }
+            if (\Shinobi::can('usuarios.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+            }
+            return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
     }
     public function getDataTableUsuarios(){
@@ -239,9 +247,17 @@ class UsersController extends Controller
             return $rolesString;
             
         })->addColumn('editar', function ($user) {
-            return  '<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>'." ".
-                    '<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>'." ".
-                    '<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+            $htmlString =  "";
+            if (\Shinobi::can('verUsuarios')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/detalles/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Ver detalles</a>';
+            }
+            if (\Shinobi::can('usuarios.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/edit/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Editar</a>';
+            }
+            if (\Shinobi::can('usuarios.edit')){
+                $htmlString = $htmlString." ".'<a href="'.url('usuario/editRol/'. $user['id']).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Modificar Roles</a>';
+            }
+            return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
 
     }
