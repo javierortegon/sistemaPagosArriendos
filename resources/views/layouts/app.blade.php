@@ -115,12 +115,15 @@
                                     Reportes
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('reporteVentas') }}">Reporte Ventas</a></li> 
-                                    <li><a href="{{ route('reporteVentasTorre1') }}">Reporte Ventas Torre 1</a></li> 
-                                    <li><a href="{{ route('reporteVentasTorre2') }}">Reporte Ventas Torre 2</a></li>
-                                    <li><a href="{{ route('reporteDisponibles') }}">Reporte Disponibles</a></li> 
-                                    <li><a href="{{ route('reporteAnuladas') }}">Reporte Anuladas</a></li> 
-                                    <li><a href="{{ route('reporteCitasHoy') }}">Reporte Citas Hoy</a></li> 
+                                    <li><a href="{{ route('reporteVentas') }}"> Ventas</a></li> 
+                                    <li><a href="{{ route('reporteVentasTorre1') }}"> Ventas Torre 1</a></li> 
+                                    <li><a href="{{ route('reporteVentasTorre2') }}"> Ventas Torre 2</a></li>
+                                    <li><a href="{{ route('reporteFiducia') }}"> Numeros Fiducia</a></li>
+                                    <li><a href="{{ route('reporteDisponibles') }}"> Disponibles</a></li> 
+                                    <li><a href="{{ route('reporteAnuladas') }}"> Anuladas</a></li> 
+                                    <li><a href="{{ route('reporteCitasHoy') }}"> Citas Hoy</a></li> 
+                                    <li><a href="{{ route('reporteCitasMes') }}"> Citas Mes</a></li> 
+                                    <li><a href="{{ route('reporteEncuesta') }}"> Encuesta</a></li> 
                                 </ul>
                             </li>
                             @endcan

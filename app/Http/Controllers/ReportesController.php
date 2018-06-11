@@ -13,6 +13,9 @@ use App\Proyecto;
 use App\Venta;
 use App\TiposPropiedad;
 use App\Agenda;
+use App\Documento;
+use App\DatosComprador;
+
 
 class ReportesController extends Controller
 {
@@ -181,16 +184,11 @@ class ReportesController extends Controller
     }
 
     public function reporteCitasHoy(){
-
-        
-        
-
         Excel::create('Laravel Excel', function($excel) {
  
             $excel->sheet('Productos', function($sheet) {
  
                 $carbon = new \Carbon\Carbon();
-                
                 $date = $carbon->now();
                 $ventas = Agenda::select('event_name as nombre cita',
                 'agenda.start_date as fecha cita',
@@ -204,10 +202,89 @@ class ReportesController extends Controller
                 ->join('users','agenda.cliente','=','users.id')
                 ->whereDate('start_date', '=', date('Y-m-d'))
                 ->get();
-
                 $sheet->fromArray($ventas);
  
             });
         })->export('xlsx');
     }
+
+    public function reporteCitasMes(){
+        Excel::create('Laravel Excel', function($excel) {
+ 
+            $excel->sheet('Productos', function($sheet) {
+ 
+                $carbon = new \Carbon\Carbon();
+                $date = $carbon->now();
+                $ventas = Agenda::select('event_name as nombre cita',
+                'agenda.start_date as fecha cita',
+                'propiedades.nombre as nombre propiedad',
+                'propiedades.codigo',
+                'users.name',
+                'users.email',
+                'users.telefono')
+                ->join('ventas','agenda.venta','=','ventas.id')
+                ->join('propiedades','ventas.propiedad','=','propiedades.id')
+                ->join('users','agenda.cliente','=','users.id')
+                ->whereMonth('start_date', '=', date('m'))
+                ->get();
+                $sheet->fromArray($ventas);
+ 
+            });
+        })->export('xlsx');
+    }
+
+    public function reporteVentaFiducia(){
+        Excel::create('Laravel Excel', function($excel) {
+ 
+            $excel->sheet('Productos', function($sheet) {
+ 
+                $carbon = new \Carbon\Carbon();
+                $date = $carbon->now();
+                $ventas = Documento::select(
+                    'ventas.created_at as fechaVenta',
+                    'propiedades.codigo', 
+                    'propiedades.nombre', 
+                    'propiedades.direccion as direccionPropiedad', 
+                    'documentos.documento as Tipo Documento',
+                    'documentos.informacion_adicional as Numero Tarjeta Fiducia',
+                    'users.name as name',
+                    'users.email as email',
+                    'users.telefono as telefono',
+                    'users.documento as documento',
+                    'users.direccion as direccion')
+                ->join('ventas','documentos.venta_id','=','ventas.id')
+                ->join('propiedades','ventas.propiedad','=','propiedades.id')
+                ->join('users','ventas.id','=','users.id')
+                ->where([   ['documentos.documento', '=', 'Tarjeta de Fiducia'],
+                            ['documentos.informacion_adicional', '!=', ''] 
+                ])
+                //->whereMonth('start_date', '=', date('m'))
+                ->get();
+                $sheet->fromArray($ventas);
+ 
+            });
+        
+        })->export('xlsx');
+    }
+
+    public function reporteEncuesta(){
+        Excel::create('Laravel Excel', function($excel) {
+ 
+            $excel->sheet('Productos', function($sheet) {
+ 
+                $carbon = new \Carbon\Carbon();
+                $date = $carbon->now();
+                $ventas = DatosComprador::select(
+                'encuesta as Tipo',
+                DB::raw('count(*) as total'))
+                ->groupBy('encuesta')
+                //->whereMonth('start_date', '=', date('m'))
+                ->get();
+                $sheet->fromArray($ventas);
+ 
+            });
+        
+        })->export('xlsx');
+    }
+    
 }

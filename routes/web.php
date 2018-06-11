@@ -303,7 +303,27 @@ Route::middleware(['auth'])->group(function() {
     
     Route::get('reporteCitasHoy', 
     'ReportesController@reporteCitasHoy'
-    )->name('reporteCitasHoy')->middleware('permission:verVentas');    
+    )->name('reporteCitasHoy')->middleware('permission:verVentas');  
+
+    Route::get('reporteCitasMes', 
+    'ReportesController@reporteCitasMes'
+    )->name('reporteCitasMes')->middleware('permission:verVentas');  
+    
+    Route::get('reporteFiducia', 
+    'ReportesController@reporteVentaFiducia'
+    )->name('reporteFiducia')->middleware('permission:verVentas');  
+    
+    Route::get('reporteEncuesta', 
+    'ReportesController@reporteEncuesta'
+    )->name('reporteEncuesta')->middleware('permission:verVentas');  
+    
+    
+     /*
+    |
+    |RUTAS PERSONALIZADAS PARA DOCUMENTOS
+    |
+    */ 
+
 
     Route::get('documentos/check/{id}', 
     'DocumentosController@getCheckDocumentos'
