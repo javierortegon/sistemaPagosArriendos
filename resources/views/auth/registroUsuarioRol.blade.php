@@ -39,6 +39,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('tipo_documento') ? ' has-error' : '' }}">
+                            <label for="tipo_documento" class="col-md-4 control-label">Tipo de Documento</label>
+                            <div class="col-md-6">
+                                <select id="tipo_documento" name="tipo_documento" class="form-control" value="Pasaporte" required>
+                                    <option value="Cédula de ciudadania">Cédula de ciudadania</option>
+                                    <option value="Cédula de extrangería">Cédula de extrangería</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                             <label for="documento" class="col-md-4 control-label">Documento</label>
 
@@ -78,7 +90,7 @@
                             <label for="direccion" class="col-md-4 control-label">Rol Cliente</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" value="" name="rolCliente"></label>
+                                <input type="checkbox" value="1" name="rolCliente"></label>
                             </div>
                         </div>
 
@@ -86,7 +98,7 @@
                             <label for="direccion" class="col-md-4 control-label">Rol Vendedor</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" value="" name="rolVendedor"></label>
+                                <input type="checkbox" value="1" name="rolVendedor"></label>
                             </div>
                         </div>
 
@@ -94,7 +106,7 @@
                             <label for="direccion" class="col-md-4 control-label">Rol Administrador</label>
 
                             <div class="col-md-6">
-                                <input type="checkbox" value="" name="rolAdmin"></label>
+                                <input type="checkbox" value="1" name="rolAdmin"></label>
                             </div>
                         </div>
 

@@ -125,6 +125,42 @@ class UsersController extends Controller
     }
 
     public function postRegistroUsuarioRol(Request $request){
+        //  return $request->all();
+        $usuario = new User;
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->tipo_documento = $request->tipo_documento;
+        $usuario->documento = $request->documento;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->estado = 1;
+        $usuario->password = bcrypt($request->password);
+        $usuario->save();
+
+        if($request->rolCliente == 1){
+            $rol = new RolesUsers;
+            $rol->role_id = 3;
+            $rol->user_id = $usuario->id;
+            $rol->save();
+        }
+
+        if($request->rolVendedor == 1){
+            $rol = new RolesUsers;
+            $rol->role_id = 2;
+            $rol->user_id = $usuario->id;
+            $rol->save();
+        }
+        
+        if($request->rolAdmin == 1){
+            $rol = new RolesUsers;
+            $rol->role_id = 1;
+            $rol->user_id = $usuario->id;
+            $rol->save();
+        }
+        
+        $notification = new Notification;
+        $notification::success('Usuario Registrado con exito');
+        return redirect('/verUsuarios');
 
     }
 
