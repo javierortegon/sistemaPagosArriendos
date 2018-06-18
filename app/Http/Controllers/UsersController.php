@@ -124,6 +124,10 @@ class UsersController extends Controller
         return redirect('verUsuarios');          
     }
 
+    public function postRegistroUsuarioRol(Request $request){
+
+    }
+
     //Datos para AJAX
 
     public function selectAjax($campo, $caracteres){
@@ -209,6 +213,7 @@ class UsersController extends Controller
             return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
     }
+
     public function getDataTableUsuarios(){
         $idRolDeCliente = 3;
         $queryConsulta =    User::select(   'users.id',

@@ -212,6 +212,18 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'UsersController@putEditRol'
     ]);
 
+    //ruta para el registro de usuarios con diferente rol
+    Route::get('/registroUsuario', function () {
+        return view('auth.registroUsuarioRol');
+    })->name('registroUsuario');
+
+    //ruta para el registro de usuarios con diferente rol
+    Route::post('/registroUsuario', [
+        'uses' => 'UsersController@postRegistroUsuarioRol',
+        'middleware' => 'permission:usuarios.edit'
+    ]);
+
+
     /*
     |
     |RUTAS PERSONALIZADAS PARA LAS VENTAS

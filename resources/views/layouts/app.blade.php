@@ -130,20 +130,16 @@
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    Usuario
+                                    Cliente
                                 </a>
                                 <ul class="dropdown-menu">
                                     
                                     @can('usuarios.register')
-                                    <li><a href="{{ route('register') }}">Registrar Usuario</a></li>
+                                    <li><a href="{{ route('register') }}">Registrar</a></li>
                                     @endcan
 
                                     @can('verUsuarios')
-                                    <li><a href="{{ route('verClientes') }}">Consultar Clientes</a></li>
-                                    @endcan
-
-                                    @can('verUsuarios')
-                                    <li><a href="{{ route('verUsuarios') }}">Consultar Usuarios</a></li>
+                                    <li><a href="{{ route('verClientes') }}">Consultar</a></li>
                                     @endcan
 
                                     @can('registroPropiedad')
@@ -152,6 +148,21 @@
 
                                 </ul>
                             </li>
+
+                            @can('propiedades.editar')
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Usuario
+                                </a>
+                                <ul class="dropdown-menu">
+                                    
+                                    <li><a href="{{ route('registroUsuario') }}">Registrar</a></li>
+
+                                    <li><a href="{{ route('verUsuarios') }}">Consultar Usuarios</a></li>
+                                    
+                                </ul>
+                            </li>
+                            @endcan
 
                             <li class="dropdown">
                                 
