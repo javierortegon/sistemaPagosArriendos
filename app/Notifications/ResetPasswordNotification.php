@@ -48,10 +48,9 @@ class ResetPasswordNotification extends Notification
     {
         return (new MailMessage)
             ->from('admin@habitusconstrucciones.com', 'Admin')
-            ->subject('Password Reset')
-            ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', url(config('app.url').route('password.reset', $this->token, false)))
-            ->line('If you did not request a password reset, no further action is required.')
-            ->line('Thank you.');
+            ->subject('Cambiar contraseña')
+            ->line('Estás recibiendo este correo porque recibimos una solicitud de cambio de contraseña desde tu cuenta.')
+            ->action('Cambiar Contraseña', url(config('app.url').route('password.reset', $this->token, false)))
+            ->line('Si no realizaste una solicitud de cambio de contraseña, por favor ignora este mensaje.');
     }
 }
