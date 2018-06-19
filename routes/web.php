@@ -361,6 +361,12 @@ Route::middleware(['auth'])->group(function() {
         return view('auth.registroUsuarioPresu');
     })->name('registroClientePresu');
 
+    Route::post('registroClientePresu', [
+        'middleware' => 'permission:propiedades.editar',
+        'uses' => 'UsersController@registroUsuarioPresupuesto',
+    ]);
+
+
     Route::get('registroPresupuesto', function () {
         return view('auth.registroUsuarioPresu');
     })->name('registroPresupuesto');

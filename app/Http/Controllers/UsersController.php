@@ -8,6 +8,7 @@ use App\Rol;
 use App\RolesUsuarios;
 use App\RolesUsers;
 use App\Venta;
+use App\DatosComprador;
 
 use Illuminate\Http\Request;
 use Notification;
@@ -169,7 +170,35 @@ class UsersController extends Controller
     }
 
     public function registroUsuarioPresupuesto(Request $request){
-        
+        $usuario = new User;
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->tipo_documento = $request->tipo_documento;
+        $usuario->documento = $request->documento;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->estado = 1;
+        $usuario->password = bcrypt($request->documento);
+        $usuario->save();
+
+        $detalles = new DatosComprador;
+        $detalles->direccion_correspondencia = $request->direccion;
+        $detalles->barrio = $request->barrio;
+        $detalles->ciudad = $request->ciudad;
+        $detalles->estado_civil = $request->estado_civil;
+        $detalles->tipo_representacion = $request->tipo_representacion;
+        $detalles->ocupacion = $request->ocupacion;
+        $detalles->cargo = $request->cargo;
+        $detalles->empresa = $request->empresa;
+        $detalles->telefono = $request->telefono;
+        $detalles->tipo_vinculacion = $request->tipo_vinculacion;
+        $detalles->tipo_contrato = $request->tipo_contrato;
+        $detalles->encuesta = $request->encuesta;
+        $detalles->id_usuario = $usuario->id;
+        $detalles->save();
+        $notificacion = new Notification;
+        $notificacion::success('El usuario se ha actualizo correctamente');
+        return redirect('verUsuarios');  
     }
 
     //Datos para AJAX

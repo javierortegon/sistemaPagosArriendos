@@ -7,7 +7,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Registro Cliente Presupuesto</div>
 				<div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('registroUsuario') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('registroClientePresu') }}">
                     {{ csrf_field() }}
                         <div class="col-md-6">
 
@@ -86,11 +86,6 @@
                                 </div>
                             </div>
 
-                            
-                        
-
-                        </div>
-                        <div class="col-md-6"> 
                             <div class="form-group{{ $errors->has('barrio') ? ' has-error' : '' }}">
                                 <label for="barrio" class="col-md-4 control-label">Barrio</label>
                                 <div class="col-md-6">
@@ -113,7 +108,12 @@
                                     
                                 </div>
                             </div>
-                            <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
+                          
+
+                        </div>
+                        <div class="col-md-6"> 
+
+                              <div class="form-group{{ $errors->has('estado_civil') ? ' has-error' : '' }}">
                                 <label for="estado_civil" class="col-md-4 control-label">Estado Civil</label>
                                 <div class="col-md-6">
                                     <select id="estado_civil" name="estado_civil" class="form-control" required>
@@ -126,6 +126,8 @@
                                     </select>
                                 </div>
                             </div>
+                        
+                            
                             <div class="form-group{{ $errors->has('tipo_representacion') ? ' has-error' : '' }}">
                                 <label for="tipo_representacion" class="col-md-4 control-label">Tipo de Representación </label>
                                 <div class="col-md-6">
@@ -208,6 +210,16 @@
                                     </select>
                                 </div>
                             </div>        
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-5">
+                                    <button type="submit" class="btn btn-primary">
+                                        Registrar
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>           
                 </div>
