@@ -335,8 +335,6 @@ Route::middleware(['auth'])->group(function() {
     |RUTAS PERSONALIZADAS PARA DOCUMENTOS
     |
     */ 
-
-
     Route::get('documentos/check/{id}', 
     'DocumentosController@getCheckDocumentos'
     )->name('documentos/check/{id}')->middleware('permission:verVentas');
@@ -352,6 +350,21 @@ Route::middleware(['auth'])->group(function() {
     Route::delete('documentos/eliminar', 
     'DocumentosController@eliminarDocumentos'
     )->name('documentos/eliminar')->middleware('permission:propiedades.editar');
+
+
+     /*
+    |
+    |RUTAS PERSONALIZADAS PARA MODULO DE PRESUPUESTO
+    |
+    */     
+    Route::get('registroClientePresu', function () {
+        return view('auth.registroUsuarioPresu');
+    })->name('registroClientePresu');
+
+    Route::get('registroPresupuesto', function () {
+        return view('auth.registroUsuarioPresu');
+    })->name('registroPresupuesto');
+
 });
 
 

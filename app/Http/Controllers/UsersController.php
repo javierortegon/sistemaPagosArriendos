@@ -168,6 +168,10 @@ class UsersController extends Controller
 
     }
 
+    public function registroUsuarioPresupuesto(Request $request){
+        
+    }
+
     //Datos para AJAX
 
     public function selectAjax($campo, $caracteres){

@@ -83,6 +83,21 @@
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Presupuesto
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @can('proyecto.registro')
+                                    <li><a href="{{ route('registroClientePresu') }}">Registro Cliente</a></li>
+                                    @endcan
+
+                                    @can('proyectos.consultar')
+                                    <li><a href="{{ route('registroPresupuesto') }}">Generar Presupuesto</a></li>
+                                    @endcan
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Ventas e Inmuebles
                                 </a>
                                 <ul class="dropdown-menu">
