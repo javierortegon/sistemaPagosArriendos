@@ -98,30 +98,34 @@ class UsersController extends Controller
 
     public function putEditRol($id, Request $request){
         DB::table('role_user')->where('user_id', '=', $id)->delete();
-        //echo $request->estadoRol1 , $request->estadoRol2, $request->estadoRol3;
-        //die();
-
-        if($request->estadoRol1==1){
-            $rolesUsuarios = new RolesUsers;
-            $rolesUsuarios->user_id = $id;
-            $rolesUsuarios->role_id = 1;
-            $rolesUsuarios->save();
+        
+        if($request->estadoRol1 != 1 and $request->estadoRol2 != 1 and $request->estadoRol3 != 1){
+            $notificacion = new Notification;
+            $notificacion::error('El usuario debe tener al menos un rol');
+            return redirect('verUsuarios');  
+        }else{
+            if($request->estadoRol1==1){
+                $rolesUsuarios = new RolesUsers;
+                $rolesUsuarios->user_id = $id;
+                $rolesUsuarios->role_id = 1;
+                $rolesUsuarios->save();
+            }
+            if ($request->estadoRol2 == 1){
+                $rolesUsuarios = new RolesUsers;
+                $rolesUsuarios->user_id = $id;
+                $rolesUsuarios->role_id = 2;
+                $rolesUsuarios->save();
+            }
+            if($request->estadoRol3 == 1){
+                $rolesUsuarios = new RolesUsers;
+                $rolesUsuarios->user_id = $id;
+                $rolesUsuarios->role_id = 3;
+                $rolesUsuarios->save();
+            }
+            $notificacion = new Notification;
+            $notificacion::success('El usuario se ha actualizo correctamente');
+            return redirect('verUsuarios');          
         }
-        if ($request->estadoRol2 == 1){
-            $rolesUsuarios = new RolesUsers;
-            $rolesUsuarios->user_id = $id;
-            $rolesUsuarios->role_id = 2;
-            $rolesUsuarios->save();
-        }
-        if($request->estadoRol3 == 1){
-            $rolesUsuarios = new RolesUsers;
-            $rolesUsuarios->user_id = $id;
-            $rolesUsuarios->role_id = 3;
-            $rolesUsuarios->save();
-        }
-        $notificacion = new Notification;
-        $notificacion::success('El usuario se ha actualizo correctamente');
-        return redirect('verUsuarios');          
     }
 
     public function postRegistroUsuarioRol(Request $request){
