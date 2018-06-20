@@ -362,14 +362,18 @@ Route::middleware(['auth'])->group(function() {
     })->name('registroClientePresu');
 
     Route::post('registroClientePresu', [
-        'middleware' => 'permission:propiedades.editar',
+        'middleware' => 'permission:usuarios.register',
         'uses' => 'UsersController@registroUsuarioPresupuesto',
     ]);
 
 
-    Route::get('registroPresupuesto', function () {
-        return view('auth.registroUsuarioPresu');
-    })->name('registroPresupuesto');
+    Route::get('registroPresupuesto', [
+        'uses' => 'PresupuestosController@getGenerarPresupuesto',
+    ])->name('registroPresupuesto');
+    Route::post('registroPresupuesto', [
+        'uses' => 'PresupuestosController@postGenerarPresupuesto',
+        'middleware' => 'permission:verPropiedades'
+    ]);
 
 });
 
