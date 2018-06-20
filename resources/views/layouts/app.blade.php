@@ -86,11 +86,11 @@
                                     Presupuesto
                                 </a>
                                 <ul class="dropdown-menu">
-                                    @can('proyecto.registro')
+                                    @can('usuarios.register')
                                     <li><a href="{{ route('registroClientePresu') }}">Registro Cliente</a></li>
                                     @endcan
 
-                                    @can('proyectos.consultar')
+                                    @can('verUsuarios')
                                     <li><a href="{{ route('registroPresupuesto') }}">Generar Presupuesto</a></li>
                                     @endcan
                                 </ul>
