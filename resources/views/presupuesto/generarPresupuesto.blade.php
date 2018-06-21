@@ -14,7 +14,6 @@
                             SELECCIONAR CLIENTE
                         </div>
                         <div id = "divBusquedaUsuarioExistente">
-                            <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">Buscar cliente:</label>
                                 <div class="col-md-6">
@@ -31,22 +30,23 @@
                                     <button type="button" class="col-md-12 btn btn-warning" id="btnSeleccionUsuario">Seleccionar Usuario</button>  
                                 </div>
                             </div>
+                            <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Nombre:</label>
                                 <div class="col-md-6">
-                                    <input id="clienteNombre" type="text" style="border:none" class="form-control" name="clienteNombre" value="">
+                                    <input id="clienteExistenteNombre" type="text" style="border:none" class="form-control" name="clienteExistenteNombre" value="" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Documento:</label>
                                 <div class="col-md-6">
-                                    <input id="clienteCorreo" type="text" style="border:none" class="form-control" name="clienteCorreo" value="">
+                                    <input id="clienteExistenteDocumento" type="text" style="border:none" class="form-control" name="clienteExistenteDocumento" value="">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Email:</label>
                                 <div class="col-md-6">
-                                    <input id="clienteEmail" type="text" style="border:none" class="form-control" name="clienteEmail" value="">
+                                    <input id="clienteExistenteEmail" type="text" style="border:none" class="form-control" name="clienteExistenteEmail" value="">
                                 </div>
                             </div>
                         </div>
@@ -57,13 +57,11 @@
                         </div>
                         <div class="form-group">
                             <label for="estado_civil2" class="col-md-4 control-label">Clase de propiedad:</label>
-                            <div class="col-md-6">
-                                <select  id="estado_civil2" name="estado_civil2" class="form-control" required>
-                                    <option value="">Seleccionar</option>
-                                    <option value="Torre1">Torre 1</option>
-                                    <option value="Torre2">Torre 2</option>
-                                </select>
-                            </div>
+                            <select  id="estado_civil2" name="estado_civil2" class="col-md-6" required>
+                                <option value="">Seleccionar</option>
+                                <option value="Torre1">Torre 1</option>
+                                <option value="Torre2">Torre 2</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">Valor cuota inicial:</label>
@@ -78,7 +76,7 @@
                             </div>
                         </div>               
                         <div class = "form-group row">
-                            DATOS DE PAGOS
+                            DATOS DE PAGOS PARA CUOTA INICIAL
                         </div>
                         <div class="form-group{{ $errors->has('primerPago') ? ' has-error' : '' }}">
                             <label for="primerPago" class="col-md-4 control-label">Valor primer pago:</label>                
@@ -115,4 +113,11 @@
         </div>
     </div>
 </div>
+<form class="form-horizontal" action="{{ url('usuarios/selectAjax/FIELD/CHARACTERS') }}" method="GET" id ="formDatosAjax">
+    {{ csrf_field() }}
+    {{ method_field('GET') }}
+</form>
+@endsection
+@section('scripts')
+    <script src="{{asset('js/scriptsPersonalizados/buscarUsuarioAjax.js')}}"></script>
 @endsection
