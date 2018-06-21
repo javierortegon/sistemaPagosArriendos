@@ -56,11 +56,12 @@
                             SELECCIONAR CLASE DE PROPIEDAD
                         </div>
                         <div class="form-group">
-                            <label for="estado_civil2" class="col-md-4 control-label">Clase de propiedad:</label>
-                            <select  id="estado_civil2" name="estado_civil2" class="col-md-6" required>
+                            <label for="clasePropiedad" class="col-md-4 control-label">Clase de propiedad:</label>
+                            <select  id="clasePropiedad" name="clasePropiedad" class="col-md-6" required>
                                 <option value="">Seleccionar</option>
-                                <option value="Torre1">Torre 1</option>
-                                <option value="Torre2">Torre 2</option>
+                                @foreach($tiposPropiedad as $tipoPropiedad)
+                                    <option value="{{$tipoPropiedad['id']}}">{{$tipoPropiedad['nombre']}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -81,7 +82,7 @@
                         <div class="form-group{{ $errors->has('primerPago') ? ' has-error' : '' }}">
                             <label for="primerPago" class="col-md-4 control-label">Valor primer pago:</label>                
                             <div class="col-md-6">
-                                <input id="primerPago" type="text" class="form-control" name="primerPago" value="{{ old('primerPago') }}" required>
+                                <input id="primerPago" type="number" class="form-control" name="primerPago" value="{{ old('primerPago') }}" required>
                                 @if ($errors->has('primerPago'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('primerPago') }}</strong>
@@ -119,5 +120,16 @@
 </form>
 @endsection
 @section('scripts')
-    <script src="{{asset('js/scriptsPersonalizados/buscarUsuarioAjax.js')}}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var tiposPropiedad = <?= json_encode($tiposPropiedad) ?>;
+    var tipoPropiedad;
+    $('#clasePropiedad').on('change', function(event) {
+        tipoPropiedad = $("#clasePropiedad option:selected").val() - 1;
+        $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor));
+        $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor/2));
+    });
+});
+</script>
+<script src="{{asset('js/scriptsPersonalizados/buscarUsuarioAjax.js')}}"></script>
 @endsection

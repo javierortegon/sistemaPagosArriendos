@@ -2,6 +2,12 @@ var jsonUsuarios;
 var usuarioSeleccionado;
 
 $(document).ready(function(){
+    //Definiendo la alerta para pedir busqueda de usuario
+    $('#clienteExistenteNombre').get(0).oninvalid = function(e) {
+        if (!e.target.validity.valid) {
+            e.target.setCustomValidity('Por favor busque y seleccione un usuario existente');
+        }
+    };
     //Evitar que se pueda escribir en los detalles de cliente existente
     $('#clienteExistenteNombre').keydown(function(event){
         event.preventDefault();

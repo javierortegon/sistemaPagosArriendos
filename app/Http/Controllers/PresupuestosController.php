@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Validator;
 class PresupuestosController extends Controller
 {
     public function getGenerarPresupuesto(){
-        return view('presupuesto.generarPresupuesto');
+        $tiposPropiedad = TiposPropiedad::all();
+        return view('presupuesto.generarPresupuesto', compact('tiposPropiedad'));
     }
     public function postGenerarPresupuesto(Request $request){
         dd($request);
