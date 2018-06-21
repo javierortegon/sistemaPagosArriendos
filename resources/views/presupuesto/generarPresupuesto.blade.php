@@ -10,27 +10,74 @@
                 <form class="form-horizontal" method="POST" action="{{ route('registroPresupuesto') }}">
                     {{ csrf_field() }}
                     <div class="col-md-6">
-                        <div class="form-group">                    
-                            SELECCIONAR USUARIO
+                        <div class="form-group row">                    
+                            SELECCIONAR CLIENTE
+                        </div>
+                        <div id = "divBusquedaUsuarioExistente">
+                            <input type="hidden" name= "inputUserId" value ="" id ="inputUserId">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label class="col-md-4 control-label">Buscar cliente:</label>
+                                <div class="col-md-6">
+                                    <select class = "col-md-12" name="campo" id="campoParaBuscar">
+                                        <option value="name">Buscar por nombre</option>
+                                        <option value="email">Buscar por email</option>
+                                        <option value="documento">Buscar por documento</option>
+                                        <option value="telefono">Buscar por telefono</option>
+                                    </select>
+                                    <input class = "col-md-12" list="usuariosDataList" type = "search" name="busqueda" id="busqueda" autocomplete="off" autofocus>                                           
+                                    <datalist id="usuariosDataList">
+                                    </datalist>
+                                    <br />
+                                    <button type="button" class="col-md-12 btn btn-warning" id="btnSeleccionUsuario">Seleccionar Usuario</button>  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Nombre:</label>
+                                <div class="col-md-6">
+                                    <input id="clienteNombre" type="text" style="border:none" class="form-control" name="clienteNombre" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Documento:</label>
+                                <div class="col-md-6">
+                                    <input id="clienteCorreo" type="text" style="border:none" class="form-control" name="clienteCorreo" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Email:</label>
+                                <div class="col-md-6">
+                                    <input id="clienteEmail" type="text" style="border:none" class="form-control" name="clienteEmail" value="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            SELECCIONAR TIPO DE PROPIEDAD
+                        <div class="form-group row">
+                            SELECCIONAR CLASE DE PROPIEDAD
                         </div>
-                        <div>
-                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioNuevo" value="nuevo" checked>
-                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioNuevo">
-                                Torre 1
-                            </label>
-                            <br />
-                            <input class="form-check-input selectUsuarioNoE" type="radio" name="usuarioNoE" id="rbUsuarioExistente" value="existente">
-                            <label class="form-check-label selectUsuarioNoE" for="rbUsuarioExistente">
-                                Torre 2
-                            </label>
-                            <br />
-                        </div>                       
-                        <div class = "form-group">
+                        <div class="form-group">
+                            <label for="estado_civil2" class="col-md-4 control-label">Clase de propiedad:</label>
+                            <div class="col-md-6">
+                                <select  id="estado_civil2" name="estado_civil2" class="form-control" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="Torre1">Torre 1</option>
+                                    <option value="Torre2">Torre 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Valor cuota inicial:</label>
+                            <div class="col-md-6">
+                                <input id="valorCuotaInicial" type="text" style="border:none" class="form-control" name="valorCuotaInicial" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Valor total:</label>
+                            <div class="col-md-6">
+                                <input id="valorTotal" type="text" style="border:none" class="form-control" name="valorTotal" value="">
+                            </div>
+                        </div>               
+                        <div class = "form-group row">
                             DATOS DE PAGOS
                         </div>
                         <div class="form-group{{ $errors->has('primerPago') ? ' has-error' : '' }}">
@@ -55,6 +102,13 @@
                                 @endif
                             </div>             
                         </div>             
+                    </div>
+                    <div class="row">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">
+                                Generar presupuesto
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
