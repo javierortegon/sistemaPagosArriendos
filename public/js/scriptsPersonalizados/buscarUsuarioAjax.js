@@ -18,6 +18,12 @@ $(document).ready(function(){
     $('#clienteExistenteDocumento').keydown(function(event){
         event.preventDefault();
     });
+    $('#valorCuotaInicial').keydown(function(event){
+        event.preventDefault();
+    });
+    $('#valorTotal').keydown(function(event){
+        event.preventDefault();
+    });
     //Ajax para busqueda de usuarios existentes
     $('#busqueda').keyup(function(e){
         e.preventDefault();

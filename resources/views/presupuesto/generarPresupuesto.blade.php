@@ -82,7 +82,7 @@
                         <div class="form-group{{ $errors->has('primerPago') ? ' has-error' : '' }}">
                             <label for="primerPago" class="col-md-4 control-label">Valor primer pago:</label>                
                             <div class="col-md-6">
-                                <input id="primerPago" type="number" class="form-control" name="primerPago" value="{{ old('primerPago') }}" required>
+                                <input id="primerPago" type="text" class="form-control" name="primerPago" value="{{ old('primerPago') }}" required>
                                 @if ($errors->has('primerPago'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('primerPago') }}</strong>
@@ -120,15 +120,25 @@
 </form>
 @endsection
 @section('scripts')
+<script src="{{asset('js/scriptsPersonalizados/formatoMoneda.js')}}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    $("#numeroDeCuotas").keydown(function(event){
+        if ('0123456789'.indexOf(event.key) == -1 && event.key != "Backspace" && event.key != "Delete" && event.key != "ArrowLeft" && event.key != "ArrowRight"){
+            event.preventDefault();            
+        }
+    });
     var tiposPropiedad = <?= json_encode($tiposPropiedad) ?>;
     var tipoPropiedad;
+    var separadorDeMiles = ",";
+    var separadorDecimal = ".";
+    var signoMoneda = "$ ";
     $('#clasePropiedad').on('change', function(event) {
         tipoPropiedad = $("#clasePropiedad option:selected").val() - 1;
         $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor));
         $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor/2));
     });
+    formatoMoneda('#primerPago',separadorDecimal,separadorDeMiles,signoMoneda);
 });
 </script>
 <script src="{{asset('js/scriptsPersonalizados/buscarUsuarioAjax.js')}}"></script>
