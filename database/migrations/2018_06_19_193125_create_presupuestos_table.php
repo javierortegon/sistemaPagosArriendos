@@ -23,6 +23,8 @@ class CreatePresupuestosTable extends Migration
             $table->foreign('propiedad')->references('id')->on('propiedades');
             $table->decimal('valor_primer_pago', 14, 2);
             $table->integer('numero_de_cuotas'); // excluyendo la primera
+            $table->integer('usuario_que_registra')->unsigned();
+            $table->foreign('usuario_que_registra')->references('id')->on('users');
             $table->timestamps();
         });
     }

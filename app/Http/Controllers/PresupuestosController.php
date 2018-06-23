@@ -46,6 +46,7 @@ class PresupuestosController extends Controller
         $presupuesto->tipo_propiedad = $request->input('tipoPropiedad');
         $presupuesto->valor_primer_pago = $primerPago;
         $presupuesto->numero_de_cuotas = $numeroDeCuotas;
+        $presupuesto->usuario_que_registra = Auth::id();
         $presupuesto->save();
 
         /*
@@ -71,7 +72,7 @@ class PresupuestosController extends Controller
 
         $cuotaInicial = $datosPropiedad['valor']/2;        
         $valorCadaCuota = ($cuotaInicial - $primerPago)/$numeroDeCuotas;
-        
+
         $pdf = PDF::loadView('venta.pdf', compact('venta','datosSegunCompra'));
 
         return $pdf->download('listado.pdf');
