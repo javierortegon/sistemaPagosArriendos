@@ -56,8 +56,8 @@
                             SELECCIONAR CLASE DE PROPIEDAD
                         </div>
                         <div class="form-group">
-                            <label for="clasePropiedad" class="col-md-4 control-label">Clase de propiedad:</label>
-                            <select  id="clasePropiedad" name="clasePropiedad" class="col-md-6" required>
+                            <label for="tipoPropiedad" class="col-md-4 control-label">Clase de propiedad:</label>
+                            <select  id="tipoPropiedad" name="tipoPropiedad" class="col-md-6" required>
                                 <option value="">Seleccionar</option>
                                 @foreach($tiposPropiedad as $tipoPropiedad)
                                     <option value="{{$tipoPropiedad['id']}}">{{$tipoPropiedad['nombre']}}</option>
@@ -133,8 +133,8 @@ $(document).ready(function() {
     var separadorDeMiles = ",";
     var separadorDecimal = ".";
     var signoMoneda = "$ ";
-    $('#clasePropiedad').on('change', function(event) {
-        tipoPropiedad = $("#clasePropiedad option:selected").val() - 1;
+    $('#tipoPropiedad').on('change', function(event) {
+        tipoPropiedad = $("#tipoPropiedad option:selected").val() - 1;
         $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor));
         $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor/2));
     });
