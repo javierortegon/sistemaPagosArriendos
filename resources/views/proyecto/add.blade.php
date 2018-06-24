@@ -28,13 +28,19 @@
 							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 								<label for="numeroPisos" class="col-md-4 control-label">Numero de Pisos</label>
 								<div class="col-md-6">
-									<input type="number" name="numeroPisos" id="numeroPisos" class="form-control" required>
+									<input type="number" name="numeroPisos" id="numeroPisos" class="form-control">
 								</div>
 							</div>
 							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 								<label for="numeroApartamentos" class="col-md-4 control-label">Numero Apartamentos</label>
 								<div class="col-md-6">
 									<input type="number" name="numeroApartamentos" id="numeroApartamentos" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group{{ $errors->has('fachaFinalizacion') ? ' has-error' : '' }}">
+								<label for="fachaFinalizacion" class="col-md-4 control-label">Fecha de Finalización</label>
+								<div class="col-md-6">
+									<input type="date" name="fachaFinalizacion" id="fachaFinalizacion" class="form-control" required>
 								</div>
 							</div>
 							

@@ -19,6 +19,7 @@ class ProyectosController extends Controller
         $proyecto->direccion = $request->direccion;
         $proyecto->numero_de_pisos = $request->numeroPisos;
         $proyecto->numero_de_apartamentos = $request->numeroApartamentos;
+        $proyecto->fecha_finalizacion = $request->fachaFinalizacion;
         $proyecto->save();
         $notification = new Notification;
         $notification::success('El proyecto se guardo correctamente');
@@ -41,6 +42,7 @@ class ProyectosController extends Controller
         $proyecto->direccion = $request->direccion;
         $proyecto->numero_de_pisos = $request->numeroPisos;
         $proyecto->numero_de_apartamentos = $request->numeroApartamentos;
+        $proyecto->fecha_finalizacion = $request->fachaFinalizacion;
         $proyecto->save();
         $notification = new Notification;
         $notification::success('Proyecto editado exitosamente');

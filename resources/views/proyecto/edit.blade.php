@@ -33,7 +33,7 @@
 								<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 									<label for="numeroPisos" class="col-md-4 control-label">Numero de Pisos</label>
 									<div class="col-md-6">
-										<input type="number" name="numeroPisos" id="numeroPisos" class="form-control" value="{{ $Proyecto['numero_de_pisos'] }}" required>
+										<input type="number" name="numeroPisos" id="numeroPisos" class="form-control" value="{{ $Proyecto['numero_de_pisos'] }}">
 									</div>
 								</div>
 
@@ -44,7 +44,12 @@
 									</div>
 								</div>
 
-								
+								<div class="form-group{{ $errors->has('fachaFinalizacion') ? ' has-error' : '' }}">
+									<label for="fachaFinalizacion" class="col-md-4 control-label">Fecha de Finalización</label>
+									<div class="col-md-6">
+										<input type="date" name="fachaFinalizacion" id="fachaFinalizacion" class="form-control" required>
+									</div>
+								</div>
 
 								<div class="form-group">
 									<div class="col-md-6 col-md-offset-4">
