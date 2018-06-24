@@ -9,14 +9,26 @@
 					<div class="panel-heading">Proyecto</div>
 
 					<div class="panel-body">
-                        <div class="col-md-4"><b>Nombre:</b></div>
-                        <div class="col-md-6">.{{ $proyecto['nombre'] }}</div>
-                        <div class="col-md-4"><b>Direccion:</b></div>
-                        <div class="col-md-6">.{{ $proyecto['direccion'] }}</div>
-                        <div class="col-md-4"><b>Numero Pisos:</b></div>
-                        <div class="col-md-6">.{{ $proyecto['numero_de_pisos'] }}</div>
-                        <div class="col-md-4"><b>Numero Apartementos:</b></div>
-                        <div class="col-md-6">.{{ $proyecto['numero_de_apartamentos'] }}</div>
+                        <div class = "row">
+                            <div class="col-md-6"><b>Nombre:</b></div>
+                            <div class="col-md-6">{{ $proyecto['nombre'] }}</div>
+                        </div>
+                        <div class = "row">
+                            <div class="col-md-6"><b>Direccion:</b></div>
+                            <div class="col-md-6">{{ $proyecto['direccion'] }}</div>
+                        </div>
+                        <div class = "row">
+                            <div class="col-md-6"><b>Numero Pisos:</b></div>
+                            <div class="col-md-6">{{ $proyecto['numero_de_pisos'] }}</div>
+                        </div>
+                        <div class = "row">
+                            <div class="col-md-6"><b>Numero Apartementos:</b></div>
+                            <div class="col-md-6">{{ $proyecto['numero_de_apartamentos'] }}</div>
+                        </div>
+                        <div class = "row">
+                            <div class="col-md-6"><b>Fecha de Finalización:</b></div>
+                            <div class="col-md-6">{{ $proyecto['fecha_finalizacion'] }}</div>
+                        </div>
                     </div>
                     
                     <div class="panel-heading">Tipos de propiedad</div>
