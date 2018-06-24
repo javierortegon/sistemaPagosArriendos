@@ -56,7 +56,7 @@
                             SELECCIONAR CLASE DE PROPIEDAD
                         </div>
                         <div class="form-group">
-                            <label for="tipoPropiedad" class="col-md-4 control-label">Clase de propiedad:</label>
+                            <label for="tipoPropiedad" class="col-md-4 control-label">Tipo de propiedad:</label>
                             <select  id="tipoPropiedad" name="tipoPropiedad" class="col-md-6" required>
                                 <option value="">Seleccionar</option>
                                 @foreach($tiposPropiedad as $tipoPropiedad)
@@ -65,22 +65,22 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Valor cuota inicial:</label>
-                            <div class="col-md-6">
-                                <input id="valorCuotaInicial" type="text" style="border:none" class="form-control" name="valorCuotaInicial" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-md-4 control-label">Valor total:</label>
                             <div class="col-md-6">
                                 <input id="valorTotal" type="text" style="border:none" class="form-control" name="valorTotal" value="">
                             </div>
-                        </div>               
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Cuota inicial:</label>
+                            <div class="col-md-6">
+                                <input id="valorCuotaInicial" type="text" style="border:none" class="form-control" name="valorCuotaInicial" value="">
+                            </div>
+                        </div>  
                         <div class = "form-group row">
                             DATOS DE PAGOS PARA CUOTA INICIAL
                         </div>
                         <div class="form-group{{ $errors->has('primerPago') ? ' has-error' : '' }}">
-                            <label for="primerPago" class="col-md-4 control-label">Valor primer pago:</label>                
+                            <label for="primerPago" class="col-md-4 control-label">Primer pago:</label>                
                             <div class="col-md-6">
                                 <input id="primerPago" type="text" class="form-control" name="primerPago" value="{{ old('primerPago') }}" required>
                                 @if ($errors->has('primerPago'))
@@ -136,7 +136,7 @@ $(document).ready(function() {
     $('#tipoPropiedad').on('change', function(event) {
         tipoPropiedad = $("#tipoPropiedad option:selected").val() - 1;
         $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor));
-        $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor/2));
+        $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].cuota_inicial));
     });
     formatoMoneda('#primerPago',separadorDecimal,separadorDeMiles,signoMoneda);
 });

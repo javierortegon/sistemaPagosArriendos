@@ -34,10 +34,12 @@
                     <div class="panel-heading">Tipos de propiedad</div>
 
                     @if (count($tiposPropiedad) == 0)
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="" class="col-md-4 control-label"></label>
-                            <div class="col-md-6">
-                            <h5>No tiene tipos de Propiedades Registradas en el Proyecto: <b>{{ $proyecto['nombre'] }}</b></h5>
+                        <div class="panel-body">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="" class="col-md-4 control-label"></label>
+                                <div class="col-md-6">
+                                <h5>No tiene tipos de Propiedades Registradas en el Proyecto: <b>{{ $proyecto['nombre'] }}</b></h5>
+                                </div>
                             </div>
                         </div>
                     @else

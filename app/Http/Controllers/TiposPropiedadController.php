@@ -22,11 +22,16 @@ class TiposPropiedadController extends Controller
     }
 
     public function postCreate($id, Request $request){
-        $tipoProyecto = new TiposPropiedad;
-        $tipoProyecto->nombre = $request->nombre;
-        $tipoProyecto->descripcion = $request->descripcion;
-        $tipoProyecto->proyecto = $id;
-        $tipoProyecto->save();
+        $valor = doubleval($request->valor);
+        $cuotaInicial = doubleval($request->cuotaInicial);
+
+        $tipoPropiedad = new TiposPropiedad;
+        $tipoPropiedad->nombre = $request->nombre;
+        $tipoPropiedad->descripcion = $request->descripcion;
+        $tipoPropiedad->valor = $valor;
+        $tipoPropiedad->cuota_inicial = $cuotaInicial;
+        $tipoPropiedad->proyecto = $id;
+        $tipoPropiedad->save();
         $notification = new Notification;
         $notification::success('El tipo de inmueble fue regisrado con exito');
         return redirect('/proyectos');
@@ -39,9 +44,14 @@ class TiposPropiedadController extends Controller
     }
 
     public function putEditTipoPropiedad($id, Request $request){
+        $valor = doubleval($request->valor);
+        $cuotaInicial = doubleval($request->cuotaInicial);
+        
         $tipoPropiedad = TiposPropiedad::findOrFail($id);
         $tipoPropiedad->nombre = $request->nombre;
         $tipoPropiedad->descripcion = $request->descripcion;
+        $tipoPropiedad->valor = $valor;
+        $tipoPropiedad->cuota_inicial = $cuotaInicial;
         $tipoPropiedad->save();
         $notification = new Notification;
         $notification::success('Tipo de propiedad actualizada exitosamente');

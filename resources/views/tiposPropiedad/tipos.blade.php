@@ -25,6 +25,8 @@
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Descripcion</th>
+                                            <th>Valor</th>
+                                            <th>Cuota Inicial</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,6 +34,8 @@
                                     <tr>
                                         <td>{{ $tipoPropiedad['nombre'] }}</td>
                                         <td>{{ $tipoPropiedad['descripcion'] }}</td>
+                                        <td>{{ $tipoPropiedad['valor'] }}</td>
+                                        <td>{{ $tipoPropiedad['cuota_inicial'] }}</td>
                                         <td><a href="{{ url('tipoPropiedad/edit/'. $tipoPropiedad['id']) }}">Editar</a></td>
                                     </tr>                                        
                                     @endforeach
@@ -51,7 +55,18 @@
                                     <textarea name="descripcion" id="descripcion" class="form-control" required></textarea>
                                 </div>
                             </div>
-                            
+                            <div class="form-group{{ $errors->has('valor') ? ' has-error' : '' }}">
+								<label for="valor" class="col-md-4 control-label">Valor</label>
+								<div class="col-md-6">
+									<input type="text" name="valor" id="valor" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group{{ $errors->has('cuotaInicial') ? ' has-error' : '' }}">
+								<label for="cuotaInicial" class="col-md-4 control-label">Cuota Inicial</label>
+								<div class="col-md-6">
+									<input type="text" name="cuotaInicial" id="cuotaInicial" class="form-control" required>
+								</div>
+							</div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
