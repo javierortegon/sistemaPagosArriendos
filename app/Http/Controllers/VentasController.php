@@ -62,12 +62,12 @@ class VentasController extends Controller
 
     }
     
-    protected function validatorDoc(array $data)
-    {
+    protected function validatorDoc(array $data){
         return Validator::make($data, [
             'documento' => 'required|unique:users|max:255',
         ]);
     }
+
     public function postVender($id, Request $request){
         $propiedad = Propiedad::select( 'propiedades.id as id', 
                                         'tipos_propiedad.valor as valor')
@@ -137,6 +137,10 @@ class VentasController extends Controller
         return redirect('/verPropiedades');
     }
 
+    public function getCerrarVenta($id){
+        
+    }
+
     // Para datatable
 
     public function getDataTableVentas(){
@@ -156,16 +160,19 @@ class VentasController extends Controller
         return \DataTables::of($queryConsulta)->addColumn('editar', function ($venta) {
             $htmlString =  "";
             if (\Shinobi::can('verVentas')){
-                $htmlString = $htmlString." ".'<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-sm btn-primary">Editar venta</a>';
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/editar/'. $venta->id).'" class="btn btn-sm btn-primary">Editar</a>';
             }
             if (\Shinobi::can('propiedades.editar')){
-                $htmlString = $htmlString." ".'<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-sm btn-primary"> Anular venta</a>';
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/anular/'. $venta->id).'" class="btn btn-sm btn-primary"> Anular</a>';
             }
             if (\Shinobi::can('verVentas')){
                 $htmlString = $htmlString." ".'<a href="'.url('documentos/check/'. $venta->id).'" class="btn btn-sm btn-primary">Agregar Documentos</a>';
             }
             if (\Shinobi::can('venta.pdf')){
-                $htmlString = $htmlString." ".'<a href="'.url('ventas/pdf/'. $venta->id).'" class="btn btn-sm btn-primary">Imprimir pdf</a>';
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/pdf/'. $venta->id).'" class="btn btn-sm btn-primary">PDF</a>';
+            }
+            if (\Shinobi::can('venta.pdf')){
+                $htmlString = $htmlString." ".'<a href="'.url('ventas/cerrar/'. $venta->id).'" class="btn btn-sm btn-primary">Cerrar</a>';
             }
             return $htmlString;
         })->rawColumns(['editar', 'action'])->make(true);
@@ -322,9 +329,7 @@ class VentasController extends Controller
         return view('propiedad.completarVenta', ['venta' => $venta, 'comprador2' => $comprador2, 'clienteExistenteRegistrado' => $clienteExistenteRegistrado, 'valor' => $valor, 'novedades' => $novedades]);    
     }
 
-
-    protected function validator2(array $data, $id_user)
-    {
+    protected function validator2(array $data, $id_user){
         return Validator::make($data, [
             'users.documento' => 'required|unique:users,documento'.$id_user,
             'users.telefono' => 'required|unique:users,telefono,'.$id_user,
