@@ -21,6 +21,7 @@ class TiposPropiedadTableSeeder extends Seeder
         $tipoPropiedad->descripcion = "16 Pisos";
         $tipoPropiedad->valor = 149950000;
         $tipoPropiedad->proyecto = 1;
+        $tipoPropiedad->cuota_inicial = 36000000;
         $tipoPropiedad->save();
 
         $tipoPropiedad2 = new TiposPropiedad;
@@ -28,6 +29,7 @@ class TiposPropiedadTableSeeder extends Seeder
         $tipoPropiedad2->descripcion = "32 Pisos";
         $tipoPropiedad2->valor = 166150000;
         $tipoPropiedad2->proyecto = 1;
+        $tipoPropiedad2->cuota_inicial = 36000000;
         $tipoPropiedad2->save();
     }
 }
