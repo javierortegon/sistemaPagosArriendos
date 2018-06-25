@@ -111,13 +111,13 @@
                 <td style="width: 50%">
                     Precio de Venta: 
                     <span class="moneda" style="text-decoration: underline;"> 
-                        {{$datosTipoPropiedad->valor}} 
+                        {{$valores['valor_total']}} 
                     </span>
                 </td>
                 <td style="width: 50%">
                     Primer Pago:
                     <span class="moneda" style="text-decoration: underline;">
-                        {{$presupuesto->valor_primer_pago}}
+                        {{$valores['valor_primer_pago']}}
                     </span>
                 </td>
             </tr>
@@ -125,13 +125,13 @@
                 <td style="width: 50%">
                     Cuota Inicial:
                     <span class="moneda" style="text-decoration: underline;">
-                        {{$datosTipoPropiedad->cuota_inicial}}
+                        {{$valores['cuota_inicial']}}
                     </span>
                 </td>
                 <td style="width: 50%">
                     Saldo o Valor del Crédito (50%):
                     <span class="moneda" style="text-decoration: underline;">
-                        {{$datosTipoPropiedad->valor - $datosTipoPropiedad->cuota_inicial}}
+                        {{$valores['saldo_credito']}}
                     </span>
                 </td>
             </tr>
@@ -149,7 +149,7 @@
             <tr>
                 <td>1</td>
                 <td>
-                    {{$presupuesto->valor_primer_pago}}
+                    {{$valores['valor_primer_pago']}}
                 </td>
                 <td>__/__/____</td>
             </tr>
@@ -157,7 +157,7 @@
                 <tr>
                     <td>{{$i}}</td>
                     <td class="moneda">
-                        {{$valorCadaCuota}}
+                        {{$valores['valorCadaCuota']}}
                     </td>
                     <td>__/__/____</td>
                 </tr>

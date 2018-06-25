@@ -72,8 +72,31 @@ class PresupuestosController extends Controller
         ->first();
      
         $valorCadaCuota = ($datosTipoPropiedad->cuota_inicial - $primerPago)/$numeroDeCuotas;
-
-        $pdf = PDF::loadView('presupuesto.pdf', compact('datosTipoPropiedad','datosComprador','valorCadaCuota','presupuesto'));
+        $saldo_credito = $datosTipoPropiedad->valor - $datosTipoPropiedad->cuota_inicial;
+        $valores = [
+            'valorCadaCuota' => $this->formatoMoneda($valorCadaCuota,".",",","$ "),
+            'valor_primer_pago' => $this->formatoMoneda($presupuesto->valor_primer_pago,".",",","$ "),
+            'cuota_inicial' => $this->formatoMoneda($datosTipoPropiedad->cuota_inicial,".",",","$ "),
+            'valor_total' => $this->formatoMoneda($datosTipoPropiedad->valor,".",",","$ "),
+            'saldo_credito' => $this->formatoMoneda($saldo_credito,".",",","$ ")
+        ];
+        $pdf = PDF::loadView('presupuesto.pdf', compact('datosTipoPropiedad','datosComprador','valores','presupuesto'));
         return $pdf->download('presupuesto'.$datosComprador->name.'.pdf');
+    }
+    public function formatoMoneda($stringNumero,$separadorDecimal,$separadorDeMiles,$signoMoneda){
+        $posIni = strlen($stringNumero);
+        $posDec = strpos($stringNumero,$separadorDecimal);
+        if($posDec > 0){
+            $posIni = $posDec;
+        }
+        $posAct = $posIni - 3;
+        while ($posAct >=1) {
+            $izq = substr($stringNumero,0,$posAct);
+            $der = substr($stringNumero,$posAct,(strlen($stringNumero) - $posAct));
+            $stringNumero = $izq.$separadorDeMiles.$der;
+            $posAct = $posAct -3;
+        }
+        $stringNumero = $signoMoneda.$stringNumero;
+        return $stringNumero;
     }
 }
