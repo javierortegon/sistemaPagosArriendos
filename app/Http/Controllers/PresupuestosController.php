@@ -34,6 +34,7 @@ class PresupuestosController extends Controller
         return view('presupuesto.generarPresupuesto', compact('tiposPropiedad'));
     }
     public function postGenerarPresupuesto(Request $request){
+        $primerPagoString = $request->input('primerPago');
         $primerPago = $request->input('primerPago');
         $primerPago = str_replace(" ", "",$primerPago);
         $primerPago = str_replace($this->signoMoneda, "",$primerPago);
@@ -49,9 +50,9 @@ class PresupuestosController extends Controller
         $presupuesto->usuario_que_registra = Auth::id();
         $presupuesto->save();
 
-        /*
-        $datosPropiedad = Propiedad::select('proyectos.nombre as proyectoNombre',
+        $datosTipoPropiedad = Propiedad::select('proyectos.nombre as proyectoNombre',
         'tipos_propiedad.nombre as tipoPropiNombre',
+        'tipos_propiedad.cuota_inicial as cuota_inicial',
         'tipos_propiedad.valor as valor',
         'propiedades.area_aproximada','propiedades.area_privada_aprox')
         ->join('tipos_propiedad', 'propiedades.id_tipoPropiedad', '=', 'tipos_propiedad.id')
@@ -68,14 +69,11 @@ class PresupuestosController extends Controller
         'datos_comprador.tipo_contrato', 'datos_comprador.encuesta')
         ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
         ->where('users.id','=',$request->input('inputUserId'))
-        ->fist();
+        ->first();
+     
+        $valorCadaCuota = ($datosTipoPropiedad->cuota_inicial - $primerPago)/$numeroDeCuotas;
 
-        $cuotaInicial = $datosPropiedad['valor']/2;        
-        $valorCadaCuota = ($cuotaInicial - $primerPago)/$numeroDeCuotas;
-
-        $pdf = PDF::loadView('venta.pdf', compact('venta','datosSegunCompra'));
-
-        return $pdf->download('listado.pdf');
-        */
+        $pdf = PDF::loadView('presupuesto.pdf', compact('datosTipoPropiedad','datosComprador','valorCadaCuota','presupuesto'));
+        return $pdf->download('presupuesto'.$datosComprador->name.'.pdf');
     }
 }
