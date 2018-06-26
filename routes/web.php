@@ -264,6 +264,12 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'VentasController@postEditarVenta'
     ]);
 
+    //ruta para cerrar la venta
+    Route::get('ventas/cerrar/{id}', [
+        'middleware' => 'permission:verVentas',     
+        'uses' => 'VentasController@getCerrarVenta'
+    ]);
+    
     /*
     |
     |RUTAS PERSONALIZADAS PARA CALENDARIO
