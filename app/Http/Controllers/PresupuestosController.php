@@ -30,7 +30,24 @@ class PresupuestosController extends Controller
     private $separadorDeMiles = ",";
 
     public function getGenerarPresupuesto(){
-        $tiposPropiedad = TiposPropiedad::all();
+        $tiposPropiedad = TiposPropiedad::select(
+            'tipos_propiedad.id as id',
+            'tipos_propiedad.nombre as nombre',
+            'tipos_propiedad.valor as valor',
+            'tipos_propiedad.cuota_inicial as cuota_inicial',
+            'tipos_propiedad.descripcion as descripcion',
+            'tipos_propiedad.proyecto as proyecto',
+            'proyectos.nombre as nombreProyecto',
+            'proyectos.direccion as direccion',
+            'proyectos.fecha_finalizacion as fecha_finalizacion'
+        )
+        ->join('proyectos', 'tipos_propiedad.proyecto','=','proyectos.id')->get();
+        //$fechaActual=new DateTime(date('Y-m-j'));
+        //$fechaFin = new DateTime(date('Y-m-d',strtotime($tiposPropiedad[1]->fecha_finalizacion)));
+        //$intervalo=$fechaFin->diff($fechaActual);
+        //$intervaloMeses=$intervalo->format("%m");
+        //$intervaloAnnos=$intervalo->format("%y");
+        //$intervalo = $intervaloMeses + $intervaloAnnos*12;
         return view('presupuesto.generarPresupuesto', compact('tiposPropiedad'));
     }
     public function postGenerarPresupuesto(Request $request){
@@ -51,6 +68,7 @@ class PresupuestosController extends Controller
         $presupuesto->save();
 
         $datosTipoPropiedad = Propiedad::select('proyectos.nombre as proyectoNombre',
+        'proyectos.fecha_finalizacion as fecha_finalizacion',
         'tipos_propiedad.nombre as tipoPropiNombre',
         'tipos_propiedad.cuota_inicial as cuota_inicial',
         'tipos_propiedad.valor as valor',
@@ -67,7 +85,7 @@ class PresupuestosController extends Controller
         'datos_comprador.ocupacion', 'datos_comprador.cargo', 'datos_comprador.empresa',
         'datos_comprador.telefono as telefonoEmpresa', 'datos_comprador.tipo_vinculacion',
         'datos_comprador.tipo_contrato', 'datos_comprador.encuesta')
-        ->join('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
+        ->leftJoin('datos_comprador', 'users.id', '=', 'datos_comprador.id_usuario')
         ->where('users.id','=',$request->input('inputUserId'))
         ->first();
      
@@ -80,7 +98,11 @@ class PresupuestosController extends Controller
             'valor_total' => $this->formatoMoneda($datosTipoPropiedad->valor,".",",","$ "),
             'saldo_credito' => $this->formatoMoneda($saldo_credito,".",",","$ ")
         ];
-        $pdf = PDF::loadView('presupuesto.pdf', compact('datosTipoPropiedad','datosComprador','valores','presupuesto'));
+        $fechas = array();
+        for($i =0;$i<$numeroDeCuotas;$i++){
+            $fechas[$numeroDeCuotas-$i-1] = date('Y-m-d',strtotime ('-'.$i.' months', strtotime($datosTipoPropiedad->fecha_finalizacion)));
+        }
+        $pdf = PDF::loadView('presupuesto.pdf', compact('datosTipoPropiedad','datosComprador','valores','presupuesto','fechas'));
         return $pdf->download('presupuesto'.$datosComprador->name.'.pdf');
     }
     public function formatoMoneda($stringNumero,$separadorDecimal,$separadorDeMiles,$signoMoneda){

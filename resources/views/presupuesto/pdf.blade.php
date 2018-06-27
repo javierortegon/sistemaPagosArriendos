@@ -34,20 +34,20 @@
         <table  style="width: 100%">
             <tr style="width: 100%;">
                 <td style="width: 50%;" colspan="2">
-                    Nombre: <span style="text-decoration: underline;"> {{ $datosComprador->name }} </span>
+                    Nombre: <span style="text-decoration: underline;"> {{ $datosComprador['name'] }} </span>
                 </td>
                 <td style="width: 50%;">
-                    Documento de Identidad:  <span style="text-decoration: underline;"> {{ $datosComprador->documento }} </span>
+                    Documento de Identidad:  <span style="text-decoration: underline;"> {{ $datosComprador['documento'] }} </span>
                 </td>
             </tr>
             <tr style="width: 100%;">
                 <td style="" colspan="3">
-                    Dirección de Correspondencia: <span style="text-decoration: underline;"> {{ $datosComprador->direccion_correspondencia }} </span>
+                    Dirección de Correspondencia: <span style="text-decoration: underline;"> {{ $datosComprador['direccion_correspondencia'] }} </span>
                 </td>   
             </tr>
             <tr style="width: 100%; ">
                 <td style="width: 33%" colspan="1">
-                    Barrio: <span style="text-decoration: underline;"> {{ $datosComprador->barrio }} </span>
+                    Barrio: <span style="text-decoration: underline;"> {{ $datosComprador['barrio'] }} </span>
                 </td>
                 <td style="width: 33%" colspan="1">
                     Ciudad: <span style="text-decoration: underline;"> {{ $datosComprador->ciudad }} </span>
@@ -61,44 +61,44 @@
                     Celular: <span style="text-decoration: underline;">  </span>
                 </td>
                 <td style="width: 50%;" colspan="2">
-                    E-mail: <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->email }} </span>
+                    E-mail: <span style="text-decoration: underline;"> {{ $datosComprador->email }} </span>
                 </td>
             </tr>
             <tr>
                 <td style="width: 50%;" colspan="2">
-                    Estado Civil: <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->estado_civil }} </span>
+                    Estado Civil: <span style="text-decoration: underline;"> {{ $datosComprador->estado_civil }} </span>
                 </td>
                 <td style="width: 50%;" colspan="1">
-                    Tipo de Representación: <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->tipo_representacion }} </span>
+                    Tipo de Representación: <span style="text-decoration: underline;"> {{ $datosComprador->tipo_representacion }} </span>
                 </td>
             </tr>
             <tr>
                 <td style="width: 50%;">
-                    Ocupación: <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->ocupacion }} </span>
+                    Ocupación: <span style="text-decoration: underline;"> {{ $datosComprador->ocupacion }} </span>
                 </td>
                 <td style="width: 50%;" colspan="2">
-                    Cargo: <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->cargo }} </span>
+                    Cargo: <span style="text-decoration: underline;"> {{ $datosComprador->cargo }} </span>
                 </td>
             </tr>
             <tr>
                 <td style="width: 50%;" colspan="2">
-                    Empresa:  <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->empresa }} </span>
+                    Empresa:  <span style="text-decoration: underline;"> {{ $datosComprador->empresa }} </span>
                 </td>
                 <td style="width: 50%;">
-                    Teléfono:  <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->telefonoEmpresa }} </span>
+                    Teléfono:  <span style="text-decoration: underline;"> {{ $datosComprador->telefonoEmpresa }} </span>
                 </td>
             </tr>
             <tr>
                 <td style="" colspan="2">
-                    Tiempo de vinculación:   <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->tipo_vinculacion }} </span>
+                    Tiempo de vinculación:   <span style="text-decoration: underline;"> {{ $datosComprador->tipo_vinculacion }} </span>
                 </td>
                 <td style="width: 60%">
-                    Tipo de Contrato:   <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->tipo_contrato }} </span>
+                    Tipo de Contrato:   <span style="text-decoration: underline;"> {{ $datosComprador->tipo_contrato }} </span>
                 </td>
             </tr>
             <tr>
                 <td style="" colspan="3">
-                    ¿Cómo se enteró del proyecto?:    <span style="text-decoration: underline;"> {{ $datosTipoPropiedad->encuesta }} </span>
+                    ¿Cómo se enteró del proyecto?:    <span style="text-decoration: underline;"> {{ $datosComprador->encuesta }} </span>
                 </td>
             </tr>
         </table>
@@ -147,19 +147,19 @@
                 <th>Fecha</th>
             </tr>
             <tr>
-                <td>1</td>
+                <td>Primer Pago</td>
                 <td>
                     {{$valores['valor_primer_pago']}}
                 </td>
                 <td>__/__/____</td>
             </tr>
-            @for($i=2;$i<=$presupuesto->numero_de_cuotas;$i++)
+            @for($i=0;$i<$presupuesto->numero_de_cuotas;$i++)
                 <tr>
-                    <td>{{$i}}</td>
+                    <td>{{$i + 1}}</td>
                     <td class="moneda">
                         {{$valores['valorCadaCuota']}}
                     </td>
-                    <td>__/__/____</td>
+                    <td>{{ $fechas[$i] }}</td>
                 </tr>
             @endfor
         </table>
