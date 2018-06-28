@@ -53,7 +53,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group row">
-                            SELECCIONAR CLASE DE PROPIEDAD
+                            SELECCIONAR TIPO DE PROPIEDAD
+                        </div>
+                        <div class="form-group">
+                            <label for="proyecto" class="col-md-4 control-label">Proyecto:</label>
+                            <select  id="proyecto" name="proyecto" class="col-md-6" required>
+                                <option value="">Seleccionar</option>
+                                @foreach($proyectos as $proyecto)
+                                    <option value="{{$proyecto['id']}}">{{$proyecto['nombre']}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="tipoPropiedad" class="col-md-4 control-label">Tipo de propiedad:</label>
@@ -128,15 +137,27 @@ $(document).ready(function() {
             event.preventDefault();            
         }
     });
+    var proyectos = <?= json_encode($proyectos) ?>;
     var tiposPropiedad = <?= json_encode($tiposPropiedad) ?>;
+    $('#proyecto').on('change', function(event) {
+        proyecto = $("#proyecto option:selected").val();
+        opcionesTipos = '<option value="">Seleccionar</option>';
+        for(i=0;i<tiposPropiedad.length;i++){
+            if(parseInt(tiposPropiedad[i].proyecto) == parseInt(proyecto)){
+                opcionesTipos = opcionesTipos.concat('<option value="'+tiposPropiedad[i].id+'">'+tiposPropiedad[i].nombre+'</option>');
+            }
+        }
+        $('#tipoPropiedad').html(opcionesTipos);
+    });
     var tipoPropiedad;
     var separadorDeMiles = ",";
     var separadorDecimal = ".";
     var signoMoneda = "$ ";
     $('#tipoPropiedad').on('change', function(event) {
-        tipoPropiedad = $("#tipoPropiedad option:selected").val() - 1;
-        $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].valor));
-        $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(tipoPropiedad)].cuota_inicial));
+        tipoPropiedad = $("#tipoPropiedad option:selected").val();
+        indiceTipoPropiedad = tipoPropiedad -1;
+        $('#valorTotal').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(indiceTipoPropiedad)].valor));
+        $('#valorCuotaInicial').val("$ "+new Intl.NumberFormat('es-MX').format(tiposPropiedad[parseInt(indiceTipoPropiedad)].cuota_inicial));
     });
     formatoMoneda('#primerPago',separadorDecimal,separadorDeMiles,signoMoneda);
 });

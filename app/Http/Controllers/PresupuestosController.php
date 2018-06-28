@@ -48,7 +48,8 @@ class PresupuestosController extends Controller
         //$intervaloMeses=$intervalo->format("%m");
         //$intervaloAnnos=$intervalo->format("%y");
         //$intervalo = $intervaloMeses + $intervaloAnnos*12;
-        return view('presupuesto.generarPresupuesto', compact('tiposPropiedad'));
+        $proyectos = Proyecto::all();
+        return view('presupuesto.generarPresupuesto', compact('tiposPropiedad','proyectos'));
     }
     public function postGenerarPresupuesto(Request $request){
         $primerPagoString = $request->input('primerPago');
