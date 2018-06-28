@@ -5,6 +5,7 @@
     <div class="col-md-8 col-md-offset-2">
         {!!	Notification::showAll()	!!}
         <div class="panel panel-default">
+
             <div class="panel-heading">Datos Propiedad</div>
             <div class="panel-body">
                 <div class="col-md-6">
@@ -95,6 +96,56 @@
                         </div>
                     </div>
                 </div>    
+            </div>
+
+            <div class="panel-heading">Datos Cierre</div>
+            <div class="panel-body">
+                <form class="form-horizontal" action="{{ url('ventas/cerrar').'/'.$venta['id'] }}" method="POST">
+                    {{-- TODO: Abrir el formulario e indicar el método POST --}}
+                    {{ csrf_field() }}
+                    {{-- TODO: Protección contra CSRF --}}
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="col-md-4 control-label">Pago Inicial: </label>
+                        <div class="col-md-6">
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <label for="name" class="col-md-4 control-label">Pago Inicial: </label>
+                        <div class="col-md-6">
+                            <input id="name" type="date" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-9 control-label">
+                                El pago inicial debe ser verificado por el asesor antes de cerrar la venta.<br>
+                                La fecha de cierre sera tomada como fecha limite para los siguentes pagos.
+                            </label>
+                            
+                        </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Cerrar Venta
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>    

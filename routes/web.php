@@ -264,11 +264,6 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'VentasController@postEditarVenta'
     ]);
 
-    //ruta para cerrar la venta
-    Route::get('ventas/cerrar/{id}', [
-        'middleware' => 'permission:verVentas',     
-        'uses' => 'VentasController@getCerrarVenta'
-    ]);
     
     /*
     |
@@ -372,13 +367,30 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'UsersController@registroUsuarioPresupuesto',
     ]);
 
-
     Route::get('registroPresupuesto', [
         'uses' => 'PresupuestosController@getGenerarPresupuesto',
     ])->name('registroPresupuesto');
     Route::post('registroPresupuesto', [
         'uses' => 'PresupuestosController@postGenerarPresupuesto',
         'middleware' => 'permission:verPropiedades'
+    ]);
+
+     /*
+    |
+    |RUTAS PERSONALIZADAS PARA MODULO DE CARTERA
+    |
+    */
+
+    //ruta para cerrar la venta
+    Route::get('ventas/cerrar/{id}', [
+        'middleware' => 'permission:verVentas',     
+        'uses' => 'VentasController@getCerrarVenta'
+    ]);
+
+    //ruta para cerrar la venta
+    Route::post('ventas/cerrar/{id}', [
+        'middleware' => 'permission:verVentas',     
+        'uses' => 'CarterasController@postCerrarVenta'
     ]);
 
 });
