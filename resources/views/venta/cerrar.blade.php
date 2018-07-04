@@ -108,7 +108,7 @@
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-md-4 control-label">Pago Inicial: </label>
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="pagoInicial" type="number" class="form-control" name="pagoInicial" value="" required autofocus>
                             @if ($errors->has('name'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
@@ -118,9 +118,9 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <label for="name" class="col-md-4 control-label">Pago Inicial: </label>
+                        <label for="name" class="col-md-4 control-label">Fecha Pago Inicial: </label>
                         <div class="col-md-6">
-                            <input id="name" type="date" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="fechaPago" type="date" class="form-control" name="fechaPago" value="" required autofocus>
                             @if ($errors->has('name'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('name') }}</strong>
