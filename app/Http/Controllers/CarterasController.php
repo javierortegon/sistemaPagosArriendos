@@ -20,6 +20,7 @@ class CarterasController extends Controller
         $cartera->venta = $id;
         $cartera->numero_cuota = 1;
         $cartera->valor = $request->pagoInicial;
+        $cartera->confirmado = true;
         $cartera->fecha_pago = $request->fechaPago;
         $cartera->save();
         $notification = new Notification;
