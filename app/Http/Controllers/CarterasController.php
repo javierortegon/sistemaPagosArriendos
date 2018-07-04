@@ -26,4 +26,8 @@ class CarterasController extends Controller
         $notification::success('Cartera iniciada correctamente');
         return redirect('/verVentas');
     }
+
+    public function consultarGet(){
+        
+    }
 }

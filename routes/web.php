@@ -370,6 +370,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('registroPresupuesto', [
         'uses' => 'PresupuestosController@getGenerarPresupuesto',
     ])->name('registroPresupuesto');
+
     Route::post('registroPresupuesto', [
         'uses' => 'PresupuestosController@postGenerarPresupuesto',
         'middleware' => 'permission:verPropiedades'
@@ -392,6 +393,13 @@ Route::middleware(['auth'])->group(function() {
         'middleware' => 'permission:verVentas',     
         'uses' => 'CarterasController@postCerrarVenta'
     ]);
+    
+    //ruta para consultar la cartera
+    Route::get('consultarCartera',[
+        'middleware' => 'permission:verVentas',
+        'uses' => 'CarterasController@consultarGet'
+    ])->name('consultarCartera');
+
 
 });
 
