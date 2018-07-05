@@ -400,7 +400,10 @@ Route::middleware(['auth'])->group(function() {
         'uses' => 'CarterasController@consultarGet'
     ])->name('consultarCartera');
 
-
+    //dataTable cartera
+    Route::get('carteras/getdatatable', 
+    'CarterasController@getDataTableCartera'
+    )->name('carteras/getdatatable')->middleware('auth');
 });
 
 
