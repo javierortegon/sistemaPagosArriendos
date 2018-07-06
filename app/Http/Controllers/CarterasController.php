@@ -92,6 +92,9 @@ class CarterasController extends Controller
             }
             return $htmlString;
         })->rawColumns(['acciones', 'action'])->make(true);
-
+    }
+    public function getAdministrarPagos($id_venta){
+        //Consulta de datos necesarios
+        return view('cartera.pagos');
     }
 }

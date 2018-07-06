@@ -404,6 +404,12 @@ Route::middleware(['auth'])->group(function() {
     Route::get('carteras/getdatatable', 
     'CarterasController@getDataTableCartera'
     )->name('carteras/getdatatable')->middleware('auth');
+
+    //ruta para administrar pagos
+    Route::get('cartera/administrarPagos/{id_venta}',[
+        'middleware' => 'permission:verVentas',
+        'uses' => 'CarterasController@getAdministrarPagos'
+    ]);
 });
 
 
