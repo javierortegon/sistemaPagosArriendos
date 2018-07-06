@@ -30,6 +30,7 @@ class CarterasController extends Controller
 
     public function consultarGet(){
         return view('cartera.cartera');
+                
     }
 
     // Para datatable
@@ -68,7 +69,18 @@ class CarterasController extends Controller
             return $cartera->valor_total - $cartera->total_pagado;
         })
         ->addColumn('estadoString', function($cartera){
-            return 'Configurar';
+            $fechaActual=new \DateTime(date('Y-m-j'));
+            $fechaUltimoPago = new \DateTime(date('Y-m-d',strtotime($cartera->fecha_pago)));
+            $intervalo=$fechaActual->diff($fechaUltimoPago);
+            $intervaloMeses=$intervalo->format("%m");
+            $intervaloDias=$intervalo->format("%d");
+            $intervaloAnnos=$intervalo->format("%y");
+            $intervalo = $intervaloMeses + $intervaloAnnos*12;
+            $estado = "Al día";
+            if($intervalo >30){
+                $estado = "En mora";
+            }
+            return $estado;
         })
         ->addColumn('acciones', function ($venta) {
             $htmlString =  "";

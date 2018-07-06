@@ -23,6 +23,7 @@
                                     <th>Cuotas pagadas</th>
                                     <th>Total pagado</th>
                                     <th>Total deuda</th>
+                                    <th>Último Pago</th>
                                     <th>Estado</th>
                                     <th></th>
                                 </tr>
@@ -55,6 +56,7 @@ $(document).ready(function() {
             {data: 'cuotas_pagadas', name: 'cuotas_pagadas'},
             {data: 'total_pagado', name: 'total_pagado'},
             {data: 'total_deuda', name: 'total_deuda'},
+            {data: 'fecha_pago', name: 'fecha_pago'},
             {data: 'estadoString', name: 'estadoString'},
             {data: 'acciones', name: 'acciones', orderable: false, searchable: false},
         ],
