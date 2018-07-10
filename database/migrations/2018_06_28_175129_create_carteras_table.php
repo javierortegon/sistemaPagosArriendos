@@ -20,6 +20,7 @@ class CreateCarterasTable extends Migration
             $table->integer('numero_cuota');
             $table->date('fecha_pago');
             $table->float('valor', 10, 2);
+            $table->boolean('confirmado');
             $table->timestamps();
         });
     }
